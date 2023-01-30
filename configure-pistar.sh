@@ -6,12 +6,12 @@ FREQUENCY="${CONFIG_FREQUENCY:-431500000}"
 CALLSIGN="${CONFIG_CALLSIGN:-000}"
 
 echo "Downloading modified HostFilesUpdate.sh..."
-curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://github.com/krot4u/Public_scripts/blob/master/HostFilesUpdate.sh
+curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh
 
 echo "Downloading modified dmrgateway and mmdvmhost..."
-curl --fail -o /etc/dmrgateway -s https://github.com/krot4u/Public_scripts/blob/master/dmrgateway.ini
-curl --fail -o /etc/mmdvmhost -s https://github.com/krot4u/Public_scripts/blob/master/mmdvmhost.ini
+curl --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
+curl --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 
 echo "Updating dmrgateway and mmdvmhost..."
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dmrgateway
