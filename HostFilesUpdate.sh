@@ -12,7 +12,6 @@
 #                                                       #
 #########################################################
 # Check that the network is UP and die if its not
-set -e
 if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
         exit 0
 fi
