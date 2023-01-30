@@ -106,19 +106,4 @@ curl --fail -o ${P25HOSTS} -s http://www.pistar.uk/downloads/P25_Hosts.txt --use
 #curl --fail -s http://www.pistar.uk/downloads/USTrust_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}" >> ${DExtraHOSTS}
 curl --fail -o ${XLXHOSTS} -s https://github.com/krot4u/Public_scripts/blob/master/XLXHosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 
-# Fix DMRGateway issues with brackets
-if [ -f "/etc/dmrgateway" ]; then
-        sed -i '/Name=.*(/d' /etc/dmrgateway
-        sed -i '/Name=.*)/d' /etc/dmrgateway
-fi
-
-# Add some fixes for P25Gateway
-if [[ $(/usr/local/bin/P25Gateway --version | awk '{print $3}' | cut -c -8) -gt "20180108" ]]; then
-        sed -i 's/Hosts=\/usr\/local\/etc\/P25Hosts.txt/HostsFile1=\/usr\/local\/etc\/P25Hosts.txt\nHostsFile2=\/usr\/local\/etc\/P25HostsLocal.txt/g' /etc/p25gateway
-        sed -i 's/HostsFile2=\/root\/P25Hosts.txt/HostsFile2=\/usr\/local\/etc\/P25HostsLocal.txt/g' /etc/p25gateway
-fi
-if [ -f "/root/P25Hosts.txt" ]; then
-        cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
-fi
-
 exit 0
