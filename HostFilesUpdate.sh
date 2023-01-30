@@ -11,7 +11,7 @@
 #   Based on the update script by Tony Corbett G0WFV    #
 #                                                       #
 #########################################################
-
+# fix
 # Check that the network is UP and die if its not
 if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
         exit 0
