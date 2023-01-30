@@ -1,5 +1,6 @@
 #!/bin/bash
 RED="\033[0;31m"
+GRN="\033[0;32m"
 NC="\033[0m"
 
 if [ "$(id -u)" != "0" ];then
@@ -12,12 +13,13 @@ while true; do
    len=`echo $DMRID |awk '{print length}'`
    if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
      echo " "
-	 echo -e "${RED}Ошибка: Неправильный DMR ID!${NC}"
+	 echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
 	 echo " "
    else
-     echo "Ваш DMRID $DMRID"
-	 echo "#"
-	 echo "#"
+     echo "----->"
+     echo -e "   ${GRN}Ваш DMRID $DMRID ${NC}"
+	 echo "----->"
+	 echo " "
      break
    fi
 done
@@ -28,12 +30,13 @@ while true; do
    len=`echo $FREQUENCY |awk '{print length}'`
    if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
       echo " "
-	  echo -e "${RED}Ошибка: Не верная частота!${NC}"
+	  echo -e "   ${RED}Ошибка: Не верная частота!${NC}"
 	  echo " "
    else
-     echo "Частота приёма\передачи $FREQUENCY"
-	 echo "#"
-	 echo "#"
+     echo "----->"
+     echo -e "   ${GRN}Частота приёма\передачи $FREQUENCY ${NC}"
+	 echo "----->"
+	 echo " "
      FREQUENCY="${FREQUENCY}000"
 	 break
    fi
@@ -44,12 +47,13 @@ while true; do
    len=`echo $CALLSIGN |awk '{print length}'`
    if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
       echo " "
-	  echo -e "${RED}Ошибка: Неправильный позывной!${NC}"
+	  echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
 	  echo " "
    else
-     echo "Ваш позывной $CALLSIGN"
-	 echo "#"
-	 echo "#"
+     echo "----->"
+     echo -e "   ${GRN}Ваш позывной $CALLSIGN ${NC}"
+	 echo "----->"
+	 echo " "
      break
    fi
 done
