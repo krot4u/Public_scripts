@@ -11,7 +11,6 @@
 #   Based on the update script by Tony Corbett G0WFV    #
 #                                                       #
 #########################################################
-set -e
 # Check that the network is UP and die if its not
 if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
         exit 0
@@ -62,9 +61,9 @@ do
 done
 
 # Generate Host Files
-curl --fail -o ${DMRHOSTS} -s https://github.com/krot4u/Public_scripts/blob/master/DMR_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
-curl --fail -o ${DMRIDFILE} -s https://github.com/krot4u/Public_scripts/blob/master/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"
+curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMR_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
+curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${P25HOSTS} -s http://www.pistar.uk/downloads/P25_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
-curl --fail -o ${XLXHOSTS} -s https://github.com/krot4u/Public_scripts/blob/master/XLXHosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
+curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 
 exit 0
