@@ -4,6 +4,9 @@ echo "Downloading modified HostFilesUpdate.sh..."
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh https://github.com/krot4u/Public_scripts/blob/master/HostFilesUpdate.sh
 /usr/local/sbin/HostFilesUpdate.sh
 
+curl --fail -o /etc/dmrgateway https://github.com/krot4u/Public_scripts/blob/master/dmrgateway.ini
+curl --fail -o /etc/mmdvmhost https://github.com/krot4u/Public_scripts/blob/master/mmdvmhost.ini
+
 sed -i "s/--Frequency--/${CONFIG_FREQUENCY}/" /etc/dmrgateway
 sed -i "s/--DMRID--/${CONFIG_DMRID}/" /etc/dmrgateway
 
