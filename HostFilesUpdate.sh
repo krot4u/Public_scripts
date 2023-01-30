@@ -42,11 +42,11 @@ if [ ${FILEBACKUP} -ne 0 ]; then
 fi
 
 # Prune backups
-FILES="${APRSHOSTS}"
+FILES="
 ${DMRIDFILE}
 ${DMRHOSTS}
 ${P25HOSTS}
-${XLXHOSTS}
+${XLXHOSTS}"
 
 for file in ${FILES}
 do

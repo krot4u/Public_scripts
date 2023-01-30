@@ -43,6 +43,13 @@ echo "Done"
 echo "------------"
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh
 
+echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
+cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
+cp /etc/mmdvmhost /etc/mmdvmhost.$(date +%Y%m%d)
+echo "Removing /etc/dmrgateway and /etc/mmdvmhost"
+rm -f /etc/dmrgateway
+rm -f /etc/mmdvmhost
+
 echo "Downloading modified dmrgateway and mmdvmhost..."
 curl --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
 curl --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
