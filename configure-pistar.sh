@@ -13,25 +13,25 @@ service_handle() {
 	# What do we want do to?
 	doWhat=${1}
 
-	systemctl ${doWhat} pistar-watchdog.service
-	systemctl ${doWhat} pistar-remote.service
-	systemctl ${doWhat} dmrgateway.service
-	systemctl ${doWhat} dapnetgateway.service
-	systemctl ${doWhat} ircddbgateway.service
-	systemctl ${doWhat} timeserver.service
-	systemctl ${doWhat} ysfgateway.service
-	systemctl ${doWhat} ysf2dmr.service
-	systemctl ${doWhat} ysf2nxdn.service
-	systemctl ${doWhat} ysf2p25.service
-	systemctl ${doWhat} ysfparrot.service
-	systemctl ${doWhat} dmr2ysf.service
-	systemctl ${doWhat} dmr2nxdn.service
-	systemctl ${doWhat} p25gateway.service
-	systemctl ${doWhat} p25parrot.service
-	systemctl ${doWhat} nxdngateway.service
-	systemctl ${doWhat} nxdnparrot.service
-	systemctl ${doWhat} dstarrepeater.service
-	systemctl ${doWhat} mmdvmhost.service && sleep 3
+	systemctl ${doWhat} pistar-watchdog.service > /dev/null 2>&1
+	systemctl ${doWhat} pistar-remote.service > /dev/null 2>&1
+	systemctl ${doWhat} dmrgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} dapnetgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ircddbgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} timeserver.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2dmr.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2p25.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2ysf.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} p25gateway.service > /dev/null 2>&1
+	systemctl ${doWhat} p25parrot.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdngateway.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdnparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dstarrepeater.service > /dev/null 2>&1
+	systemctl ${doWhat} mmdvmhost.service && sleep 3 > /dev/null 2>&1
 }
 
 echo "Downloading modified HostFilesUpdate.sh..."
@@ -41,7 +41,7 @@ echo "Stopping Services..."
 service_handle stop
 echo "Done"
 echo "------------"
-/bin/bash /usr/local/sbin/HostFilesUpdate.sh
+/bin/bash /usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
