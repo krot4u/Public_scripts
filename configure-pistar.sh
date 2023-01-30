@@ -9,9 +9,11 @@ echo "Downloading modified HostFilesUpdate.sh..."
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://github.com/krot4u/Public_scripts/blob/master/HostFilesUpdate.sh
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh
 
+echo "Downloading modified dmrgateway and mmdvmhost..."
 curl --fail -o /etc/dmrgateway -s https://github.com/krot4u/Public_scripts/blob/master/dmrgateway.ini
 curl --fail -o /etc/mmdvmhost -s https://github.com/krot4u/Public_scripts/blob/master/mmdvmhost.ini
 
+echo "Updating dmrgateway and mmdvmhost..."
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dmrgateway
 sed -i "s/--DMRID--/$DMRID/" /etc/dmrgateway
 
