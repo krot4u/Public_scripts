@@ -42,7 +42,7 @@ if [ ${FILEBACKUP} -ne 0 ]; then
 fi
 
 # Prune backups
-FILES="${APRSHOSTS}
+FILES="${APRSHOSTS}"
 ${DMRIDFILE}
 ${DMRHOSTS}
 ${P25HOSTS}

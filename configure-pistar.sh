@@ -5,8 +5,14 @@ DMRID="${CONFIG_DMRID:-7777777}"
 FREQUENCY="${CONFIG_FREQUENCY:-431500000}"
 CALLSIGN="${CONFIG_CALLSIGN:-000}"
 
+if [ "$(id -u)" != "0" ];then
+        echo "This script must be run as root" 1>&2
+        exit 1
+fi
+
 echo "Downloading modified HostFilesUpdate.sh..."
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh
 
 echo "Downloading modified dmrgateway and mmdvmhost..."
