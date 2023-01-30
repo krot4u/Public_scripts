@@ -61,6 +61,7 @@ sed -i "s/--DMRID--/$DMRID/" /etc/dmrgateway
 
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/mmdvmhost
 sed -i "s/--DMRID--/Type=$DMRID/" /etc/mmdvmhost
+sed -i "s/--Frequency--/$FREQUENCY/" /etc/mmdvmhost
 echo "Done"
 echo "------------"
 echo "Run pi-star update..."
