@@ -29,7 +29,6 @@ service_handle() {
 	systemctl ${doWhat} p25gateway.service > /dev/null 2>&1
 	systemctl ${doWhat} p25parrot.service > /dev/null 2>&1
 	systemctl ${doWhat} nxdngateway.service > /dev/null 2>&1
-	systemctl ${doWhat} nxdn2dmr.service > /dev/null 2>&1
 	systemctl ${doWhat} nxdnparrot.service > /dev/null 2>&1
 	systemctl ${doWhat} dstarrepeater.service > /dev/null 2>&1
 	systemctl ${doWhat} mmdvmhost.service > /dev/null 2>&1 && sleep 2 > /dev/null 2>&1
