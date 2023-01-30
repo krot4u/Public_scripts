@@ -20,23 +20,10 @@ fi
 # Get the Pi-Star Version
 pistarCurVersion=$(awk -F "= " '/Version/ {print $2}' /etc/pistar-release)
 
-APRSHOSTS=/usr/local/etc/APRSHosts.txt
-DCSHOSTS=/usr/local/etc/DCS_Hosts.txt
-DExtraHOSTS=/usr/local/etc/DExtra_Hosts.txt
 DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
-DPlusHOSTS=/usr/local/etc/DPlus_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
-M17HOSTS=/usr/local/etc/M17Hosts.txt
-YSFHOSTS=/usr/local/etc/YSFHosts.txt
-FCSHOSTS=/usr/local/etc/FCSHosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
-NXDNIDFILE=/usr/local/etc/NXDN.csv
-NXDNHOSTS=/usr/local/etc/NXDNHosts.txt
-TGLISTBM=/usr/local/etc/TGList_BM.txt
-TGLISTP25=/usr/local/etc/TGList_P25.txt
-TGLISTNXDN=/usr/local/etc/TGList_NXDN.txt
-TGLISTYSF=/usr/local/etc/TGList_YSF.txt
 
 # How many backups
 FILEBACKUP=1
@@ -49,43 +36,18 @@ fi
 
 # Create backup of old files
 if [ ${FILEBACKUP} -ne 0 ]; then
-        cp ${APRSHOSTS} ${APRSHOSTS}.$(date +%Y%m%d)
-        cp ${DCSHOSTS} ${DCSHOSTS}.$(date +%Y%m%d)
-        cp ${DExtraHOSTS} ${DExtraHOSTS}.$(date +%Y%m%d)
         cp ${DMRIDFILE} ${DMRIDFILE}.$(date +%Y%m%d)
         cp ${DMRHOSTS} ${DMRHOSTS}.$(date +%Y%m%d)
-        cp ${DPlusHOSTS} ${DPlusHOSTS}.$(date +%Y%m%d)
         cp ${P25HOSTS} ${P25HOSTS}.$(date +%Y%m%d)
-        cp ${M17HOSTS} ${M17HOSTS}.$(date +%Y%m%d)
-        cp ${YSFHOSTS} ${YSFHOSTS}.$(date +%Y%m%d)
-        cp ${FCSHOSTS} ${FCSHOSTS}.$(date +%Y%m%d)
         cp ${XLXHOSTS} ${XLXHOSTS}.$(date +%Y%m%d)
-        cp ${NXDNIDFILE} ${NXDNIDFILE}.$(date +%Y%m%d)
-        cp ${NXDNHOSTS} ${NXDNHOSTS}.$(date +%Y%m%d)
-        cp ${TGLISTBM} ${TGLISTBM}.$(date +%Y%m%d)
-        cp ${TGLISTP25} ${TGLISTP25}.$(date +%Y%m%d)
-        cp ${TGLISTNXDN} ${TGLISTNXDN}.$(date +%Y%m%d)
-        cp ${TGLISTYSF} ${TGLISTYSF}.$(date +%Y%m%d)
 fi
 
 # Prune backups
 FILES="${APRSHOSTS}
-${DCSHOSTS}
-${DExtraHOSTS}
 ${DMRIDFILE}
 ${DMRHOSTS}
-${DPlusHOSTS}
 ${P25HOSTS}
-${M17HOSTS}
-${YSFHOSTS}
-${FCSHOSTS}
 ${XLXHOSTS}
-${NXDNIDFILE}
-${NXDNHOSTS}
-${TGLISTBM}
-${TGLISTP25}
-${TGLISTNXDN}
-${TGLISTYSF}"
 
 for file in ${FILES}
 do
@@ -103,7 +65,6 @@ done
 curl --fail -o ${DMRHOSTS} -s https://github.com/krot4u/Public_scripts/blob/master/DMR_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${DMRIDFILE} -s https://github.com/krot4u/Public_scripts/blob/master/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${P25HOSTS} -s http://www.pistar.uk/downloads/P25_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
-#curl --fail -s http://www.pistar.uk/downloads/USTrust_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}" >> ${DExtraHOSTS}
 curl --fail -o ${XLXHOSTS} -s https://github.com/krot4u/Public_scripts/blob/master/XLXHosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 
 exit 0
