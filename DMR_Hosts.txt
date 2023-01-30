@@ -1,0 +1,67 @@
+#       DMR_Hosts.txt
+#
+#       Written for Pi-Star Digital Voice Node by Andy Taylor (MW0MWZ)
+#       Origional idea from Adrian Craig (M0GLJ)
+#
+#       Updated 25-Jan-2023 (Tashkent_272)
+#
+#       The format of this file is the name of the reflector followed by its
+#       IP address / Hotname / Password. NO SPACES!!
+#
+#       Downloaded from http://www.pistar.uk/downloads/DMR_Hosts.txt
+#
+######################################################################################################
+#
+#                               DMRGateway / Internal Hosts Below
+#
+######################################################################################################
+# Name                          DMR-ID  IP/Hostname                             Password        Port #
+######################################################################################################
+DMRGateway                      0000    127.0.0.1                               none            62031
+######################################################################################################
+#
+#                               XLX Hosts Below
+#
+######################################################################################################
+# Name                          DMR-ID  IP/Hostname                             Password        Port #
+######################################################################################################
+XLX_495                         0000    45.147.201.207                          passw0rd        62030
+######################################################################################################
+#
+#                               BrandMeister Hosts Below
+#
+######################################################################################################
+# Country                       DMR-ID  IP/Hostname                             Password        Port #
+######################################################################################################
+BM_2502_Russia                  2502    2502.master.brandmeister.network        passw0rd        62031
+BM_2503_Russia                  2503    2503.master.brandmeister.network        passw0rd        62031
+######################################################################################################
+#       Custom DMR_Hosts.txt
+#
+#       Written for Pi-Star Digital Voice Node by Andy Taylor (MW0MWZ)
+#
+#       The format of this file is the name of the reflector followed by its
+#       IP address / Hotname / Password. TAB delimited only NO SPACES!!
+#
+#       Please ensure BrandMeister Masters are prefixed with BM_
+#       Please ensure Phoenix / DMR+ Masters are prefixed with DMR+_
+#
+#       Passwords / Ports ARE important too!
+#
+##############################################################################################
+#
+#                               Custom DMR Hosts
+#
+##############################################################################################
+# Name                          DMR-ID  IP/Hostname                     Password        Port #
+##############################################################################################
+QRA_TEAM     4001    45.147.201.207  passw0rd        62030
+######################################################################################################
+#
+#                               BrandMeister Hosts Below
+#
+######################################################################################################
+# Country                       DMR-ID  IP/Hostname                             Password        Port #
+######################################################################################################
+QRA_TEAM     4001    45.147.201.207  passw0rd        62030
+######################################################################################################
