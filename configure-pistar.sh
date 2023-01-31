@@ -9,6 +9,7 @@ if [ "$(id -u)" != "0" ];then
 fi
 
 read -p "Введите Ваш DMRID (7 цифр): " DMRID
+echo ""
 len=`echo $DMRID |awk '{print length}'`
 if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
 	echo " "
@@ -24,6 +25,7 @@ fi
 
 echo "Введите частоту приёма\передачи. Задаётся без разделителя"
 read -p "(6 символов. Пример:433500): " FREQUENCY
+echo ""
 len=`echo $FREQUENCY |awk '{print length}'`
 if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
 	echo " "
@@ -39,6 +41,7 @@ else
 fi
 
 read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
+echo ""
 len=`echo $CALLSIGN |awk '{print length}'`
 if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
 	echo " "
@@ -78,7 +81,7 @@ service_handle() {
 }
 
 echo "Downloading modified HostFilesUpdate.sh..."
-curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 
 echo "Stopping Services..."
 service_handle stop
@@ -94,8 +97,8 @@ rm -f /etc/dmrgateway
 rm -f /etc/mmdvmhost
 
 echo "Downloading modified dmrgateway and mmdvmhost..."
-curl --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
-curl --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 echo "Done"
 echo "------------"
 echo "Updating dmrgateway and mmdvmhost..."
