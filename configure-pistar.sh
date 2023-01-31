@@ -12,7 +12,7 @@ fi
 read -p "Введите Ваш DMRID (7 цифр): " DMRID
 if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -ne 7 ) ]];then
 	echo " "
-	echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
+	echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}" 1>&2
 	echo " "
 	exit 1
 else
@@ -27,7 +27,7 @@ read -p "(6 символов. Пример:433500): " FREQUENCY
 echo ""
 if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -ne 6 ) ]];then
 	echo " "
-	echo -e "   ${RED}Ошибка: Неверная частота!${NC}"
+	echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
 	echo " "
 	exit 1
 else
@@ -42,7 +42,7 @@ read -p "Введите Ваш позывной ( <= 7 символов): " CALL
 echo ""
 if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -gt 7 ) ]];then
 	echo " "
-	echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
+	echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}" 1>&2
 	echo " "
 	exit 1
 else
