@@ -15,14 +15,18 @@ echo "  Step 2"
 
 read_dmrid() {
 	read -p "Введите Ваш DMRID (7 цифр): " DMRID
+	echo "  Step 1.1"
 	len=`echo ${DMRID} |awk '{print length}'`
+	echo "  Step 1.2"
 	if [[ ( ${DMRID} != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
+	echo "  Step 1.3"
 		echo "----->"
 		echo -e "   ${RED}Ошибка: Неправильный DMRID!${NC}" 1>&2
 		echo "----->"
 		echo " "
 		exit 1
 	else
+echo "  Step 1.4"
 		echo "----->"
 		echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
 		echo "----->"
