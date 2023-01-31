@@ -29,7 +29,7 @@ echo ""
 len=`echo $FREQUENCY |awk '{print length}'`
 if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
 	echo " "
-	echo -e "   ${RED}Ошибка: Не верная частота!${NC}"
+	echo -e "   ${RED}Ошибка: Неверная частота!${NC}"
 	echo " "
 	exit 1
 else
