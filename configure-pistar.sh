@@ -9,9 +9,7 @@ if [ "$(id -u)" != "0" ];then
 fi
 
 read -p "Введите Ваш DMRID (7 цифр): " DMRID
-echo ""
-len=`echo $DMRID |awk '{print length}'`
-if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
+if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -ne 7 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
 	echo " "
@@ -26,8 +24,7 @@ fi
 echo "Введите частоту приёма\передачи. Задаётся без разделителя"
 read -p "(6 символов. Пример:433500): " FREQUENCY
 echo ""
-len=`echo $FREQUENCY |awk '{print length}'`
-if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
+if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -ne 6 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Неверная частота!${NC}"
 	echo " "
@@ -42,8 +39,7 @@ fi
 
 read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
 echo ""
-len=`echo $CALLSIGN |awk '{print length}'`
-if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
+if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $(`echo $DMRID |awk '{print length}'`) -gt 7 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
 	echo " "
