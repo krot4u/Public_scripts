@@ -8,49 +8,46 @@ if [ "$(id -u)" != "0" ];then
         exit 1
 fi
 
-   read -r -p "Введите Ваш DMRID (7 цифр): " DMRID
-   len=`echo $DMRID |awk '{print length}'`
-   if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
-     echo " "
-	 echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
-	 echo " "
-   else
-     echo "----->"
-     echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
-	 echo "----->"
-	 echo " "
-     break
-   fi
+read -r -p "Введите Ваш DMRID (7 цифр): " DMRID
+len=`echo $DMRID |awk '{print length}'`
+if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
+	echo " "
+	echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
+	echo " "
+else
+	echo "----->"
+	echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
+	echo "----->"
+	echo " "
+fi
 
-   echo "Введите частоту приёма\передачи. Задаётся без разделителя"
-   read -r -p "(6 символов. Пример:433500): " FREQUENCY
-   len=`echo $FREQUENCY |awk '{print length}'`
-   if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
-      echo " "
-	  echo -e "   ${RED}Ошибка: Не верная частота!${NC}"
-	  echo " "
-   else
-     echo "----->"
-     echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
-	 echo "----->"
-	 echo " "
-     FREQUENCY="${FREQUENCY}000"
-	 break
-   fi
+echo "Введите частоту приёма\передачи. Задаётся без разделителя"
+read -r -p "(6 символов. Пример:433500): " FREQUENCY
+len=`echo $FREQUENCY |awk '{print length}'`
+if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
+	echo " "
+	echo -e "   ${RED}Ошибка: Не верная частота!${NC}"
+	echo " "
+else
+	echo "----->"
+	echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
+	echo "----->"
+	echo " "
+	FREQUENCY="${FREQUENCY}000"
+fi
 
-   read -r -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
-   len=`echo $CALLSIGN |awk '{print length}'`
-   if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
-      echo " "
-	  echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
-	  echo " "
-   else
-     echo "----->"
-     echo -e "   ${GRN}Ваш позывной ${CALLSIGN} ${NC}"
-	 echo "----->"
-	 echo " "
-     break
-   fi
+read -r -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
+len=`echo $CALLSIGN |awk '{print length}'`
+if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
+	echo " "
+	echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
+	echo " "
+else
+	echo "----->"
+	echo -e "   ${GRN}Ваш позывной ${CALLSIGN} ${NC}"
+	echo "----->"
+	echo " "
+fi
 
 service_handle() {
 	# What do we want do to?
