@@ -1,13 +1,17 @@
 #!/bin/bash
-set -e
+
 RED="\033[0;31m"
 GRN="\033[0;32m"
 NC="\033[0m"
+
+echo "  Step 1"
 
 if [ "$(id -u)" != "0" ];then
         echo "This script must be run as root" 1>&2
         exit 1
 fi
+
+echo "  Step 2"
 
 read_dmrid() {
 	read -p "Введите Ваш DMRID (7 цифр): " DMRID
@@ -26,6 +30,8 @@ read_dmrid() {
 	fi
 }
 
+echo "  Step 3"
+
 read_callsign() {
 	read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
 	len=`echo ${CALLSIGN} |awk '{print length}'`
@@ -42,6 +48,8 @@ read_callsign() {
 		echo " "
 	fi
 }
+
+echo "  Step 4"
 
 read_frequency() {
 	echo "Введите частоту приёма\передачи. Задаётся без разделителя"
@@ -61,6 +69,8 @@ read_frequency() {
 		FREQUENCY="${FREQUENCY}000"
 	fi
 }
+
+echo "  Step 5"
 
 service_handle() {
 	# What do we want do to?
@@ -87,9 +97,13 @@ service_handle() {
 	systemctl ${doWhat} mmdvmhost.service && sleep 3 > /dev/null 2>&1
 }
 
+echo "  Step 6"
+
 read_dmrid
 read_callsign
 read_frequency
+
+echo "  Step 7"
 
 echo "Downloading modified HostFilesUpdate.sh..."
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
