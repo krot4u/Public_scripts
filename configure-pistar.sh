@@ -62,8 +62,6 @@ read_frequency() {
 	fi
 }
 
-
-
 service_handle() {
 	# What do we want do to?
 	doWhat=${1}
@@ -127,3 +125,5 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 echo "Done! Exiting..."
+
+exit 0
