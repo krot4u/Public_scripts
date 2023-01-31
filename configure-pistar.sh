@@ -9,6 +9,8 @@ if [ "$(id -u)" != "0" ];then
         exit 1
 fi
 
+mount -o remount,rw / ; mount -o remount,rw /boot
+
 read_dmrid() {
 	while true; do
 		read -p "Введите Ваш DMRID (7 цифр): " DMRID
