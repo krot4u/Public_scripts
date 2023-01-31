@@ -73,7 +73,7 @@ echo "Done"
 echo "------------"
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
 
-$CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
+CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
