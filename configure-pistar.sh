@@ -30,25 +30,6 @@ read_dmrid() {
 	done
 }
 
-read_callsign() {
-	while true; do
-		read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
-		len=`echo ${CALLSIGN} |awk '{print length}'`
-		if [[ ( ${CALLSIGN} != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
-			echo "----->"
-			echo -e "   ${RED}Ошибка: Неправильный Позывной!${NC}" 1>&2
-			echo "----->"
-			echo " "
-		else
-			echo "----->"
-			echo -e "   ${GRN}Ваш Позывной ${CALLSIGN} ${NC}"
-			echo "----->"
-			echo " "
-			break
-		fi
-	done
-}
-
 read_frequency() {
 	while true; do
 		echo "Введите частоту приёма\передачи. Задаётся без разделителя"
@@ -81,7 +62,6 @@ service_handle() {
 }
 
 read_dmrid </dev/tty
-read_callsign </dev/tty
 read_frequency </dev/tty
 
 echo "Downloading modified HostFilesUpdate.sh..."
@@ -92,6 +72,8 @@ service_handle stop
 echo "Done"
 echo "------------"
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
+
+$CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
