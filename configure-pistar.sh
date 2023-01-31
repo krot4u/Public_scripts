@@ -8,7 +8,6 @@ if [ "$(id -u)" != "0" ];then
         exit 1
 fi
 
-while true; do
    read -r -p "Введите Ваш DMRID (7 цифр): " DMRID
    len=`echo $DMRID |awk '{print length}'`
    if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
@@ -22,9 +21,7 @@ while true; do
 	 echo " "
      break
    fi
-done
 
-while true; do
    echo "Введите частоту приёма\передачи. Задаётся без разделителя"
    read -r -p "(6 символов. Пример:433500): " FREQUENCY
    len=`echo $FREQUENCY |awk '{print length}'`
@@ -40,9 +37,7 @@ while true; do
      FREQUENCY="${FREQUENCY}000"
 	 break
    fi
-done
 
-while true; do
    read -r -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
    len=`echo $CALLSIGN |awk '{print length}'`
    if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
@@ -56,7 +51,6 @@ while true; do
 	 echo " "
      break
    fi
-done
 
 service_handle() {
 	# What do we want do to?
