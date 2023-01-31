@@ -10,56 +10,65 @@ if [ "$(id -u)" != "0" ];then
 fi
 
 read_dmrid() {
-	read -p "Введите Ваш DMRID (7 цифр): " DMRID
-	len=`echo ${DMRID} |awk '{print length}'`
-	if [[ ( ${DMRID} != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
-		echo "----->"
-		echo -e "   ${RED}Ошибка: Неправильный DMRID!${NC}" 1>&2
-		echo "----->"
-		echo " "
-		exit 1
-	else
-		echo "----->"
-		echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
-		echo "----->"
-		echo " "
-	fi
+	while true; do
+		read -p "Введите Ваш DMRID (7 цифр): " DMRID
+		len=`echo ${DMRID} |awk '{print length}'`
+		if [[ ( ${DMRID} != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
+			echo "----->"
+			echo -e "   ${RED}Ошибка: Неправильный DMRID!${NC}" 1>&2
+			echo "----->"
+			echo " "
+			exit 1
+		else
+			echo "----->"
+			echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
+			echo "----->"
+			echo " "
+			break
+		fi
+	done
 }
 
 read_callsign() {
-	read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
-	len=`echo ${CALLSIGN} |awk '{print length}'`
-	if [[ ( ${CALLSIGN} != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
-		echo "----->"
-		echo -e "   ${RED}Ошибка: Неправильный Позывной!${NC}" 1>&2
-		echo "----->"
-		echo " "
-		exit 1
-	else
-		echo "----->"
-		echo -e "   ${GRN}Ваш Позывной ${CALLSIGN} ${NC}"
-		echo "----->"
-		echo " "
-	fi
+	while true; do
+		read -p "Введите Ваш позывной ( <= 7 символов): " CALLSIGN
+		len=`echo ${CALLSIGN} |awk '{print length}'`
+		if [[ ( ${CALLSIGN} != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
+			echo "----->"
+			echo -e "   ${RED}Ошибка: Неправильный Позывной!${NC}" 1>&2
+			echo "----->"
+			echo " "
+			exit 1
+		else
+			echo "----->"
+			echo -e "   ${GRN}Ваш Позывной ${CALLSIGN} ${NC}"
+			echo "----->"
+			echo " "
+			break
+		fi
+	done
 }
 
 read_frequency() {
-	echo "Введите частоту приёма\передачи. Задаётся без разделителя"
-	read -p "(6 символов. Пример:433500): " FREQUENCY
-	len=`echo ${FREQUENCY} |awk '{print length}'`
-	if [[ ( ${FREQUENCY} != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
-		echo "----->"
-		echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
-		echo "----->"
-		echo " "
-		exit 1
-	else
-		echo "----->"
-		echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
-		echo "----->"
-		echo " "
-		FREQUENCY="${FREQUENCY}000"
-	fi
+	while true; do
+		echo "Введите частоту приёма\передачи. Задаётся без разделителя"
+		read -p "(6 символов. Пример:433500): " FREQUENCY
+		len=`echo ${FREQUENCY} |awk '{print length}'`
+		if [[ ( ${FREQUENCY} != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
+			echo "----->"
+			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
+			echo "----->"
+			echo " "
+			exit 1
+		else
+			echo "----->"
+			echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
+			echo "----->"
+			echo " "
+			FREQUENCY="${FREQUENCY}000"
+			break
+		fi
+	done
 }
 
 service_handle() {
