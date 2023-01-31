@@ -56,24 +56,24 @@ service_handle() {
 	# What do we want do to?
 	doWhat=${1}
 
-	systemctl ${doWhat} pistar-watchdog.service > /dev/null 2>&1
-	systemctl ${doWhat} pistar-remote.service > /dev/null 2>&1
-	systemctl ${doWhat} dmrgateway.service > /dev/null 2>&1
-	systemctl ${doWhat} dapnetgateway.service > /dev/null 2>&1
-	systemctl ${doWhat} ircddbgateway.service > /dev/null 2>&1
-	systemctl ${doWhat} timeserver.service > /dev/null 2>&1
-	systemctl ${doWhat} ysfgateway.service > /dev/null 2>&1
-	systemctl ${doWhat} ysf2dmr.service > /dev/null 2>&1
-	systemctl ${doWhat} ysf2nxdn.service > /dev/null 2>&1
-	systemctl ${doWhat} ysf2p25.service > /dev/null 2>&1
-	systemctl ${doWhat} ysfparrot.service > /dev/null 2>&1
-	systemctl ${doWhat} dmr2ysf.service > /dev/null 2>&1
-	systemctl ${doWhat} dmr2nxdn.service > /dev/null 2>&1
-	systemctl ${doWhat} p25gateway.service > /dev/null 2>&1
-	systemctl ${doWhat} p25parrot.service > /dev/null 2>&1
-	systemctl ${doWhat} nxdngateway.service > /dev/null 2>&1
-	systemctl ${doWhat} nxdnparrot.service > /dev/null 2>&1
-	systemctl ${doWhat} dstarrepeater.service > /dev/null 2>&1
+	systemctl ${doWhat} pistar-watchdog.service 2> /dev/null 2>&1
+	systemctl ${doWhat} pistar-remote.service 2> /dev/null 2>&1
+	systemctl ${doWhat} dmrgateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} dapnetgateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ircddbgateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} timeserver.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ysfgateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ysf2dmr.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ysf2nxdn.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ysf2p25.service 2> /dev/null 2>&1
+	systemctl ${doWhat} ysfparrot.service 2> /dev/null 2>&1
+	systemctl ${doWhat} dmr2ysf.service 2> /dev/null 2>&1
+	systemctl ${doWhat} dmr2nxdn.service 2> /dev/null 2>&1
+	systemctl ${doWhat} p25gateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} p25parrot.service 2> /dev/null 2>&1
+	systemctl ${doWhat} nxdngateway.service 2> /dev/null 2>&1
+	systemctl ${doWhat} nxdnparrot.service 2> /dev/null 2>&1
+	systemctl ${doWhat} dstarrepeater.service 2> /dev/null 2>&1
 	systemctl ${doWhat} mmdvmhost.service && sleep 3 > /dev/null 2>&1
 }
 
