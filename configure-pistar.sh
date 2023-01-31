@@ -14,6 +14,7 @@ if [[ ( $DMRID != ^[[:digit:]]+$ ) && ( $len -ne 7 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Неправильный DMR ID!${NC}"
 	echo " "
+	exit 1
 else
 	echo "----->"
 	echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
@@ -28,6 +29,7 @@ if [[ ( $FREQUENCY != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Не верная частота!${NC}"
 	echo " "
+	exit 1
 else
 	echo "----->"
 	echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
@@ -42,6 +44,7 @@ if [[ ( $CALLSIGN != ^[[:alnum:]]+$ ) && ( $len -gt 7 ) ]];then
 	echo " "
 	echo -e "   ${RED}Ошибка: Неправильный позывной!${NC}"
 	echo " "
+	exit 1
 else
 	echo "----->"
 	echo -e "   ${GRN}Ваш позывной ${CALLSIGN} ${NC}"
