@@ -1,0 +1,373 @@
+#!/bin/bash
+#
+###############################################################################
+#                                                                             #
+#                        Pi-Star Auto Update Tool                             #
+#                                                                             #
+#    Version 3.5, Code, Design and Development by Andy Taylor (MW0MWZ).       #
+#                                                                             #
+#                     Make it simple to update the OS.                        #
+#                                                                             #
+###############################################################################
+#
+if [ "$(id -u)" != "0" ]; then
+  echo -e "You need to be root to run this command...\n"
+  exit 1
+fi
+
+exec 200>/var/lock/pistar-update.lock || exit 1
+if ! flock -n 200 ; then
+  echo -e "Another instance is already running...\n"
+  exit 1
+fi
+
+git_checkUpdateRequired() {
+	# Set the function variables
+	gitFolder=${1}
+	gitRemoteURL=$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git config --get remote.origin.url)
+
+	# Git check / update function
+	gitStatusRemote=$(git ls-remote --heads ${gitRemoteURL} | grep master | cut -c 1-7)
+	gitStatusLocal=$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git log --pretty=format:"%h" -1)
+
+	# Return the output
+	if [[ ${gitStatusRemote} != ${gitStatusLocal} ]]; then
+		echo "1"
+	else
+		echo "0"
+	fi
+}
+
+git_update() {
+	# Set the function variables
+	gitFolder=${1}
+
+	# Handle the special case for /usr/loca/sbin
+	if [[ ${gitFolder} == "/usr/local/sbin" ]]; then
+		# Assume unchanged for pistar-upnp.service
+		git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git update-index --assume-unchanged pistar-upnp.service
+	fi
+
+	if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
+		echo "Updating ${gitFolder}..."
+		# If this script is updated, re-run the update with the new version.
+		if [[ ${gitFolder} == "/usr/local/sbin" ]]; then
+                        git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git fetch
+			if [ "$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git diff --name-only origin/master 2>/dev/null | grep pistar-update 2>/dev/null)" = "pistar-update" ]; then
+                                echo "Found a new version of pistar-update..."
+                                git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
+                                if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
+                                        echo "Update to new version of pistar-update was not successfull, forcing update..."
+					rm -rf ${gitFolder}/pistar-upnp.service
+                                        git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git reset --hard origin/master
+                                fi
+                                echo "Restarting update process with the new version..."
+                                exec "$0" "$@"
+                                exit 1
+			fi
+                fi
+                git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
+
+		# Re-check that the updates are now good
+		if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
+			if [[ ${gitFolder} == "/usr/local/sbin" ]]; then
+				rm -rf ${gitFolder}/pistar-upnp.service
+			fi
+			echo "Updates were not successfull, reverting to Pi-Star original files..."
+			git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git reset --hard origin/master
+		fi
+	else
+		echo "No updates for ${gitFolder} available"
+	fi
+}
+
+service_handle() {
+	# What do we want do to?
+	doWhat=${1}
+
+	systemctl ${doWhat} pistar-watchdog.service > /dev/null 2>&1
+	systemctl ${doWhat} pistar-remote.service > /dev/null 2>&1
+	systemctl ${doWhat} dmrgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} dapnetgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ircddbgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} timeserver.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2dmr.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2p25.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2ysf.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} p25gateway.service > /dev/null 2>&1
+	systemctl ${doWhat} p25parrot.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdngateway.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdn2dmr.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdnparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dstarrepeater.service > /dev/null 2>&1
+	systemctl ${doWhat} mmdvmhost.service > /dev/null 2>&1 && sleep 2 > /dev/null 2>&1
+}
+
+main_function() {
+	# Make the disk writable
+	mount -o remount,rw /
+	mount -o remount,rw /boot
+
+	if [ -t 1 ]; then
+		# This is running from a terminal, so it should be safe to update the OS
+		echo -e "Updating OS...\n"
+		#apt-get update
+		#apt-get upgrade --fix-missing --fix-broken -y
+		#apt-get clean
+		echo "Done"
+
+		echo "Checking nginx config"
+		if ! [ $(cat /lib/systemd/system/nginx.service | grep -o "mkdir") ]; then
+			sed -i '\/PIDFile=\/run\/nginx.pid/a ExecStartPre=\/bin\/mkdir -p \/var\/log\/nginx' /lib/systemd/system/nginx.service
+			systemctl daemon-reload
+			systemctl restart nginx.service
+			echo "nginx config has been repaired - re-running pistar-update"
+                        exec "$0" "$@"
+			exit 1
+		fi
+	fi
+
+	echo "Stopping Services..."
+	service_handle stop
+	echo "Done"
+
+	echo "Updating DV Binaries..."
+	git_update /usr/local/bin
+	echo "Done"
+
+	echo "Updating Pi-Star Binaries..."
+	git_update /usr/local/sbin
+	echo "Done"
+
+	echo "Updating Hostfiles..."
+	/usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
+	echo "Done"
+
+	echo "Updating Dashboard..."
+	git_update /var/www/dashboard
+	echo "Done"
+
+	echo "Updating PiStar-Firewall..."
+	pistar-firewall > /dev/null 2>&1
+	echo "Done"
+
+	# Pre-Fix some config in MMDVMHost for update purposes.
+	mmdvmHostVer=`MMDVMHost -v | awk '{print $3}' | cut -c 1-8`
+	needsUpdate=`grep -c Gwy /etc/mmdvmhost`
+	if [ ${mmdvmHostVer} \> 20171031 ] && [ ${needsUpdate} \> 0 ]; then
+	        # Config needs to be updated, add in the changes here
+	        sed -i "/GwyAddress=/c\\GatewayAddress=127.0.0.1" /etc/mmdvmhost
+	        sed -i "/GwyPort=/c\\GatewayPort=4200" /etc/mmdvmhost
+	fi
+	needsTypeLine=$(sed -n '/^\[DMR Network\]/,/^\[/p' /etc/mmdvmhost | grep "^Type=" | wc -l)
+	dmrAddress=$(sed -n '/^\[DMR Network\]/,/^\[/p' /etc/mmdvmhost | grep "^Address=" | awk -F "=" '/Address=/ {print $2}')
+	if [ ${needsTypeLine} \< 1 ]; then
+		if [[ "${dmrAddress}" == "127.0.0.1" ]]; then
+			sed -i 's/\[DMR Network\]/\[DMR Network\]\nType=Gateway/g' /etc/mmdvmhost
+		else
+			sed -i 's/\[DMR Network\]/\[DMR Network\]\nType=Direct/g' /etc/mmdvmhost
+		fi
+	else
+		if [[ "${dmrAddress}" == "127.0.0.1" ]]; then
+			sed -i "/Type=Dire/c\\Type=Gateway" /etc/mmdvmhost
+		else
+			sed -i "/Type=Gate/c\\Type=Direct" /etc/mmdvmhost
+		fi
+	fi
+
+	# Fix up new P25Gateway Config Hostfile setup
+	if [[ $(/usr/local/bin/P25Gateway --version | awk '{print $3}' | cut -c -8) -gt "20180108" ]]; then
+		sed -i 's/Hosts=\/usr\/local\/etc\/P25Hosts.txt/HostsFile1=\/usr\/local\/etc\/P25Hosts.txt\nHostsFile2=\/usr\/local\/etc\/P25HostsLocal.txt/g' /etc/p25gateway
+	fi
+	if [ ! -f /root/P25Hosts.txt ]; then
+		touch /root/P25Hosts.txt
+	fi
+
+	# Fix up new NXDNGateway Config Hostfile setup
+	if [[ $(/usr/local/bin/NXDNGateway --version | awk '{print $3}' | cut -c -8) -gt "20180801" ]]; then
+		sed -i 's/HostsFile=\/usr\/local\/etc\/NXDNHosts.txt/HostsFile1=\/usr\/local\/etc\/NXDNHosts.txt\nHostsFile2=\/usr\/local\/etc\/NXDNHostsLocal.txt/g' /etc/nxdngateway
+	fi
+	if [ ! -f /root/NXDNHosts.txt ]; then
+		touch /root/NXDNHosts.txt
+	fi
+	if [ ! -f /usr/local/etc/NXDNHostsLocal.txt ]; then
+		touch /usr/local/etc/NXDNHostsLocal.txt
+	fi
+
+	# myDV Cast Updates
+	#if [[ "$(grep "Special" /etc/pistar-release | awk '{print $3}')" = "myDV_Cast" ]]; then
+	#	if [[ !$(grep -i path /etc/bash.bashrc) ]]; then
+	#		# Add the new path info because its missing
+	#		echo -e "export PATH=/usr/local/bin/castbin:$PATH" >> /etc/bash.bashrc
+	#	fi
+	#
+	#	# Pull the binaries
+	#	if [ ! -d /usr/local/bin/castbin ]; then
+	#		# No folder, create it
+	#		git clone https://github.com/pe1msz/castbin /usr/local/bin/castbin
+	#	else
+	#		# Update it
+	#		git --work-tree=/usr/local/bin/castbin --git-dir=/usr/local/bin/castbin/.git pull origin master
+	#	fi
+	#
+	#	# Pull the Dashboard module
+	#	if [ ! -d /var/www/dashboard/admin/modules/castfw ]; then
+	#		# No folder, create it
+	#		git clone https://github.com/pe1msz/myDV-nano /var/www/dashboard/admin/modules/castfw
+	#		ln -s /var/www/dashboard/admin/modules/castfw/fw /var/www/dashboard/admin/castfw
+	#		cd /var/www/dashboard/admin/modules/castfw/pyserial-3.2.1
+	#		python setup.py install
+	#		cd
+	#	else
+	#		# Update it
+	#		git --work-tree=/var/www/dashboard/admin/modules/castfw --git-dir=/var/www/dashboard/admin/modules/castfw/.git pull origin master
+	#	fi
+	#fi
+
+	# If we are ready to use the new DMRGateway
+	if [[ $(/usr/local/bin/DMRGateway --version | awk '{print $3}' | cut -c -8) -gt "20170924" ]] && [[ $(grep -c "\[DMR Network 3\]" /etc/dmrgateway) -eq "1" ]] && [[ ! -f /usr/local/etc/DMR_Audio/no_NO.indx ]]; then
+		curl --fail -o /usr/local/etc/DMR_Audio/de_DE.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/de_DE.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/de_DE.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/de_DE.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/dk_DK.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/dk_DK.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/dk_DK.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/dk_DK.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/en_GB.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/en_GB.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/en_GB.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/en_GB.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/en_US.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/en_US.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/en_US.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/en_US.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/es_ES.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/es_ES.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/es_ES.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/es_ES.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/fr_FR.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/fr_FR.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/fr_FR.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/fr_FR.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/it_IT.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/it_IT.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/it_IT.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/it_IT.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/no_NO.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/no_NO.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/no_NO.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/no_NO.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/pl_PL.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/pl_PL.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/pl_PL.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/pl_PL.indx
+		curl --fail -o /usr/local/etc/DMR_Audio/se_SE.ambe -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/se_SE.ambe
+		curl --fail -o /usr/local/etc/DMR_Audio/se_SE.indx -s https://raw.githubusercontent.com/g4klx/DMRGateway/master/Audio/se_SE.indx	
+	fi
+
+	# I previously had the wrong URL for the P25 Audio files; remove the broken downloads.
+	if [[ -f /usr/local/etc/P25_Audio/en_GB.imbe ]]; then
+		testFileIMBE=`file -i /usr/local/etc/P25_Audio/en_GB.imbe | cut -d " " -f2`
+		if [[ $testFileIMBE == text* ]]; then
+			rm -rf /usr/local/etc/P25_Audio
+		fi
+	fi
+
+	# Download the correct P25 Audio Files
+	if [[ ! -d /usr/local/etc/P25_Audio ]]; then
+		echo "Downloading P25 Voice Files..."
+		mkdir /usr/local/etc/P25_Audio
+		curl --fail -o /usr/local/etc/P25_Audio/de_DE.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/de_DE.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/de_DE.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/de_DE.indx
+		curl --fail -o /usr/local/etc/P25_Audio/dk_DK.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/dk_DK.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/dk_DK.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/dk_DK.indx
+		curl --fail -o /usr/local/etc/P25_Audio/en_GB.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_GB.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/en_GB.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_GB.indx
+		curl --fail -o /usr/local/etc/P25_Audio/en_US.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_US.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/en_US.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_US.indx
+		curl --fail -o /usr/local/etc/P25_Audio/es_ES.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/es_ES.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/es_ES.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/es_ES.indx
+		curl --fail -o /usr/local/etc/P25_Audio/fr_FR.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/fr_FR.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/fr_FR.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/fr_FR.indx
+		curl --fail -o /usr/local/etc/P25_Audio/it_IT.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/it_IT.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/it_IT.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/it_IT.indx
+		curl --fail -o /usr/local/etc/P25_Audio/no_NO.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/no_NO.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/no_NO.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/no_NO.indx
+		curl --fail -o /usr/local/etc/P25_Audio/pl_PL.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/pl_PL.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/pl_PL.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/pl_PL.indx
+		curl --fail -o /usr/local/etc/P25_Audio/se_SE.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/se_SE.imbe
+		curl --fail -o /usr/local/etc/P25_Audio/se_SE.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/se_SE.indx
+		echo "Done"
+	fi
+
+	# Add Portuguese voice files for ircDDBGateway
+	if [[ ! -f /usr/local/etc/pt_PT.ambe ]]; then
+		echo "Downloading Portuguese Voice Files for ircDDBGateway..."
+		curl --fail -o /usr/local/etc/pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.ambe
+		curl --fail -o /usr/local/etc/pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.indx
+		curl --fail -o /usr/local/etc/TIME_pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.ambe
+		curl --fail -o /usr/local/etc/TIME_pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.indx
+		chmod 664 /usr/local/etc/*.ambe
+		chmod 664 /usr/local/etc/*.indx
+		echo "Done"
+	fi
+	if [[ ! -f /usr/local/etc/ircddbgateway/pt_PT.ambe ]]; then
+		echo "Downloading Portuguese Voice Files for ircDDBGateway..."
+		curl --fail -o /usr/local/etc/ircddbgateway/pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.ambe
+		curl --fail -o /usr/local/etc/ircddbgateway/pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.indx
+		curl --fail -o /usr/local/etc/ircddbgateway/TIME_pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.ambe
+		curl --fail -o /usr/local/etc/ircddbgateway/TIME_pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.indx
+		chmod 664 /usr/local/etc/ircddbgateway/*.ambe
+		chmod 664 /usr/local/etc/ircddbgateway/*.indx
+		echo "Done"
+	fi
+
+	if [[ $(grep "\[Voice\]" /etc/p25gateway | wc -l) -eq 0 ]]; then
+		echo "Updating P25Gateway config..."
+		echo "" >> /etc/p25gateway
+		sed -i '$a[Voice]\nEnabled=1\nLanguage=en_GB\nDirectory=/usr/local/etc/P25_Audio\n' /etc/p25gateway
+		echo "Done"
+	fi
+
+	if [[ $(grep Version /etc/pistar-release | awk '{print $3}' | cut -c 1) -eq 4 ]]; then
+        	if [[ $(cat /etc/ircddbgateway | grep -o "xlx" | wc -l) -eq 0 ]]; then
+        	        echo "Adding XLX Config to /etc/ircddbgateway"
+        	        echo "xlxEnabled=0" >> /etc/ircddbgateway
+        	        echo "xlxHostsFileUrl=http://xlxapi.rlx.lu/api.php?do=GetXLXDMRMaster" >> /etc/ircddbgateway
+        	fi
+
+        	#if [[ $(cat /etc/ircddbgateway | grep -o "aprsPassword" | wc -l) -eq 0 ]]; then
+        	#        echo "Adding APRS Password to /etc/ircddbgateway"
+        	#        echo "aprsPassword=00000" >> /etc/ircddbgateway
+        	#fi
+
+		if [[ $(cat /etc/ircddbgateway | grep -o "mobileGPS" | wc -l) -eq 0 ]]; then
+                	echo "Adding MobileGPS Config to /etc/ircddbgateway"
+                	echo "mobileGPSEnabled=0" >> /etc/ircddbgateway
+                	echo "mobileGPSAddress=127.0.0.1" >> /etc/ircddbgateway
+                	echo "mobileGPSPort=7834" >> /etc/ircddbgateway
+        	fi
+
+		if [[ $(cat /etc/dstarrepeater | grep -o "mmdvmRXInvert" | wc -l) -eq 0 ]]; then
+        	        echo "Adding better MMDVM Config to /etc/dstarrepeater"
+        	        echo "mmdvmRXInvert=0" >> /etc/dstarrepeater
+        	        echo "mmdvmTXInvert=0" >> /etc/dstarrepeater
+        	        echo "mmdvmPTTInvert=0" >> /etc/dstarrepeater
+        	        echo "mmdvmTXDelay=50" >> /etc/dstarrepeater
+        	        echo "mmdvmRXLevel=100" >> /etc/dstarrepeater
+        	        echo "mmdvmTXLevel=100" >> /etc/dstarrepeater
+        	fi
+	fi
+
+	echo "Starting Services..."
+	service_handle start
+	echo "Done"
+
+	echo "Updates complete, syncing disk cache before making the disk Read-Only"
+	# Make the disk read-only
+	/bin/sync
+	/bin/sync
+	/bin/sync
+	mount -o remount,ro /
+	mount -o remount,ro /boot
+
+	# Tell the user we are done
+	echo "Finished"
+	}
+
+if [ -t 1 ]; then
+  # run via terminal, only output to screen
+  main_function
+else
+  # if not run via terminal, log everything into a log file
+  main_function >> /var/log/pi-star/pi-star_update.log 2>&1
+fi
+
+exit 0
