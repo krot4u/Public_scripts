@@ -103,9 +103,9 @@ service_handle() {
 
 echo "  Step 6"
 
-read_dmrid
-read_callsign
-read_frequency
+read_dmrid </dev/tty
+read_callsign </dev/tty
+read_frequency </dev/tty
 
 echo "  Step 7"
 
