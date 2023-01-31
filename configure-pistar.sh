@@ -18,7 +18,6 @@ read_dmrid() {
 			echo -e "   ${RED}Ошибка: Неправильный DMRID!${NC}" 1>&2
 			echo "----->"
 			echo " "
-			exit 1
 		else
 			echo "----->"
 			echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
@@ -38,7 +37,6 @@ read_callsign() {
 			echo -e "   ${RED}Ошибка: Неправильный Позывной!${NC}" 1>&2
 			echo "----->"
 			echo " "
-			exit 1
 		else
 			echo "----->"
 			echo -e "   ${GRN}Ваш Позывной ${CALLSIGN} ${NC}"
@@ -59,7 +57,6 @@ read_frequency() {
 			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
 			echo "----->"
 			echo " "
-			exit 1
 		else
 			echo "----->"
 			echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
