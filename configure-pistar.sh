@@ -17,7 +17,7 @@ while true; do
 	 echo " "
    else
      echo "----->"
-     echo -e "   ${GRN}Ваш DMRID $DMRID ${NC}"
+     echo -e "   ${GRN}Ваш DMRID ${DMRID} ${NC}"
 	 echo "----->"
 	 echo " "
      break
@@ -34,7 +34,7 @@ while true; do
 	  echo " "
    else
      echo "----->"
-     echo -e "   ${GRN}Частота приёма\передачи $FREQUENCY ${NC}"
+     echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
 	 echo "----->"
 	 echo " "
      FREQUENCY="${FREQUENCY}000"
@@ -51,7 +51,7 @@ while true; do
 	  echo " "
    else
      echo "----->"
-     echo -e "   ${GRN}Ваш позывной $CALLSIGN ${NC}"
+     echo -e "   ${GRN}Ваш позывной ${CALLSIGN} ${NC}"
 	 echo "----->"
 	 echo " "
      break
