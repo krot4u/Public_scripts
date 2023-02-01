@@ -56,7 +56,7 @@ service_handle() {
 	systemctl ${doWhat} pistar-watchdog.service 2> /dev/null
 	systemctl ${doWhat} dmrgateway.service 2> /dev/null
 	systemctl ${doWhat} timeserver.service 2> /dev/null
-	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 3 > /dev/null 2>&1
+	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 3 > /dev/null
 }
 
 read_dmrid </dev/tty
