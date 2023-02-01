@@ -89,7 +89,7 @@ echo "Downloading modified dmrgateway and mmdvmhost..."
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /var/www/dashboard/config/config.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/config.php
-curl -H 'Cache-Control: no-cache, no-store' --fail -o /var/www/dashboard/config/config.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
 
 echo "Restart Nginx..."
 systemctl restart nginx.service > /dev/null 2>&1
