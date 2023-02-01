@@ -64,20 +64,23 @@ service_handle() {
 read_dmrid </dev/tty
 read_frequency </dev/tty
 
-echo "------------"
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
+echo "------------"
 
 echo "Downloading modified pistar-updateh..."
 curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+echo "------------"
 
 echo "Downloading modified HostFilesUpdate.sh..."
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+echo "------------"
 
 echo "Stopping Services..."
 service_handle stop
-echo "Done"
 echo "------------"
+
+echo "RUN modified HostFilesUpdate.sh..."
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
 
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
@@ -94,18 +97,16 @@ curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https:/
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
-
 echo "------------"
+
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dstarrepeater
 
-
 echo "Restart Nginx..."
 systemctl restart nginx.service > /dev/null 2>&1
-
-echo "Done"
 echo "------------"
+
 echo "Updating dmrgateway and mmdvmhost..."
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dmrgateway
 sed -i "s/--DMRID--/$DMRID/" /etc/dmrgateway
@@ -113,11 +114,12 @@ sed -i "s/--DMRID--/$DMRID/" /etc/dmrgateway
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/mmdvmhost
 sed -i "s/--DMRID--/$DMRID/" /etc/mmdvmhost
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/mmdvmhost
-echo "Done"
 echo "------------"
+
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
+
 echo "Done! Exiting..."
 
 exit 0
