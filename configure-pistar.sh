@@ -9,8 +9,6 @@ if [ "$(id -u)" != "0" ];then
         exit 1
 fi
 
-mount -o remount,rw / ; mount -o remount,rw /boot
-
 read_dmrid() {
 	while true; do
 		read -p "Введите Ваш DMRID (7 цифр): " DMRID
@@ -66,6 +64,10 @@ read_frequency </dev/tty
 
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
+echo "------------"
+
+echo "RPI-RW..."
+mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
 echo "Downloading modified pistar-updateh..."
