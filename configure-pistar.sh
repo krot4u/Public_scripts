@@ -88,6 +88,8 @@ rm -f /etc/mmdvmhost
 echo "Downloading modified dmrgateway and mmdvmhost..."
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /var/www/dashboard/config/config.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/config.php
+
 echo "Done"
 echo "------------"
 echo "Updating dmrgateway and mmdvmhost..."
@@ -101,6 +103,7 @@ echo "Done"
 echo "------------"
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
+systemctl restart nginx.service > /dev/null 2>&1
 echo "------------"
 echo "Done! Exiting..."
 
