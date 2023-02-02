@@ -76,7 +76,7 @@ mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
 echo "Downloading modified pistar-updateh..."
-curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
 echo "------------"
 
 echo "Downloading modified HostFilesUpdate.sh..."
