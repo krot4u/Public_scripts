@@ -3,6 +3,8 @@
 RED="\033[0;31m"
 GRN="\033[0;32m"
 NC="\033[0m"
+dmrgateway=/etc/dmrgateway
+mmdvmhost=/etc/mmdvmhost
 
 if [ "$(id -u)" != "0" ];then
         echo "Ошибка! Необходимо выполнить ${GRN}sudo su - ${NC}" 1>&2
@@ -94,11 +96,9 @@ CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
-cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
-cp /etc/mmdvmhost /etc/mmdvmhost.$(date +%Y%m%d)
+cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
+cp "${mmdvmhost}" "${mmdvmhost}.$(date +%Y%m%d)"
 
-dmrgateway=/etc/dmrgateway
-mmdvmhost=/etc/mmdvmhost
 echo "Clean backup of /etc/dmrgateway and /etc/mmdvmhost"
 FILEBACKUP=1
 FILES="
@@ -119,8 +119,8 @@ done
 echo "------------"
 
 echo "Downloading modified dmrgateway and mmdvmhost..."
-curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
-curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
+curl -H 'Cache-Control: no-cache, no-store' --fail -o "${dmrgateway}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
+curl -H 'Cache-Control: no-cache, no-store' --fail -o "${mmdvmhost}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
@@ -135,12 +135,12 @@ systemctl restart nginx.service > /dev/null 2>&1
 echo "------------"
 
 echo "Updating dmrgateway and mmdvmhost..."
-sed -i "s/--Frequency--/$FREQUENCY/" /etc/dmrgateway
-sed -i "s/--DMRID--/$DMRID/" /etc/dmrgateway
+sed -i "s/--Frequency--/$FREQUENCY/" "${dmrgateway}"
+sed -i "s/--DMRID--/$DMRID/" "${dmrgateway}"
 
-sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/mmdvmhost
-sed -i "s/--DMRID--/$DMRID/" /etc/mmdvmhost
-sed -i "s/--Frequency--/$FREQUENCY/" /etc/mmdvmhost
+sed -i "s/--CALLSIGN--/$CALLSIGN/" "${mmdvmhost}"
+sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
+sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 echo "------------"
 
 echo "Run pi-star update..."
