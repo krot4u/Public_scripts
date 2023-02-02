@@ -128,6 +128,7 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
+echo "Update Web configuration..."
 curl -u "pi-star:raspberry" \
 -H "application/x-www-form-urlencoded" \
 -X POST http://127.0.0.1/admin/configure.php \
