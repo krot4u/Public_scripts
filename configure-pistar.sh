@@ -46,7 +46,7 @@ read_frequency() {
 
 			A=${FREQUENCY:0:3}
 			B=${FREQUENCY:3:3}
-			2FREQUENCY="${A}.${B}.000"
+			MFREQUENCY="${A}.${B}.000"
 
 			FREQUENCY="${FREQUENCY}000"
 			break
