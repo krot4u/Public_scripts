@@ -91,13 +91,32 @@ echo "RUN modified HostFilesUpdate.sh..."
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
 
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
+echo "------------"
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp /etc/dmrgateway /etc/dmrgateway.$(date +%Y%m%d)
 cp /etc/mmdvmhost /etc/mmdvmhost.$(date +%Y%m%d)
-echo "Removing /etc/dmrgateway and /etc/mmdvmhost"
-rm -f /etc/dmrgateway
-rm -f /etc/mmdvmhost
+
+dmrgateway=/etc/dmrgateway
+mmdvmhost=/etc/mmdvmhost
+echo "Clean backup of /etc/dmrgateway and /etc/mmdvmhost"
+FILEBACKUP=1
+FILES="
+${dmrgateway}
+${mmdvmhost}"
+
+for file in ${FILES}
+do
+  BACKUPCOUNT=$(ls ${file}.* | wc -l)
+  BACKUPSTODELETE=$(expr ${BACKUPCOUNT} - ${FILEBACKUP})
+  if [ ${BACKUPCOUNT} -gt ${FILEBACKUP} ]; then
+        for f in $(ls -tr ${file}.* | head -${BACKUPSTODELETE})
+        do
+                rm $f
+        done
+  fi
+done
+echo "------------"
 
 echo "Downloading modified dmrgateway and mmdvmhost..."
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
