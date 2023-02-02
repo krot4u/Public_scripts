@@ -99,6 +99,7 @@ curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dmrgateway -s https:/
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
 curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
+curl -H 'Cache-Control: no-cache, no-store' --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
 echo "------------"
 
 echo "Updating dstarrepeater..."
