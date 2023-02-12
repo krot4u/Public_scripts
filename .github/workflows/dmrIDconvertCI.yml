@@ -63,14 +63,16 @@ jobs:
             Write-Output "Done..!"
 
       - name: Update files in repository
-        uses: x-actions/gh-pages@release/v1
-        env:
-          GITHUB_EMAIL: "krot4u@gmail.com"
-          GITHUB_USERNAME: ${{ github.actor }}
-          PUBLISH_REPO: https://${{ github.token }}@github.com/${{ github.repository }}
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: ./xlxd.blacklist
-          # DEPLOY_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+        uses: actions-x/commit@v6
+        with:
+          email: "krot4u@gmail.com"
+          name: GitHub Actions Autocommitter
+          branch: master
+          files: dmrid.dat DMRIds.dat xlxd.blacklist
+          repository: https://github.com/${{ github.repository }}
+          token: ${{ github.token }}
+          force: true
+          #directory: path/to/different/repo
 
       # - name: Add files to Repo
       #   uses: EndBug/add-and-commit@v9
