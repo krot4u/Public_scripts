@@ -52,21 +52,21 @@ git_update() {
 		echo "Updating ${gitFolder}..."
 		# If this script is updated, re-run the update with the new version.
 		if [[ ${gitFolder} == "/usr/local/sbin" ]]; then
-                        git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git fetch
+      git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git fetch
 			if [ "$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git diff --name-only origin/master 2>/dev/null | grep pistar-update 2>/dev/null)" = "pistar-update" ]; then
-                                echo "Found a new version of pistar-update..."
-                                git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
-                                if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
-                                        echo "Update to new version of pistar-update was not successfull, forcing update..."
+        echo "Found a new version of pistar-update..."
+        git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
+        if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
+          echo "Update to new version of pistar-update was not successfull, forcing update..."
 					rm -rf ${gitFolder}/pistar-upnp.service
-                                        git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git reset --hard origin/master
-                                fi
-                                echo "Restarting update process with the new version..."
-                                exec "$0" "$@"
-                                exit 1
-			fi
-                fi
-                git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
+          git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git reset --hard origin/master
+        fi
+          echo "Restarting update process with the new version..."
+          exec "$0" "$@"
+          exit 1
+      fi
+  fi
+  git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git pull origin master
 
 		# Re-check that the updates are now good
 		if [[ $(git_checkUpdateRequired ${gitFolder}) -gt 0 ]]; then
@@ -126,7 +126,7 @@ main_function() {
 			systemctl daemon-reload
 			systemctl restart nginx.service
 			echo "nginx config has been repaired - re-running pistar-update"
-                        exec "$0" "$@"
+      exec "$0" "$@"
 			exit 1
 		fi
 	fi
@@ -159,9 +159,9 @@ main_function() {
 	mmdvmHostVer=`MMDVMHost -v | awk '{print $3}' | cut -c 1-8`
 	needsUpdate=`grep -c Gwy /etc/mmdvmhost`
 	if [ ${mmdvmHostVer} \> 20171031 ] && [ ${needsUpdate} \> 0 ]; then
-	        # Config needs to be updated, add in the changes here
-	        sed -i "/GwyAddress=/c\\GatewayAddress=127.0.0.1" /etc/mmdvmhost
-	        sed -i "/GwyPort=/c\\GatewayPort=4200" /etc/mmdvmhost
+    # Config needs to be updated, add in the changes here
+    sed -i "/GwyAddress=/c\\GatewayAddress=127.0.0.1" /etc/mmdvmhost
+    sed -i "/GwyPort=/c\\GatewayPort=4200" /etc/mmdvmhost
 	fi
 	needsTypeLine=$(sed -n '/^\[DMR Network\]/,/^\[/p' /etc/mmdvmhost | grep "^Type=" | wc -l)
 	dmrAddress=$(sed -n '/^\[DMR Network\]/,/^\[/p' /etc/mmdvmhost | grep "^Address=" | awk -F "=" '/Address=/ {print $2}')
@@ -317,34 +317,34 @@ main_function() {
 	fi
 
 	if [[ $(grep Version /etc/pistar-release | awk '{print $3}' | cut -c 1) -eq 4 ]]; then
-        	if [[ $(cat /etc/ircddbgateway | grep -o "xlx" | wc -l) -eq 0 ]]; then
-        	        echo "Adding XLX Config to /etc/ircddbgateway"
-        	        echo "xlxEnabled=0" >> /etc/ircddbgateway
-        	        echo "xlxHostsFileUrl=http://xlxapi.rlx.lu/api.php?do=GetXLXDMRMaster" >> /etc/ircddbgateway
-        	fi
+    if [[ $(cat /etc/ircddbgateway | grep -o "xlx" | wc -l) -eq 0 ]]; then
+      echo "Adding XLX Config to /etc/ircddbgateway"
+      echo "xlxEnabled=0" >> /etc/ircddbgateway
+      echo "xlxHostsFileUrl=http://xlxapi.rlx.lu/api.php?do=GetXLXDMRMaster" >> /etc/ircddbgateway
+    fi
 
-        	#if [[ $(cat /etc/ircddbgateway | grep -o "aprsPassword" | wc -l) -eq 0 ]]; then
-        	#        echo "Adding APRS Password to /etc/ircddbgateway"
-        	#        echo "aprsPassword=00000" >> /etc/ircddbgateway
-        	#fi
+  #if [[ $(cat /etc/ircddbgateway | grep -o "aprsPassword" | wc -l) -eq 0 ]]; then
+  #        echo "Adding APRS Password to /etc/ircddbgateway"
+  #        echo "aprsPassword=00000" >> /etc/ircddbgateway
+  #fi
 
-		if [[ $(cat /etc/ircddbgateway | grep -o "mobileGPS" | wc -l) -eq 0 ]]; then
-                	echo "Adding MobileGPS Config to /etc/ircddbgateway"
-                	echo "mobileGPSEnabled=0" >> /etc/ircddbgateway
-                	echo "mobileGPSAddress=127.0.0.1" >> /etc/ircddbgateway
-                	echo "mobileGPSPort=7834" >> /etc/ircddbgateway
-        	fi
+  if [[ $(cat /etc/ircddbgateway | grep -o "mobileGPS" | wc -l) -eq 0 ]]; then
+    echo "Adding MobileGPS Config to /etc/ircddbgateway"
+    echo "mobileGPSEnabled=0" >> /etc/ircddbgateway
+    echo "mobileGPSAddress=127.0.0.1" >> /etc/ircddbgateway
+    echo "mobileGPSPort=7834" >> /etc/ircddbgateway
+  fi
 
-		if [[ $(cat /etc/dstarrepeater | grep -o "mmdvmRXInvert" | wc -l) -eq 0 ]]; then
-        	        echo "Adding better MMDVM Config to /etc/dstarrepeater"
-        	        echo "mmdvmRXInvert=0" >> /etc/dstarrepeater
-        	        echo "mmdvmTXInvert=0" >> /etc/dstarrepeater
-        	        echo "mmdvmPTTInvert=0" >> /etc/dstarrepeater
-        	        echo "mmdvmTXDelay=50" >> /etc/dstarrepeater
-        	        echo "mmdvmRXLevel=100" >> /etc/dstarrepeater
-        	        echo "mmdvmTXLevel=100" >> /etc/dstarrepeater
-        	fi
-	fi
+  if [[ $(cat /etc/dstarrepeater | grep -o "mmdvmRXInvert" | wc -l) -eq 0 ]]; then
+    echo "Adding better MMDVM Config to /etc/dstarrepeater"
+    echo "mmdvmRXInvert=0" >> /etc/dstarrepeater
+    echo "mmdvmTXInvert=0" >> /etc/dstarrepeater
+    echo "mmdvmPTTInvert=0" >> /etc/dstarrepeater
+    echo "mmdvmTXDelay=50" >> /etc/dstarrepeater
+    echo "mmdvmRXLevel=100" >> /etc/dstarrepeater
+    echo "mmdvmTXLevel=100" >> /etc/dstarrepeater
+  fi
+fi
 
 	echo "Starting Services..."
 	service_handle start
