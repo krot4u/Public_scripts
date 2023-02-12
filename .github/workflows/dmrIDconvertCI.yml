@@ -1,60 +1,78 @@
-on:
-  workflow_dispatch
+name: Download DMR ID
+on: 
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 5 */30 * *"
 
 jobs:
-    build:
-      name: Run Script
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v1
-        # - name: Script
-        #   run: ./getdmr_id.ps1
-        #   shell: pwsh
+  build:
+    name: Run Script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      # - name: Script
+      #   run: ./getdmr_id.ps1
+      #   shell: pwsh
 
-        - uses: Amadevus/pwsh-script@v2
-          id: script
-          env:
-            GH_TOKEN: ${{ github.token }}
-          with:
-            script: |
-              $dmridCSVFile = "./DMRid/dmrid.csv"
-              $blacklistCSVFile = "./DMRid/blacklist.csv"
-              $dmridDatFile = "./dmrid.dat"
-              $blacklistFile ="./xlxd.blacklist"
-              $DMRIdsFile = "./DMRIds.dat"
+      - uses: Amadevus/pwsh-script@v2
+        id: script
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            $dmridCSVFile = "./DMRid/dmrid.csv"
+            $blacklistCSVFile = "./DMRid/blacklist.csv"
+            $dmridDatFile = "./dmrid.dat"
+            $blacklistFile ="./xlxd.blacklist"
+            $DMRIdsFile = "./DMRIds.dat"
 
-              Write-Output "--> Download from Original DMRIds..."
-              invoke-webrequest `
-                -Uri "http://www.pistar.uk/downloads/DMRIds.dat" `
-                -OutFile $DMRIdsFile
-              Write-Output "------------"
+            Write-Output "--> Download from Original DMRIds..."
+            invoke-webrequest `
+              -Uri "http://www.pistar.uk/downloads/DMRIds.dat" `
+              -OutFile $DMRIdsFile
+            Write-Output "------------"
 
-              Write-Output "--> Download dmrid from GD..."
-              invoke-webrequest `
-                -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/export?format=csv" `
-                -OutFile $dmridCSVFile
-              Write-Output "------------"
+            Write-Output "--> Download dmrid from GD..."
+            invoke-webrequest `
+              -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/export?format=csv" `
+              -OutFile $dmridCSVFile
+            Write-Output "------------"
 
-              Write-Output "--> Download blacklist from GD..."
-              invoke-webrequest `
-                -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=blacklist" `
-                -OutFile $blacklistCSVFile
-              Write-Output "------------"
+            Write-Output "--> Download blacklist from GD..."
+            invoke-webrequest `
+              -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=blacklist" `
+              -OutFile $blacklistCSVFile
+            Write-Output "------------"
 
-              Write-Output "--> Replace dmrid.dat..."
-              $dmridCSVcontent = $(Get-Content $dmridCSVFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique
-              $dmridCSVcontent.Replace(",",";")-replace '$',';' | Set-Content $dmridDatFile -Force
-              Write-Output "------------"
+            Write-Output "--> Replace dmrid.dat..."
+            $dmridCSVcontent = $(Get-Content $dmridCSVFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique
+            $dmridCSVcontent.Replace(",",";")-replace '$',';' | Set-Content $dmridDatFile -Force
+            Write-Output "------------"
 
-              Write-Output "--> Replace xlxd.blacklist"
-              ((Get-Content $blacklistCSVFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique).Replace('"','') | Set-Content $blacklistFile -Force
-              Write-Output "------------"
+            Write-Output "--> Replace xlxd.blacklist"
+            ((Get-Content $blacklistCSVFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique).Replace('"','') | Set-Content $blacklistFile -Force
+            Write-Output "------------"
 
-              Write-Output "--> Replace DMRIds.dat..."
-              $DMRIds = $dmridCSVcontent -replace ",","`t"
-              $DMRIds -replace "$","`tRussia" | Add-Content $DMRIdsFile
-              Write-Output "------------"
+            Write-Output "--> Replace DMRIds.dat..."
+            $DMRIds = $dmridCSVcontent -replace ",","`t"
+            $DMRIds -replace "$","`tRussia" | Add-Content $DMRIdsFile
+            Write-Output "------------"
 
-              gh run download 4156043384 -n dmrid.dat -n DMRIds.dat
+            #gh run download 4156043384 -n dmrid.dat -n DMRIds.dat
 
-              Write-Output "Done..!"
+            Write-Output "Done..!"
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: converter-artifacts
+          path: ./dmrid.dat
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: converter-artifacts
+          path: ./DMRIds.dat
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: converter-artifacts
+          path: ./xlxd.blacklist
