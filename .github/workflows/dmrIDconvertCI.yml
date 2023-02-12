@@ -65,7 +65,7 @@ jobs:
       - name: Update files in repository
         uses: github-actions-x/commit@v2.9
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           push-branch: 'master'
           commit-message: 'update files'
           force-add: 'true'
