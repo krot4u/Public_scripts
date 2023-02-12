@@ -13,6 +13,8 @@ jobs:
 
         - uses: Amadevus/pwsh-script@v2
           id: script
+          env:
+            GH_TOKEN: ${{ github.token }}
           with:
             script: |
               $dmridCSVFile = "./DMRid/dmrid.csv"
