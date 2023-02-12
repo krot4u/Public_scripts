@@ -63,14 +63,16 @@ jobs:
             Write-Output "Done..!"
 
       - name: Update files in repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          git config --global user.email "krot4u@gmail.com"
-          git config --global user.name ${{ github.actor }}
-          git add ./dmrid.dat ./DMRIds.dat ./xlxd.blacklist
-          git commit -a -m 'Files Updated'
-          git push origin HEAD:master --force
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'update files'
+          force-add: 'true'
+          files: dmrid.dat DMRIds.dat xlxd.blacklist
+          name: ${{ github.actor }}
+          email: krot4u@gmail.com
+
 
       # - name: Add files to Repo
       #   uses: EndBug/add-and-commit@v9
