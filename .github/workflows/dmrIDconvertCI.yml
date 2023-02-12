@@ -66,5 +66,17 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
-          message: 'DMR_id Files Updated'
-          add: 'dmrid.dat DMRIds.dat xlxd.blacklist'
+          message: 'dmrid.dat Files Updated'
+          add: 'dmrid.dat'
+      - name: Add files to Repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'DMRIds.dat Files Updated'
+          add: 'DMRIds.dat'
+      - name: Add files to Repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'DMRIds.dat Files Updated'
+          add: 'xlxd.blacklist'
