@@ -63,9 +63,11 @@ jobs:
             Write-Output "Done..!"
 
       - name: Update files in repository
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.email "krot4u@gmail.com"
-          git config --global user.name "krot4u"
+          git config --global user.name ${{ github.actor }}
           git add ./dmrid.dat ./DMRIds.dat ./xlxd.blacklist
           git commit -a -m 'Files Updated'
           git push origin HEAD:master --force
