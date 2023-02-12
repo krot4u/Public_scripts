@@ -61,18 +61,10 @@ jobs:
             #gh run download 4156043384 -n dmrid.dat -n DMRIds.dat
 
             Write-Output "Done..!"
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
+
+      - name: Add files to Repo
+        uses: EndBug/add-and-commit@v9
         with:
-          name: converter-artifacts
-          path: ./dmrid.dat
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: converter-artifacts
-          path: ./DMRIds.dat
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: converter-artifacts
-          path: ./xlxd.blacklist
+          default_author: github_actions
+          message: 'DMR_id Files Updated'
+          add: 'dmrid.dat DMRIds.dat xlxd.blacklist'
