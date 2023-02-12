@@ -61,11 +61,14 @@ jobs:
             #gh run download 4156043384 -n dmrid.dat -n DMRIds.dat
 
             Write-Output "Done..!"
-            git config --global user.email "krot4u@gmail.com"
-            git config --global user.name "krot4u"
-            git add ./dmrid.dat ./DMRIds.dat ./xlxd.blacklist
-            git commit -a -m 'Files Updated'
-            git push
+
+      - name: Update files in repository
+        run: |
+          git config --global user.email "krot4u@gmail.com"
+          git config --global user.name "krot4u"
+          git add ./dmrid.dat ./DMRIds.dat ./xlxd.blacklist
+          git commit -a -m 'Files Updated'
+          git push
 
       # - name: Add files to Repo
       #   uses: EndBug/add-and-commit@v9
