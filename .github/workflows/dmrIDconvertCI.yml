@@ -62,8 +62,6 @@ jobs:
             $DMRIds -replace "$","`tRussia" | Add-Content $DMRIdsFile
             Write-Output "------------"
 
-            #gh run download 4156043384 -n dmrid.dat -n DMRIds.dat
-
             Write-Output "Done..!"
 
       - name: Update files in repository
