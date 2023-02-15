@@ -45,7 +45,7 @@ jobs:
             Write-Output "--> Download ipblacklist from GD..."
             invoke-webrequest `
               -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=ipblacklist" `
-              -OutFile $blacklistCSVFile
+              -OutFile $ipblacklistFile
             Write-Output "------------"
 
             Write-Output "--> Replace dmrid.dat..."
