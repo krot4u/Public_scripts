@@ -19,6 +19,7 @@ jobs:
           script: |
             $dmridCSVFile = "./DMRid/dmrid.csv"
             $blacklistCSVFile = "./DMRid/blacklist.csv"
+            $ipblacklistFile = "./ipblacklist.csv"
             $dmridDatFile = "./dmrid.dat"
             $blacklistFile ="./xlxd.blacklist"
             $DMRIdsFile = "./DMRIds.dat"
@@ -38,6 +39,12 @@ jobs:
             Write-Output "--> Download blacklist from GD..."
             invoke-webrequest `
               -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=blacklist" `
+              -OutFile $blacklistCSVFile
+            Write-Output "------------"
+
+            Write-Output "--> Download ipblacklist from GD..."
+            invoke-webrequest `
+              -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=ipblacklist" `
               -OutFile $blacklistCSVFile
             Write-Output "------------"
 
@@ -65,7 +72,7 @@ jobs:
           email: "krot4u@gmail.com"
           name: GitHub Actions Autocommitter
           branch: master
-          files: dmrid.dat DMRIds.dat xlxd.blacklist
+          files: dmrid.dat DMRIds.dat xlxd.blacklist ipblacklist.csv
           repository: https://github.com/${{ github.repository }}
           token: ${{ github.token }}
           force: true
