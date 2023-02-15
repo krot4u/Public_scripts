@@ -61,6 +61,11 @@ jobs:
             $DMRIds = $dmridCSVcontent -replace ",","`t"
             $DMRIds -replace "$","`tRussia" | Add-Content $DMRIdsFile
             Write-Output "------------"
+            
+            Write-Output "--> Replace dmrid.dat..."
+            $ipblacklistContent = $(Get-Content $ipblacklistFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique
+            $ipblacklistContent.Replace('"','') | Set-Content $ipblacklistFile -Force
+            Write-Output "------------"
 
             Write-Output "Done..!"
 
