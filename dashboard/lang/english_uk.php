@@ -12,6 +12,7 @@ $lang = array (
   // Banner links
   "dashboard"                   =>  "Dashboard",
   "admin"                       =>  "Admin",
+  "expert"                      =>  "Expert",
   "power"                       =>  "Power",
   "update"                      =>  "Update",
   "backup_restore"              =>  "Backup/Restore",
