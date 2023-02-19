@@ -70,21 +70,21 @@ curl --fail -o '/usr/local/sbin/mpi-star.xh' -s https://raw.githubusercontent.co
 chmod +x /usr/local/sbin/mpi-star.sh
 
 # Pi-Star Dashboar modifications
-curl --fail -o /var/www/dashboard/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/index.php
-curl --fail -o /var/www/dashboard/css/pistar-css.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/css/pistar-css.php
-curl --fail -o /var/www/dashboard/lang/russian_ru.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/lang/russian_ru.php
-curl --fail -o /var/www/dashboard/admin/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/index.php
-curl --fail -o /var/www/dashboard/admin/update.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/update.php
-curl --fail -o /var/www/dashboard/admin/configure.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/configure.php
-curl --fail -o /var/www/dashboard/admin/expert/header-menu.inc -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/expert/header-menu.inc
-curl --fail -o /var/www/dashboard/admin/power.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/power.php
-curl --fail -o /var/www/dashboard/admin/config_backup.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/config_backup.php
-curl --fail -o /var/www/dashboard/admin/live_modem_log.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/live_modem_log.php
-curl --fail -o /var/www/dashboard/admin/css/pistar-css.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/css/pistar-css.php
-curl --fail -o /var/www/dashboard/admin/calibration.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/calibration.php
-curl --fail -o /var/www/dashboard/admin/sysinfo.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/sysinfo.php
-curl --fail -o /var/www/dashboard/admin/expert/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/expert/index.php
-curl --fail -o /var/www/dashboard/admin/images/header.png -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/admin/images/header.png
-curl --fail -o /var/www/dashboard/images/header.png -s https://raw.githubusercontent.com/krot4u/Public_scripts/dashboard/images/header.png
+curl --fail -o /var/www/dashboard/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php
+curl --fail -o /var/www/dashboard/css/pistar-css.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php
+curl --fail -o /var/www/dashboard/lang/russian_ru.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/russian_ru.php
+curl --fail -o /var/www/dashboard/admin/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/index.php
+curl --fail -o /var/www/dashboard/admin/update.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/update.php
+curl --fail -o /var/www/dashboard/admin/configure.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/configure.php
+curl --fail -o /var/www/dashboard/admin/expert/header-menu.inc -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/header-menu.inc
+curl --fail -o /var/www/dashboard/admin/power.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/power.php
+curl --fail -o /var/www/dashboard/admin/config_backup.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/config_backup.php
+curl --fail -o /var/www/dashboard/admin/live_modem_log.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/live_modem_log.php
+curl --fail -o /var/www/dashboard/admin/css/pistar-css.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/css/pistar-css.php
+curl --fail -o /var/www/dashboard/admin/calibration.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/calibration.php
+curl --fail -o /var/www/dashboard/admin/sysinfo.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php
+curl --fail -o /var/www/dashboard/admin/expert/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php
+curl --fail -o /var/www/dashboard/admin/images/header.png -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png
+curl --fail -o /var/www/dashboard/images/header.png -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png
 
 exit 0
