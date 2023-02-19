@@ -107,7 +107,7 @@ $lang = array (
   "password"                    =>  "Пароль",
   "set_password"                =>  "Установить пароль",
   // Dashboard Front Page - Repeater Info Pannel
-  "modes_enabled"               =>  "Включеные режимы",
+  "modes_enabled"               =>  "Включенные режимы",
   "net_status"                  =>  "Статус сети",
   "internet"                    =>  "Интернет",
   "radio_info"                  =>  "Радиомодуль",
