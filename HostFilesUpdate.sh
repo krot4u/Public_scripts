@@ -65,9 +65,12 @@ curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${P25HOSTS} -s http://www.pistar.uk/downloads/P25_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
-curl --fail -o '/usr/local/sbin/mpi-star.xh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.xh --user-agent "Pi-Star_${pistarCurVersion}"
+curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh --user-agent "Pi-Star_${pistarCurVersion}"
+curl --fail -o '/usr/local/sbin/pistar-hourly.cron' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron --user-agent "Pi-Star_${pistarCurVersion}"
 
 chmod +x /usr/local/sbin/mpi-star.sh
+
+/usr/local/sbin/mpi-star.sh 2> /dev/null
 
 # Pi-Star Dashboar modifications
 curl --fail -o /var/www/dashboard/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php

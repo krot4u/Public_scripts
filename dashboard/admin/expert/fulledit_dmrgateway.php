@@ -78,9 +78,10 @@ fclose($fh);
 </div>
 
 <div class="footer">
-Pi-Star / Pi-Star Dashboard, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_new">here</a>.<br />
+<a style="color: #fcf811;" href="https://help.qra-team.online/" target="_new">&copy; QRA-Team Help</a><br />
+XLX Server <a style="color: #fcf811;" href="https://qra-team.online/" target="_new">Dashboard</a>.<br />
+<a style="color: #fcf811;" href="https://qra-team.ru" target="_new">QRA-Team.Ru</a>.<br />
+&copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
 </div>
 
 </div>
