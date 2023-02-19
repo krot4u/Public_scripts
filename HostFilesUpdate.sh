@@ -73,6 +73,7 @@ chmod +x /usr/local/sbin/mpi-star.sh
 curl --fail -o /var/www/dashboard/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php
 curl --fail -o /var/www/dashboard/css/pistar-css.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php
 curl --fail -o /var/www/dashboard/lang/russian_ru.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/russian_ru.php
+curl --fail -o /var/www/dashboard/lang/russian_ru.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/english_uk.php
 curl --fail -o /var/www/dashboard/admin/index.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/index.php
 curl --fail -o /var/www/dashboard/admin/update.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/update.php
 curl --fail -o /var/www/dashboard/admin/configure.php -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/configure.php
