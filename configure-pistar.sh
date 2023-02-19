@@ -149,11 +149,13 @@ echo "------------"
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
+-o /dev/null \
 -H "application/x-www-form-urlencoded" \
 -X POST http://127.0.0.1/admin/configure.php \
 -d "controllerSoft=MMDVM&trxMode=SIMPLEX&MMDVMModeDMR=OFF&MMDVMModeDSTAR=OFF&MMDVMModeFUSION=OFF&MMDVMModeP25=OFF&MMDVMModeNXDN=OFF&MMDVMModeYSF2DMR=OFF&MMDVMModeYSF2NXDN=OFF&MMDVMModeYSF2P25=OFF&MMDVMModeDMR2YSF=OFF&MMDVMModeDMR2NXDN=OFF&MMDVMModePOCSAG=OFF&MMDVMModeDMR=ON&dmrRfHangTime=2&dmrNetHangTime=2&dstarRfHangTime=2&dstarNetHangTime=2&ysfRfHangTime=2&ysfNetHangTime=2&p25RfHangTime=2&p25NetHangTime=2&nxdnRfHangTime=2&nxdnNetHangTime=2&mmdvmDisplayType=OLED3&mmdvmDisplayPort=&mmdvmNextionDisplayType=ON7LDSL3&APRSGatewayEnable=OFF&confHostame=pi-star&confCallsign=${CALLSIGN}&dmrId=${DMRID}&confFREQ=${MFREQUENCY}&confLatitude=50.00&confLongitude=-3.00&confDesc1=Town%2C+L0C4T0R&confDesc2=Country&confURL=http%3A%2F%2Fwww.mw0mwz.co.uk%2Fpi-star%2F&urlAuto=man&confHardware=stm32dvm&nodeMode=pub&confDMRWhiteList=&selectedAPRSHost=euro.aprs2.net&systemTimezone=Europe%2FMoscow&dashboardLanguage=english_uk&dmrEmbeddedLCOnly=OFF&dmrDumpTAData=OFF&dmrGatewayXlxEn=OFF&dmrGatewayNet1En=OFF&dmrGatewayNet2En=OFF&dmrDMRnetJitterBufer=OFF&dmrMasterHost=127.0.0.1%2Cnone%2C62031%2CDMRGateway&dmrMasterHost1=44.148.230.201%2Cpassw0rd%2C62031%2CBM_2001_Europe_HAMNET&bmHSSecurity=&bmExtendedId=None&dmrMasterHost2=43.245.72.66%2CPASSWORD%2C55555%2CDMR%2B_IPSC2-Australia&dmrNetworkOptions=&dmrPlusExtendedId=None&dmrMasterHost3=46.17.42.12%2Cpassw0rd%2C62030%2CXLX_496&dmrMasterHost3StartupModule=A&dmrGatewayXlxEn=ON&dmrColorCode=1&mobilegps_enable=OFF&mobilegps_port=ttyACM0&mobilegps_speed=38400&dashAccess=PRV&ircRCAccess=PRV&sshAccess=PRV&autoAP=ON&uPNP=ON"
 
-echo "Обновление завершено..."
-echo "Добро Пожаловать в QRA-Team!"
+echo "---------- >>>>>>>>>> Обновление завершено... <<<<<<<<<< ----------"
+echo " "
+echo "---------- >>>>>>>>>> Добро Пожаловать в QRA-Team! <<<<<<<<<< ----------"
 
 exit 0
