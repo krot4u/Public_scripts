@@ -64,17 +64,9 @@ service_handle() {
 read_dmrid </dev/tty
 read_frequency </dev/tty
 
-echo ">>>>>>>>>>>>>>>>>>>>> -3 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> -3 DEBUG:"
-
 echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
-
-echo ">>>>>>>>>>>>>>>>>>>>> -2 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> -2 DEBUG:"
 
 echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
@@ -92,16 +84,8 @@ echo "Stopping Services..."
 service_handle stop
 echo "------------"
 
-echo ">>>>>>>>>>>>>>>>>>>>> -1 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> -1 DEBUG:"
-
 echo "RUN modified HostFilesUpdate.sh..."
 /usr/local/sbin/HostFilesUpdate.sh
-
-echo ">>>>>>>>>>>>>>>>>>>>> 0 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 0 DEBUG:"
 
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
@@ -154,17 +138,9 @@ sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 echo "------------"
 
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
-
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
-
-echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG:"
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
@@ -180,9 +156,5 @@ echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 echo " "
 echo " "
-
-echo ">>>>>>>>>>>>>>>>>>>>> 3 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 3 DEBUG:"
 
 exit 0
