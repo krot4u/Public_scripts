@@ -48,6 +48,7 @@ ${DMRHOSTS}
 ${P25HOSTS}
 ${XLXHOSTS}"
 
+echo ">> HostFilesUpdate: backup files"
 for file in ${FILES}
 do
   BACKUPCOUNT=$(ls ${file}.* | wc -l)
@@ -59,7 +60,9 @@ do
     done
   fi
 done
+echo "------------"
 
+echo ">> HostFilesUpdate: Download config files"
 # Generate Host Files
 curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMR_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"
@@ -71,7 +74,9 @@ curl --fail -o '/usr/local/sbin/pistar-hourly.cron' -s https://raw.githubusercon
 chmod +x /usr/local/sbin/mpi-star.sh
 
 /usr/local/sbin/mpi-star.sh 2> /dev/null
+echo "------------"
 
+echo ">> HostFilesUpdate: Download dashboard files"
 # Pi-Star Dashboar modifications
 curl --fail -o '/var/www/dashboard/index.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php"
 curl --fail -o '/var/www/dashboard/css/pistar-css.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php"
@@ -90,5 +95,8 @@ curl --fail -o '/var/www/dashboard/admin/sysinfo.php' -s "https://raw.githubuser
 curl --fail -o '/var/www/dashboard/admin/expert/index.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php"
 curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
 curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
+echo "------------"
+
+echo ">> HostFilesUpdate: Done... Exiting..."
 
 exit 0
