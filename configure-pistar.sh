@@ -64,25 +64,37 @@ service_handle() {
 read_dmrid </dev/tty
 read_frequency </dev/tty
 
+echo ">>>>>>>>>>>>>>>>>>>>> -3 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> -3 DEBUG:"
+
 echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
+
+echo ">>>>>>>>>>>>>>>>>>>>> -2 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> -2 DEBUG:"
 
 echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
 echo "Downloading modified pistar-update..."
-curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
 echo "------------"
 
 echo "Downloading modified HostFilesUpdate.sh..."
-curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
 echo "------------"
 
 echo "Stopping Services..."
 service_handle stop
 echo "------------"
+
+echo ">>>>>>>>>>>>>>>>>>>>> -1 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> -1 DEBUG:"
 
 echo "RUN modified HostFilesUpdate.sh..."
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh

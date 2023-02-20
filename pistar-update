@@ -144,13 +144,13 @@ main_function() {
 	# echo "Done"
 
 	echo "Updating Hostfiles..."
-  curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+  curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
 	/usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
 	echo "Done"
 
-	echo "Updating Dashboard..."
-	#git_update /var/www/dashboard
-	echo "Done"
+	# echo "Updating Dashboard..."
+	# git_update /var/www/dashboard
+	# echo "Done"
 
 	echo "Updating PiStar-Firewall..."
 	pistar-firewall > /dev/null 2>&1
