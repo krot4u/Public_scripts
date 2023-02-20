@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
-#  exit 0
-#fi
+if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
+  exit 0
+fi
 
 DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
@@ -54,6 +54,7 @@ curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_s
 curl --fail -o ${P25HOSTS} -s http://www.pistar.uk/downloads/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
 curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
+curl --fail -o '/usr/local/sbin/dwldashboard.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dwldashboard.sh
 curl --fail -o '/usr/local/sbin/pistar-hourly.cron' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 
 chmod +x /usr/local/sbin/mpi-star.sh
@@ -61,24 +62,8 @@ chmod +x /usr/local/sbin/mpi-star.sh
 echo "------------"
 
 echo ">> HostFilesUpdate: Download dashboard files"
-# Pi-Star Dashboar modifications
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php" > '/var/www/dashboard/index.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php" > '/var/www/dashboard/css/pistar-css.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/russian_ru.php" > '/var/www/dashboard/lang/russian_ru.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/english_uk.php" > '/var/www/dashboard/lang/english_uk.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/index.php" > '/var/www/dashboard/admin/index.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/update.php" > '/var/www/dashboard/admin/update.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/configure.php" > '/var/www/dashboard/admin/configure.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/header-menu.inc" > '/var/www/dashboard/admin/expert/header-menu.inc'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/power.php" > '/var/www/dashboard/admin/power.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/config_backup.php" > '/var/www/dashboard/admin/config_backup.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/live_modem_log.php" > '/var/www/dashboard/admin/live_modem_log.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/css/pistar-css.php" > '/var/www/dashboard/admin/css/pistar-css.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/calibration.php" > '/var/www/dashboard/admin/calibration.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php" > '/var/www/dashboard/admin/sysinfo.php'
-curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
-curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
-curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png" 
+chmod +x /usr/local/sbin/dwldashboard.sh
+/usr/local/sbin/dwldashboard.sh
 echo "------------"
 
 echo ">> HostFilesUpdate: Done... Exiting..."
