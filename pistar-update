@@ -148,7 +148,7 @@ main_function() {
 	echo "Done"
 
 	echo "Updating Dashboard..."
-	git_update /var/www/dashboard
+	#git_update /var/www/dashboard
 	echo "Done"
 
 	echo "Updating PiStar-Firewall..."
@@ -197,36 +197,6 @@ main_function() {
 	if [ ! -f /usr/local/etc/NXDNHostsLocal.txt ]; then
 		touch /usr/local/etc/NXDNHostsLocal.txt
 	fi
-
-	# myDV Cast Updates
-	#if [[ "$(grep "Special" /etc/pistar-release | awk '{print $3}')" = "myDV_Cast" ]]; then
-	#	if [[ !$(grep -i path /etc/bash.bashrc) ]]; then
-	#		# Add the new path info because its missing
-	#		echo -e "export PATH=/usr/local/bin/castbin:$PATH" >> /etc/bash.bashrc
-	#	fi
-	#
-	#	# Pull the binaries
-	#	if [ ! -d /usr/local/bin/castbin ]; then
-	#		# No folder, create it
-	#		git clone https://github.com/pe1msz/castbin /usr/local/bin/castbin
-	#	else
-	#		# Update it
-	#		git --work-tree=/usr/local/bin/castbin --git-dir=/usr/local/bin/castbin/.git pull origin master
-	#	fi
-	#
-	#	# Pull the Dashboard module
-	#	if [ ! -d /var/www/dashboard/admin/modules/castfw ]; then
-	#		# No folder, create it
-	#		git clone https://github.com/pe1msz/myDV-nano /var/www/dashboard/admin/modules/castfw
-	#		ln -s /var/www/dashboard/admin/modules/castfw/fw /var/www/dashboard/admin/castfw
-	#		cd /var/www/dashboard/admin/modules/castfw/pyserial-3.2.1
-	#		python setup.py install
-	#		cd
-	#	else
-	#		# Update it
-	#		git --work-tree=/var/www/dashboard/admin/modules/castfw --git-dir=/var/www/dashboard/admin/modules/castfw/.git pull origin master
-	#	fi
-	#fi
 
 	# If we are ready to use the new DMRGateway
 	if [[ $(/usr/local/bin/DMRGateway --version | awk '{print $3}' | cut -c -8) -gt "20170924" ]] && [[ $(grep -c "\[DMR Network 3\]" /etc/dmrgateway) -eq "1" ]] && [[ ! -f /usr/local/etc/DMR_Audio/no_NO.indx ]]; then
@@ -287,53 +257,12 @@ main_function() {
 		echo "Done"
 	fi
 
-	# Add Portuguese voice files for ircDDBGateway
-	if [[ ! -f /usr/local/etc/pt_PT.ambe ]]; then
-		echo "Downloading Portuguese Voice Files for ircDDBGateway..."
-		curl --fail -o /usr/local/etc/pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.ambe
-		curl --fail -o /usr/local/etc/pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.indx
-		curl --fail -o /usr/local/etc/TIME_pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.ambe
-		curl --fail -o /usr/local/etc/TIME_pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.indx
-		chmod 664 /usr/local/etc/*.ambe
-		chmod 664 /usr/local/etc/*.indx
-		echo "Done"
-	fi
-	if [[ ! -f /usr/local/etc/ircddbgateway/pt_PT.ambe ]]; then
-		echo "Downloading Portuguese Voice Files for ircDDBGateway..."
-		curl --fail -o /usr/local/etc/ircddbgateway/pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.ambe
-		curl --fail -o /usr/local/etc/ircddbgateway/pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/pt_PT.indx
-		curl --fail -o /usr/local/etc/ircddbgateway/TIME_pt_PT.ambe -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.ambe
-		curl --fail -o /usr/local/etc/ircddbgateway/TIME_pt_PT.indx -s https://raw.githubusercontent.com/g4klx/ircDDBGateway/master/Data/TIME_pt_PT.indx
-		chmod 664 /usr/local/etc/ircddbgateway/*.ambe
-		chmod 664 /usr/local/etc/ircddbgateway/*.indx
-		echo "Done"
-	fi
-
 	if [[ $(grep "\[Voice\]" /etc/p25gateway | wc -l) -eq 0 ]]; then
 		echo "Updating P25Gateway config..."
 		echo "" >> /etc/p25gateway
 		sed -i '$a[Voice]\nEnabled=1\nLanguage=en_GB\nDirectory=/usr/local/etc/P25_Audio\n' /etc/p25gateway
 		echo "Done"
 	fi
-
-	if [[ $(grep Version /etc/pistar-release | awk '{print $3}' | cut -c 1) -eq 4 ]]; then
-    if [[ $(cat /etc/ircddbgateway | grep -o "xlx" | wc -l) -eq 0 ]]; then
-      echo "Adding XLX Config to /etc/ircddbgateway"
-      echo "xlxEnabled=0" >> /etc/ircddbgateway
-      echo "xlxHostsFileUrl=http://xlxapi.rlx.lu/api.php?do=GetXLXDMRMaster" >> /etc/ircddbgateway
-    fi
-
-  #if [[ $(cat /etc/ircddbgateway | grep -o "aprsPassword" | wc -l) -eq 0 ]]; then
-  #        echo "Adding APRS Password to /etc/ircddbgateway"
-  #        echo "aprsPassword=00000" >> /etc/ircddbgateway
-  #fi
-
-  if [[ $(cat /etc/ircddbgateway | grep -o "mobileGPS" | wc -l) -eq 0 ]]; then
-    echo "Adding MobileGPS Config to /etc/ircddbgateway"
-    echo "mobileGPSEnabled=0" >> /etc/ircddbgateway
-    echo "mobileGPSAddress=127.0.0.1" >> /etc/ircddbgateway
-    echo "mobileGPSPort=7834" >> /etc/ircddbgateway
-  fi
 
   if [[ $(cat /etc/dstarrepeater | grep -o "mmdvmRXInvert" | wc -l) -eq 0 ]]; then
     echo "Adding better MMDVM Config to /etc/dstarrepeater"

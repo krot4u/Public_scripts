@@ -146,7 +146,6 @@ echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
 cat /var/www/dashboard/index.php | grep 'XLX Server'
 echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
 
-
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
 -o /dev/null \
@@ -162,8 +161,8 @@ echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 echo " "
 echo " "
 
-echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG: cat file"
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
 cat /var/www/dashboard/index.php | grep 'XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG:"
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
 
 exit 0
