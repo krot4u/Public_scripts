@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
-  exit 0
-fi
+#if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
+#  exit 0
+#fi
 
 DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
