@@ -80,7 +80,9 @@ echo ">> HostFilesUpdate: Download dashboard files"
 
 echo ">> HostFilesUpdate: DEBUG"
 # Pi-Star Dashboar modifications
-curl --fail -o '/var/www/dashboard/index.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php"
+curl --fail -o '/var/www/dashboard/index.php' "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php"
+echo ">> HostFilesUpdate: cat file"
+cat /var/www/dashboard/index.php | grep 'XLX Server'
 echo ">> HostFilesUpdate: DEBUG"
 
 curl --fail -o '/var/www/dashboard/css/pistar-css.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php"
