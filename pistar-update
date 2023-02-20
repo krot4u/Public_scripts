@@ -274,7 +274,6 @@ main_function() {
     echo "mmdvmRXLevel=100" >> /etc/dstarrepeater
     echo "mmdvmTXLevel=100" >> /etc/dstarrepeater
   fi
-fi
 
 	echo "Starting Services..."
 	service_handle start
