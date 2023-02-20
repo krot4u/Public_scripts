@@ -89,7 +89,7 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 <a href="http://pi-star/?"><div align="center"><img src="/images/header.png" alt="QRA-Team Pi-Star" /></a>
 <?php if (isset($piStarCssBannerExtTxt)) { echo "<p style=\"text-align: center; color: #ffffff;\">".$piStarCssBannerExtTxt."</p>\n"; }?>
 <p style="padding-right: 5px; text-align: right; color: #ffffff;">
-<a href="https://qra-team.online/" style="color: #ffffff;">XLX Server</a> |
+<a href="https://qra-team.online/" style="color: #ffffff" target="_blank">XLX Server</a> |
 <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
  <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
 <?php if ($_SERVER["PHP_SELF"] == "/admin/index.php") {
