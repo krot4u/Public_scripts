@@ -72,7 +72,7 @@ echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
-echo "Downloading modified pistar-updateh..."
+echo "Downloading modified pistar-update..."
 curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
 echo "------------"
 
