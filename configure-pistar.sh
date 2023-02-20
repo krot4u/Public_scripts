@@ -34,15 +34,15 @@ read_frequency() {
 	while true; do
 		echo "Введите частоту приёма\передачи на ХотСпоте. Задаётся без разделителя"
 		read -p "(9 символов. Пример:433.500.000): " MFREQUENCY
-		len=`echo ${FREQUENCY} |awk '{print length}'`
-		if [[ ( ${FREQUENCY} != ^[[:digit:]]+$ ) && ( $len -ne 6 ) ]];then
+		len=`echo ${MFREQUENCY} |awk '{print length}'`
+		if [[ ( ${MFREQUENCY} != ^[[:digit:].[:digit:].[:digit:]]+$ ) && ( $len -ne 11 ) ]];then
 			echo "----->"
 			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
 			echo "----->"
 			echo " "
 		else
 			echo "----->"
-			echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
+			echo -e "   ${GRN}Частота приёма\передачи ${MFREQUENCY} ${NC}"
 			echo "----->"
 			echo " "
 			FREQUENCY=${MFREQUENCY//./}
