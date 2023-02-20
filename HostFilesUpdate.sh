@@ -77,8 +77,12 @@ chmod +x /usr/local/sbin/mpi-star.sh
 echo "------------"
 
 echo ">> HostFilesUpdate: Download dashboard files"
+
+echo ">> HostFilesUpdate: DEBUG"
 # Pi-Star Dashboar modifications
 curl --fail -o '/var/www/dashboard/index.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php"
+echo ">> HostFilesUpdate: DEBUG"
+
 curl --fail -o '/var/www/dashboard/css/pistar-css.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php"
 curl --fail -o '/var/www/dashboard/lang/russian_ru.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/russian_ru.php"
 curl --fail -o '/var/www/dashboard/lang/english_uk.php' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/lang/english_uk.php"
