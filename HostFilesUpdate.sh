@@ -1,23 +1,8 @@
 #!/bin/bash
-#########################################################
-#                                                       #
-#              HostFilesUpdate.sh Updater               #
-#                                                       #
-#      Written for Pi-Star (http://www.pistar.uk/)      #
-#               By Andy Taylor (MW0MWZ)                 #
-#                                                       #
-#                     Version 2.6                       #
-#                                                       #
-#   Based on the update script by Tony Corbett G0WFV    #
-#                                                       #
-#########################################################
-# Check that the network is UP and die if its not
+
 if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
   exit 0
 fi
-
-# Get the Pi-Star Version
-pistarCurVersion=$(awk -F "= " '/Version/ {print $2}' /etc/pistar-release)
 
 DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
@@ -72,7 +57,6 @@ curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.co
 curl --fail -o '/usr/local/sbin/pistar-hourly.cron' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron --user-agent "Pi-Star_${pistarCurVersion}"
 
 chmod +x /usr/local/sbin/mpi-star.sh
-
 /usr/local/sbin/mpi-star.sh 2> /dev/null
 echo "------------"
 
