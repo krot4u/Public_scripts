@@ -97,7 +97,7 @@ cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
 echo ">>>>>>>>>>>>>>>>>>>>> -1 DEBUG:"
 
 echo "RUN modified HostFilesUpdate.sh..."
-/bin/bash /usr/local/sbin/HostFilesUpdate.sh
+/usr/local/sbin/HostFilesUpdate.sh
 
 echo ">>>>>>>>>>>>>>>>>>>>> 0 DEBUG: cat file"
 cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
