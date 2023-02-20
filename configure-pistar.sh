@@ -45,7 +45,7 @@ read_frequency() {
 			echo -e "   ${GRN}Частота приёма\передачи ${FREQUENCY} ${NC}"
 			echo "----->"
 			echo " "
-			FREQUENCY=${MFREQUENCY//./.}
+			FREQUENCY=${MFREQUENCY//./}
 			break
 		fi
 	done
