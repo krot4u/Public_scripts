@@ -139,11 +139,9 @@ main_function() {
 	git_update /usr/local/bin
 	echo "Done"
 
-	echo "Updating Pi-Star Binaries..."
-	git_update /usr/local/sbin
-	echo "Done"
-
-
+	# echo "Updating Pi-Star Binaries..."
+	# git_update /usr/local/sbin
+	# echo "Done"
 
 	echo "Updating Hostfiles..."
   curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
