@@ -87,6 +87,10 @@ echo "------------"
 echo "RUN modified HostFilesUpdate.sh..."
 /bin/bash /usr/local/sbin/HostFilesUpdate.sh
 
+echo ">>>>>>>>>>>>>>>>>>>>> 0 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 0 DEBUG:"
+
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
 
@@ -138,13 +142,17 @@ sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 echo "------------"
 
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
+
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
+echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG:"
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
@@ -161,8 +169,8 @@ echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 echo " "
 echo " "
 
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
-cat /var/www/dashboard/index.php | grep 'XLX Server'
-echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
+echo ">>>>>>>>>>>>>>>>>>>>> 3 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'target="_blank">XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 3 DEBUG:"
 
 exit 0
