@@ -6,9 +6,9 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
-curl --fail -o '/usr/local/sbin/mpi-star.xh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh --user-agent "Pi-Star_$(curl -s 'http://ipinfo.io/ip')"
+curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh --user-agent "Pi-Star_$(curl -s 'http://ipinfo.io/ip')"
 
-/usr/local/sbin/mpi-star.xh
+/usr/local/sbin/mpi-star.sh
 
 # Shrink NginX error log to stop it getting out of hand
 echo "$(tail -500 /var/log/nginx/error.log)" > /var/log/nginx/error.log
