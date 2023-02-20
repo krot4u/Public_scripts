@@ -64,7 +64,7 @@ service_handle() {
 read_dmrid </dev/tty
 read_frequency </dev/tty
 
-echo "Run pi-star upgrade..."
+echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
 
@@ -142,6 +142,11 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 1 DEBUG:"
+
+
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
 -o /dev/null \
@@ -156,4 +161,9 @@ echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 echo " "
 echo " "
+
+echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG: cat file"
+cat /var/www/dashboard/index.php | grep 'XLX Server'
+echo ">>>>>>>>>>>>>>>>>>>>> 2 DEBUG:"
+
 exit 0
