@@ -49,8 +49,8 @@ jobs:
             Write-Output "------------"
 
             Write-Output "--> Replace dmrid.dat..."
-            $dmridCSVcontent = $(Get-Content $dmridCSVFile | Select-Object -Skip 1 | where { $_ -ne "" }).ToUpper() | Sort-Object -Unique
-            $dmridCSVcontent.Replace(",",";")-replace '$',';' | Set-Content $dmridDatFile -Force
+            $dmridCSVcontent = $(Get-Content $dmridCSVFile | Select-Object -Skip 1 | Where-Object { $_ -ne "" }).ToUpper() | Sort-Object -Unique
+            $dmridCSVcontent.Replace(",",";") -replace '^([0-9]{7}\;\w+\;)(.*)$','$1' | Set-Content $dmridDatFile -Force
             Write-Output "------------"
 
             Write-Output "--> Replace xlxd.blacklist"
@@ -60,12 +60,12 @@ jobs:
             Write-Output "--> Replace DMRIds.dat..."
             $DMRIds = $dmridCSVcontent -replace ",","`t"
             $DMRIdsClean = $DMRIds -replace "$","`tRussia" 
-            $DMRIdsClean | where { $_ -ne "" } | Sort-Object -Unique | Add-Content $DMRIdsFile
+            $DMRIdsClean | Where-Object { $_ -ne "" } | Sort-Object -Unique | Add-Content $DMRIdsFile
             Write-Output "------------"
-            
+
             Write-Output "--> Replace dmrid.dat..."
             $ipblacklistContent = $(Get-Content $ipblacklistFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique
-            $ipblacklistContent.Replace('"','') | where { $_ -ne "" } | Sort-Object -Unique | Set-Content $ipblacklistFile -Force
+            $ipblacklistContent.Replace('"','') | Where-Object { $_ -ne "" } | Sort-Object -Unique | Set-Content $ipblacklistFile -Force
             Write-Output "------------"
 
             Write-Output "Done..!"
