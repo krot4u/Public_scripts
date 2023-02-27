@@ -18,7 +18,7 @@ jobs:
         with:
           script: |
             Write-Output "Download DMRIds.dat"
-            curl -s -H 'Authorization: token ${{ github.token }}' `
+            curl -H 'Authorization: token ${{ github.token }}' `
             -H 'Accept: application/vnd.github.raw' `
             -o ./DMRIds.dat `
             -L https://api.github.com/repos/krot4u/qra-team/contents/DMRIds.dat
