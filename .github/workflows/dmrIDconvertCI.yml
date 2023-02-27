@@ -1,0 +1,37 @@
+name: Download DMR ID
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  build:
+    name: Run Script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: Amadevus/pwsh-script@v2
+        id: script
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            Write-Output "Download DMRIds.dat"
+            curl -s -H 'Authorization: token ${{ github.token }}' \
+            -H 'Accept: application/vnd.github.raw' \
+            -o ./DMRIds.dat \
+            -L https://api.github.com/repos/krot4u/qra-team/contents/DMRIds.dat
+            Write-Output "Done..!"
+
+      - name: Update files in repository
+        uses: actions-x/commit@v6
+        with:
+          email: "krot4u@gmail.com"
+          name: GitHub Actions Autocommitter
+          branch: main
+          files: DMRIds.dat
+          repository: https://github.com/${{ github.repository }}
+          token: ${{ github.token }}
+          force: true
+          #directory: path/to/different/repo
