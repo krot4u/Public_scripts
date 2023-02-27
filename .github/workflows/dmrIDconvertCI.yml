@@ -18,7 +18,7 @@ jobs:
         with:
           script: |
             Write-Output "Download DMRIds.dat"
-            curl -H 'Authorization: token ${{ github.token }}' -H 'Accept: application/vnd.github.raw' -o ./DMRIds.dat -L https://api.github.com/repos/krot4u/qra-team/contents/DMRIds.dat
+            curl -H 'Authorization: Bearer ${{ github.token }}' -H 'Accept: application/vnd.github.raw' -o ./DMRIds.dat -L https://api.github.com/repos/krot4u/qra-team/contents/DMRIds.dat
             Write-Output "Done..!"
 
       - name: Update files in repository
