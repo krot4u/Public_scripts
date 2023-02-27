@@ -9,12 +9,12 @@ jobs:
     name: Run Script
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Git Checkout
+        uses: actions/checkout@v3
 
-      - uses: Amadevus/pwsh-script@v2
+      - name: Run script
+        uses: Amadevus/pwsh-script@v2
         id: script
-        env:
-          GH_TOKEN: ${{ github.token }}
         with:
           script: |
             Write-Output "Download DMRIds.dat"
