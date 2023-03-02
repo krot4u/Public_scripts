@@ -257,6 +257,7 @@ if (file_exists($bmAPIkeyFile) && fopen($bmAPIkeyFile,'r')) {
 <a href="http://pi-star/?"><div align="center"><img src="/images/header.png" alt="QRA-Team Pi-Star" /></a>
 <p style="padding-right: 5px; text-align: right; color: #ffffff;">
   <a href="https://qra-team.online/" style="color: #ffffff;" target="_blank">XLX Server</a> |
+  <a href="/dmridlist.php" style="color: #ffffff;">DMRID-List</a> |
   <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
   <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
   <a href="/admin/expert/" style="color: #ffffff;"><?php echo $lang['expert'];?></a> |

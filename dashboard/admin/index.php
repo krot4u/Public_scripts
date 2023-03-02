@@ -90,6 +90,7 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 <?php if (isset($piStarCssBannerExtTxt)) { echo "<p style=\"text-align: center; color: #ffffff;\">".$piStarCssBannerExtTxt."</p>\n"; }?>
 <p style="padding-right: 5px; text-align: right; color: #ffffff;">
   <a href="https://qra-team.online/" style="color: #ffffff;" target="_blank">XLX Server</a> |
+  <a href="/dmridlist.php" style="color: #ffffff;">DMRID-List</a> |
   <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
   <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
   <?php if ($_SERVER["PHP_SELF"] == "/admin/index.php") {
