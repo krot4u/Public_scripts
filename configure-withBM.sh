@@ -5,6 +5,9 @@ NC="\033[0m"
 
 dmrgateway=/etc/dmrgateway
 
+echo "Set rpi-rw"
+mount -o remount,rw / ; mount -o remount,rw /boot
+
 echo "Configuring Hosts files"
 echo "496;46.17.42.12;4001" >> ~/XLXHosts.txt
 echo "XLX_496	0000	46.17.42.12	passw0rd	62030" >> ~/DMR_Hosts.txt
