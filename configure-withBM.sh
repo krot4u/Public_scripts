@@ -1,5 +1,6 @@
 #!/bin/bash
-dmrgateway=/etc/dmrgateway
+#dmrgateway=/etc/dmrgateway
+dmrgateway=/mnt/dmrgateway
 
 echo "Configuring Hosts files"
 echo "496;46.17.42.12;4001" >> ~/XLXHosts.txt
@@ -15,4 +16,8 @@ sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Slot=.*/Slot=2/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^TG=.*/TG=9/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Base=.*/Base=94000/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Module=.*/Module=A/' "${dmrgateway}"
+echo "------------"
+
+echo "Running pistar-update"
+#pistar-update
 echo "------------"
