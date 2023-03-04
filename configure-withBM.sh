@@ -1,6 +1,9 @@
 #!/bin/bash
-#dmrgateway=/etc/dmrgateway
-dmrgateway=/mnt/dmrgateway
+RED="\033[0;31m"
+GRN="\033[0;32m"
+NC="\033[0m"
+
+dmrgateway=/etc/dmrgateway
 
 echo "Configuring Hosts files"
 echo "496;46.17.42.12;4001" >> ~/XLXHosts.txt
@@ -19,5 +22,9 @@ sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Module=.*/Module=A/' "${dmrgateway}"
 echo "------------"
 
 echo "Running pistar-update"
-#pistar-update
+pistar-update
 echo "------------"
+
+echo -e "${GRN}------------>  Обновление завершено...${NC}"
+echo " "
+echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
