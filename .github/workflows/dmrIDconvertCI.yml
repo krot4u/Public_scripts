@@ -28,12 +28,6 @@ jobs:
               -OutFile $dmridCSVFile
             Write-Output "------------"
 
-            Write-Output "--> Download ipblacklist from GD..."
-            invoke-webrequest `
-              -Uri "https://docs.google.com/spreadsheets/d/1dJBa8J5iXUmXk6cKkXX5w6N43xu8uEkvXUOZkozs9Es/gviz/tq?tqx=out:csv&sheet=ipblacklist" `
-              -OutFile $ipblacklistFile
-            Write-Output "------------"
-
             Write-Output "--> Replace dmrid.dat..."
             $dmridCSVcontent = $((Get-Content $dmridCSVFile).Replace('"','') -match '^([0-9]{7}\,\w+\,)(.*)$' | Where-Object { $_ -ne "" }).ToUpper() | Sort-Object -Unique
             
@@ -45,11 +39,6 @@ jobs:
             $DMRIds2 = $DMRIds -replace ",$",""
             $DMRIdsClean = $DMRIds2 -replace ",","`t"
             $DMRIdsClean | Where-Object { $_ -ne "" } | Sort-Object -Unique | Set-Content $DMRIdsFile -Force
-            Write-Output "------------"
-
-            Write-Output "--> Replace dmrid.dat..."
-            $ipblacklistContent = $(Get-Content $ipblacklistFile | Select-Object -Skip 1).ToUpper() | Sort-Object -Unique
-            $ipblacklistContent.Replace('"','') | Where-Object { $_ -ne "" } | Sort-Object -Unique | Set-Content $ipblacklistFile -Force
             Write-Output "------------"
 
             Write-Output "Done..!"
