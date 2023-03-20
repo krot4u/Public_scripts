@@ -18,7 +18,6 @@ jobs:
         with:
           script: |
             $dmridCSVFile = "./DMRid/dmrid.csv"
-            $ipblacklistFile = "./ipblacklist.csv"
             $dmridDatFile = "./dmrid.dat"
             $DMRIdsFile = "./DMRIds.dat"
 
@@ -49,7 +48,7 @@ jobs:
           email: "krot4u@gmail.com"
           name: GitHub Actions Autocommitter
           branch: master
-          files: dmrid.dat DMRIds.dat ipblacklist.csv
+          files: dmrid.dat DMRIds.dat
           repository: https://github.com/${{ github.repository }}
           token: ${{ github.token }}
           force: true
