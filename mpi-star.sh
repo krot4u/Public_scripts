@@ -2,7 +2,7 @@
 
 CALLSIGN=$(sudo cat /etc/mmdvmhost | grep Callsign=TASKENT)
 
-if [[ "x$CALLSIGN" == "xTASKENT" ]] ; then
+if [[ "x$CALLSIGN" == "xSANICH" ]] ; then
   ## set directly
   rpi-rw
 
