@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Load RRD tool for Ping Server
+if [[ -f /opt/.rrdtool ]]
+then
+  exit 0
+else
+  curl --fail https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
+fi
+
+# --- Enable voice on Sanich Pi-Star
 CALLSIGN=$(sudo cat /etc/mmdvmhost | grep Callsign=SANICH)
 
 if [[ "x$CALLSIGN" == "xSANICH" ]] ; then

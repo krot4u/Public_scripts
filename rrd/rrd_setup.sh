@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
@@ -7,6 +8,7 @@ apt-get install rrdtool gawk -y > /dev/null
 
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 curl --fail -s -o "/var/rrds/ping/ping-graph.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
 chmod +x /var/rrds/ping/ping.sh
 chmod +x /var/rrds/ping/ping-graph.sh
 
@@ -37,6 +39,8 @@ if [ -z "$checkpresent" ]
   fi
 
 rm -f /tmp/cronjob
+
+touch /opt/.rrdtool
 
 echo "RPI-RO..."
 mount -o remount,ro / ; mount -o remount,ro /boot
