@@ -1,4 +1,7 @@
 rpi-rw
+
+apt install rrdtool gawk -y
+
 mkdir -p /var/rrds/ping
 /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
 --step 300 \
