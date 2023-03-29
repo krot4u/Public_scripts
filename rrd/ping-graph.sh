@@ -171,5 +171,5 @@ echo "
 <br>
 </BODY>
 </HTML>
-" >> /var/www/dashboard/rrd.html
+" > /var/www/dashboard/rrd.html
 chown www-data:www-data /var/www/dashboard/rrd.html

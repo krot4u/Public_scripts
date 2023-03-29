@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CALLSIGN=$(sudo cat /etc/mmdvmhost | grep Callsign=TASKENT)
+CALLSIGN=$(sudo cat /etc/mmdvmhost | grep Callsign=SANICH)
 
 if [[ "x$CALLSIGN" == "xSANICH" ]] ; then
   ## set directly
