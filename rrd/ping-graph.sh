@@ -5,7 +5,7 @@ echo "
 <HEAD><TITLE>Round-Trip and Packet Loss Stats</TITLE></HEAD>
 <BODY>
 <H3>Hourly Round-Trip & Packetloss Stats(1min average)</H3>
-" > index.html
+" > /var/www/dashboard/rrd.html
 rrdtool graph ping_wan_hour.png -h 225 -w 600 -a PNG \
 --imginfo '<IMG SRC=/stats/%s WIDTH=%lu HEIGHT=%lu >' \
 --start -3600 --end -60 --x-grid MINUTE:10:HOUR:1:MINUTE:30:0:%R \
@@ -38,7 +38,7 @@ echo "
 <img src="ping_wan_hour.png"><br>
 <br>
 <H3>Daily Round-Trip & Packetloss Stats(1min average)</H3>
-" >> index.html
+" >> /var/www/dashboard/rrd.html
 rrdtool graph ping_wan_day.png -h 225 -w 600 -a PNG \
 --imginfo '<IMG SRC=/stats/%s WIDTH=%lu HEIGHT=%lu >' \
 --lazy --start -86400 --end -60 --x-grid MINUTE:30:HOUR:1:HOUR:2:0:%H \
@@ -71,7 +71,7 @@ echo "
 <img src="ping_wan_day.png"><br>
 <br>
 <H3>Weekly Round-Trip & Packetloss Stats(1min average)</H3>
-" >> index.html
+" >> /var/www/dashboard/rrd.html
 rrdtool graph ping_wan_week.png -h 225 -w 600 -a PNG \
 --imginfo '<IMG SRC=/stats/%s WIDTH=%lu HEIGHT=%lu >' \
 --lazy --start -604800 --end -1800 \
@@ -104,7 +104,7 @@ echo "
 <img src="ping_wan_week.png"><br>
 <br>
 <H3>Monthly Round-Trip & Packetloss Stats(1min average)</H3>
-" >> index.html
+" >> /var/www/dashboard/rrd.html
 rrdtool graph ping_wan_month.png -h 225 -w 600 -a PNG \
 --imginfo '<IMG SRC=/stats/%s WIDTH=%lu HEIGHT=%lu >' \
 --lazy --start -2592000 --end -7200 \
@@ -137,7 +137,7 @@ echo "
 <img src="ping_wan_month.png"><br>
 <br>
 <H3>Yearly Round-Trip & Packetloss Stats(1min average)</H3>
-" >> index.html
+" >> /var/www/dashboard/rrd.html
 rrdtool graph ping_wan_year.png \
 --imginfo '<IMG SRC=/stats/%s WIDTH=%lu HEIGHT=%lu >' \
 --lazy --start -31536000 --end -86400 -h 225 -w 600 -a PNG \
@@ -171,5 +171,5 @@ echo "
 <br>
 </BODY>
 </HTML>
-" > /var/www/dashboard/rrd.html
+" >> /var/www/dashboard/rrd.html
 chown www-data:www-data /var/www/dashboard/rrd.html
