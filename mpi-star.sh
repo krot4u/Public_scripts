@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load RRD tool for Ping Server
-if [[ -f /opt/.rrdtool ]]
+if [[ -f /usr/local/sbin/.rrdtool ]]
 then
   exit 0
 else
