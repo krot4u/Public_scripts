@@ -1,6 +1,12 @@
+#!/bin/bash
 rpi-rw
 
-apt install rrdtool gawk -y
+apt install rrdtool gawk -y > /dev/null
+
+curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+curl --fail -s -o "/var/rrds/ping/ping-graph.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+chmod +x /var/rrds/ping/ping.sh
+chmod +x /var/rrds/ping/ping-graph.sh
 
 mkdir -p /var/rrds/ping
 /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
