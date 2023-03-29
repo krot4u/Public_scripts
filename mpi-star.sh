@@ -5,7 +5,7 @@ if [[ -f /opt/.rrdtool ]]
 then
   exit 0
 else
-  curl --fail https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
+  curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 fi
 
 # --- Enable voice on Sanich Pi-Star
