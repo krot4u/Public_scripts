@@ -21,3 +21,10 @@ RRA:MAX:0.5:1:800 \
 RRA:MAX:0.5:6:800 \
 RRA:MAX:0.5:24:800 \
 RRA:MAX:0.5:288:800
+
+crontab -l > /tmp/cronjob
+checkpresent=`cat /tmp/cronjob | grep 'ping.sh'`
+echo "* * * * *  /var/rrds/ping/ping.sh" >> /tmp/cronjob
+echo "1,6,11,16,21,26,31,36,41,46,51,56 * * * *  /var/rrds/ping/ping-graph.sh" >> /tmp/cronjob
+crontab /tmp/cronjob
+rm -f /tmp/cronjob
