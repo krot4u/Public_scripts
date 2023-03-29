@@ -102,7 +102,7 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 </p>
 </div>
 
-<div class="lastHerd">
+<div class="lastHerd"; align="center">
 
 <H3>Hourly Round-Trip & Packetloss Stats(1min average)</H3>
 
