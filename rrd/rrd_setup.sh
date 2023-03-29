@@ -1,5 +1,7 @@
 #!/bin/bash
-rpi-rw
+echo "RPI-RW..."
+mount -o remount,rw / ; mount -o remount,rw /boot
+echo "------------"
 
 apt-get install rrdtool gawk -y > /dev/null
 
@@ -36,4 +38,6 @@ if [ -z "$checkpresent" ]
 
 rm -f /tmp/cronjob
 
-rpi-ro
+echo "RPI-RO..."
+mount -o remount,ro / ; mount -o remount,ro /boot
+echo "------------"
