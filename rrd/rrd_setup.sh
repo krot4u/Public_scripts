@@ -35,3 +35,5 @@ if [ -z "$var" ]
   fi
 
 rm -f /tmp/cronjob
+
+rpi-ro
