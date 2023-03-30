@@ -54,7 +54,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.GIT_TOKEN }}
         with:
           source_file: AnyTone_Contacts.csv Retevis_Contact.csv
-          destination_repo: 'krot4u/Public_scripts/Devices_Contact_List'
+          destination_repo: 'krot4u/Public_scripts'
+          destination_folder: 'Devices_Contact_List'
           destination_branch: 'master'
           user_email: 'krot4u@gmail.com'
           user_name: 'krot4u'
