@@ -1,0 +1,61 @@
+name: Download DMR ID
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: "* */3 * * *"
+
+jobs:
+  build:
+    name: Run Script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: Amadevus/pwsh-script@v2
+        id: script
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            $AnyToneCSVfile = "AnyTone_Contacts.csv"
+            $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None"
+            Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
+
+            $RetevisCSVfile = "Retevis_Contact.csv"
+            $RetevisTemplate = "--DMRID--,2,--CALLSIGN--,0"
+            Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $RetevisCSVfile -Value "Contect Name, Call Type, Call ID, Call Receive Tone"
+
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+
+            # ------ AnyTone
+            $Counter = 1
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $AnyToneTemplate -replace "--LINEnumber--","$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $AnyToneCSVfile -Value $NewLine
+              $Counter++
+            }
+
+            # ------ Retevis
+            $Lines = @()
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $RetevisTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $RetevisCSVfile -Value $NewLine
+            }
+
+      - name: Push DMRIds.dat to Public
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GIT_TOKEN }}
+        with:
+          source_file: AnyTone_Contacts.csv Retevis_Contact.csv
+          destination_repo: 'krot4u/Public_scripts/Devices_Contact_List'
+          destination_branch: 'master'
+          user_email: 'krot4u@gmail.com'
+          user_name: 'krot4u'
+          commit_message: 'Commit DMRIDs.dat'
