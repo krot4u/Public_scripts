@@ -27,6 +27,10 @@ jobs:
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Contect Name, Call Type, Call ID, Call Receive Tone"
 
+            $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
+            $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
+            Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
+
             $DMRIdsContent = Get-Content ./DMRIds.dat
 
             # ------ AnyTone
@@ -45,6 +49,14 @@ jobs:
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
               $NewLine = $RetevisTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $RetevisCSVfile -Value $NewLine
+            }
+
+            # ------ Zastone
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
             }
 
       - name: Update files in repository
