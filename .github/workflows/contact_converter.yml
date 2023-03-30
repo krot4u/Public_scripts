@@ -1,4 +1,4 @@
-name: Download DMR ID
+name: Convert Contact List
 on: 
   workflow_dispatch:
   schedule:
