@@ -4,6 +4,9 @@ echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
+echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
+
+apt-get update
 apt-get install rrdtool gawk -y > /dev/null
 
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
