@@ -17,12 +17,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         with:
           script: |
-            $AnyToneCSVfile = "AnyTone_Contacts.csv"
+            $AnyToneCSVfile = "Devices_Contact_List/AnyTone_Contacts.csv"
             $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
 
-            $RetevisCSVfile = "Retevis_Contact.csv"
+            $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
             $RetevisTemplate = "--DMRID--,2,--CALLSIGN--,0"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Contect Name, Call Type, Call ID, Call Receive Tone"
