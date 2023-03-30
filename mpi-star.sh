@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Load RRD tool for Ping Server
-if [[ -f /usr/local/sbin/.rrdtool ]]
+
+if [[ -f /var/www/dashboard/ping_wan_hour.png ]]
 then
   exit 0
 else
