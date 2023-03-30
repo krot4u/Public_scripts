@@ -57,3 +57,9 @@ jobs:
           repository: https://github.com/${{ github.repository }}
           token: ${{ github.token }}
           force: true
+    
+      - name: Publish Contact Lists
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assets-for-download
+          path: Devices_Contact_List
