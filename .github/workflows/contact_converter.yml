@@ -48,15 +48,14 @@ jobs:
               Add-Content -Path $RetevisCSVfile -Value $NewLine
             }
 
-      - name: Push DMRIds.dat to Public
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.GIT_TOKEN }}
+      - name: Update files in repository
+        uses: actions-x/commit@v6
         with:
-          source_file: AnyTone_Contacts.csv Retevis_Contact.csv
-          destination_repo: 'krot4u/Public_scripts'
-          destination_folder: 'Devices_Contact_List'
-          destination_branch: 'master'
-          user_email: 'krot4u@gmail.com'
-          user_name: 'krot4u'
-          commit_message: 'Commit AnyTone_Contacts.csv Retevis_Contact.csv'
+          email: "krot4u@gmail.com"
+          name: GitHub Actions Autocommitter
+          branch: master
+          files: AnyTone_Contacts.csv Retevis_Contact.csv
+          directory: 'Devices_Contact_List'
+          repository: https://github.com/${{ github.repository }}
+          token: ${{ github.token }}
+          force: true
