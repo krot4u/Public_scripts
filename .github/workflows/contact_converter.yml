@@ -58,4 +58,4 @@ jobs:
           destination_branch: 'master'
           user_email: 'krot4u@gmail.com'
           user_name: 'krot4u'
-          commit_message: 'Commit DMRIDs.dat'
+          commit_message: 'Commit AnyTone_Contacts.csv Retevis_Contact.csv'
