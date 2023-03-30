@@ -61,5 +61,5 @@ jobs:
       - name: Publish Contact Lists
         uses: actions/upload-artifact@v2
         with: 
-          name: assets-for-download
+          name: Devices_Contact_List
           path: Devices_Contact_List
