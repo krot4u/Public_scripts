@@ -24,6 +24,8 @@ sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Base=.*/Base=94000/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Module=.*/Module=A/' "${dmrgateway}"
 echo "------------"
 
+sed -i '/# Add custom YSF Hosts/i if [ -f \"/root/XLXHosts.txt\" ]; then\n	cat /root/XLXHosts.txt >> ${DMRHOSTS}\nfi' HostFilesUpdate.sh
+
 dmridqra=`cat /usr/local/sbin/HostFilesUpdate.sh | grep 'krot4u/Public_scripts/master/DMRIds.dat'`
 if [ ! -z "$dmridqra" ]
   then
