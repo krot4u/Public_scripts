@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Начало..."
 dmridqra=`cat /usr/local/sbin/HostFilesUpdate.sh | grep 'krot4u/Public_scripts/master/DMRIds.dat'`
 if [ ! -z "$dmridqra" ]
   then
