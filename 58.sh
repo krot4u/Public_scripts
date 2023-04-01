@@ -7,3 +7,5 @@ if [ ! -z "$dmridqra" ]
 else
   exit 0
 fi
+
+echo "Готово!"
