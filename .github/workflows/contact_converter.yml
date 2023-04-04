@@ -60,6 +60,9 @@ jobs:
             }
 
             # ------ TAKT
+            pip install xlwt
+            pip install shutil
+            pip install pandas
             chmod +x Devices_Contact_List/takt_convert.py
             python Devices_Contact_List/takt_convert.py
 
