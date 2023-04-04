@@ -60,11 +60,12 @@ jobs:
             }
 
             # ------ TAKT
+            ls -la
             pip install xlwt
             pip install shutil
             pip install pandas
-            chmod +x Devices_Contact_List/takt_convert.py
-            python Devices_Contact_List/takt_convert.py
+            cd Devices_Contact_List
+            python takt_convert.py
 
       - name: Update files in repository
         uses: actions-x/commit@v6
