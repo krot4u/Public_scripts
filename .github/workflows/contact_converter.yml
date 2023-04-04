@@ -61,7 +61,7 @@ jobs:
 
             # ------ TAKT
             chmod +x Devices_Contact_List/takt_convert.py
-            Devices_Contact_List/takt_convert.py
+            python Devices_Contact_List/takt_convert.py
 
       - name: Update files in repository
         uses: actions-x/commit@v6
