@@ -64,6 +64,7 @@ jobs:
             pip install xlwt
             pip install shutil
             pip install pandas
+            pip install openpyxl
             cd Devices_Contact_List
             python takt_convert.py
 
