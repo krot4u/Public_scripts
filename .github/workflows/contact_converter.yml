@@ -65,6 +65,7 @@ jobs:
             pip install shutil
             pip install pandas
             pip install openpyxl
+            cp DMRIds.dat ./Devices_Contact_List/DMRIds.dat
             cd Devices_Contact_List
             python takt_convert.py
 
