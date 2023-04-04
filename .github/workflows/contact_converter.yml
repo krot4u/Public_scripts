@@ -69,7 +69,7 @@ jobs:
           email: "krot4u@gmail.com"
           name: GitHub Actions Autocommitter
           branch: master
-          files: Devices_Contact_List/AnyTone_Contacts.csv Devices_Contact_List/Retevis_Contact.csv Devices_Contact_List/ZastoneD900_Contact.csv
+          files: Devices_Contact_List/*
           repository: https://github.com/${{ github.repository }}
           token: ${{ github.token }}
           force: true
