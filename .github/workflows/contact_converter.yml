@@ -23,9 +23,9 @@ jobs:
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
 
             $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
-            $RetevisTemplate = "--DMRID--,2,--CALLSIGN--,0"
+            $RetevisTemplate = "--CALLSIGN--,2,--DMRID--,0"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $RetevisCSVfile -Value "Contect Name, Call Type, Call ID, Call Receive Tone"
+            Add-Content -Path $RetevisCSVfile -Value "Contact Name, Call Type, Call ID, Call Receive Tone"
 
             $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
