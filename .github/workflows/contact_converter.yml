@@ -59,6 +59,10 @@ jobs:
               Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
             }
 
+            # ------ TAKT
+            # chmod +x Devices_Contact_List/takt_convert.py
+            # Devices_Contact_List/takt_convert.py
+
       - name: Update files in repository
         uses: actions-x/commit@v6
         with:

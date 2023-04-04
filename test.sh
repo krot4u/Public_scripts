@@ -1,22 +1,57 @@
-CHANNEL1=/opt/alterfrn/channel_1.cfg.unit
-CHANNEL2=/opt/alterfrn/channel_2.cfg.unit
-CHANNEL3=/opt/alterfrn/channel_3.cfg.unit
-CHANNEL4=/opt/alterfrn/channel_4.cfg.unit
+#!/usr/bin/env python
 
-CHANNELS=($CHANNEL1 $CHANNEL2 $CHANNEL3 $CHANNEL4)
+import wiringpi
+import subprocess
+import time
+import daemon
 
-$CURRENTCHANNEL=`cat /lib/systemd/system/frnclient.service | grep -E '^Network=.*' | awk -F"=" '{print $2}'`
+# Set up the GPIO pin
+PIN = 8
+wiringpi.wiringPiSetup()
+wiringpi.pinMode(PIN, wiringpi.GPIO.INPUT)
 
-start=$CURRENTCHANNEL
-# handle negative offsets
-[[ $start -lt 0 ]] && start=$((${#CHANNELS[@]} + start))
+# Define a list of commands to execute
+commands = [
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_1.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_2.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_3.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_4.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_5.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_6.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_7.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_8.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_9.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_10.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_11.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_12.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_13.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_14.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_15.cfg.unix',
+    'kill -9 $(cat /var/run/frnclient.pid) && /opt/alterfrn/FRNClientConsole.Linux-aarch64.r7312 run channel_16.cfg.unix',
+]
 
-# the star of the show, create CHANNELS2 from two sub-arrays of CHANNELS
-CHANNELS2=("${CHANNELS[@]:$start}" "${CHANNELS[@]:0:$start}")
+# Define a flag to keep track of whether a command has already been executed
+command_executed = False
 
-#echo "${CHANNELS2[@]}"
+# Define a function that listens for changes on the GPIO pin
+def listen_for_gpio():
+    while True:
+        # Get the current state of the pin
+        state = wiringpi.digitalRead(PIN)
 
-sed -i "s/r218 run.*/r218 run ${CHANNELS2[0]}/" /lib/systemd/system/frnclient.service
+        # Execute a command if the pin is set to high and a command has not already been executed
+        if state == wiringpi.GPIO.HIGH and not command_executed:
+            command = commands.pop(0)
+            subprocess.call(command, shell=True)
+            command_executed = True
 
-systemctl daemon-reload
-systemctl restart frnclient.service
+        # Reset the flag if the pin is set to low
+        if state == wiringpi.GPIO.LOW:
+            command_executed = False
+
+        # Sleep for a short period of time to avoid excessive CPU usage
+        time.sleep(0.1)
+
+# Run the function as a daemon
+with daemon.DaemonContext():
+    listen_for_gpio()
