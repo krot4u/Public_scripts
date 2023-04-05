@@ -65,7 +65,8 @@ jobs:
             pip install openpyxl
             cp DMRIds.dat ./Devices_Contact_List/DMRIds.dat
             cd Devices_Contact_List
-            python3 takt_convert.py
+            cat DMRIds.dat
+            python takt_convert.py
 
       - name: Update files in repository
         uses: actions-x/commit@v6
