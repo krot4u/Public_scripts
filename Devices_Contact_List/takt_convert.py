@@ -8,7 +8,7 @@ import pandas as pd
 
 # Переменные для имён файлов 
 DMRIds_file = 'DMRIds.dat'
-output_file = 'Takt_Contac.xls'
+output_file = 'Takt_Contact.xls'
 
 # Создание объекта ExcelWriter и запись данных
 writer = pd.ExcelWriter(output_file, engine='openpyxl')
