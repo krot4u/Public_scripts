@@ -14,7 +14,7 @@ output_file = 'Takt_conTakt.xls'
 writer = pd.ExcelWriter(output_file, engine='openpyxl')
 
 # Обработка файла DMRIds_file, добавление необходимого форматирования
-df = pd.read_csv(DMRIds_file, header=None, sep=" ", engine="python", encoding='utf-8')
+df = pd.read_csv(DMRIds_file, header=None, sep="  ", engine="python", encoding='utf-8')
 df["No."] = range(1, len(df) + 1)
 df["Call Type"] = "Private Call"
 df = df.rename( columns={0: "Call ID", 1: "Call Alias"}) \
