@@ -8,7 +8,7 @@ import pandas as pd
 
 # Переменные для имён файлов 
 DMRIds_file = 'DMRIds.dat'
-output_file = 'Takt_Contact.xls'
+output_file = 'Takt_Contac.xls'
 
 # Создание объекта ExcelWriter и запись данных
 writer = pd.ExcelWriter(output_file, engine='openpyxl')
@@ -43,12 +43,8 @@ for index, value in counts.items():
 
 # Скелет таблицы
 table = {
-    'Basic Information':            [('Radio Data Version', '92'), ('Model Type', 'Mobile'), ('Sale Region', '5'), ('Dial Rules', 'None')],
-    'DMR Services_Contact':         df,
-    'HDC1200 Services_Contact':     [('No.','Call Alias','HDC System', 'Call Type', 'Call ID')],
-    '2-Tone Services_Contact':      [('No.','Call Alias','Encode Format','2-Tone System','1st Tone Frequency [Hz]','2nd Tone Frequency [Hz]')],
-    '5-Tone Services_Contact List': [('No.','Call Alias','Address')],
-    'Phone_List':                   [('No.','Call Alias','Phone Number')]}
+    'DMR Services_Contact':         df
+    }
 
 # Запись данных из списка table
 for name, data in table.items():
