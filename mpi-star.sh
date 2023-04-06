@@ -8,8 +8,8 @@ then
 else
   curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 fi
-
-
+#
+# ---------- Update pistar-upgrade file
 pistarCurVersion=$(awk -F "= " '/Version/ {print $2}' /etc/pistar-release)
 if [[ ${pistarCurVersion} == "4.1.4" ]]
   then
