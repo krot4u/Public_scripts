@@ -9,14 +9,12 @@ else
   curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 fi
 
-# --- Enable voice on Sanich Pi-Star
-CALLSIGN=$(sudo cat /etc/mmdvmhost | grep Callsign=SANICH)
 
-if [[ "x$CALLSIGN" == "xSANICH" ]] ; then
-  ## set directly
-  rpi-rw
-  sed -i -E "/^\[Voice\]$/,/^\[/ s/^Enabled=.*/Enabled=1/" /etc/dmrgateway
-  rpi-ro
-else
-  exit 0
+pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
+if [[ $pistarHardware == "OrangePiZero" ]]
+  then
+    curl -s -o /usr/local/sbin/pistar-upgrade https://raw.githubusercontent.com/AndyTaylorTweet/Pi-Star_Binaries_sbin/master/pistar-upgrade
+    pistar-upgrade
+  else
+    exit 0  
 fi
