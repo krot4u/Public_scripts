@@ -94,25 +94,6 @@ echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
 cp "${mmdvmhost}" "${mmdvmhost}.$(date +%Y%m%d)"
 
-echo "Clean backup of /etc/dmrgateway and /etc/mmdvmhost"
-FILEBACKUP=1
-FILES="
-${dmrgateway}
-${mmdvmhost}"
-
-for file in ${FILES}
-do
-  BACKUPCOUNT=$(ls ${file}.* | wc -l)
-  BACKUPSTODELETE=$(expr ${BACKUPCOUNT} - ${FILEBACKUP})
-  if [ ${BACKUPCOUNT} -gt ${FILEBACKUP} ]; then
-        for f in $(ls -tr ${file}.* | head -${BACKUPSTODELETE})
-        do
-                rm $f
-        done
-  fi
-done
-echo "------------"
-
 echo "Downloading modified dmrgateway and mmdvmhost..."
 curl --fail -o "${dmrgateway}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
 curl --fail -o "${mmdvmhost}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
@@ -124,10 +105,6 @@ echo "------------"
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dstarrepeater
-
-echo "Restart Nginx..."
-systemctl restart nginx.service > /dev/null 2>&1
-echo "------------"
 
 echo "Updating dmrgateway and mmdvmhost..."
 sed -i "s/--Frequency--/$FREQUENCY/" "${dmrgateway}"
