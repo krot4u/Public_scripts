@@ -23,7 +23,7 @@ jobs:
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
 
             $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
-            $RetevisTemplate = "--LINEnumber--,--CALLSIGN-,--DMRID--,Private Call,On,None,None"
+            $RetevisTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
             Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
