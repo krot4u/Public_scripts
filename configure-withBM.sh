@@ -8,9 +8,17 @@ dmrgateway=/etc/dmrgateway
 echo "Set rpi-rw"
 mount -o remount,rw / ; mount -o remount,rw /boot
 
-echo "Configuring Hosts files"
-echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
-echo "XLX_496	0000	46.17.42.12	passw0rd	62030" >> /root/DMR_Hosts.txt
+if [[ "" == $(grep "46.17.42.12" /root/XLXHosts.txt) ]]
+  then
+    echo "Configuring Hosts files"
+    echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
+fi
+
+if [[ "" == $(grep "46.17.42.12" /root/XLXHosts.txt) ]]
+  then
+    echo "Configuring Hosts files"
+    echo "XLX_496       0000    46.17.42.12     passw0rd        62030" >> /root/DMR_Hosts.txt
+fi
 echo "------------"
 
 echo "Configuring INI files"
@@ -24,10 +32,10 @@ sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Base=.*/Base=94000/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Module=.*/Module=A/' "${dmrgateway}"
 echo "------------"
 
-sed -i '/# Add custom YSF Hosts/i if [ -f \"/root/XLXHosts.txt\" ]; then\n	cat /root/XLXHosts.txt >> ${DMRHOSTS}\nfi' /usr/local/sbin/HostFilesUpdate.sh
+sed -i '/# Add custom YSF Hosts/i if [ -f \"/root/XLXHosts.txt\" ]; then\n      cat /root/XLXHosts.txt >> ${XLXHOSTS}\nfi' /usr/local/sbin/HostFilesUpdate.sh
 
 dmridqra=`cat /usr/local/sbin/HostFilesUpdate.sh | grep 'krot4u/Public_scripts/master/DMRIds.dat'`
-if [ ! -z "$dmridqra" ]
+if [ -z "$dmridqra" ]
   then
     sed -i '/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
     sed -i '/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
