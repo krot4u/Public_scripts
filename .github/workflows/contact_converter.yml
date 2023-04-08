@@ -23,9 +23,10 @@ jobs:
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
 
             $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
-            $RetevisTemplate = "--CALLSIGN--,2,--DMRID--,0"
+            $RetevisTemplate = "--LINEnumber--,--CALLSIGN-,--DMRID--,Private Call,On,None,None"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $RetevisCSVfile -Value "Contact Name, Call Type, Call ID, Call Receive Tone"
+            Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
+            Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
 
             $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
@@ -47,8 +48,9 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $NewLine = $RetevisTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              $NewLine = $RetevisTemplate -replace "--LINEnumber--", "$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $RetevisCSVfile -Value $NewLine
+              $Counter++
             }
 
             # ------ Zastone
