@@ -44,19 +44,30 @@ if [ -z "$dmridqra" ]
     sed -i '/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
     sed -i '/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
 else
-  echo "Running pistar-update"
-  pistar-update
-  echo "------------"
-  echo -e "${GRN}------------>  Обновление завершено...${NC}"
-  echo " "
-  echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
-  exit 0
+  checkAlterPistar=$(cat /etc/svxlink/svxlink.conf | grep SimplexLogic)
+  if [ -z "$checkAlterPistar" ]
+    then
+      echo "Running pistar-update"
+      pistar-update
+  else
+    echo "This is AlterPiStar"
+    systemctl restart dmrgateway.service
+    systemctl restart mmdvmhost.service
+  fi
 fi
 
-echo "Running pistar-update"
-pistar-update
-echo "------------"
+checkAlterPistar=$(cat /etc/svxlink/svxlink.conf | grep SimplexLogic)
+if [ -z "$checkAlterPistar" ]
+  then
+    echo "Running pistar-update"
+    pistar-update
+else
+  echo "This is AlterPiStar"
+  systemctl restart dmrgateway.service
+  systemctl restart mmdvmhost.service
+fi
 
+echo " "
 echo -e "${GRN}------------>  Обновление завершено...${NC}"
 echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
