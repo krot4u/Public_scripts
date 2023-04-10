@@ -51,6 +51,7 @@ else
       pistar-update
   else
     echo "This is AlterPiStar"
+    /usr/local/sbin/HostFilesUpdate.sh
     systemctl restart dmrgateway.service
     systemctl restart mmdvmhost.service
   fi
@@ -63,6 +64,7 @@ if [ -z "$checkAlterPistar" ]
     pistar-update
 else
   echo "This is AlterPiStar"
+  /usr/local/sbin/HostFilesUpdate.sh
   systemctl restart dmrgateway.service
   systemctl restart mmdvmhost.service
 fi
