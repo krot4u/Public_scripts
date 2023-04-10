@@ -54,24 +54,7 @@ else
     /usr/local/sbin/HostFilesUpdate.sh
     systemctl restart dmrgateway.service
     systemctl restart mmdvmhost.service
-    echo " "
-    echo -e "${GRN}------------>  Обновление завершено...${NC}"
-    echo " "
-    echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
-    exit 0
   fi
-fi
-
-checkAlterPistar=$(cat /etc/svxlink/svxlink.conf | grep SimplexLogic)
-if [ -z "$checkAlterPistar" ]
-  then
-    echo "Running pistar-update"
-    pistar-update
-else
-  echo "This is AlterPiStar"
-  /usr/local/sbin/HostFilesUpdate.sh
-  systemctl restart dmrgateway.service
-  systemctl restart mmdvmhost.service
 fi
 
 echo " "
