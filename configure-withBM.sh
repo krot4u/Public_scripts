@@ -54,6 +54,11 @@ else
     /usr/local/sbin/HostFilesUpdate.sh
     systemctl restart dmrgateway.service
     systemctl restart mmdvmhost.service
+    echo " "
+    echo -e "${GRN}------------>  Обновление завершено...${NC}"
+    echo " "
+    echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
+    exit 0
   fi
 fi
 
