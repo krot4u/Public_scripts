@@ -45,6 +45,11 @@ if [ -z "$dmridqra" ]
     sed -i '/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
 else
   echo "Running pistar-update"
+  pistar-update
+  echo "------------"
+  echo -e "${GRN}------------>  Обновление завершено...${NC}"
+  echo " "
+  echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
   exit 0
 fi
 
@@ -55,3 +60,4 @@ echo "------------"
 echo -e "${GRN}------------>  Обновление завершено...${NC}"
 echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
+exit 0
