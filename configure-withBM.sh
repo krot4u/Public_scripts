@@ -14,7 +14,7 @@ if [[ "" == $(grep "46.17.42.12" /root/XLXHosts.txt) ]]
     echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
 fi
 
-if [[ "" == $(grep "46.17.42.12" /root/XLXHosts.txt) ]]
+if [[ "" == $(grep "46.17.42.12" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring Hosts files"
     echo "XLX_496       0000    46.17.42.12     passw0rd        62030" >> /root/DMR_Hosts.txt
@@ -44,6 +44,7 @@ if [ -z "$dmridqra" ]
     sed -i '/DMRIds.dat --user-agent "Pi-Star_${pistarCurVersion}"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
     sed -i '/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh
 else
+  echo "Running pistar-update"
   exit 0
 fi
 
