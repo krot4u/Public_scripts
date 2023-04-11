@@ -21,7 +21,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 19,ARCTIC,5973215,Private Call,On,None,None
 20,SANICH,5973232,Private Call,On,None,None
 21,TASKENT,5973272,Private Call,On,None,None
-22,MIXGUIT,5973316,Private Call,On,None,None
+22,MIXGUIT,2503316,Private Call,On,None,None
 23,HOLODOK,5973415,Private Call,On,None,None
 24,QRADMR1,5973501,Private Call,On,None,None
 25,ORANGE,5973723,Private Call,On,None,None
