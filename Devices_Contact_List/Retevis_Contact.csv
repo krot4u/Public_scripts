@@ -100,3 +100,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 98,SHAMAN,6600001,Private Call,On,None,None
 99,DOMOVOY,2509121,Private Call,On,None,None
 100,QRAP25,6660333,Private Call,On,None,None
+101,VDN,2506015,Private Call,On,None,None
