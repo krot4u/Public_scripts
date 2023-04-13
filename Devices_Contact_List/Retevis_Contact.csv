@@ -101,3 +101,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 99,QRAP25,6660333,Private Call,On,None,None
 100,VDN,2506015,Private Call,On,None,None
 101,SMERCH,2300341,Private Call,On,None,None
+102,ENERGY,5973801,Private Call,On,None,None
