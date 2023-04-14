@@ -26,10 +26,15 @@ echo " "
 echo "Done!"
 echo " "
 
+echo "Start MMDVM service..."
+systemctl start mmdvmhost.timer
+systemctl start mmdvmhost.service
+echo "------------"
+
 /bin/sync
 /bin/sync
 /bin/sync
 mount -o remount,ro /
 mount -o remount,ro /boot
-
+echo " "
 echo "Please Reboot Pi-Star!"
