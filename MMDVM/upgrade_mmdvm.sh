@@ -4,9 +4,12 @@ mount -o remount,rw /
 mount -o remount,rw /boot
 
 echo "backup original files..."
-cp /usr/local/bin/MMDVMCal /usr/local/bin/MMDVMCal_origin
-cp /usr/local/bin/MMDVMHost /usr/local/bin/MMDVMHost_origin
-cp /usr/local/bin/RemoteCommand /usr/local/bin/RemoteCommand_origin
+if [ ! -f "/usr/local/bin/MMDVMCal_origin" ]
+  then 
+    cp /usr/local/bin/MMDVMCal /usr/local/bin/MMDVMCal_origin
+    cp /usr/local/bin/MMDVMHost /usr/local/bin/MMDVMHost_origin
+    cp /usr/local/bin/RemoteCommand /usr/local/bin/RemoteCommand_origin
+fi
 echo "------------"
 
 echo "Stop MMDVM service..."
