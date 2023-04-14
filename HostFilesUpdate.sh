@@ -18,6 +18,9 @@ if [ "$(id -u)" != "0" ];then
   exit 1
 fi
 
+mount -o remount,rw /
+mount -o remount,rw /boot
+
 # Create backup of old files
 if [ ${FILEBACKUP} -ne 0 ]; then
   cp ${DMRIDFILE} ${DMRIDFILE}.$(date +%Y%m%d)

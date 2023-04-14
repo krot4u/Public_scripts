@@ -69,7 +69,8 @@ echo "Run pi-star Upgrade..."
 echo "------------"
 
 echo "RPI-RW..."
-mount -o remount,rw / ; mount -o remount,rw /boot
+mount -o remount,rw /
+mount -o remount,rw /boot
 echo "------------"
 
 echo "Downloading modified pistar-update..."
