@@ -49,5 +49,9 @@ rm -f /tmp/cronjob
 touch /usr/local/sbin/.rrdtool
 
 echo "RPI-RO..."
-mount -o remount,ro / ; mount -o remount,ro /boot
+/bin/sync
+/bin/sync
+/bin/sync
+mount -o remount,ro /
+mount -o remount,ro /boot
 echo "------------"
