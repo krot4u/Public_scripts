@@ -38,7 +38,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 36,DVS001,5973901,Private Call,On,None,None
 37,TRANSIT,5973909,Private Call,On,None,None
 38,CMRADUGA,5973911,Private Call,On,None,None
-39,QRAXLX,6660222,Private Call,On,None,None
+39,QRAECHO,6660222,Private Call,On,None,None
 40,DMRFRN,1128888,Private Call,On,None,None
 41,BORISYC,2500502,Private Call,On,None,None
 42,BALU,3720001,Private Call,On,None,None
