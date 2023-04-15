@@ -14,16 +14,16 @@ if [[ "" == $(grep "dvs.qra-team.online" /usr/local/etc/P25HostsLocal.txt) ]]
     echo "14003	dvs.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
 fi
 
-if [[ "" == $(grep "46.17.42.12" /root/XLXHosts.txt) ]]
+if [[ "" == $(grep "dvs.qra-team.online" /root/XLXHosts.txt) ]]
   then
     echo "Configuring XLXHosts"
-    echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
+    echo "496;dvs.qra-team.online;4001" >> /root/XLXHosts.txt
 fi
 
-if [[ "" == $(grep "46.17.42.12" /root/DMR_Hosts.txt) ]]
+if [[ "" == $(grep "dvs.qra-team.online" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring DMR_Hosts files"
-    echo "XLX_496       0000    46.17.42.12     passw0rd        62030" >> /root/DMR_Hosts.txt
+    echo "XLX_496       0000    dvs.qra-team.online     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 echo "------------"
 
