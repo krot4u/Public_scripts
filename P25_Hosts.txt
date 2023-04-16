@@ -1,2 +1,1 @@
-14003	dvs.qra-team.online	41000
-25005 185.143.221.45  41000
+1	p25.qra-team.online	41000
