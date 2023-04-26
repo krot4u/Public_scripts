@@ -1,4 +1,7 @@
 #!/bin/sh
+mount -o remount,rw /
+mount -o remount,rw /boot
+
 cd /var/rrds/ping/
 echo "
 <HTML>
@@ -173,3 +176,6 @@ echo "
 </HTML>
 " >> /var/www/dashboard/rrd.html
 chown www-data:www-data /var/www/dashboard/rrd.html
+
+mount -o remount,ro /
+mount -o remount,ro /boot

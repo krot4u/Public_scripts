@@ -1,4 +1,8 @@
 #!/bin/bash
+
+mount -o remount,rw /
+mount -o remount,rw /boot
+
 PING=/bin/ping
 COUNT=4
 DEADLINE=10
@@ -34,3 +38,6 @@ ping_host qra-team.online
     --template \
     pl:rtt \
     N:$RETURN_VALUE
+
+mount -o remount,ro /
+mount -o remount,ro /boot
