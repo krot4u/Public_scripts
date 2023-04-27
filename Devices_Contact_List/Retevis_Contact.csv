@@ -115,3 +115,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 113,YANTAR,2504074,Private Call,On,None,None
 114,PARKER,1010001,Private Call,On,None,None
 115,START,2504075,Private Call,On,None,None
+116,MEDVED,2500675,Private Call,On,None,None
