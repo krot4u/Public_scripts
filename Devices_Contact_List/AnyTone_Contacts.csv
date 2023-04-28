@@ -1,5 +1,5 @@
 No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert
-1,2120212,V6TURBO,*,*,*,*,*,Private Call,None
+1,2120212,QRA212,*,*,*,*,*,Private Call,None
 2,2150215,ARCTIC,*,*,*,*,*,Private Call,None
 3,2500610,ONTONIO,*,*,*,*,*,Private Call,None
 4,2507053,PSTAR,*,*,*,*,*,Private Call,None
@@ -22,7 +22,7 @@ No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert
 21,5973272,TASKENT,*,*,*,*,*,Private Call,None
 22,2503316,MIXGUIT,*,*,*,*,*,Private Call,None
 23,5973415,HOLODOK,*,*,*,*,*,Private Call,None
-24,5973501,QRADMR1,*,*,*,*,*,Private Call,None
+24,5973501,QRA1731,*,*,*,*,*,Private Call,None
 25,5973723,ORANGE,*,*,*,*,*,Private Call,None
 26,5973750,GNOM,*,*,*,*,*,Private Call,None
 27,5973757,SURGUT,*,*,*,*,*,Private Call,None
@@ -63,7 +63,7 @@ No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert
 62,5973008,PARTZAN,*,*,*,*,*,Private Call,None
 63,2500449,KOSMOS,*,*,*,*,*,Private Call,None
 64,6660999,ECHO,*,*,*,*,*,Private Call,None
-65,2500621,OBERON,*,*,*,*,*,Private Call,None
+65,2500621,QRA058,*,*,*,*,*,Private Call,None
 66,2300395,TUAPSE,*,*,*,*,*,Private Call,None
 67,2502202,REVAZ,*,*,*,*,*,Private Call,None
 68,3324733,CONDOR,*,*,*,*,*,Private Call,None

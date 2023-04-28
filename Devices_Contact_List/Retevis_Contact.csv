@@ -5,7 +5,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 3,Room3,94003,Private Call,On,None,2
 4,Room4,94004,Private Call,On,None,2
 5,Room5,94005,Private Call,On,None,2
-6,V6TURBO,2120212,Private Call,On,None,None
+6,QRA212,2120212,Private Call,On,None,None
 7,ARCTIC,2150215,Private Call,On,None,None
 8,ONTONIO,2500610,Private Call,On,None,None
 9,PSTAR,2507053,Private Call,On,None,None
@@ -28,7 +28,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 26,TASKENT,5973272,Private Call,On,None,None
 27,MIXGUIT,2503316,Private Call,On,None,None
 28,HOLODOK,5973415,Private Call,On,None,None
-29,QRADMR1,5973501,Private Call,On,None,None
+29,QRA1731,5973501,Private Call,On,None,None
 30,ORANGE,5973723,Private Call,On,None,None
 31,GNOM,5973750,Private Call,On,None,None
 32,SURGUT,5973757,Private Call,On,None,None
@@ -69,7 +69,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 67,PARTZAN,5973008,Private Call,On,None,None
 68,KOSMOS,2500449,Private Call,On,None,None
 69,ECHO,6660999,Private Call,On,None,None
-70,OBERON,2500621,Private Call,On,None,None
+70,QRA058,2500621,Private Call,On,None,None
 71,TUAPSE,2300395,Private Call,On,None,None
 72,REVAZ,2502202,Private Call,On,None,None
 73,CONDOR,3324733,Private Call,On,None,None
