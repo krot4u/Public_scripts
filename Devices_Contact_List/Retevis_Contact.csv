@@ -117,3 +117,5 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 115,START,2504075,Private Call,On,None,None
 116,MEDVED,2500675,Private Call,On,None,None
 117,VITAMIN,7770348,Private Call,On,None,None
+118,SHPIL,7800056,Private Call,On,None,None
+119,622,2500761,Private Call,On,None,None
