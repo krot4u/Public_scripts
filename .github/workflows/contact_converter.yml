@@ -30,8 +30,9 @@ jobs:
             Add-Content -Path $RetevisCSVfile -Value "1,Room1,94001,Private Call,On,None,2"
             Add-Content -Path $RetevisCSVfile -Value "2,Room2,94002,Private Call,On,None,2"
             Add-Content -Path $RetevisCSVfile -Value "3,Room3,94003,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "4,Room4,94004,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "5,Room5,94005,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "4,QRAparrot,94004,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "5,QRAfrn,94005,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "5,QRAp25,94006,Private Call,On,None,2"
 
             $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
