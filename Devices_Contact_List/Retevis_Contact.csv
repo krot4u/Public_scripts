@@ -130,3 +130,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 127,AGAT,1000777,Private Call,On,None,None
 128,ENOT61,1610161,Private Call,On,None,None
 129,WAVU,4800001,Private Call,On,None,None
+130,ODMIN,2502153,Private Call,On,None,None
