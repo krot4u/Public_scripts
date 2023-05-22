@@ -20,7 +20,7 @@ fi
       echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
   fi
 
-if [[ "" == $(grep "dvs.qra-team.online" /root/DMR_Hosts.txt) ]]
+if [[ "" == $(grep "qra-team.online" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring DMR_Hosts files"
     echo "XLX_496       0000    qra-team.online     passw0rd        62030" >> /root/DMR_Hosts.txt
