@@ -125,3 +125,5 @@ No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert
 124,4800001,WAVU,*,*,*,*,*,Private Call,None
 125,2502153,ODMIN,*,*,*,*,*,Private Call,None
 126,2502188,DIOD,*,*,*,*,*,Private Call,None
+127,2500718,ARCTIC,*,*,*,*,*,Private Call,None
+128,2500633,TASKENT,*,*,*,*,*,Private Call,None
