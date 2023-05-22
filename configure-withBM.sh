@@ -67,6 +67,3 @@ echo -e "${GRN}------------>  Обновление завершено...${NC}"
 echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 exit 0
-
-
-  if [[ "" == $(grep -s "qra-team.online" /root/XLXHosts.txt) ]]; then echo "test"; fi
