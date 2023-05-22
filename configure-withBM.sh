@@ -50,19 +50,15 @@ if [ -z "$dmridqra" ]; then
   sed -i "/DMRIds.dat --user-agent \"Pi-Star_\${pistarCurVersion}\"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
   sed -i "/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
 else
-    checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
-    if [ -z "$checkAlterPistar" ]; then
-      echo "Running pistar-update"
-      pistar-update
-    else
-      echo "This is AlterPiStar"
-      /usr/local/sbin/HostFilesUpdate.sh
-      systemctl restart dmrgateway.service
-      systemctl restart mmdvmhost.service
-    fi
+  checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
+  if [ -z "$checkAlterPistar" ]; then
+    echo "Running pistar-update"
+    pistar-update
   else
-    echo "svxlink.conf file not found"
-    # Handle the absence of the file here, e.g., exit the script or perform alternative actions
+    echo "This is AlterPiStar"
+    /usr/local/sbin/HostFilesUpdate.sh
+    systemctl restart dmrgateway.service
+    systemctl restart mmdvmhost.service
   fi
 fi
 
