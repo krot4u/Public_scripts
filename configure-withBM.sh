@@ -20,7 +20,7 @@ fi
       echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
   fi
 
-if [[ "" == $(grep "qra-team.online" /root/DMR_Hosts.txt) ]]
+if [[ "" == $(grep -s "qra-team.online" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring DMR_Hosts files"
     echo "XLX_496       0000    qra-team.online     passw0rd        62030" >> /root/DMR_Hosts.txt
@@ -51,7 +51,7 @@ if [ -z "$dmridqra" ]; then
   sed -i "/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
 else
   checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
-  if [ -z "$checkAlterPistar" ]; then
+  if [[ "" == $(grep -s SimplexLogic /etc/svxlink/svxlink.conf) ]]; then
     echo "Running pistar-update"
     pistar-update
   else
