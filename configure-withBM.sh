@@ -14,11 +14,11 @@ if [[ "" == $(grep "p25.qra-team.online" /usr/local/etc/P25HostsLocal.txt) ]]
     echo "14003	p25.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
 fi
 
-if [[ "" == $(grep "qra-team.online" /root/XLXHosts.txt) ]]
-  then
-    echo "Configuring XLXHosts"
-    echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
-fi
+  if [[ "" == $(grep -s "qra-team.online" /root/XLXHosts.txt) ]]
+    then
+      echo "Configuring XLXHosts"
+      echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
+  fi
 
 if [[ "" == $(grep "dvs.qra-team.online" /root/DMR_Hosts.txt) ]]
   then
@@ -50,8 +50,7 @@ if [ -z "$dmridqra" ]; then
   sed -i "/DMRIds.dat --user-agent \"Pi-Star_\${pistarCurVersion}\"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
   sed -i "/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
 else
-  if [ -e "/etc/svxlink/svxlink.conf" ]; then
-    checkAlterPistar=$(grep SimplexLogic /etc/svxlink/svxlink.conf)
+    checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
     if [ -z "$checkAlterPistar" ]; then
       echo "Running pistar-update"
       pistar-update
@@ -72,3 +71,6 @@ echo -e "${GRN}------------>  Обновление завершено...${NC}"
 echo " "
 echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 exit 0
+
+
+  if [[ "" == $(grep -s "qra-team.online" /root/XLXHosts.txt) ]]; then echo "test"; fi
