@@ -132,5 +132,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 129,WAVU,4800001,Private Call,On,None,None
 130,ODMIN,2502153,Private Call,On,None,None
 131,DIOD,2502188,Private Call,On,None,None
-132,ARCTIC,2500718,Private Call,On,None,None
-133,TASKENT,2500633,Private Call,On,None,None
+132,215,2500718,Private Call,On,None,None
