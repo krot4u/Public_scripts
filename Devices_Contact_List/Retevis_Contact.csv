@@ -137,3 +137,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 134,SHARK1,1110111,Private Call,On,None,None
 135,SHARK2,1110222,Private Call,On,None,None
 136,SHARK3,1110333,Private Call,On,None,None
+137,SMOG158,5800077,Private Call,On,None,None
