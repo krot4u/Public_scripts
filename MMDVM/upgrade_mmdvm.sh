@@ -1,11 +1,12 @@
 #!/bin/bash
-
+echo " "
 mount -o remount,rw /
 mount -o remount,rw /boot
 
 echo "backup original files..."
 if [ ! -f "/usr/local/bin/MMDVMCal_origin" ]
-  then 
+  then
+    cp /etc/mmdvmhost /etc/mmdvmhost_origin
     cp /usr/local/bin/MMDVMCal /usr/local/bin/MMDVMCal_origin
     cp /usr/local/bin/MMDVMHost /usr/local/bin/MMDVMHost_origin
     cp /usr/local/bin/RemoteCommand /usr/local/bin/RemoteCommand_origin
@@ -22,9 +23,11 @@ curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/M
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/MMDVM/MMDVMHost" -o /usr/local/bin/MMDVMHost
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/MMDVM/RemoteCommand" -o /usr/local/bin/RemoteCommand
 echo "------------"
-echo " "
-echo "Done!"
-echo " "
+
+echo "Configure mmdvmhost"
+sed -i -E '/^\[Modem\]$/,/^\[/ s/^UARTSpeed=.*/UARTSpeed=460800/' "/etc/mmdvmhost"
+sed -i -E '/^\[Modem\]$/,/^\[/ s/^UARTSpeed=.*/UARTSpeed=460800/' "/etc/mmdvmhost"
+echo "------------"
 
 echo "Start MMDVM service..."
 systemctl start mmdvmhost.timer
