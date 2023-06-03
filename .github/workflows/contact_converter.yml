@@ -39,7 +39,7 @@ jobs:
             Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
 
             $Zastone008CSVfile = "Devices_Contact_List/Zastone008_Contact.csv"
-            $Zastone008Template = '--DMRID--,--CALLSIGN--,"","","","",QRA'
+            $Zastone008Template = '--DMRID--,--CALLSIGN--,"""""""","""""""","""""""","""""""",QRA'
             Remove-Item $Zastone008CSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $Zastone008CSVfile -Value "Radio ID,Callsign,Name,City,State/Prov,Country,Remarks"
 
