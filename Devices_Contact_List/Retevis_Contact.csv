@@ -134,10 +134,6 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 131,DIOD,2502188,Private Call,On,None,None
 132,215,2500718,Private Call,On,None,None
 133,BOLHOY,7801028,Private Call,On,None,None
-134,LINK,1110000,Private Call,On,None,None
-135,SHARK1,1110111,Private Call,On,None,None
-136,SHARK2,1110222,Private Call,On,None,None
-137,SHARK3,1110333,Private Call,On,None,None
-138,SMOG158,5800077,Private Call,On,None,None
-139,ROO165,7700165,Private Call,On,None,None
-140,KOTYARA,7700555,Private Call,On,None,None
+134,SMOG158,5800077,Private Call,On,None,None
+135,ROO165,7700165,Private Call,On,None,None
+136,KOTYARA,7700555,Private Call,On,None,None

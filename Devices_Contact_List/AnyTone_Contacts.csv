@@ -127,10 +127,6 @@ No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert
 126,2502188,DIOD,*,*,*,*,*,Private Call,None
 127,2500718,215,*,*,*,*,*,Private Call,None
 128,7801028,BOLHOY,*,*,*,*,*,Private Call,None
-129,1110000,LINK,*,*,*,*,*,Private Call,None
-130,1110111,SHARK1,*,*,*,*,*,Private Call,None
-131,1110222,SHARK2,*,*,*,*,*,Private Call,None
-132,1110333,SHARK3,*,*,*,*,*,Private Call,None
-133,5800077,SMOG158,*,*,*,*,*,Private Call,None
-134,7700165,ROO165,*,*,*,*,*,Private Call,None
-135,7700555,KOTYARA,*,*,*,*,*,Private Call,None
+129,5800077,SMOG158,*,*,*,*,*,Private Call,None
+130,7700165,ROO165,*,*,*,*,*,Private Call,None
+131,7700555,KOTYARA,*,*,*,*,*,Private Call,None
