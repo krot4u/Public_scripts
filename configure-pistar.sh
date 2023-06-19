@@ -89,7 +89,7 @@ service_handle stop
 echo "------------"
 
 echo "RUN modified HostFilesUpdate.sh..."
-/usr/local/sbin/HostFilesUpdate.sh
+sudo /usr/local/sbin/HostFilesUpdate.sh
 
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
