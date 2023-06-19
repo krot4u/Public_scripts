@@ -126,7 +126,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502153,ODMIN,"","","","",QRA
 2502188,DIOD,"","","","",QRA
 2500718,215,"","","","",QRA
-7801028,BOLHOY,"","","","",QRA
+2500787,BOLHOY,"","","","",QRA
 5800077,SMOG158,"","","","",QRA
 7700165,ROO165,"","","","",QRA
 7700555,KOTYARA,"","","","",QRA
@@ -134,3 +134,4 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700999,ORCA28,"","","","",QRA
 7700545,545,"","","","",QRA
 2506185,TAGAN,"","","","",QRA
+5000018,GIDRANT,"","","","",QRA

@@ -133,7 +133,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 130,ODMIN,2502153,Private Call,On,None,None
 131,DIOD,2502188,Private Call,On,None,None
 132,215,2500718,Private Call,On,None,None
-133,BOLHOY,7801028,Private Call,On,None,None
+133,BOLHOY,2500787,Private Call,On,None,None
 134,SMOG158,5800077,Private Call,On,None,None
 135,ROO165,7700165,Private Call,On,None,None
 136,KOTYARA,7700555,Private Call,On,None,None
@@ -141,3 +141,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 138,ORCA28,7700999,Private Call,On,None,None
 139,545,7700545,Private Call,On,None,None
 140,TAGAN,2506185,Private Call,On,None,None
+141,GIDRANT,5000018,Private Call,On,None,None
