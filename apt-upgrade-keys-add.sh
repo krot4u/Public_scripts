@@ -26,10 +26,10 @@ if [[ $output =~ "NO_PUBKEY" ]]; then
         fi
     done <<< "$output"
     
-    # Add missing keys and run upgrade again
-    echo "Adding missing keys and running upgrade again..."
+    # Add missing keys and run update again
+    echo "Adding missing keys and running update again..."
     add_missing_keys
-    sudo apt-get upgrade
+    sudo apt-get update
 else
     echo "Upgrade completed successfully."
 fi
