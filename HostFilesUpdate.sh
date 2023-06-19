@@ -21,6 +21,8 @@ fi
 mount -o remount,rw /
 mount -o remount,rw /boot
 
+sleep 5
+
 # Create backup of old files
 if [ ${FILEBACKUP} -ne 0 ]; then
   cp ${DMRIDFILE} ${DMRIDFILE}.$(date +%Y%m%d)
