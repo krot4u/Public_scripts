@@ -14,20 +14,24 @@ if [[ "" == $(grep "p25.qra-team.online" /usr/local/etc/P25HostsLocal.txt) ]]
     echo "14003	p25.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
 fi
 
-  if [[ "" == $(grep -s "qra-team.online" /root/XLXHosts.txt) ]]
+  if [[ "" == $(grep -s "46.17.42.12" /root/XLXHosts.txt) ]]
     then
       echo "Configuring XLXHosts"
-      echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
-  else echo "Вы уже подключеный в QRA\nЭтот скрипт необходимо запускать на чистом Pi-Star\nИли на Pi-Star не подключенный к QRA"
+      echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
+  else echo -e "${RED} Вы уже подключены в QRA\nЭтот скрипт необходимо запускать на чистом Pi-Star\nИли на Pi-Star не подключенный к QRA ${NC}"
     exit 1
   fi
 
-if [[ "" == $(grep -s "qra-team.online" /root/DMR_Hosts.txt) ]]
+if [[ "" == $(grep -s "46.17.42.12" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring DMR_Hosts files"
-    echo "XLX_496       0000    qra-team.online     passw0rd        62030" >> /root/DMR_Hosts.txt
+    echo "XLX_496       0000    46.17.42.12     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 echo "------------"
+
+curl --fail -o /opt/apt-upgrade-keys-add.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/apt-upgrade-keys-add.sh
+sudo chmod +x /opt/apt-upgrade-keys-add.sh
+sudo /opt/apt-upgrade-keys-add.sh
 
 echo "Configuring INI files"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Startup=.*/Startup=496/' "${dmrgateway}"
