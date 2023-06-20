@@ -18,6 +18,8 @@ fi
     then
       echo "Configuring XLXHosts"
       echo "496;qra-team.online;4001" >> /root/XLXHosts.txt
+  else echo "Вы уже подключеный в QRA\nЭтот скрипт необходимо запускать на чистом Pi-Star\nИли на Pi-Star не подключенный к QRA"
+    exit 1
   fi
 
 if [[ "" == $(grep -s "qra-team.online" /root/DMR_Hosts.txt) ]]
@@ -42,7 +44,7 @@ catxlx=`cat /usr/local/sbin/HostFilesUpdate.sh | grep 'cat /root/XLXHosts.txt >>
 if [ -z "$catxlx" ]
   then
   sed -i '/# Add custom YSF Hosts/i if [ -f \"/root/XLXHosts.txt\" ]; then\n      cat /root/XLXHosts.txt >> ${XLXHOSTS}\nfi' /usr/local/sbin/HostFilesUpdate.sh
-fi
+fi 
 
 dmridqra=$(grep 'krot4u/Public_scripts/master/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh)
 
