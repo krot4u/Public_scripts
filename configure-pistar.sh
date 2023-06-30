@@ -125,6 +125,8 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
+rpi-rw 
+
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
 -o /dev/null \
