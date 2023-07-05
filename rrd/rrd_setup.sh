@@ -4,11 +4,6 @@ echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
-echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
-
-apt-get update > /dev/null
-apt-get install rrdtool gawk -y > /dev/null
-
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 curl --fail -s -o "/var/rrds/ping/ping-graph.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
 curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
@@ -47,11 +42,3 @@ if [ -z "$checkpresent" ]
 rm -f /tmp/cronjob
 
 touch /usr/local/sbin/.rrdtool
-
-echo "RPI-RO..."
-/bin/sync
-/bin/sync
-/bin/sync
-mount -o remount,ro /
-mount -o remount,ro /boot
-echo "------------"

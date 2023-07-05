@@ -108,6 +108,10 @@ curl --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Pu
 curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
 echo "------------"
 
+echo "RRDtool setup"
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
+echo "------------"
+
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dstarrepeater
