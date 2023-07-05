@@ -70,7 +70,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5500001,DAVID,"","","","",QRA
 2509163,ROSTIK,"","","","",QRA
 2502143,TAIFUN,"","","","",QRA
-2300502,KAMYSH,"","","","",QRA
+2500728,KAMYSH,"","","","",QRA
 5000097,DIMA97,"","","","",QRA
 3100001,BELGROD,"","","","",QRA
 2502208,BELGROD,"","","","",QRA
@@ -136,3 +136,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2506185,TAGAN,"","","","",QRA
 5000018,GIDRANT,"","","","",QRA
 2503436,SOTKA67,"","","","",QRA
+5900175,CHERMOZ,"","","","",QRA
+2570093,STOPOR,"","","","",QRA
+8600001,LESNIK,"","","","",QRA
+7703306,ALTAIR,"","","","",QRA

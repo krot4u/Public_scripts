@@ -77,7 +77,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 74,DAVID,5500001,Private Call,On,None,None
 75,ROSTIK,2509163,Private Call,On,None,None
 76,TAIFUN,2502143,Private Call,On,None,None
-77,KAMYSH,2300502,Private Call,On,None,None
+77,KAMYSH,2500728,Private Call,On,None,None
 78,DIMA97,5000097,Private Call,On,None,None
 79,BELGROD,3100001,Private Call,On,None,None
 80,BELGROD,2502208,Private Call,On,None,None
@@ -143,3 +143,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 140,TAGAN,2506185,Private Call,On,None,None
 141,GIDRANT,5000018,Private Call,On,None,None
 142,SOTKA67,2503436,Private Call,On,None,None
+143,CHERMOZ,5900175,Private Call,On,None,None
+144,STOPOR,2570093,Private Call,On,None,None
+145,LESNIK,8600001,Private Call,On,None,None
+146,ALTAIR,7703306,Private Call,On,None,None
