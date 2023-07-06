@@ -4,7 +4,7 @@ echo "RPI-RW..."
 mount -o remount,rw / ; mount -o remount,rw /boot
 echo "------------"
 
-apt-get install rrdtool -y
+apt-get install rrdtool gawk -y
 
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 curl --fail -s -o "/var/rrds/ping/ping-graph.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh

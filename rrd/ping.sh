@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mount -o remount,rw /
 mount -o remount,rw /boot
 
@@ -10,7 +9,7 @@ DEADLINE=10
 ping_host() {
     local output=$($PING -q -n -c $COUNT -w $DEADLINE $1 2>&1)
     # notice $output is quoted to preserve newlines
-    local temp=$(echo "$output" | awk '
+    local temp=$(echo "$output" | gawk '
         BEGIN           {pl=100; rtt=0.1}
         /packets transmitted/   {
             match($0, /([0-9]+)% packet loss/, matchstr)
