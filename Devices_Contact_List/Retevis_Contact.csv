@@ -139,7 +139,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 136,KOTYARA,7700555,Private Call,On,None,None
 137,ODA10,2900555,Private Call,On,None,None
 138,ORCA28,7700999,Private Call,On,None,None
-139,545,7700545,Private Call,On,None,None
+139,ANDR545,7700545,Private Call,On,None,None
 140,TAGAN,2506185,Private Call,On,None,None
 141,GIDRANT,5000018,Private Call,On,None,None
 142,SOTKA67,2503436,Private Call,On,None,None
@@ -147,3 +147,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 144,STOPOR,2570093,Private Call,On,None,None
 145,LESNIK,8600001,Private Call,On,None,None
 146,ALTAIR,7703306,Private Call,On,None,None
+147,220,5973220,Private Call,On,None,None

@@ -132,7 +132,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700555,KOTYARA,"","","","",QRA
 2900555,ODA10,"","","","",QRA
 7700999,ORCA28,"","","","",QRA
-7700545,545,"","","","",QRA
+7700545,ANDR545,"","","","",QRA
 2506185,TAGAN,"","","","",QRA
 5000018,GIDRANT,"","","","",QRA
 2503436,SOTKA67,"","","","",QRA
@@ -140,3 +140,4 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2570093,STOPOR,"","","","",QRA
 8600001,LESNIK,"","","","",QRA
 7703306,ALTAIR,"","","","",QRA
+5973220,220,"","","","",QRA
