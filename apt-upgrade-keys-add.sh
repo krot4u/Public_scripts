@@ -14,7 +14,7 @@ add_missing_keys() {
 # Main script
 
 echo "Running apt-get update..."
-output=$(sudo apt-get update 2>&1)
+output=$(sudo apt-get update --allow-releaseinfo-change 2>&1)
 # Check if any missing keys error occurred
 if [[ $output =~ "NO_PUBKEY" ]]; then
     echo "Upgrade encountered an error."
@@ -29,7 +29,7 @@ if [[ $output =~ "NO_PUBKEY" ]]; then
     # Add missing keys and run update again
     echo "Adding missing keys and running update again..."
     add_missing_keys
-    sudo apt update -y
+    sudo apt update -y --allow-releaseinfo-change
 else
     echo "Upgrade completed successfully."
 fi

@@ -66,7 +66,8 @@ chmod +x /usr/local/sbin/mpi-star.sh
 echo "------------"
 
 echo ">> HostFilesUpdate: Download dashboard files"
-rpi-rw
+mount -o remount,rw /
+mount -o remount,rw /boot
 # Pi-Star Dashboar modifications
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php" > '/var/www/dashboard/index.php'
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/dmridlist.php" > '/var/www/dashboard/dmridlist.php'
@@ -88,7 +89,8 @@ curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.gith
 curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png" 
 echo "------------"
 
-rpi-rw
+mount -o remount,rw /
+mount -o remount,rw /boot
 
 echo ">> HostFilesUpdate: Done... Exiting..."
 
