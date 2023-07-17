@@ -89,8 +89,8 @@ service_handle() {
 	systemctl ${doWhat} pistar-remote.service > /dev/null
 	systemctl ${doWhat} dmrgateway.service > /dev/null
 	systemctl ${doWhat} dapnetgateway.service > /dev/null
-	systemctl stop ircddbgateway.service > /dev/null; systemctl disable ircddbgateway.service > /dev/null; systemctl stop ircddbgateway.timer > /dev/null; systemctl disable ircddbgateway.timer > /dev/null
-	systemctl ${doWhat} timeserver.service > /dev/null
+	systemctl ${doWhat} ircddbgateway.service > /dev/null
+  systemctl ${doWhat} timeserver.service > /dev/null
 	systemctl stop ysfgateway.service > /dev/null; systemctl disable ysfgateway.service > /dev/null; systemctl stop ysfgateway.timer > /dev/null; systemctl disable ysfgateway.timer > /dev/null
 	systemctl stop ysf2dmr.service > /dev/null; systemctl disable ysf2dmr.service > /dev/null; systemctl stop ysf2dmr.timer > /dev/null; systemctl disable ysf2dmr.timer > /dev/null
 	systemctl stop ysf2nxdn.service > /dev/null; systemctl disable ysf2nxdn.service > /dev/null; systemctl stop ysf2nxdn.timer > /dev/null; systemctl disable ysf2nxdn.timer > /dev/null

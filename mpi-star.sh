@@ -12,3 +12,6 @@ if [[ ${pistarCurVersion} == "4.1.4" ]]
     exit 0  
   fi
 fi
+
+curl --fail -o '/usr/local/sbin/pistar-watchdog' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
