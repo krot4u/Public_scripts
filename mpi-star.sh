@@ -9,10 +9,9 @@ if [[ ${pistarCurVersion} == "4.1.4" ]]
     curl -s -o /usr/local/sbin/pistar-upgrade https://raw.githubusercontent.com/AndyTaylorTweet/Pi-Star_Binaries_sbin/master/pistar-upgrade
     pistar-upgrade
   else
-    exit 0  
+    exit 0
   fi
 fi
-
 
 CHECK_WATCHDOG=$(grep '/bin/systemctl stop ysf2nxdn.service' /usr/local/sbin/pistar-watchdog || echo $?)
 if [[ $CHECK_WATCHDOG -gt 0 ]]; then
