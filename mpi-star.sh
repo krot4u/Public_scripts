@@ -13,5 +13,12 @@ if [[ ${pistarCurVersion} == "4.1.4" ]]
   fi
 fi
 
-curl --fail -o '/usr/local/sbin/pistar-watchdog' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
-curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
+
+CHECK_WATCHDOG=$(grep '/bin/systemctl stop ysf2nxdn.service' /usr/local/sbin/pistar-watchdog || echo $?)
+if [[ $CHECK_WATCHDOG -gt 0 ]]; then
+  echo "All Good!"
+  exit 0
+else
+  curl --fail -o '/usr/local/sbin/pistar-watchdog' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
+  curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
+fi
