@@ -54,7 +54,7 @@ jobs:
               Add-Content -Path $AnyToneCSVfile -Value $NewLine
               $Counter++
             }
-            (Get-Content $AnyToneCSVfile -Raw).Replace("`r`n","`n") | Set-Content $AnyToneCSVfile -Force
+            (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -Force
 
             # ------ Retevis
             $Counter = 6
