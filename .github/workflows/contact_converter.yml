@@ -51,7 +51,7 @@ jobs:
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
               $NewLine = $AnyToneTemplate -replace "--LINEnumber--","$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-              Add-Content -Path $AnyToneCSVfile -Value $NewLine -NoNewline
+              Add-Content -Path $AnyToneCSVfile -Value $NewLine
               $Counter++
             }
 
