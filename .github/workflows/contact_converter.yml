@@ -18,7 +18,7 @@ jobs:
         with:
           script: |
             $AnyToneCSVfile = "Devices_Contact_List/AnyTone_Contacts.csv"
-            $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None"
+            $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None" -join "`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
 
