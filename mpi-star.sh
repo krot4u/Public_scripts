@@ -13,7 +13,7 @@ if [[ ${pistarCurVersion} == "4.1.4" ]]
   fi
 fi
 
-CHECK_WATCHDOG=$(grep '/bin/systemctl stop ysf2nxdn.service' /usr/local/sbin/pistar-watchdog || echo $?)
+CHECK_WATCHDOG=$(grep 'P25Gateway' /usr/local/sbin/pistar-watchdog || echo $?)
 if [[ $CHECK_WATCHDOG -gt 0 ]]; then
   echo "All Good!"
   exit 0
