@@ -120,6 +120,9 @@ main_function() {
 		apt-get clean
 		echo "Done"
 
+	mount -o remount,rw /
+	mount -o remount,rw /boot
+
 		echo "Checking nginx config"
 		if ! [ $(cat /lib/systemd/system/nginx.service | grep -o "mkdir") ]; then
 			sed -i '\/PIDFile=\/run\/nginx.pid/a ExecStartPre=\/bin\/mkdir -p \/var\/log\/nginx' /lib/systemd/system/nginx.service
