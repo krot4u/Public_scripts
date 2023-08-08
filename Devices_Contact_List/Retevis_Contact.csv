@@ -154,3 +154,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 151,SHRAM,2500632,Private Call,On,None,None
 152,FORWARD,5902505,Private Call,On,None,None
 153,PYTHON,7700888,Private Call,On,None,None
+154,QRAPOC,6660555,Private Call,On,None,None
