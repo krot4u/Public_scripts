@@ -11,7 +11,7 @@ mount -o remount,rw / ; mount -o remount,rw /boot
 if [[ "" == $(grep "p25.qra-team.online" /usr/local/etc/P25HostsLocal.txt) ]]
   then
     echo "Configuring P25HostsLocal"
-    echo "14003	p25.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
+    echo "1	p25.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
 fi
 
   if [[ "" == $(grep -s "46.17.42.12" /root/XLXHosts.txt) ]]
