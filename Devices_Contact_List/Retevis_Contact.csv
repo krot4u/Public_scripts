@@ -153,3 +153,13 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 150,QRA7787,7700850,Private Call,On,None,None
 151,SHRAM,2500632,Private Call,On,None,None
 152,FORWARD,5902505,Private Call,On,None,None
+153,PYTHON,7700888,Private Call,On,None,None
+154,QRAPOC,6660555,Private Call,On,None,None
+155,TRAK,2503439,Private Call,On,None,None
+156,BOTSMAN,5000002,Private Call,On,None,None
+157,BARS,2500252,Private Call,On,None,None
+158,STALKER,2500334,Private Call,On,None,None
+159,BARON,7700023,Private Call,On,None,None
+160,RADIO,7700100,Private Call,On,None,None
+161,RADIY,2600002,Private Call,On,None,None
+162,BOLTIK,7800555,Private Call,On,None,None
