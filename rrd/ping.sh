@@ -10,7 +10,6 @@ ping_host() {
     local output=$($PING -q -n -c $COUNT -w $DEADLINE $1 2>&1)
     # notice $output is quoted to preserve newlines
     local temp=$(echo "$output" | gawk '
-    local temp=$(echo "$output"| awk '
         BEGIN           {pl=100; rtt=0.1}
         /packets transmitted/   {
             match($0, /([0-9]+)% packet loss/, matchstr)
