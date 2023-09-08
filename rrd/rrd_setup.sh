@@ -7,8 +7,8 @@ echo "------------"
 echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 apt-get install rrdtool gawk -y
 
-curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
-curl --fail -s -o "/var/rrds/ping/ping-graph.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
 curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
 chmod +x /var/rrds/ping/ping.sh
 chmod +x /var/rrds/ping/ping-graph.sh
