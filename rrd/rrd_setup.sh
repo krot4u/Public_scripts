@@ -1,21 +1,22 @@
 #!/bin/bash
 
 echo "RPI-RW..."
-mount -o remount,rw / ; mount -o remount,rw /boot
+mount -o remount,rw /
+mount -o remount,rw /boot
 echo "------------"
 
 echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
-apt-get install rrdtool gawk -y
+apt install rrdtool gawk -y
 
-curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
-curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
-curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
-chmod +x /var/rrds/ping/ping.sh
-chmod +x /var/rrds/ping/ping-graph.sh
+sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
+sudo chmod +x /var/rrds/ping/ping.sh
+sudo chmod +x /var/rrds/ping/ping-graph.sh
 
 if [[ ! -d "/var/rrds/ping" ]]
 then
-    mkdir -p /var/rrds/ping
+    sudo mkdir -p /var/rrds/ping
     /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
     --step 60 \
     DS:pl:GAUGE:600:0:100 \
@@ -30,18 +31,18 @@ then
     RRA:MAX:0.5:288:800
 fi
 
-crontab -l > /tmp/cronjob
+sudo crontab -l > /tmp/cronjob
 checkpresent=`cat /tmp/cronjob | grep 'ping.sh'`
 
 if [ -z "$checkpresent" ]
   then
-    echo "* * * * *  /var/rrds/ping/ping.sh" >> /tmp/cronjob
-    echo "1,6,11,16,21,26,31,36,41,46,51,56 * * * *  /var/rrds/ping/ping-graph.sh" >> /tmp/cronjob
-    crontab /tmp/cronjob
+    sudo echo "* * * * *  /var/rrds/ping/ping.sh" >> /tmp/cronjob
+    sudo echo "1,6,11,16,21,26,31,36,41,46,51,56 * * * *  /var/rrds/ping/ping-graph.sh" >> /tmp/cronjob
+    sudo crontab /tmp/cronjob
   else
-    exit 0
+    echo "Crontab exist"
   fi
 
-rm -f /tmp/cronjob
+sudo rm -f /tmp/cronjob
 
-touch /usr/local/sbin/.rrdtool
+sudo touch /usr/local/sbin/.rrdtool
