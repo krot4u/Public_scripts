@@ -11,111 +11,108 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - uses: Amadevus/pwsh-script@v2
-      #   id: script
-      #   env:
-      #     GH_TOKEN: ${{ github.token }}
-      #   with:
-      #     script: |
-      - name : RunScript
-        shell: pwsh
+      - uses: Amadevus/pwsh-script@v2
+        id: script
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          # ------ AnyTone ------ #
-          $DMRIdsContent = Get-Content ./DMRIds.dat
-          $AnyToneCSVfile = "AnyTone_Contacts.csv"
-          $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None" -join "`r`n"
-          Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
-          Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
-          
-          $Counter = 1
-          foreach ($line in $DMRIdsContent) {
-            $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-            $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-            $NewLine = $AnyToneTemplate -replace "--LINEnumber--","$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $AnyToneCSVfile -Value $NewLine
-            $Counter++
-          }
-          (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -NoNewline -Force
-          
-          # ------ Retevis OpenGD77 ------ #
-          $DMRIdsContent = Get-Content ./DMRIds.dat
-          $RetevisCSVfile = "Retevis_Contact.csv"
-          $RetevisTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
-          Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
-          Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
-          Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "1,Room1,94001,Private Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "2,Room2,94002,Private Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "3,Room3,94003,Private Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "4,QRAparrot,94004,Private Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "5,QRAfrn,94005,Private Call,On,None,2"
-          Add-Content -Path $RetevisCSVfile -Value "5,QRAp25,94006,Private Call,On,None,2"
-          $Counter = 6
-          foreach ($line in $DMRIdsContent) {
-            $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-            $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-            $NewLine = $RetevisTemplate -replace "--LINEnumber--", "$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $RetevisCSVfile -Value $NewLine
-            $Counter++
-          }
-          
-          # ------ Zastone D900 ------ #
-          $DMRIdsContent = Get-Content ./DMRIds.dat
-          $ZastoneD900CSVfile = "ZastoneD900_Contact.csv"
-          $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
-          Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
-          foreach ($line in $DMRIdsContent) {
-            $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-            $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-            $NewLine = $Zastone008Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
-          }
-          
-          # ------ Zastone 008 ------ #
-          $DMRIdsContent = Get-Content ./DMRIds.dat
-          $Zastone008CSVfile = "Zastone008_Contact.csv"
-          $Zastone008Template = '--DMRID--,--CALLSIGN--,"","","","",QRA'
-          Remove-Item $Zastone008CSVfile -Force -ErrorAction SilentlyContinue
-          Add-Content -Path $Zastone008CSVfile -Value "Radio ID,Callsign,Name,City,State/Prov,Country,Remarks"
-          foreach ($line in $DMRIdsContent) {
-            $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-            $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-            $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $Zastone008CSVfile -Value $NewLine
-          }
-          
-          # ------ TAKT ------ #
-          pip install pandas
-          pip install openpyxl
-          Get-Content DMRIds.dat
-          python takt_convert.py
-          
-          # ------ Motorola ------ #
-          $DMRIdsContent = Get-Content ./DMRIds.dat
-          $MotorolaCSVfile = "Motorola_Contact.csv"
-          Write-Host "Debug: $MotorolaCSVfile"
-          Write-Host "Debug: ls -la"
-          ls -la
-          $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
-          Add-Content -Path $MotorolaCSVfile -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
-          Add-Content -Path $MotorolaCSVfile -Value "Contact Name,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,Five Tone Calls - Telegram,Five Tone Calls - Address,Delete_MDCCalls,MDC Calls - Call ID (Hex),MDC Calls - MDC System,MDC Calls - Revert Channel Zone,MDC Calls - Revert Channel,MDC Calls - Strip TPL/DPL,MDC Calls - Call Type,Delete_QuikCallIICalls,Quik CallII Calls - Quik-Call II System,Quik CallII Calls - Revert Channel Zone,Quik CallII Calls - Revert Channel,Quik CallII Calls - Call Format,Quik CallII Calls - Tone A Freq (Hz),Quik CallII Calls - Tone A Code,Quik CallII Calls - Tone B Freq (Hz),Quik CallII Calls - Tone B Code,Quik CallII Calls - Strip TPL/DPL,Delete_DigitalCalls,Digital Calls - Call ID,Digital Calls - Route Type,Digital Calls - Call Receive Tone,Digital Calls - Ring Style,Digital Calls - Text Message Alert Tone,Digital Calls - Call Type,Digital Calls - DU_OVCMCALL,Delete_CapacityPlusCalls,Capacity Plus Calls - Call ID,Capacity Plus Calls - Route Type,Capacity Plus Calls - Call Receive Tone,Capacity Plus Calls - Ring Style,Capacity Plus Calls - Text Message Alert Tone,Capacity Plus Calls - Call Type,Delete_PhoneCalls,Phone Calls - Number,Phone Calls - Ring Type"
-          Add-Content -Path $MotorolaCSVfile -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "TG 5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94004,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94005,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          Add-Content -Path $MotorolaCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94006,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-          foreach ($line in $DMRIdsContent) {
-            $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-            $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-            $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $MotorolaCSVfile -Value $NewLine
-          }
+        with:
+          script: |
+            # ------ AnyTone ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $AnyToneCSVfile = "Devices_Contact_List/AnyTone_Contacts.csv"
+            $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None" -join "`r`n"
+            Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
+            
+            $Counter = 1
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $AnyToneTemplate -replace "--LINEnumber--","$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $AnyToneCSVfile -Value $NewLine
+              $Counter++
+            }
+            (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -NoNewline -Force
+            
+            # ------ Retevis OpenGD77 ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
+            $RetevisTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
+            Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
+            Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "1,Room1,94001,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "2,Room2,94002,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "3,Room3,94003,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "4,QRAparrot,94004,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "5,QRAfrn,94005,Private Call,On,None,2"
+            Add-Content -Path $RetevisCSVfile -Value "5,QRAp25,94006,Private Call,On,None,2"
+            $Counter = 6
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $RetevisTemplate -replace "--LINEnumber--", "$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $RetevisCSVfile -Value $NewLine
+              $Counter++
+            }
+            
+            # ------ Zastone D900 ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
+            $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
+            Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $Zastone008Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
+            }
+            
+            # ------ Zastone 008 ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $Zastone008CSVfile = "Devices_Contact_List/Zastone008_Contact.csv"
+            $Zastone008Template = '--DMRID--,--CALLSIGN--,"","","","",QRA'
+            Remove-Item $Zastone008CSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $Zastone008CSVfile -Value "Radio ID,Callsign,Name,City,State/Prov,Country,Remarks"
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $Zastone008CSVfile -Value $NewLine
+            }
+            
+            # ------ TAKT ------ #
+            pip install pandas
+            pip install openpyxl
+            Copy-Item DMRIds.dat ./Devices_Contact_List/DMRIds.dat
+            Set-Location Devices_Contact_List
+            Get-Content DMRIds.dat
+            python takt_convert.py
+            
+            # ------ Motorola ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $MotorolaCSVfile = "Devices_Contact_List/Motorola_Contact.csv"
+            Write-Host "Debug: $MotorolaCSVfile"
+            Write-Host "Debug: ls -la"
+            ls -la
+            $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $MotorolaCSVfile -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
+            Add-Content -Path $MotorolaCSVfile -Value "Contact Name,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,Five Tone Calls - Telegram,Five Tone Calls - Address,Delete_MDCCalls,MDC Calls - Call ID (Hex),MDC Calls - MDC System,MDC Calls - Revert Channel Zone,MDC Calls - Revert Channel,MDC Calls - Strip TPL/DPL,MDC Calls - Call Type,Delete_QuikCallIICalls,Quik CallII Calls - Quik-Call II System,Quik CallII Calls - Revert Channel Zone,Quik CallII Calls - Revert Channel,Quik CallII Calls - Call Format,Quik CallII Calls - Tone A Freq (Hz),Quik CallII Calls - Tone A Code,Quik CallII Calls - Tone B Freq (Hz),Quik CallII Calls - Tone B Code,Quik CallII Calls - Strip TPL/DPL,Delete_DigitalCalls,Digital Calls - Call ID,Digital Calls - Route Type,Digital Calls - Call Receive Tone,Digital Calls - Ring Style,Digital Calls - Text Message Alert Tone,Digital Calls - Call Type,Digital Calls - DU_OVCMCALL,Delete_CapacityPlusCalls,Capacity Plus Calls - Call ID,Capacity Plus Calls - Route Type,Capacity Plus Calls - Call Receive Tone,Capacity Plus Calls - Ring Style,Capacity Plus Calls - Text Message Alert Tone,Capacity Plus Calls - Call Type,Delete_PhoneCalls,Phone Calls - Number,Phone Calls - Ring Type"
+            Add-Content -Path $MotorolaCSVfile -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "TG 5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94004,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94005,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94006,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $MotorolaCSVfile -Value $NewLine
+            }
 
       - name: Update files in repository
         uses: actions-x/commit@v6
