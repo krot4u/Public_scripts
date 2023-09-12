@@ -18,8 +18,8 @@ jobs:
         with:
           script: |
             # ------ AnyTone ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
-            $AnyToneCSVfile = "Devices_Contact_List/AnyTone_Contacts.csv"
+            $DMRIdsContent = Get-Content ./Public_scripts/DMRIds.dat
+            $AnyToneCSVfile = "./Public_scripts/Devices_Contact_List/AnyTone_Contacts.csv"
             $AnyToneTemplate = "--LINEnumber--,--DMRID--,--CALLSIGN--,*,*,*,*,*,Private Call,None" -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value "No.,Radio ID,Callsign,Name,City,State,Country,Remarks,Call Type,Call Alert"
@@ -35,8 +35,8 @@ jobs:
             (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -NoNewline -Force
             
             # ------ Retevis OpenGD77 ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
-            $RetevisCSVfile = "Devices_Contact_List/Retevis_Contact.csv"
+            $DMRIdsContent = Get-Content ./Public_scripts/DMRIds.dat
+            $RetevisCSVfile = "./Public_scripts/Devices_Contact_List/Retevis_Contact.csv"
             $RetevisTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
@@ -57,8 +57,8 @@ jobs:
             }
             
             # ------ Zastone D900 ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
-            $ZastoneD900CSVfile = "Devices_Contact_List/ZastoneD900_Contact.csv"
+            $DMRIdsContent = Get-Content ./Public_scripts/DMRIds.dat
+            $ZastoneD900CSVfile = "./Public_scripts/Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
             Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
             foreach ($line in $DMRIdsContent) {
@@ -69,8 +69,8 @@ jobs:
             }
             
             # ------ Zastone 008 ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
-            $Zastone008CSVfile = "Devices_Contact_List/Zastone008_Contact.csv"
+            $DMRIdsContent = Get-Content ./Public_scripts/DMRIds.dat
+            $Zastone008CSVfile = "./Public_scripts/Devices_Contact_List/Zastone008_Contact.csv"
             $Zastone008Template = '--DMRID--,--CALLSIGN--,"","","","",QRA'
             Remove-Item $Zastone008CSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $Zastone008CSVfile -Value "Radio ID,Callsign,Name,City,State/Prov,Country,Remarks"
@@ -90,8 +90,8 @@ jobs:
             python takt_convert.py
             
             # ------ Motorola ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
-            $MotorolaCSVfile = "Devices_Contact_List/Motorola_Contact.csv"
+            $DMRIdsContent = Get-Content ./Public_scripts/DMRIds.dat
+            $MotorolaCSVfile = "./Public_scripts/Devices_Contact_List/Motorola_Contact.csv"
             Write-Host "Debug: $MotorolaCSVfile"
             Write-Host "Debug: ls -la"
             ls -la
