@@ -83,9 +83,6 @@ jobs:
             # ------ Motorola ------ #
             $DMRIdsContent = Get-Content ./DMRIds.dat
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
-            Write-Host "Debug: $MotorolaCSVfile"
-            Write-Host "Debug: Get-ChildItem"
-            Get-ChildItem
             $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
             Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $MotorolaCSVfile -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
