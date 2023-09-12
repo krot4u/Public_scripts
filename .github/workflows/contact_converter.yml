@@ -55,6 +55,20 @@ jobs:
               $Counter++
             }
 
+            # ------ Retevis RT3s Original ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $RetevisOrigCSVfile = "./Devices_Contact_List/RetevisOrig_Contact.csv"
+            $RetevisOrigTemplate = "--CALLSIGN--,2,--DMRID--,0"
+            Remove-Item $RetevisOrigCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $RetevisOrigCSVfile -Value "Contact Name,Call Type,Call ID,Call Receive Tone"
+            Add-Content -Path $RetevisOrigCSVfile -Value "QRA-Team,1,9,0"
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $RetevisOrigTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $RetevisOrigCSVfile -Value $NewLine
+            }
+
             # ------ Zastone D900 ------ #
             $DMRIdsContent = Get-Content ./DMRIds.dat
             $ZastoneD900CSVfile = "./Devices_Contact_List/ZastoneD900_Contact.csv"
@@ -63,7 +77,7 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $NewLine = $Zastone008Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
             }
 
@@ -76,7 +90,7 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              $NewLine = $Zastone008Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $Zastone008CSVfile -Value $NewLine
             }
 
