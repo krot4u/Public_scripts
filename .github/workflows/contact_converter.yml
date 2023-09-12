@@ -40,12 +40,6 @@ jobs:
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
             Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "1,Room1,94001,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "2,Room2,94002,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "3,Room3,94003,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "4,QRAparrot,94004,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "5,QRAfrn,94005,Private Call,On,None,2"
-            Add-Content -Path $RetevisCSVfile -Value "5,QRAp25,94006,Private Call,On,None,2"
             $Counter = 6
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
@@ -74,6 +68,7 @@ jobs:
             $ZastoneD900CSVfile = "./Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
             Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $ZastoneD900CSVfile -Value '"9","QRA-TEAM","Group Call","No","","","","",""'
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
