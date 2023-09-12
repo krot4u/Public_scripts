@@ -89,8 +89,6 @@ jobs:
           # ------ TAKT ------ #
           pip install pandas
           pip install openpyxl
-          Copy-Item DMRIds.dat ./DMRIds.dat
-          Set-Location Devices_Contact_List
           Get-Content DMRIds.dat
           python takt_convert.py
           
