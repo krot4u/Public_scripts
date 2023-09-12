@@ -1,11 +1,5 @@
 Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 0,QRA-Team,9,Group Call,On,None,2
-1,Room1,94001,Private Call,On,None,2
-2,Room2,94002,Private Call,On,None,2
-3,Room3,94003,Private Call,On,None,2
-4,QRAparrot,94004,Private Call,On,None,2
-5,QRAfrn,94005,Private Call,On,None,2
-5,QRAp25,94006,Private Call,On,None,2
 6,QRA212,2120212,Private Call,On,None,None
 7,ARCTIC,2150215,Private Call,On,None,None
 8,ONTONIO,2500610,Private Call,On,None,None
