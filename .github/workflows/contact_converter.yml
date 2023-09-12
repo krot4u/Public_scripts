@@ -68,7 +68,7 @@ jobs:
             $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
             $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
             $NewLine = $Zastone008Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $Zastone008CSVfile -Value $NewLine
+            Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
           }
           
           # ------ Zastone 008 ------ #
@@ -81,7 +81,7 @@ jobs:
             $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
             $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
             $NewLine = $ZastoneD900Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-            Add-Content -Path $ZastoneD900CSVfile -Value $NewLine
+            Add-Content -Path $Zastone008CSVfile -Value $NewLine
           }
           
           # ------ TAKT ------ #
