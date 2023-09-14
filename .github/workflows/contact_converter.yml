@@ -111,6 +111,29 @@ jobs:
               $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $MotorolaCSVfile -Value $NewLine
             }
+            # Replace 'yourdata.csv' with the actual path to your CSV file
+            $csvData = Import-Csv -Path $MotorolaCSVfile
+            # Create a dictionary to track renamed values
+            $renamedValues = @{}
+            # Iterate through the CSV data
+            foreach ($item in $csvData) {
+                $name = $item.ContactName
+                if ($renamedValues.ContainsKey($name)) {
+                    # If the name is a duplicate, generate a unique name
+                    $count = 2
+                    while ($renamedValues.ContainsKey("$name$count")) {
+                        $count++
+                    }
+                    $newName = "$name$count"
+                    $renamedValues[$newName] = $true
+                    $item.ContactName = $newName
+                } else {
+                    # If not a duplicate, add it to the dictionary
+                    $renamedValues[$name] = $true
+                }
+            }
+            # Export the modified CSV data to a new file
+            $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
 
             # ------ MotorolaRus Rus ------ #
             $DMRIdsContent = Get-Content ./DMRIds.dat
@@ -138,6 +161,30 @@ jobs:
               $NewLine = $MotorolaRusTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $MotorolaRusCSVfile -Value $NewLine
             }
+            # Replace 'yourdata.csv' with the actual path to your CSV file
+            $csvData = Import-Csv -Path $MotorolaRusCSVfile
+            # Create a dictionary to track renamed values
+            $renamedValues = @{}
+            # Iterate through the CSV data
+            foreach ($item in $csvData) {
+                $name = $item.ContactName
+                if ($renamedValues.ContainsKey($name)) {
+                    # If the name is a duplicate, generate a unique name
+                    $count = 2
+                    while ($renamedValues.ContainsKey("$name$count")) {
+                        $count++
+                    }
+                    $newName = "$name$count"
+                    $renamedValues[$newName] = $true
+                    $item.ContactName = $newName
+                } else {
+                    # If not a duplicate, add it to the dictionary
+                    $renamedValues[$name] = $true
+                }
+            }
+            # Export the modified CSV data to a new file
+            $csvData | Export-Csv -Path $MotorolaRusCSVfile -NoTypeInformation
+
             $MyRawString = Get-Content -Raw $MotorolaRusCSVfile
             $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $True
             [System.IO.File]::WriteAllLines($MotorolaRusCSVfile, $MyRawString, $Utf8NoBomEncoding)
