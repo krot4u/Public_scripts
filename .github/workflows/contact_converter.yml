@@ -138,6 +138,9 @@ jobs:
               $NewLine = $MotorolaRusTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $MotorolaRusCSVfile -Value $NewLine
             }
+            $MyRawString = Get-Content -Raw $MotorolaRusCSVfile
+            $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $True
+            [System.IO.File]::WriteAllLines($MotorolaRusCSVfile, $MyRawString, $Utf8NoBomEncoding)
 
             # ------ TAKT ------ #
             pip install pandas
