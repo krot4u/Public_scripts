@@ -29,11 +29,10 @@ fi
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 
 
-CHECKDMRNET=$(grep '\[DMR Network 4\]' /etc/dmrgateway || echo $?)
-if [[ $CHECKDMRNET -gt 0 ]]; then
+sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
   cat <<EOF >> /etc/dmrgateway
-
 [DMR Network 4]
 Enabled=1
 Address=hblink1.qra-team.online
@@ -50,8 +49,3 @@ Id=${DMRID}
 Location=0
 Name=HBlink
 EOF
-else
-  echo "All Good!"
-  exit 0
-fi
-
