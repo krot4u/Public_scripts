@@ -1,4 +1,8 @@
 #!/bin/bash
+
+mount -o remount,rw /
+mount -o remount,rw /boot
+
 # ---------- Update pistar-upgrade file
 pistarCurVersion=$(awk -F "= " '/Version/ {print $2}' /etc/pistar-release)
 if [[ ${pistarCurVersion} == "4.1.4" ]]
@@ -23,3 +27,27 @@ else
 fi
 
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+
+
+CHECKDMRNET=$(grep '\[DMR Network 4\]' /etc/dmrgateway || echo $?)
+if [[ $CHECKDMRNET -gt 0 ]]; then
+DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+  cat <<EOF >> /etc/dmrgateway
+
+[DMR Network 4]
+Enabled=1
+Address=hblink1.qra-team.online
+Port=62031
+Password="passw0rd"
+PassAllPC0=1
+PassAllPC1=2
+Debug=0
+Id=${DMRID}
+Location=0
+Name=HBlink
+EOF
+else
+  echo "All Good!"
+  exit 0
+fi
+
