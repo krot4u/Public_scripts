@@ -17,7 +17,7 @@ if [[ ${pistarCurVersion} == "4.1.4" ]]
   fi
 fi
 
-CHECK_WATCHDOG=$(grep 'P25Gateway' /usr/local/sbin/pistar-watchdog || echo $?)
+CHECK_WATCHDOG=$(grep 'P25Gateway' /usr/local/sbin/pistar-watchdog >/dev/null; echo $?)
 if [[ $CHECK_WATCHDOG -gt 0 ]]; then
   echo "All Good!"
   exit 0
