@@ -44,3 +44,10 @@ Id=${DMRID}
 Location=0
 Name=QRAlink
 EOF
+
+# Make the disk read-only
+/bin/sync
+/bin/sync
+/bin/sync
+mount -o remount,ro /
+mount -o remount,ro /boot
