@@ -34,9 +34,9 @@ DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' 
   cat <<EOF >> /etc/dmrgateway
 [DMR Network 4]
 Enabled=1
-Address=hblink1.qra-team.online
+Address=freedmr.qra-team.online
 Port=62031
-Password="passw0rd"
+Password="QraDMRfree"
 TGRewrite1=2,84001,2,59731,1
 TGRewrite2=2,84002,2,59732,1
 TGRewrite2=2,84003,2,59733,1
