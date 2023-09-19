@@ -5,7 +5,7 @@ mount -o remount,rw /boot
 
 ## -------- Fix DMR SelfOnly (Private HotSpot)
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 ]
+if [ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 ]; then
   echo "Fix SelfOnly"
   sed -i -E '/^\[DMR\]$/,/^\[/ s/^SelfOnly=0/SelfOnly=1/' "/etc/mmdvmhost"
 fi
