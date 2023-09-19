@@ -115,7 +115,7 @@ main_function() {
 	if [ -t 1 ]; then
 		# This is running from a terminal, so it should be safe to update the OS
 		echo -e "Updating OS...\n"
-		apt-get update -y
+		apt-get update -y --allow-releaseinfo-change
 		apt-get upgrade --fix-missing --fix-broken -y
 		apt-get clean
 		echo "Done"
