@@ -36,7 +36,7 @@ DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' 
 Enabled=1
 Address=freedmr.qra-team.online
 Port=62031
-Password="QraDMRfree"
+Password=QraDMRfree
 PassAllPC0=1
 PassAllPC1=2
 Debug=0
