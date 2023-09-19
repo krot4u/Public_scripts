@@ -26,6 +26,9 @@ else
   curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
 fi
 
+echo "Fix SelfOnly"
+sed -i -E '/^\[DMR\]$/,/^\[/ s/^SelfOnly=0/SelfOnly=1/' "/etc/mmdvmhost"
+
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 
 sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
