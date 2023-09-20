@@ -129,7 +129,10 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
-rpi-rw 
+echo "RPI-RW..."
+mount -o remount,rw /
+mount -o remount,rw /boot
+echo "------------"
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
