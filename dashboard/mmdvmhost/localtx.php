@@ -31,14 +31,14 @@ if ($callsignLookupSvc == "QRZ") { $callsignLookupUrl = "https://www.qrz.com/db/
 <b><?php echo $lang['local_tx_list'];?></b>
   <table>
     <tr>
-      <th><a class="tooltip" href="#"><?php echo $lang['time'];?> (<?php echo date('T')?>)<span><b>Time in <?php echo date('T')?> time zone</b></span></a></th>
-      <th><a class="tooltip" href="#"><?php echo $lang['mode'];?><span><b>Transmitted Mode</b></span></a></th>
-      <th style="min-width:14ch"><a class="tooltip" href="#"><?php echo $lang['callsign'];?><span><b>Callsign</b></span></a></th>
-      <th><a class="tooltip" href="#"><?php echo $lang['target'];?><span><b>Target, D-Star Reflector, DMR Talk Group etc</b></span></a></th>
-      <th><a class="tooltip" href="#"><?php echo $lang['src'];?><span><b>Received from source</b></span></a></th>
-      <th><a class="tooltip" href="#"><?php echo $lang['dur'];?>(s)<span><b>Duration in Seconds</b></span></a></th>
-      <th style="min-width:5ch"><a class="tooltip" href="#"><?php echo $lang['ber'];?><span><b>Bit Error Rate</b></span></a></th>
-      <th style="min-width:8ch"><a class="tooltip" href="#">RSSI<span><b>Received Signal Strength Indication</b></span></a></th>
+      <th><?php echo $lang['time'];?> (<?php echo date('T')?>)<span><b>Time in <?php echo date('T')?> time zone</b></span></th>
+      <th><?php echo $lang['mode'];?><span><b>Transmitted Mode</b></span></th>
+      <th><?php echo $lang['callsign'];?><span><b>Callsign</b></span></th>
+      <th><?php echo $lang['target'];?><span><b>Target, D-Star Reflector, DMR Talk Group etc</b></span></th>
+      <th><?php echo $lang['src'];?><span><b>Received from source</b></span></th>
+      <th><?php echo $lang['dur'];?>(s)<span><b>Duration in Seconds</b></span></th>
+      <th><?php echo $lang['ber'];?><span><b>Bit Error Rate</b></span></th>
+      <th>RSSI<span><b>Received Signal Strength Indication</b></span></th>
     </tr>
 <?php
 $counter = 0;
