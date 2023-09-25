@@ -167,3 +167,6 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 170,GSTAR,6107007,Private Call,On,None,None
 171,714PZ,2501029,Private Call,On,None,None
 172,TESTCA,5566777,Private Call,On,None,None
+173,DVS,1122999,Private Call,On,None,None
+174,KIRPICH,5000941,Private Call,On,None,None
+175,RAPTER,2500824,Private Call,On,None,None
