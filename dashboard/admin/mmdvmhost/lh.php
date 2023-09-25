@@ -51,7 +51,8 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
                         $dt = new DateTime($utc_time, $utc_tz);
                         $dt->setTimeZone($local_tz);
                         $local_time = $dt->format('H:i:s M jS');
-		echo "<tr>";
+
+    echo "<tr>";
 		echo "<td align=\"left\">$local_time</td>";
 		echo "<td align=\"left\">".str_replace('Slot ', 'TS', $listElem[1])."</td>";
 		if (is_numeric($listElem[2])) {
