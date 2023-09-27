@@ -190,11 +190,18 @@ jobs:
             [System.IO.File]::WriteAllLines($MotorolaRusCSVfile, $MyRawString, $Utf8NoBomEncoding)
 
             # ------ TAKT ------ #
-            pip install pandas
+            # pip install pandas
+            # pip install openpyxl
+            # Copy-Item DMRIds.dat ./Devices_Contact_List/DMRIds.dat
+            # Set-Location Devices_Contact_List
+            # python takt_convert.py
+            
+            # ------ TAKT ------ #
+            #pip install pandas
             pip install openpyxl
             Copy-Item DMRIds.dat ./Devices_Contact_List/DMRIds.dat
             Set-Location Devices_Contact_List
-            python takt_convert.py
+            python takt_converter_lyamkin.py
 
       - name: Update files in repository
         uses: actions-x/commit@v6
