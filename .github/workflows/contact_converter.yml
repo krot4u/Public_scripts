@@ -49,6 +49,20 @@ jobs:
               $Counter++
             }
 
+            # ------ Retevis OpenGD77 21.09.2023 ------ #
+            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $RetevisCSVfile = "./Devices_Contact_List/Retevis_Contact_new.csv"
+            $RetevisTemplate = "--CALLSIGN--,--DMRID--,Private,Disabled"
+            Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $RetevisCSVfile -Value "Contact Name;ID;ID Type;TS Override"
+            Add-Content -Path $RetevisCSVfile -Value "QRA-Team,9,Group,2"
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $RetevisTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $RetevisCSVfile -Value $NewLine
+            }
+
             # ------ Retevis RT3s Original ------ #
             $DMRIdsContent = Get-Content ./DMRIds.dat
             $RetevisOrigCSVfile = "./Devices_Contact_List/RetevisOrig_Contact.csv"
