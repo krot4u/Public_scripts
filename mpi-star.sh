@@ -33,3 +33,7 @@ EOF
 
 # curl --fail -s -o "/usr/local/bin/MMDVMHost" https://raw.githubusercontent.com/krot4u/Public_scripts/master/MMDVMHost
 # curl --fail -s -o "/usr/local/bin/DMRGateway" https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRGateway
+
+## --------- Fix Phantom TX --------- ##
+echo "Configuring INI files"
+sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=360/Jitter=1000/' "/etc/mmdvmhost"
