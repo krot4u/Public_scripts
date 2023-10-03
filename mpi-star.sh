@@ -18,10 +18,6 @@ oldstring="\* \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
 newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
 sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
 
-oldstring2="1\,6\,11\,16\,21\,26\,31\,36\,41\,46\,51\,56 \* \* \* \*  \/var\/rrds\/ping\/ping\-graph\.sh"
-newstring2="1\,11\,22\,33\,44\,54 \* \* \* \*  \/var\/rrds\/ping\/ping\-graph\.sh"
-sed -i -e "s@$oldstring2@$newstring2@" /tmp/cronjob
-
 sudo crontab /tmp/cronjob
 
 ## -------- Add HBlink for Private Calls --------- ##
