@@ -13,6 +13,11 @@ fi
 ## -------- Fix Ping Server --------- ##
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 
+sudo crontab -l > /tmp/cronjob
+oldstring="\* \* \* \* \*  /var/rrds/ping/ping.sh"
+newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
+sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
+
 ## -------- Add HBlink for Private Calls --------- ##
 sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
 sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
