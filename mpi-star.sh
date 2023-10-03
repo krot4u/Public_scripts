@@ -14,10 +14,16 @@ fi
 curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 
 sudo crontab -l > /tmp/cronjob
-oldstring="\* \* \* \* \*  \/var\/rrds\/ping\/ping.sh"
-newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping.sh"
+oldstring="\* \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
+newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
 sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
+
+oldstring2="1\,6\,11\,16\,21\,26\,31\,36\,41\,46\,51\,56 \* \* \* \*  \/var\/rrds\/ping\/ping\-graph\.sh"
+newstring2="1\,11\,22\,33\,44\,54 \* \* \* \*  \/var\/rrds\/ping\/ping\-graph\.sh"
+sed -i -e "s@$oldstring2@$newstring2@" /tmp/cronjob
+
 sudo crontab /tmp/cronjob
+
 ## -------- Add HBlink for Private Calls --------- ##
 sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
 sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
