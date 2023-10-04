@@ -154,9 +154,4 @@ echo -e "${GRN}------------>  Добро Пожаловать в QRA-Team!${NC}"
 echo " "
 echo " "
 
-echo "RPI-RO..."
-mount -o remount,ro /
-mount -o remount,ro /boot
-echo "------------"
-
 exit 0
