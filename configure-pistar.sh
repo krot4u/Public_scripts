@@ -78,6 +78,11 @@ echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
 
+echo "RPI-RW..."
+mount -o remount,rw /
+mount -o remount,rw /boot
+echo "------------"
+
 echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
 echo "------------"
