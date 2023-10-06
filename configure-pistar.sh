@@ -32,7 +32,7 @@ read_dmrid() {
 
 read_frequency() {
 	while true; do
-		echo "Введите частоту приёма\передачи на ХотСпоте. Задаётся без разделителя"
+		echo "Введите частоту приёма\передачи на ХотСпоте."
 		read -p "(9 цифр. Пример:433.500.000): " MFREQUENCY
 		len=`echo ${MFREQUENCY} |awk '{print length}'`
 		if [[ ( ${MFREQUENCY} != ^[[:digit:].[:digit:].[:digit:]]+$ ) && ( $len -ne 11 ) ]];then
