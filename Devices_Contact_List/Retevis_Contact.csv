@@ -173,3 +173,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 176,AIKOM,2570053,Private Call,On,None,None
 177,PETR59,2502226,Private Call,On,None,None
 178,QRANEW,6660666,Private Call,On,None,None
+179,REPSVR,1000001,Private Call,On,None,None
