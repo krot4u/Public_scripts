@@ -36,11 +36,14 @@ read_frequency() {
 		read -p "(9 цифр. Пример:433.500.000): " MFREQUENCY
 		len=`echo ${MFREQUENCY} |awk '{print length}'`
 		if [[ ( ${MFREQUENCY} != ^[[:digit:].[:digit:].[:digit:]]+$ ) && ( $len -ne 11 ) ]];then
-			echo "----->"
+      echo "----->"
 			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
 			echo "----->"
 			echo " "
-		else
+      FREQ=${MFREQUENCY//./}
+      elif (( ${FREQ} >= 144000000 && ${FREQ} <= 148000000 )) || (( ${FREQ} >= 220000000 && ${FREQ} <= 225000000 )) || (( ${FREQ} >= 420000000 && ${FREQ} <= 450000000 )) || (( ${FREQ} >= 842000000 && ${FREQ} <= 950000000 )); then
+          echo -e "   ${RED}Ошибка: Эта частота не разрешена для использования!${NC}" 1>&2
+    else
 			echo "----->"
 			echo -e "   ${GRN}Частота приёма\передачи ${MFREQUENCY} ${NC}"
 			echo "----->"
