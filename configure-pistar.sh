@@ -32,17 +32,16 @@ read_dmrid() {
 
 read_frequency() {
 	while true; do
-		echo "Введите частоту приёма\передачи на ХотСпоте. Задаётся без разделителя"
+		echo "Введите частоту приёма\передачи на ХотСпоте."
 		read -p "(9 цифр. Пример:433.500.000): " MFREQUENCY
-		len=`echo ${MFREQUENCY} |awk '{print length}'`
+		len=`echo ${MFREQUENCY} | awk '{print length}'`
+    FREQ=`echo ${MFREQUENCY//./}`
 		if [[ ( ${MFREQUENCY} != ^[[:digit:].[:digit:].[:digit:]]+$ ) && ( $len -ne 11 ) ]];then
       echo "----->"
 			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
 			echo "----->"
 			echo " "
-    elif 
-      FREQ=`echo ${MFREQUENCY//./}`
-      (( ${FREQ} >= 144000000 && ${FREQ} <= 148000000 )) || (( ${FREQ} >= 220000000 && ${FREQ} <= 225000000 )) || (( ${FREQ} >= 420000000 && ${FREQ} <= 450000000 )) || (( ${FREQ} >= 842000000 && ${FREQ} <= 950000000 )); then
+    elif (( ${FREQ} >= 144000000 && ${FREQ} <= 148000000 )) || (( ${FREQ} >= 220000000 && ${FREQ} <= 225000000 )) || (( ${FREQ} >= 420000000 && ${FREQ} <= 450000000 )) || (( ${FREQ} >= 842000000 && ${FREQ} <= 950000000 )); then
           echo -e "   ${RED}Ошибка: Эта частота не разрешена для использования!${NC}" 1>&2
     else
 			echo "----->"
