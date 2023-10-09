@@ -34,10 +34,9 @@ read_frequency() {
   while true; do
     echo "Введите частоту приёма/передачи на ХотСпоте."
     read -p "(9 цифр. Пример: 433.500.000): " MFREQUENCY
-    len=${#MFREQUENCY} # Use ${#var} to get the length of a string
     FREQ=$(echo "${MFREQUENCY//./}")
-
-    if ! [[ "$MFREQUENCY" =~ ^[0-9]{3}\.[0-9]{3}\.[0-9]{3}$ ]] || [ $len -ne 12 ]; then
+    len=${#FREQ}
+    if ! [[ "$MFREQUENCY" =~ ^[0-9]{3}\.[0-9]{3}\.[0-9]{3}$ ]] || [ $len -ne 9 ]; then
       echo "----->"
       echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
       echo "----->"
