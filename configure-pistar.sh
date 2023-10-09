@@ -31,25 +31,28 @@ read_dmrid() {
 }
 
 read_frequency() {
-  while true; do
-    echo "Введите частоту приёма\передачи на ХотСпоте. Задаётся без разделителя"
-    read -p "(9 цифр. Пример: 433500000): " MFREQUENCY
-    len=${#MFREQUENCY}  # Get the length of the input
-    if [[ ! ${MFREQUENCY} =~ ^[0-9]{9}$ ]]; then
+	while true; do
+		echo "Введите частоту приёма\передачи на ХотСпоте. Задаётся без разделителя"
+		read -p "(9 цифр. Пример:433.500.000): " MFREQUENCY
+		len=`echo ${MFREQUENCY} |awk '{print length}'`
+		if [[ ( ${MFREQUENCY} != ^[[:digit:].[:digit:].[:digit:]]+$ ) && ( $len -ne 11 ) ]];then
       echo "----->"
-      echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
-      echo "----->"
-      echo " "
-    elif (( ${MFREQUENCY} >= 144000000 && ${MFREQUENCY} <= 148000000 )) || (( ${MFREQUENCY} >= 220000000 && ${MFREQUENCY} <= 225000000 )) || (( ${MFREQUENCY} >= 420000000 && ${MFREQUENCY} <= 450000000 )) || (( ${MFREQUENCY} >= 842000000 && ${MFREQUENCY} <= 950000000 )); then
-      echo -e "   ${RED}Ошибка: Эта частота не разрешена для использования!${NC}" 1>&2
+			echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
+			echo "----->"
+			echo " "
+    elif 
+      FREQ=${MFREQUENCY//./}
+      (( ${FREQ} >= 144000000 && ${FREQ} <= 148000000 )) || (( ${FREQ} >= 220000000 && ${FREQ} <= 225000000 )) || (( ${FREQ} >= 420000000 && ${FREQ} <= 450000000 )) || (( ${FREQ} >= 842000000 && ${FREQ} <= 950000000 )); then
+          echo -e "   ${RED}Ошибка: Эта частота не разрешена для использования!${NC}" 1>&2
     else
-      echo "----->"
-      echo -e "   ${GRN}Частота приёма\передачи ${MFREQUENCY} ${NC}"
-      echo "----->"
-      echo " "
-      break
-    fi
-  done
+			echo "----->"
+			echo -e "   ${GRN}Частота приёма\передачи ${MFREQUENCY} ${NC}"
+			echo "----->"
+			echo " "
+			FREQUENCY=${MFREQUENCY//./}
+			break
+		fi
+	done
 }
 
 service_handle() {
