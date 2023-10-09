@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export LC_ALL=C
 RED="\033[0;31m"
 GRN="\033[0;32m"
 NC="\033[0m"
