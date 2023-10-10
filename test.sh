@@ -1,5 +1,3 @@
-#!/bin/bash
-
 export LC_ALL=C
 RED="\033[0;31m"
 GRN="\033[0;32m"
@@ -12,7 +10,7 @@ read_frequency() {
     FREQ=$(echo "${MFREQUENCY//./}")
     FIRST=${MFREQUENCY:0:3}
     len=${#FREQ}
-    if ! [[ "$MFREQUENCY" =~ ^[[:digit:]].[[:digit:]].[[:digit:]]$ ]] && [ $len -ne 9 ]; then
+    if [[ "$MFREQUENCY" =~ ^[[:digit:]]\.[[:digit:]]\.[[:digit:]]$ ]] && [ $len -ne 9 ]; then
       echo "----->"
       echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
       echo "----->"
