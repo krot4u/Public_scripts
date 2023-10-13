@@ -58,11 +58,11 @@ read_frequency() {
 }
 
 ## ---------- AutoAccept new Config - KeepConfig ---------- ##
-touch /etc/apt/apt.conf.d/98-accept-config.conf
-cat << EOF >> /etc/apt/apt.conf.d/98-accept-config.conf
+touch /etc/apt/apt.conf.d/98-accept-config
+cat << EOF >> /etc/apt/apt.conf.d/98-accept-config
 Dpkg::Options {
-   "--force-confdef";
-   "--force-confold";
+  "--force-confdef";
+  "--force-confold";
 }
 EOF
 
