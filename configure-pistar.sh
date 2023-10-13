@@ -111,7 +111,6 @@ curl --fail -o "${dmrgateway}" -s https://raw.githubusercontent.com/krot4u/Publi
 curl --fail -o "${mmdvmhost}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
 curl --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
 curl --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
-curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
 echo "------------"
 
 echo "RRDtool setup"
