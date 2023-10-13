@@ -4,33 +4,31 @@ echo "RPI-RW..."
 mount -o remount,rw /
 mount -o remount,rw /boot
 echo "------------"
-
-echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
-
-sudo apt-get update 2>&1
-output=$(sudo apt-get install rrdtool --no-install-recommends -y 2>&1)
-
-sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
-sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
-sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
-sudo chmod +x /var/rrds/ping/ping.sh
-sudo chmod +x /var/rrds/ping/ping-graph.sh
-
 if [[ ! -d "/var/rrds/ping" ]]
 then
+    echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
+
+    sudo apt-get update 2>&1
+    output=$(sudo apt-get install rrdtool --no-install-recommends -y 2>&1)
+
+    sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+    sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+    sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
+    sudo chmod +x /var/rrds/ping/ping.sh
+    sudo chmod +x /var/rrds/ping/ping-graph.sh
     sudo mkdir -p /var/rrds/ping
-    /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
-    --step 60 \
-    DS:pl:GAUGE:600:0:100 \
-    DS:rtt:GAUGE:600:0:10000000 \
-    RRA:AVERAGE:0.5:1:800 \
-    RRA:AVERAGE:0.5:6:800 \
-    RRA:AVERAGE:0.5:24:800 \
-    RRA:AVERAGE:0.5:288:800 \
-    RRA:MAX:0.5:1:800 \
-    RRA:MAX:0.5:6:800 \
-    RRA:MAX:0.5:24:800 \
-    RRA:MAX:0.5:288:800
+      /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
+      --step 60 \
+      DS:pl:GAUGE:600:0:100 \
+      DS:rtt:GAUGE:600:0:10000000 \
+      RRA:AVERAGE:0.5:1:800 \
+      RRA:AVERAGE:0.5:6:800 \
+      RRA:AVERAGE:0.5:24:800 \
+      RRA:AVERAGE:0.5:288:800 \
+      RRA:MAX:0.5:1:800 \
+      RRA:MAX:0.5:6:800 \
+      RRA:MAX:0.5:24:800 \
+      RRA:MAX:0.5:288:800
 fi
 
 sudo crontab -l > /tmp/cronjob
