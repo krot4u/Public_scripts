@@ -5,6 +5,7 @@ mount -o remount,rw /boot
 echo "------------"
 if [[ ! -d "/var/rrds/ping" ]]
 then
+    sudo mkdir -p /var/rrds/ping
     echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
     sudo apt-get update > /dev/null
@@ -15,7 +16,6 @@ then
     sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
     sudo chmod +x /var/rrds/ping/ping.sh
     sudo chmod +x /var/rrds/ping/ping-graph.sh
-    sudo mkdir -p /var/rrds/ping
       /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
       --step 60 \
       DS:pl:GAUGE:600:0:100 \
