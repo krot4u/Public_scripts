@@ -124,7 +124,7 @@ echo "dpkg --configure -a..."
 dpkg --configure -a 2>&1
 
 echo "CleanUp..."
-apt-get install vim --no-install-recommends -y
+apt-get install vim --no-install-recommends -y 2>&1
 apt autoremove
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
