@@ -14,7 +14,7 @@ then
     
     #sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
 
-    sudo curl --fail -s -o "/opt/rrdtool_1.7.1-2_arm64.deb" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrdtool_1.7.1-2_arm64.deb
+    sudo curl --fail -s -o "/opt/rrdtool_1.7.1-2_armhf.deb" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrdtool_1.7.1-2_armhf.deb
     sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
     sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
     sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
@@ -22,7 +22,7 @@ then
     sudo chmod +x /var/rrds/ping/ping.sh
     sudo chmod +x /var/rrds/ping/ping-graph.sh
     
-    dpkg -i /opt/rrdtool_1.7.1-2_arm64.deb
+    dpkg -i /opt/rrdtool_1.7.1-2_armhf.deb
     
     /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
     --step 60 \
