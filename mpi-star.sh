@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mount -o remount,rw /
-mount -o remount,rw /boot
+# mount -o remount,rw /
+# mount -o remount,rw /boot
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
