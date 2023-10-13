@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "RPI-RW..."
 mount -o remount,rw /
 mount -o remount,rw /boot
@@ -8,8 +7,8 @@ if [[ ! -d "/var/rrds/ping" ]]
 then
     echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
-    sudo apt-get update 2>&1
-    output=$(sudo apt-get install rrdtool --no-install-recommends -y 2>&1)
+    sudo apt-get update > /dev/null
+    output=$(sudo apt-get install rrdtool --no-install-recommends -y > /dev/null)
 
     sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
     sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
