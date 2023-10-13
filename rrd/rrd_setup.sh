@@ -12,7 +12,7 @@ output=$(sudo apt-get --no-install-recommends install rrdtool gawk -y 2>&1)
 # Check if any missing keys error occurred
 if [[ $output =~ "Breaks: libgcc-8-dev" ]]; then
     echo "------->>>>> install gcc-8-base"
-    apt-get install gcc-8-base -y 
+    apt-get install gcc-8-base -y 2>&1
 else
     echo "rrdtool gawk Installed Successfully."
 fi
