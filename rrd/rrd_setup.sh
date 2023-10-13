@@ -18,21 +18,24 @@ then
     sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
     sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
     sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
+    
     sudo chmod +x /var/rrds/ping/ping.sh
     sudo chmod +x /var/rrds/ping/ping-graph.sh
+    
     dpkg -i /opt/rrdtool_1.7.1-2_arm64.deb
-      /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
-      --step 60 \
-      DS:pl:GAUGE:600:0:100 \
-      DS:rtt:GAUGE:600:0:10000000 \
-      RRA:AVERAGE:0.5:1:800 \
-      RRA:AVERAGE:0.5:6:800 \
-      RRA:AVERAGE:0.5:24:800 \
-      RRA:AVERAGE:0.5:288:800 \
-      RRA:MAX:0.5:1:800 \
-      RRA:MAX:0.5:6:800 \
-      RRA:MAX:0.5:24:800 \
-      RRA:MAX:0.5:288:800
+    
+    /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
+    --step 60 \
+    DS:pl:GAUGE:600:0:100 \
+    DS:rtt:GAUGE:600:0:10000000 \
+    RRA:AVERAGE:0.5:1:800 \
+    RRA:AVERAGE:0.5:6:800 \
+    RRA:AVERAGE:0.5:24:800 \
+    RRA:AVERAGE:0.5:288:800 \
+    RRA:MAX:0.5:1:800 \
+    RRA:MAX:0.5:6:800 \
+    RRA:MAX:0.5:24:800 \
+    RRA:MAX:0.5:288:800
 fi
 
 sudo crontab -l > /tmp/cronjob
