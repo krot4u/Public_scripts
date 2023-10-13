@@ -9,14 +9,14 @@ echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib no
 
 sudo apt-get update
 sudo apt-get install rrdtool gawk -y
-# output=$(sudo apt install rrdtool gawk -y 2>&1)
-# # Check if any missing keys error occurred
-# if [[ $output =~ "Breaks: libgcc-8-dev" ]]; then
-#     echo "------->>>>> install gcc-8-base"
-#     apt-get install gcc-8-base -y
-# else
-#     echo "rrdtool gawk Installed Successfully."
-# fi
+output=$(sudo apt install rrdtool gawk -y 2>&1)
+# Check if any missing keys error occurred
+if [[ $output =~ "Breaks: libgcc-8-dev" ]]; then
+    echo "------->>>>> install gcc-8-base"
+    apt-get install gcc-8-base -y
+else
+    echo "rrdtool gawk Installed Successfully."
+fi
 
 sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh

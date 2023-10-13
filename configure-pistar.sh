@@ -121,6 +121,11 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
+echo "RPI-RW..."
+mount -o remount,rw /
+mount -o remount,rw /boot
+echo "------------"
+
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dstarrepeater
