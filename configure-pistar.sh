@@ -58,7 +58,6 @@ read_frequency() {
 }
 
 ## ---------- AutoAccept new Config - KeepConfig ---------- ##
-touch /etc/apt/apt.conf.d/98-accept-config
 cat << EOF >> /etc/apt/apt.conf.d/98-accept-config
 Dpkg::Options {
   "--force-confdef";
