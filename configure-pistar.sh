@@ -139,6 +139,8 @@ sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 echo "------------"
 
+dpkg --configure -a
+
 echo "RPI-RW..."
 mount -o remount,rw /
 mount -o remount,rw /boot
