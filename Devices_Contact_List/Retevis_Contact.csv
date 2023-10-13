@@ -175,3 +175,5 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 178,QRANEW,6660666,Private Call,On,None,None
 179,REPSVR,1000001,Private Call,On,None,None
 180,ZHIRAF,2500863,Private Call,On,None,None
+181,LANCER,2500794,Private Call,On,None,None
+182,4UVASH,2501108,Private Call,On,None,None

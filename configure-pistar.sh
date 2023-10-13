@@ -32,23 +32,26 @@ read_dmrid() {
 
 read_frequency() {
   while true; do
-    echo "Введите частоту приёма/передачи на ХотСпоте."
+    echo "Введите частоту приёма/передачи на ХотСпоте (разделитель точка)"
     read -p "(9 цифр. Пример: 433.500.000): " MFREQUENCY
-    FREQ=$(echo "${MFREQUENCY//./}")
-    len=${#FREQ}
+    FREQUENCY=$(echo "${MFREQUENCY//./}")
+    FIRST=${MFREQUENCY:0:3}
+    len=${#FREQUENCY}
     if ! [[ "$MFREQUENCY" =~ ^[0-9]{3}\.[0-9]{3}\.[0-9]{3}$ ]] || [ $len -ne 9 ]; then
       echo "----->"
       echo -e "   ${RED}Ошибка: Неверная частота!${NC}" 1>&2
       echo "----->"
       echo " "
-    elif [[ $FREQ -ge 144000000 && $FREQ -le 148000000 ]] || [[ $FREQ -ge 220000000 && $FREQ -le 225000000 ]] || [[ $FREQ -ge 420000000 && $FREQ -le 450000000 ]] || [[ $FREQ -ge 842000000 && $FREQ -le 950000000 ]]; then
+    else
+      echo " "
+    fi
+    if ! ([[ $FIRST -ge 144 && $FIRST -le 148 ]] || [[ $FIRST -ge 220 && $FIRST -le 225 ]] || [[ $FIRST -ge 420 && $FIRST -le 450 ]] || [[ $FIRST -ge 842 && $FIRST -le 950 ]]); then
       echo -e "   ${RED}Ошибка: Эта частота не разрешена для использования!${NC}" 1>&2
     else
       echo "----->"
       echo -e "   ${GRN}Частота приёма/передачи ${MFREQUENCY} ${NC}"
       echo "----->"
       echo " "
-      FREQUENCY="${MFREQUENCY//./}"
       break
     fi
   done
