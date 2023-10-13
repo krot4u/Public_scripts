@@ -102,10 +102,6 @@ sudo /usr/local/sbin/HostFilesUpdate.sh
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
 
-echo "RRDtool setup"
-curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
-echo "------------"
-
 echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
@@ -144,6 +140,10 @@ sed -i "s/--DMRID--/$DMRID/" "${dmrgateway}"
 sed -i "s/--CALLSIGN--/$CALLSIGN/" "${mmdvmhost}"
 sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
+
+echo "------------"
+echo "RRDtool setup"
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 echo "------------"
 
 echo "RPI-RW..."
