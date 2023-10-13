@@ -79,10 +79,10 @@ mount -o remount,rw /
 mount -o remount,rw /boot
 echo "------------"
 
-curl --fail -o /opt/apt-upgrade-keys-add.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/apt-upgrade-keys-add.sh
-sudo chmod +x /opt/apt-upgrade-keys-add.sh
-sudo /opt/apt-upgrade-keys-add.sh
-apt-get upgrade -y
+#curl --fail -o /opt/apt-upgrade-keys-add.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/apt-upgrade-keys-add.sh
+#sudo chmod +x /opt/apt-upgrade-keys-add.sh
+#sudo /opt/apt-upgrade-keys-add.sh
+#apt-get upgrade -y
 
 echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
