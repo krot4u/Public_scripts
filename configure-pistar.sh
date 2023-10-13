@@ -126,6 +126,13 @@ mount -o remount,rw /
 mount -o remount,rw /boot
 echo "------------"
 
+echo "dpkg --configure -a..."
+dpkg --configure -a
+
+echo "CleanUp..."
+apt-get install vim --no-install-recommends -y
+apt autoremove
+
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
 sed -i "s/--Frequency--/$FREQUENCY/" /etc/dstarrepeater
@@ -138,8 +145,6 @@ sed -i "s/--CALLSIGN--/$CALLSIGN/" "${mmdvmhost}"
 sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 echo "------------"
-
-dpkg --configure -a
 
 echo "RPI-RW..."
 mount -o remount,rw /
