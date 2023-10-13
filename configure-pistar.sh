@@ -102,17 +102,6 @@ sudo /usr/local/sbin/HostFilesUpdate.sh
 CALLSIGN=$(grep $DMRID /usr/local/etc/DMRIds.dat | awk '{print $2}')
 echo "------------"
 
-echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
-cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
-cp "${mmdvmhost}" "${mmdvmhost}.$(date +%Y%m%d)"
-
-echo "Downloading modified dmrgateway and mmdvmhost..."
-curl --fail -o "${dmrgateway}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
-curl --fail -o "${mmdvmhost}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
-curl --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
-curl --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
-echo "------------"
-
 echo "RRDtool setup"
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 echo "------------"
@@ -132,6 +121,17 @@ dpkg --configure -a
 echo "CleanUp..."
 apt-get install vim --no-install-recommends -y
 apt autoremove
+
+echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
+cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
+cp "${mmdvmhost}" "${mmdvmhost}.$(date +%Y%m%d)"
+
+echo "Downloading modified dmrgateway and mmdvmhost..."
+curl --fail -o "${dmrgateway}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dmrgateway.ini
+curl --fail -o "${mmdvmhost}" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mmdvmhost.ini
+curl --fail -o /etc/dstar-radio.mmdvmhost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstar-radio.mmdvmhost
+curl --fail -o /etc/dstarrepeater -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/dstarrepeater
+echo "------------"
 
 echo "Updating dstarrepeater..."
 sed -i "s/--CALLSIGN--/$CALLSIGN/" /etc/dstarrepeater
