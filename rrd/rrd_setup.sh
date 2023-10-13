@@ -8,8 +8,7 @@ echo "------------"
 echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
 sudo apt-get update
-sudo apt-get install rrdtool gawk -y
-output=$(sudo apt install rrdtool gawk -y 2>&1)
+output=$(sudo apt-get --no-install-recommends install rrdtool gawk -y 2>&1)
 # Check if any missing keys error occurred
 if [[ $output =~ "Breaks: libgcc-8-dev" ]]; then
     echo "------->>>>> install gcc-8-base"
