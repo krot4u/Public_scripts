@@ -57,6 +57,15 @@ read_frequency() {
   done
 }
 
+## ---------- AutoAccept new Config - KeepConfig ---------- ##
+touch /etc/apt/apt.conf.d/98-accept-config.conf
+cat << EOF >> /etc/apt/apt.conf.d/98-accept-config.conf
+Dpkg::Options {
+   "--force-confdef";
+   "--force-confold";
+}
+EOF
+
 service_handle() {
 	# What do we want do to?
 	doWhat=${1}
