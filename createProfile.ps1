@@ -117,3 +117,4 @@ else {
   systemctl start md380-emu_$DmrID.service
   $RESULTMD380=$(systemctl status md380-emu_$DmrID.service | grep Active:)
   log $RESULTMD380
+}
