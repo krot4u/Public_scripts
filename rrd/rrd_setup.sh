@@ -5,11 +5,13 @@ mount -o remount,rw /boot
 echo "------------"
 if [[ ! -d "/var/rrds/ping" ]]
 then
-    sudo mkdir -p /var/rrds/ping
+    
     echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
-    sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y gcc-8-base
+    sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y gcc-8-base  > /dev/null
     sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
+
+    sudo mkdir -p /var/rrds/ping
 
     sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
     sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
