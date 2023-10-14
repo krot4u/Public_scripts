@@ -1,3 +1,4 @@
+# ./createProfile.ps1 -Callsign "TASKENT" -DmrID 5973272 -delete no
 param (
   [string]$delete = "no",
   [ValidateScript({
