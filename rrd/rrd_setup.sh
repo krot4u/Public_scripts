@@ -10,7 +10,7 @@ then
 
     sudo apt-get install -o Dpkg::Options::="--force-confold" --allow-downgrades -y gcc-8-base  > /dev/null
     sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
-    sudo apt autoremove
+    sudo apt-get autoremove -y
     
     sudo mkdir -p /var/rrds/ping
 
