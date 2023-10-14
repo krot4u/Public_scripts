@@ -8,7 +8,7 @@ then
     
     echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
-    sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y gcc-8-base  > /dev/null
+    sudo apt-get install -o Dpkg::Options::="--force-confold" --allow-downgrades -y gcc-8-base  > /dev/null
     sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
 
     sudo mkdir -p /var/rrds/ping
