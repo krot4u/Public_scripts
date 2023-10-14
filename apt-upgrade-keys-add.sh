@@ -29,7 +29,7 @@ if [[ $output =~ "NO_PUBKEY" ]]; then
     # Add missing keys and run update again
     echo "Adding missing keys and running update again..."
     add_missing_keys
-    sudo apt update -y --allow-releaseinfo-change
+    sudo apt-get update -y --allow-releaseinfo-change
 else
     echo "Upgrade completed successfully."
 fi

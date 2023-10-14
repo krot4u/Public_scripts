@@ -1,30 +1,26 @@
 #!/bin/bash
-
 echo "RPI-RW..."
 mount -o remount,rw /
 mount -o remount,rw /boot
 echo "------------"
-
-echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
-
-output=$(sudo apt install rrdtool gawk -y 2>&1)
-# Check if any missing keys error occurred
-if [[ $output =~ "Breaks: libgcc-8-dev" ]]; then
-    echo "------->>>>> install gcc-8-base"
-    apt-get install gcc-8-base -y
-else
-    echo "rrdtool gawk Installed Successfully."
-fi
-
-sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
-sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
-sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
-sudo chmod +x /var/rrds/ping/ping.sh
-sudo chmod +x /var/rrds/ping/ping-graph.sh
-
 if [[ ! -d "/var/rrds/ping" ]]
 then
+    
+    echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
+
+    sudo apt-get install -o Dpkg::Options::="--force-confold" --allow-downgrades -y gcc-8-base  > /dev/null
+    sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
+    sudo apt autoremove
+    
     sudo mkdir -p /var/rrds/ping
+
+    sudo curl --fail -s -o "/var/rrds/ping/ping.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+    sudo curl --fail -s -o "/var/rrds/ping/ping-graph.sh" https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping-graph.sh
+    sudo curl --fail -s -o "/var/www/dashboard/ping.php" https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/ping.php
+    
+    sudo chmod +x /var/rrds/ping/ping.sh
+    sudo chmod +x /var/rrds/ping/ping-graph.sh
+    
     /usr/bin/rrdtool create /var/rrds/ping/ping_wan.rrd \
     --step 60 \
     DS:pl:GAUGE:600:0:100 \

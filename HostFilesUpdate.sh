@@ -8,7 +8,8 @@ DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
-
+MPISTAR=/usr/local/sbin/mpi-star.sh
+PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 # How many backups
 FILEBACKUP=1
 
@@ -17,11 +18,6 @@ if [ "$(id -u)" != "0" ];then
   echo "This script must be run as root" 1>&2
   exit 1
 fi
-
-mount -o remount,rw /
-mount -o remount,rw /boot
-
-sleep 5
 
 # Create backup of old files
 if [ ${FILEBACKUP} -ne 0 ]; then
@@ -58,11 +54,11 @@ curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat
 curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
-curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
-curl --fail -o '/usr/local/sbin/pistar-hourly.cron' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
+curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
+curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 
-chmod +x /usr/local/sbin/mpi-star.sh
-/usr/local/sbin/mpi-star.sh 2> /dev/null
+chmod +x ${MPISTAR}
+${MPISTAR} 2> /dev/null
 echo "------------"
 
 echo ">> HostFilesUpdate: Download dashboard files"
@@ -86,11 +82,9 @@ curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/d
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php" > '/var/www/dashboard/admin/sysinfo.php'
 curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
 curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
-curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png" 
+curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
+curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
 echo "------------"
-
-mount -o remount,rw /
-mount -o remount,rw /boot
 
 echo ">> HostFilesUpdate: Done... Exiting..."
 
