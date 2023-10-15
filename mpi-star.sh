@@ -11,12 +11,12 @@
 # fi
 
 ## -------- Fix Ping Server --------- ##
-#curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
+curl --fail -s -o "/var/rrds/ping/ping.sh" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/ping.sh
 
-# sudo crontab -l > /tmp/cronjob
-# oldstring="\* \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
-# newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
-# sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
+sudo crontab -l > /tmp/cronjob
+oldstring="\10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
+newstring="\*\/5 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
+sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
 
 # sudo crontab /tmp/cronjob
 
