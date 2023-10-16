@@ -72,6 +72,7 @@ service_handle() {
 	systemctl ${doWhat} pistar-watchdog.service 2> /dev/null
 	systemctl ${doWhat} dmrgateway.service 2> /dev/null
 	systemctl ${doWhat} timeserver.service 2> /dev/null
+  systemctl ${doWhat} p25gateway.service 2> /dev/null
 	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 3 > /dev/null
 }
 
@@ -89,6 +90,10 @@ echo "------------"
 
 echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
+echo "------------"
+
+echo "Downloading modified pistar-watchdog..."
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog > '/usr/local/sbin/pistar-watchdog'
 echo "------------"
 
 echo "Downloading modified HostFilesUpdate.sh..."
