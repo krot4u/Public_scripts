@@ -8,7 +8,7 @@ then
     
     echo "deb http://mirrordirector.raspbian.org/raspbian/ oldstable main contrib non-free rpi" > /etc/apt/sources.list.d/oldstable.list
 
-    sudo apt-get install -o Dpkg::Options::="--force-confold" --allow-downgrades -y gcc-8-base  > /dev/null
+    sudo apt-get install -o Dpkg::Options::="--force-confold" --allow-downgrades gcc-8-base --no-install-recommends -y > /dev/null
     sudo apt-get install rrdtool --no-install-recommends -y > /dev/null
     sudo apt-get autoremove -y
     
