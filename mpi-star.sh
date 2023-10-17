@@ -17,8 +17,8 @@ sudo crontab -l > /tmp/cronjob
 oldstring="\* \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
 newstring="\*\/10 \* \* \* \*  \/var\/rrds\/ping\/ping\.sh"
 sed -i -e "s@$oldstring@$newstring@" /tmp/cronjob
-
-# sudo crontab /tmp/cronjob
+sudo crontab /tmp/cronjob
+sudo rm -f /tmp/cronjob
 
 ## -------- Add HBlink for Private Calls --------- ##
 #sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
