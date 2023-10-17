@@ -119,8 +119,8 @@ mount -o remount,rw /
 mount -o remount,rw /boot
 echo "------------"
 
-echo "dpkg --configure -a..."
-dpkg --configure -a 2>&1
+# echo "dpkg --configure -a..."
+# dpkg --configure -a 2>&1
 
 echo "CleanUp..."
 apt-get install vim --no-install-recommends -y 2>&1
