@@ -6,6 +6,13 @@ NC="\033[0m"
 dmrgateway=/etc/dmrgateway
 mmdvmhost=/etc/mmdvmhost
 
+function rpirw {
+  echo "RPI-RW..."
+  sudo mount -o remount,rw /
+  sudo mount -o remount,rw /boot
+  echo "------------"
+}
+
 if [ "$(id -u)" != "0" ];then
         echo "Ошибка! Необходимо выполнить ${GRN}sudo su - ${NC}" 1>&2
         exit 1
@@ -58,6 +65,8 @@ read_frequency() {
 }
 
 ## ---------- AutoAccept new Config - KeepConfig ---------- ##
+rpirw
+
 cat << EOF >> /etc/apt/apt.conf.d/98-accept-config
 Dpkg::Options {
   "--force-confdef";
@@ -83,10 +92,7 @@ echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
 
-echo "RPI-RW..."
-mount -o remount,rw /
-mount -o remount,rw /boot
-echo "------------"
+rpirw
 
 echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
@@ -114,17 +120,14 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
-echo "RPI-RW..."
-mount -o remount,rw /
-mount -o remount,rw /boot
-echo "------------"
+rpirw
 
-# echo "dpkg --configure -a..."
-# dpkg --configure -a 2>&1
+sleep 5
 
 echo "CleanUp..."
 apt-get install vim --no-install-recommends -y 2>&1
-apt autoremove
+sleep 5
+apt autoremove -y 2>&1
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
@@ -154,10 +157,7 @@ echo "RRDtool setup"
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 echo "------------"
 
-echo "RPI-RW..."
-mount -o remount,rw /
-mount -o remount,rw /boot
-echo "------------"
+rpirw
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
