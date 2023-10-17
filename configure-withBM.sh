@@ -14,18 +14,18 @@ if [[ "" == $(grep "p25.qra-team.online" /usr/local/etc/P25HostsLocal.txt) ]]
     echo "1	p25.qra-team.online	41000" >> /usr/local/etc/P25HostsLocal.txt
 fi
 
-  if [[ "" == $(grep -s "46.17.42.12" /root/XLXHosts.txt) ]]
+  if [[ "" == $(grep -s "38.180.66.135" /root/XLXHosts.txt) ]]
     then
       echo "Configuring XLXHosts"
-      echo "496;46.17.42.12;4001" >> /root/XLXHosts.txt
+      echo "496;38.180.66.135;4001" >> /root/XLXHosts.txt
   else echo -e "${RED} Вы уже подключены в QRA\nЭтот скрипт необходимо запускать на чистом Pi-Star\nИли на Pi-Star не подключенный к QRA ${NC}"
     exit 1
   fi
 
-if [[ "" == $(grep -s "46.17.42.12" /root/DMR_Hosts.txt) ]]
+if [[ "" == $(grep -s "38.180.66.135" /root/DMR_Hosts.txt) ]]
   then
     echo "Configuring DMR_Hosts files"
-    echo "XLX_496       0000    46.17.42.12     passw0rd        62030" >> /root/DMR_Hosts.txt
+    echo "XLX_496       0000    38.180.66.135     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 echo "------------"
 
