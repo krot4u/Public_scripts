@@ -179,8 +179,8 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 182,4UVASH,2501108,Private Call,On,None,None
 183,SEVAS,2507060,Private Call,On,None,None
 184,BALAMUT,2507004,Private Call,On,None,None
-185,BALAMUT,2507074,Private Call,On,None,None
-186,BALAMUT,2507027,Private Call,On,None,None
+185,BALOMUT,2507074,Private Call,On,None,None
+186,BALAMYT,2507027,Private Call,On,None,None
 187,0888,2506076,Private Call,On,None,None
 188,ROSTOV,6100777,Private Call,On,None,None
 189,TUMAN,7705778,Private Call,On,None,None
