@@ -11,24 +11,25 @@
 # fi
 
 ## -------- Add HBlink for Private Calls --------- ##
-#sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-# sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-# DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-#   cat <<EOF >> /etc/dmrgateway
+sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
+DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+  cat <<EOF >> /etc/dmrgateway
 
-# [DMR Network 4]
-# Enabled=1
-# Address=hbl.qra-team.online
-# Port=62031
-# Password=QraDMRfree
-# TGRewrite0=2,9990,2,9990,1
-# PassAllPC0=1
-# PassAllPC1=2
-# Debug=0
-# Id=${DMRID}
-# Location=0
-# Name=QRAlink
-# EOF
+[DMR Network 4]
+Enabled=1
+Name=QRA-hblink
+Id=${DMRID}
+Address=hbl.qra-team.online
+Port=62030
+Password=QraDMRfree
+TGRewrite0=2,597301,2,597301,1
+TGRewrite1=2,9990,2,9990,1
+PassAllPC0=1
+PassAllPC1=2
+Debug=0
+Location=0
+EOF
 
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
