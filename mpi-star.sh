@@ -11,10 +11,12 @@
 # fi
 
 ## -------- Add HBlink for Private Calls --------- ##
-sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-  cat <<EOF >> /etc/dmrgateway
+if [[ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 && ${DMRID} != 2120212 && ${DMRID} != 1000001]]; then
+  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
+  DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+    cat <<EOF >> /etc/dmrgateway
 
 [DMR Network 4]
 Enabled=1
@@ -30,7 +32,7 @@ PassAllPC1=2
 Debug=0
 Location=0
 EOF
-
+fi
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
