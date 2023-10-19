@@ -29,9 +29,9 @@ if [[ "" == $(grep -s "38.180.66.135" /root/DMR_Hosts.txt) ]]
 fi
 echo "------------"
 
-curl --fail -o /opt/apt-upgrade-keys-add.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/apt-upgrade-keys-add.sh
-sudo chmod +x /opt/apt-upgrade-keys-add.sh
-sudo /opt/apt-upgrade-keys-add.sh
+# curl --fail -o /opt/apt-upgrade-keys-add.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/apt-upgrade-keys-add.sh
+# sudo chmod +x /opt/apt-upgrade-keys-add.sh
+# sudo /opt/apt-upgrade-keys-add.sh
 
 echo "Configuring INI files"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Startup=.*/Startup=496/' "${dmrgateway}"
