@@ -23,8 +23,8 @@ jobs:
             $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
-            Add-Content -Path $AnyToneCSVfile -Value '"1,""9"",""QRA TG9"",""Group Call"",""None"""'
-            Add-Content -Path $AnyToneCSVfile -Value '"2,""5973"",""QRA TG5973"",""Group Call"",""None"""'
+            Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","Group Call","None"'
+            Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA TG5973","Group Call","None"'
             $Counter = 3
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
