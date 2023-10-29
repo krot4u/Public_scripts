@@ -22,6 +22,7 @@ jobs:
             $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts.csv"
             $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
             Add-Content -Path $AnyToneCSVfile -Value '"1,""9"",""QRA TG9"",""Group Call"",""None"""'
             Add-Content -Path $AnyToneCSVfile -Value '"2,""5973"",""QRA TG5973"",""Group Call"",""None"""'
             $Counter = 1
