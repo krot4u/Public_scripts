@@ -73,7 +73,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 76,TAIFUN,2502143,Private Call,On,None,None
 77,KAMYSH,2500728,Private Call,On,None,None
 78,DIMA97,5000097,Private Call,On,None,None
-79,BELGROD,3100001,Private Call,On,None,None
+79,BELGR0D,3100001,Private Call,On,None,None
 80,BELGROD,2502208,Private Call,On,None,None
 81,MORYAK,7700111,Private Call,On,None,None
 82,PRIMUS,7700543,Private Call,On,None,None
@@ -112,7 +112,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 115,START,2504075,Private Call,On,None,None
 116,MEDVED,2500675,Private Call,On,None,None
 117,VITAMIN,7770348,Private Call,On,None,None
-118,SHPIL,7800056,Private Call,On,None,None
+118,AYVENGO,7800056,Private Call,On,None,None
 119,MIX622,2500761,Private Call,On,None,None
 120,INGODA,2500685,Private Call,On,None,None
 121,MALINA,2500782,Private Call,On,None,None
@@ -194,3 +194,6 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 197,BUMER,2500881,Private Call,On,None,None
 198,KOTLAS,2502011,Private Call,On,None,None
 199,TRESHKN,5000003,Private Call,On,None,None
+200,KARDAN,2503228,Private Call,On,None,None
+201,CICADA,1860757,Private Call,On,None,None
+202,KUBAN,2502138,Private Call,On,None,None
