@@ -24,7 +24,7 @@ jobs:
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
             Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","Group Call","None"'
-            Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA TG5973","Group Call","None"'
+            Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA-5973","Group Call","None"'
             $Counter = 3
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
@@ -42,7 +42,8 @@ jobs:
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override"
             Add-Content -Path $RetevisCSVfile -Value "0,QRA-Team,9,Group Call,On,None,2"
-            $Counter = 6
+            Add-Content -Path $RetevisCSVfile -Value "1,QRA-5973,5973,Group Call,On,None,2"
+            $Counter = 2
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
@@ -58,6 +59,7 @@ jobs:
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Contact Name;ID;ID Type;TS Override"
             Add-Content -Path $RetevisCSVfile -Value "QRA-Team,9,Group,2"
+            Add-Content -Path $RetevisCSVfile -Value "QRA-5973,5973,Group,2"
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
@@ -72,6 +74,7 @@ jobs:
             Remove-Item $RetevisOrigCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisOrigCSVfile -Value "Contact Name,Call Type,Call ID,Call Receive Tone"
             Add-Content -Path $RetevisOrigCSVfile -Value "QRA-Team,1,9,0"
+            Add-Content -Path $RetevisOrigCSVfile -Value "QRA-5973,1,5973,0"
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
@@ -84,7 +87,8 @@ jobs:
             $ZastoneD900CSVfile = "./Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
             Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $ZastoneD900CSVfile -Value '"9","QRA-TEAM","Group Call","No","","","","",""'
+            Add-Content -Path $ZastoneD900CSVfile -Value '"9","QRA-Team","Group Call","No","","","","",""'
+            Add-Content -Path $ZastoneD900CSVfile -Value '"5973","QRA-5973","Group Call","No","","","","",""'
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
