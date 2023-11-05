@@ -197,13 +197,11 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 195,KARDAN,2503228,Private Call,On,None,None
 196,CICADA,1860757,Private Call,On,None,None
 197,KUBAN,2502138,Private Call,On,None,None
-198,9990	ECHOHBL,9990	ECHOHBL,Private Call,On,None,None
-199,9991	ECHOQRA,9991	ECHOQRA,Private Call,On,None,None
-200,MEDIC,7700327,Private Call,On,None,None
-201,ASPIRIN,5973515,Private Call,On,None,None
-202,DALLAS,2500108,Private Call,On,None,None
-203,LESHIY,6000001,Private Call,On,None,None
-204,QRASAO,6660777,Private Call,On,None,None
-205,ANGARA,7700524,Private Call,On,None,None
-206,QRAZAO,6660888,Private Call,On,None,None
-207,PRORAB,2500707,Private Call,On,None,None
+198,MEDIC,7700327,Private Call,On,None,None
+199,ASPIRIN,5973515,Private Call,On,None,None
+200,DALLAS,2500108,Private Call,On,None,None
+201,LESHIY,6000001,Private Call,On,None,None
+202,QRASAO,6660777,Private Call,On,None,None
+203,ANGARA,7700524,Private Call,On,None,None
+204,QRAZAO,6660888,Private Call,On,None,None
+205,PRORAB,2500707,Private Call,On,None,None
