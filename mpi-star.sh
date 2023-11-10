@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# mount -o remount,rw /
-# mount -o remount,rw /boot
+mount -o remount,rw /
+mount -o remount,rw /boot
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
@@ -57,7 +57,6 @@ if [[ $(cat /usr/local/sbin/pistar-firewall | grep '62033 -j ACCEPT' ) ]]
 then
   echo "Do nothing!"
 else
-  rpi-rw
   curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
   /usr/local/sbin/pistar-firewall > /dev/null
 fi
