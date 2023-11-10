@@ -65,7 +65,7 @@ read_frequency() {
 }
 
 ## ---------- AutoAccept new Config - KeepConfig ---------- ##
-rpirw
+rpi-rw
 
 cat << EOF >> /etc/apt/apt.conf.d/98-accept-config
 Dpkg::Options {
@@ -92,7 +92,7 @@ echo "Run pi-star Upgrade..."
 /usr/local/sbin/pistar-upgrade
 echo "------------"
 
-rpirw
+rpi-rw
 
 echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
@@ -120,7 +120,7 @@ echo "Run pi-star update..."
 /usr/local/sbin/pistar-update
 echo "------------"
 
-rpirw
+rpi-rw
 
 sleep 5
 
@@ -157,7 +157,7 @@ echo "RRDtool setup"
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
 echo "------------"
 
-rpirw
+rpi-rw
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
