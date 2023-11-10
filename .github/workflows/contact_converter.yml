@@ -97,7 +97,7 @@ jobs:
             }
 
             # ------ Zastone 008 ------ #
-            $DMRIdsContent = Get-Content ./DMRIds.dat
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Sort-Object
             $Zastone008CSVfile = "./Devices_Contact_List/Zastone008_Contact.csv"
             $Zastone008Template = '--DMRID--,--CALLSIGN--,"","","","",QRA'
             Remove-Item $Zastone008CSVfile -Force -ErrorAction SilentlyContinue
