@@ -39,7 +39,8 @@ Address=hbl.qra-team.online
 Port=62030
 Password=QraDMRfree
 TGRewrite0=2,597301,2,597301,1
-TGRewrite1=2,9990,2,9990,1
+TGRewrite1=2,597302,2,597302,1
+TGRewrite2=2,9990,2,9990,1
 PassAllPC0=1
 PassAllPC1=2
 Debug=0
@@ -47,9 +48,18 @@ Location=0
 EOF
 
 else
-  exit 0
+  echo "Do nothing!"
 fi
 
+## --------- Add firewall with ports 62032 62033 --------- ##
+if [[ $(cat /usr/local/sbin/pistar-firewall | grep '62033 -j ACCEPT' ) ]]
+then
+  echo "Do nothing!"
+else
+  rpi-rw
+  curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
+  /usr/local/sbin/pistar-firewall > /dev/null
+fi
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
