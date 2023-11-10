@@ -124,10 +124,14 @@ rpirw
 
 sleep 5
 
-echo "CleanUp..."
-apt-get install vim --no-install-recommends -y 2>&1
-sleep 5
-apt autoremove -y 2>&1
+if [[ ! $(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release) =~ "NanoPi" ]]; then
+  echo "CleanUp..."
+  apt-get install vim --no-install-recommends -y 2>&1
+  sleep 5
+else
+  apt autoremove -y 2>&1
+  echo "Skip install Vim"
+fi
 
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
