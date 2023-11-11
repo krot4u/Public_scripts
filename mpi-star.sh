@@ -25,6 +25,7 @@ Exclude="
 5973842
 5973272
 7800555
+4852001
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 if echo "$Exclude" | grep -q "$DMRID"; then
@@ -63,7 +64,7 @@ fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
 
-if [[ " $DMRID " == "5973757" || " $DMRID " == "5973842" ]]
+if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" ]]
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
