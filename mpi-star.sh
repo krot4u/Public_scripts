@@ -26,7 +26,9 @@ Exclude="
 5973272
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ ! " $Exclude " =~ " $DMRID " ]]; then
+if echo "$Exclude" | grep -q "$DMRID"; then
+echo "Do nothing!"
+else
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
@@ -47,9 +49,6 @@ PassAllPC1=2
 Debug=0
 Location=0
 EOF
-
-else
-  echo "Do nothing!"
 fi
 
 ## --------- Add firewall with ports 62032 62033 --------- ##
@@ -68,7 +67,6 @@ if [[ " $DMRID " == "5973757" || " $DMRID " == "5973842" ]]
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
     cat <<EOF >> /etc/dmrgateway
-
 [DMR Network 4]
 Enabled=1
 Name=QRA-hblink
@@ -82,7 +80,6 @@ PassAllPC1=2
 Debug=0
 Location=0
 EOF
-
 else
   echo "Do nothing!"
 fi
