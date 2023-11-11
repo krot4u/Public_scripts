@@ -24,6 +24,7 @@ Exclude="
 5973757
 5973842
 5973272
+7800555
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 if echo "$Exclude" | grep -q "$DMRID"; then
