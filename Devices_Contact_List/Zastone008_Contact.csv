@@ -60,6 +60,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502208,BELGROD,"","","","",QRA
 2502226,PETR59,"","","","",QRA
 2503228,KARDAN,"","","","",QRA
+2503281,INGENER,"","","","",QRA
 2503316,MIXGUIT,"","","","",QRA
 2503420,ADVOKAT,"","","","",QRA
 2503424,JIPSON,"","","","",QRA
@@ -201,6 +202,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7800305,VALKOD,"","","","",QRA
 7800555,BOLTIK,"","","","",QRA
 7801081,ULUDAG,"","","","",QRA
+7806534,OLEG,"","","","",QRA
 7809113,KOMYAGA,"","","","",QRA
 8000001,NEPTUNE,"","","","",QRA
 8200001,KVAK,"","","","",QRA
