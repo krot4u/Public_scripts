@@ -92,7 +92,6 @@ fi
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
 
 ## --------- Fix pistar-watchdog --------- ##
-
 curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
 systemctl enable ysfgateway.service > /dev/null
 systemctl enable ysf2dmr.service > /dev/null
