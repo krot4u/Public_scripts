@@ -28,8 +28,7 @@ Exclude="
 4852001
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ $(echo ${Exclude} | grep -q ${DMRID}) ]]
-then
+if echo ${Exclude} | grep ${DMRID}; then
   echo "Do nothing!"
 else
   echo "Apply config QRA-hblink"
@@ -56,8 +55,7 @@ EOF
 fi
 
 ## --------- Add firewall with ports 62032 62033 --------- ##
-if [[ $(cat /usr/local/sbin/pistar-firewall | grep '62033 -j ACCEPT') ]]
-then
+if [[ $(cat /usr/local/sbin/pistar-firewall | grep '62033 -j ACCEPT') ]]; then
   echo "Do nothing!"
 else
   curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
@@ -66,7 +64,7 @@ fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
 
-if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]
+if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
   echo "Apply config Port 62033"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
