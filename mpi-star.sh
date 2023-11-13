@@ -28,7 +28,8 @@ Exclude="
 4852001
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if echo "$Exclude" | grep -q "$DMRID"; then
+if [[ echo "$Exclude" | grep -q "$DMRID" ]]
+then
   echo "Do nothing!"
 else
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
