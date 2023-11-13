@@ -70,6 +70,7 @@ if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" ||
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
     cat <<EOF >> /etc/dmrgateway
+
 [DMR Network 4]
 Enabled=1
 Name=QRA-hblink
