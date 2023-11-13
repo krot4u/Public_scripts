@@ -99,3 +99,6 @@ systemctl enable ysfgateway.service > /dev/null
 systemctl enable ysf2dmr.service > /dev/null
 systemctl enable ysfgateway.timer > /dev/null
 systemctl enable ysf2dmr.timer > /dev/null
+
+systemctl start ysfgateway.service > /dev/null
+systemctl start ysf2dmr.service > /dev/null
