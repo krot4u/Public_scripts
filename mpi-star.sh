@@ -89,3 +89,7 @@ fi
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
+
+## --------- Fix pistar-watchdog --------- ##
+
+curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
