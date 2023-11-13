@@ -55,7 +55,7 @@ EOF
 fi
 
 ## --------- Add firewall with ports 62032 62033 --------- ##
-if [[ $(cat /usr/local/sbin/pistar-firewall | grep '62033 -j ACCEPT') ]]; then
+if cat /usr/local/sbin/pistar-firewall | grep -q '62033 -j ACCEPT'; then
   echo "Do nothing!"
 else
   curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
