@@ -48,7 +48,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500857,WAVU,"","","","",QRA
 2500863,ZHIRAF,"","","","",QRA
 2500881,BUMER,"","","","",QRA
-2500991,NAUM,"","","","",QRA
 2501029,714PZ,"","","","",QRA
 2501086,BABILON,"","","","",QRA
 2501108,4UVASH,"","","","",QRA
@@ -183,6 +182,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7000001,SUMRAK,"","","","",QRA
 7600001,PRINTER,"","","","",QRA
 7700023,BARON,"","","","",QRA
+7700024,NAUM,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
