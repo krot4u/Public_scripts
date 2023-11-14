@@ -3,6 +3,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1000001,REPSVR,"","","","",QRA
 1010001,PARKER,"","","","",QRA
 1100011,ZELENYI,"","","","",QRA
+1100777,DISTAR,"","","","",QRA
 1122999,DVS,"","","","",QRA
 1128888,DMRFRN,"","","","",QRA
 1500636,GRIZLY,"","","","",QRA
