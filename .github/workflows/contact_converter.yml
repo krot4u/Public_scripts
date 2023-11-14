@@ -57,7 +57,7 @@ jobs:
             $RetevisCSVfile = "./Devices_Contact_List/Retevis_Contact_new.csv"
             $RetevisTemplate = "--CALLSIGN--,--DMRID--,Private,Disabled"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $RetevisCSVfile -Value "Contact Name;ID;ID Type;TS Override"
+            Add-Content -Path $RetevisCSVfile -Value "Contact Name,ID,ID Type,TS Override"
             Add-Content -Path $RetevisCSVfile -Value "QRA-Team,9,Group,2"
             Add-Content -Path $RetevisCSVfile -Value "QRA-5973,5973,Group,2"
             foreach ($line in $DMRIdsContent) {
