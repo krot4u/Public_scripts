@@ -1,4 +1,4 @@
-Contact Name;ID;ID Type;TS Override
+Contact Name,ID,ID Type,TS Override
 QRA-Team,9,Group,2
 QRA-5973,5973,Group,2
 QRA212,2120212,Private,Disabled
