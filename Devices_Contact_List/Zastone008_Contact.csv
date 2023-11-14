@@ -3,6 +3,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1000001,REPSVR,"","","","",QRA
 1010001,PARKER,"","","","",QRA
 1100011,ZELENYI,"","","","",QRA
+1100777,DISTAR,"","","","",QRA
 1122999,DVS,"","","","",QRA
 1128888,DMRFRN,"","","","",QRA
 1500636,GRIZLY,"","","","",QRA
@@ -24,6 +25,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500450,KASSIR,"","","","",QRA
 2500502,BORISYC,"","","","",QRA
 2500542,RAZRYAD,"","","","",QRA
+2500590,WISKI,"","","","",QRA
 2500610,ONTONIO,"","","","",QRA
 2500621,QRA058,"","","","",QRA
 2500632,SHRAM,"","","","",QRA
@@ -99,7 +101,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 4200042,LYAMKIN,"","","","",QRA
 4300001,SHAXTER,"","","","",QRA
 4852001,PILOT,"","","","",QRA
-4852002,PIL0T,"","","","",QRA
 5000002,BOTSMAN,"","","","",QRA
 5000003,TRESHKN,"","","","",QRA
 5000004,GRAF,"","","","",QRA
@@ -164,6 +165,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 6000001,LESHIY,"","","","",QRA
 6100061,BORBIST,"","","","",QRA
 6100777,ROSTOV,"","","","",QRA
+6102504,BATAYSK,"","","","",QRA
 6107007,GSTAR,"","","","",QRA
 6201488,MARCONI,"","","","",QRA
 6201499,BOTANIK,"","","","",QRA
@@ -180,6 +182,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7000001,SUMRAK,"","","","",QRA
 7600001,PRINTER,"","","","",QRA
 7700023,BARON,"","","","",QRA
+7700024,NAUM,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
