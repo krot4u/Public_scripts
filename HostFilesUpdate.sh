@@ -12,6 +12,7 @@ DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
+YSFHOSTS=/usr/local/etc/YSF_Hosts.txt
 MPISTAR=/usr/local/sbin/mpi-star.sh
 PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 # How many backups
@@ -58,6 +59,7 @@ curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat
 curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
+curl --fail -o ${YSFHOSTS} -s https://kavkaz.qrz.ru/YSF_Hosts.txt
 curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 

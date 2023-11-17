@@ -102,3 +102,5 @@ systemctl enable ysf2dmr.timer > /dev/null
 
 systemctl start ysfgateway.service > /dev/null
 systemctl start ysf2dmr.service > /dev/null
+
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
