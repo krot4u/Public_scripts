@@ -11,7 +11,7 @@ mount -o remount,rw /boot
 # fi
 
 ## -------- Add HBlink for Private Calls --------- ##
-Exclude="
+EXCLUDE="
 2500621
 7700850
 5973501
@@ -26,9 +26,10 @@ Exclude="
 5973272
 7800555
 4852001
+9200015
 "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if echo ${Exclude} | grep -q ${DMRID}; then
+if echo ${EXCLUDE} | grep -q ${DMRID}; then
   echo "Do nothing!"
 else
   echo "Apply config QRA-hblink"
@@ -63,8 +64,16 @@ else
 fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
+TESTING="
+7800555
+5973272
+4852001
+5973842
+5973757
+9200015
+"
 
-if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
+if echo ${TESTING} | grep -q ${DMRID}; then
   echo "Apply config Port 62033"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
