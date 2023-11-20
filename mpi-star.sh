@@ -11,22 +11,22 @@ mount -o remount,rw /boot
 # fi
 
 ## -------- Add HBlink for Private Calls --------- ##
-Exclude="
-2500621
-7700850
-5973501
-2120212
-1000001
-6660555
-1128888
-6660888
-6660444
-5973757
-5973842
-5973272
-7800555
-4852001
-"
+# Exclude="
+# 2500621
+# 7700850
+# 5973501
+# 2120212
+# 1000001
+# 6660555
+# 1128888
+# 6660888
+# 6660444
+# 5973757
+# 5973842
+# 5973272
+# 7800555
+# 4852001
+# "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 if echo ${Exclude} | grep -q ${DMRID}; then
   echo "Do nothing!"
@@ -64,29 +64,29 @@ fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
 
-if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
-  echo "Apply config Port 62033"
-  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-  DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-    cat <<EOF >> /etc/dmrgateway
+# if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
+#   echo "Apply config Port 62033"
+#   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+#   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
+#   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+#     cat <<EOF >> /etc/dmrgateway
 
-[DMR Network 4]
-Enabled=1
-Name=QRA-hblink
-Id=${DMRID}
-Address=hbl.qra-team.online
-Port=62033
-Password=QraDMRfree
-TGRewrite0=2,597302,2,597302,1
-PassAllPC0=1
-PassAllPC1=2
-Debug=0
-Location=0
-EOF
-else
-  echo "Do nothing!"
-fi
+# [DMR Network 4]
+# Enabled=1
+# Name=QRA-hblink
+# Id=${DMRID}
+# Address=hbl.qra-team.online
+# Port=62033
+# Password=QraDMRfree
+# TGRewrite0=2,597302,2,597302,1
+# PassAllPC0=1
+# PassAllPC1=2
+# Debug=0
+# Location=0
+# EOF
+# else
+#   echo "Do nothing!"
+# fi
 
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
