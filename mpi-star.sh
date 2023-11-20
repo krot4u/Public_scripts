@@ -63,15 +63,14 @@ else
 fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
-TESTING="
-7800555
-5973272
-4852001
-5973842
-5973757
-9200015
-"
-
+# TESTING="
+# 7800555
+# 5973272
+# 4852001
+# 5973842
+# 5973757
+# 9200015
+# "
 # if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
 #   echo "Apply config Port 62033"
 #   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
@@ -99,16 +98,3 @@ TESTING="
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
-
-## --------- Fix pistar-watchdog --------- ##
-echo "Apply config enable ysf2dmr"
-curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
-systemctl enable ysfgateway.service > /dev/null
-systemctl enable ysf2dmr.service > /dev/null
-systemctl enable ysfgateway.timer > /dev/null
-systemctl enable ysf2dmr.timer > /dev/null
-
-systemctl start ysfgateway.service > /dev/null
-systemctl start ysf2dmr.service > /dev/null
-
-curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
