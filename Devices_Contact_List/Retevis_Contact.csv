@@ -214,3 +214,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 212,DISTAR,1100777,Private Call,On,None,None
 213,BATAYSK,6102504,Private Call,On,None,None
 214,WISKI,2500590,Private Call,On,None,None
+215,SENATOR,5000262,Private Call,On,None,None
+216,KOSHEY,9200015,Private Call,On,None,None
+217,CCCP,7700025,Private Call,On,None,None
+218,AVIATOR,2500325,Private Call,On,None,None

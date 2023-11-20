@@ -19,6 +19,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500252,BARS,"","","","",QRA
 2500274,RU177,"","","","",QRA
 2500312,TEXNIK,"","","","",QRA
+2500325,AVIATOR,"","","","",QRA
 2500334,STALKER,"","","","",QRA
 2500411,VARLA,"","","","",QRA
 2500449,KOSMOS,"","","","",QRA
@@ -107,6 +108,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000005,TURIST,"","","","",QRA
 5000018,GIDRANT,"","","","",QRA
 5000097,DIMA97,"","","","",QRA
+5000262,SENATOR,"","","","",QRA
 5000540,KASPER,"","","","",QRA
 5000772,GIHAR,"","","","",QRA
 5000941,KIRPICH,"","","","",QRA
@@ -183,6 +185,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7600001,PRINTER,"","","","",QRA
 7700023,BARON,"","","","",QRA
 7700024,NAUM,"","","","",QRA
+7700025,CCCP,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
@@ -210,5 +213,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 8000001,NEPTUNE,"","","","",QRA
 8200001,KVAK,"","","","",QRA
 8600001,LESNIK,"","","","",QRA
+9200015,KOSHEY,"","","","",QRA
 9200787,SANSEY,"","","","",QRA
 9601990,LOST,"","","","",QRA

@@ -28,7 +28,7 @@ mount -o remount,rw /boot
 # 4852001
 # "
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if echo ${Exclude} | grep -q ${DMRID}; then
+if echo ${EXCLUDE} | grep -q ${DMRID}; then
   echo "Do nothing!"
 else
   echo "Apply config QRA-hblink"
@@ -63,6 +63,14 @@ else
 fi
 
 ## --------- Add new DMR network for Surgut Voyager --------- ##
+TESTING="
+7800555
+5973272
+4852001
+5973842
+5973757
+9200015
+"
 
 # if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
 #   echo "Apply config Port 62033"
@@ -102,3 +110,5 @@ systemctl enable ysf2dmr.timer > /dev/null
 
 systemctl start ysfgateway.service > /dev/null
 systemctl start ysf2dmr.service > /dev/null
+
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
