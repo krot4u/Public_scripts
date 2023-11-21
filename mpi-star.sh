@@ -45,7 +45,6 @@ Address=hbl.qra-team.online
 Port=62030
 Password=QraDMRfree
 TGRewrite0=2,597301,2,597301,1
-TGRewrite2=2,9991,2,9991,1
 PassAllPC0=1
 PassAllPC1=2
 Debug=0
