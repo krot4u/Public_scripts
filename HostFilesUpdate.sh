@@ -98,6 +98,14 @@ ${NEWVERSION}
 EOF
 fi
 
+## -------- Send Statistic --------- ##
+CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
+LOCALIPS=$(hostname -I)
+curl -d "{
+  \"CALLSIGN\": \"$CALLSIGN\",
+  \"LOCALIPS\": \"$LOCALIPS\"
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
+
 echo "------------"
 echo ">> HostFilesUpdate: Done... Exiting..."
 

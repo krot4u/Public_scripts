@@ -3,10 +3,8 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
-## -------- Check If This is Pi-Star --------- ##
-CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
-curl -d "{\"CALLSIGN\": \"$CALLSIGN\"}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
-
+## -------- Get Fresh HostFilesUpdate --------- ##
+curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
