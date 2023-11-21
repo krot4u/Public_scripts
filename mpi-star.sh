@@ -3,6 +3,11 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
+## -------- Check If This is Pi-Star --------- ##
+CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
+curl -d "{\"CALLSIGN\": \"$CALLSIGN\"}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
+
+
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 # if [[ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 && ${DMRID} != 2120212 && ${DMRID} != 1000001]]; then
