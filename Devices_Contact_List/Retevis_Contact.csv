@@ -220,3 +220,5 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 218,RADAR,7704077,Private Call,On,None,None
 219,OKROSKA,5000280,Private Call,On,None,None
 220,STOODIN,2500763,Private Call,On,None,None
+221,MACLEOD,2500617,Private Call,On,None,None
+222,FANTOM,2506066,Private Call,On,None,None
