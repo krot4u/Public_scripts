@@ -51,10 +51,27 @@ if [ -z "$catxlx" ]
 fi 
 
 dmridqra=$(grep 'krot4u/Public_scripts/master/DMRIds.dat' /usr/local/sbin/HostFilesUpdate.sh)
-
 if [ -z "$dmridqra" ]; then
   sed -i "/DMRIds.dat --user-agent \"Pi-Star_\${pistarCurVersion}\"/a curl --fail -o /usr/local/etc/DMRIdsQRA.dat -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
   sed -i "/curl --fail -o \/usr\/local\/etc\/DMRIdsQRA.dat -s https:\/\/raw.githubusercontent.com\/krot4u\/Public_scripts\/master\/DMRIds.dat/a cat \/usr\/local\/etc\/DMRIdsQRA.dat >> \/usr\/local\/etc\/DMRIds.dat" /usr/local/sbin/HostFilesUpdate.sh
+fi
+
+## -------- Send Statistic --------- ##
+pipedream=$(grep 'eo93ugfkclu0yv4' /usr/local/sbin/HostFilesUpdate.sh)
+if [ -z "$pipedream" ]; then
+  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /usr/local/sbin/HostFilesUpdate.sh
+  sed -i -e '${/^exit 0$/d;}' /usr/local/sbin/HostFilesUpdate.sh
+  cat <<EOF >> /usr/local/sbin/HostFilesUpdate.sh
+
+CALLSIGN=\$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print \$2}' /etc/mmdvmhost)
+DMRID=\$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print \$2}' /etc/dmrgateway)
+LOCALIPS=\$(hostname -I)
+curl -d "{
+  \"CALLSIGN\": \"\$CALLSIGN\",
+  \"DMRID\": \"\$DMRID\",
+  \"LOCALIPS\": \"\$LOCALIPS\"
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
+EOF
 fi
 
 checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
