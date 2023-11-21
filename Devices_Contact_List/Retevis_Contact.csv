@@ -218,3 +218,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 216,CCCP,7700025,Private Call,On,None,None
 217,AVIATOR,2500325,Private Call,On,None,None
 218,RADAR,7704077,Private Call,On,None,None
+219,OKROSKA,5000280,Private Call,On,None,None
