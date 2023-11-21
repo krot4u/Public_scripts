@@ -218,3 +218,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 218,KOSHEY,9200015,Private Call,On,None,None
 219,CCCP,7700025,Private Call,On,None,None
 220,AVIATOR,2500325,Private Call,On,None,None
+221,RADAR,7704077,Private Call,On,None,None
