@@ -112,6 +112,3 @@ echo "------------"
 echo ">> HostFilesUpdate: Done... Exiting..."
 
 exit 0
-
-
-awk -F '=' '/^\[General\]/{f=1} f==1 && /^Id=/{print $2; exit} /^\[/{f=0}' /etc/mmdvmhost
