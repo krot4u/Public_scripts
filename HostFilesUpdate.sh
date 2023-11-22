@@ -100,7 +100,7 @@ fi
 
 ## -------- Send Statistic --------- ##
 CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
-DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 LOCALIPS=$(hostname -I)
 curl -d "{
   \"CALLSIGN\": \"$CALLSIGN\",
@@ -112,3 +112,6 @@ echo "------------"
 echo ">> HostFilesUpdate: Done... Exiting..."
 
 exit 0
+
+
+awk -F '=' '/^\[General\]/{f=1} f==1 && /^Id=/{print $2; exit} /^\[/{f=0}' /etc/mmdvmhost
