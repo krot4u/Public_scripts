@@ -158,6 +158,11 @@ sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 
 rpirw
 
+# echo "------------"
+# echo "RRDtool setup"
+# curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
+# echo "------------"
+
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
 -o /dev/null \
