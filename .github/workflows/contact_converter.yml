@@ -118,7 +118,7 @@ jobs:
             Add-Content -Path $AilunceCSVfile -Value "No.,Call Type,Contacts Alias,City,Province,Country,Call ID,"
             Add-Content -Path $AilunceCSVfile -Value "1,Group Call,QRA-Team,,,,9,"
             Add-Content -Path $AilunceCSVfile -Value "2,Group Call,QRA-5973,,,,5973,"
-            $Counter = 2
+            $Counter = 3
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
