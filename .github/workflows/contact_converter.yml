@@ -109,6 +109,24 @@ jobs:
               Add-Content -Path $Zastone008CSVfile -Value $NewLine
             }
 
+            # ------ AILUNCE HD-1 ------ #
+            $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
+            $AilunceCSVfile = "./Devices_Contact_List/Ailunce_Contacts.csv"
+            $AilunceTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
+            $AilunceTemplate = "--LINEnumber--,Private Call,--CALLSIGN--,,,,--DMRID--,"
+            Remove-Item $AilunceCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $AilunceCSVfile -Value "No.,Call Type,Contacts Alias,City,Province,Country,Call ID,"
+            Add-Content -Path $AilunceCSVfile -Value "1,Group Call,QRA-Team,,,,9,"
+            Add-Content -Path $AilunceCSVfile -Value "2,Group Call,QRA-5973,,,,5973,"
+            $Counter = 2
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $AilunceTemplate -replace "--LINEnumber--", "$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $AilunceCSVfile -Value $NewLine
+              $Counter++
+            }
+
             # ------ Motorola ------ #
             $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
