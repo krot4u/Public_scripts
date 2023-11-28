@@ -31,10 +31,13 @@ Exclude="
 7800555
 4852001
 4200042
+6556181
 "
 DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${EXCLUDE} | grep -q ${DMRID}; then
-  echo "Do nothing!"
+  echo "Clean excluded"
+  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
 else
   echo "Apply config QRA-hblink"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
