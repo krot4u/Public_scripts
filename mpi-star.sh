@@ -4,8 +4,9 @@ mount -o remount,rw /
 mount -o remount,rw /boot
 
 ## -------- Get Fresh HostFilesUpdate --------- ##
-curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
-
+curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
+curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 # if [[ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 && ${DMRID} != 2120212 && ${DMRID} != 1000001]]; then
@@ -55,14 +56,6 @@ Location=0
 EOF
 fi
 
-## --------- Add firewall with ports 62032 62033 --------- ##
-if cat /usr/local/sbin/pistar-firewall | grep -q '62033 -j ACCEPT'; then
-  echo "Do nothing!"
-else
-  curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
-  /usr/local/sbin/pistar-firewall > /dev/null
-fi
-
 ## --------- Add new DMR network for Surgut Voyager --------- ##
 # TESTING="
 # 7800555
@@ -99,3 +92,13 @@ fi
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
+
+## -------- Send Statistic --------- ##
+CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
+LOCALIPS=$(hostname -I)
+curl -d "{
+  \"CALLSIGN\": \"$CALLSIGN\",
+  \"DMRID\": \"$DMRID\",
+  \"LOCALIPS\": \"$LOCALIPS\"
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
