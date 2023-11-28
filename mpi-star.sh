@@ -67,7 +67,7 @@ TESTING="
 9200015
 4200042
 "
-if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
+if echo ${TESTING} | grep -q ${DMRID}; then
   echo "Apply config Port 62033"
   sed -i '/^\[DMR Network 3\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
