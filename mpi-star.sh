@@ -7,6 +7,8 @@ mount -o remount,rw /boot
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
 curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
+curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade
+
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 # if [[ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 && ${DMRID} != 2120212 && ${DMRID} != 1000001]]; then
