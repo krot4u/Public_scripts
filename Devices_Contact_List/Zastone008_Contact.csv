@@ -61,7 +61,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502146,XLORID,"","","","",QRA
 2502153,ODMIN,"","","","",QRA
 2502188,DIOD,"","","","",QRA
-2502202,REVAZ,"","","","",QRA
 2502208,BELGROD,"","","","",QRA
 2502226,PETR59,"","","","",QRA
 2503228,KARDAN,"","","","",QRA
@@ -190,6 +189,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700023,BARON,"","","","",QRA
 7700024,NAUM,"","","","",QRA
 7700025,CCCP,"","","","",QRA
+7700025,REVAZ,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
