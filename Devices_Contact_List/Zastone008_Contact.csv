@@ -63,7 +63,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502188,DIOD,"","","","",QRA
 2502202,REVAZ,"","","","",QRA
 2502208,BELGROD,"","","","",QRA
-2502222,HOKUM,"","","","",QRA
 2502226,PETR59,"","","","",QRA
 2503228,KARDAN,"","","","",QRA
 2503281,INGENER,"","","","",QRA
@@ -118,6 +117,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000772,GIHAR,"","","","",QRA
 5000941,KIRPICH,"","","","",QRA
 5002012,PENZA,"","","","",QRA
+5002222,HOKUM,"","","","",QRA
 5500001,DAVID,"","","","",QRA
 5500055,ROSTIK,"","","","",QRA
 5500099,QASHQAI,"","","","",QRA
