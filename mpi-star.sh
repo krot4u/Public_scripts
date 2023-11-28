@@ -32,14 +32,13 @@ Exclude="
 4852001
 4200042
 "
-DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${EXCLUDE} | grep -q ${DMRID}; then
   echo "Do nothing!"
 else
   echo "Apply config QRA-hblink"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-  DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
     cat <<EOF >> /etc/dmrgateway
 
 [DMR Network 4]
@@ -67,11 +66,10 @@ TESTING="
 9200015
 4200042
 "
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${TESTING} | grep -q ${DMRID}; then
-  echo "Apply config Port 62033"
   sed -i '/^\[DMR Network 3\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-  DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
     cat <<EOF >> /etc/dmrgateway
 
 [DMR Network 3]
