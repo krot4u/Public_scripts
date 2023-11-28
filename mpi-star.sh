@@ -32,6 +32,7 @@ Exclude="
 4852001
 4200042
 6556181
+2500782
 "
 DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${EXCLUDE} | grep -q ${DMRID}; then
@@ -68,6 +69,7 @@ TESTING="
 5973757
 9200015
 4200042
+2500782
 "
 DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${TESTING} | grep -q ${DMRID}; then
