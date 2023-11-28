@@ -59,7 +59,7 @@ Location=0
 EOF
 fi
 
-## --------- Add new DMR network for Surgut Voyager --------- ##
+## --------- Add Test Network --------- ##
 TESTING="
 7800555
 5973272
