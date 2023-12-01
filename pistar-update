@@ -145,6 +145,13 @@ else
   curl --fail -o /usr/local/bin/DMRGateway -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRgatewayFiles/DMRGateway
 fi
 
+# Update MMDVMHost
+if /usr/local/bin/MMDVMHost --version | grep -q "20210617_PS4"; then
+  echo "Do not update MMDVMHost..."
+else
+  curl --fail -o /usr/local/bin/MMDVMHost -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRgatewayFiles/MMDVMHost
+fi
+
 	echo "Updating DV Binaries..."
 	git_update /usr/local/bin
 	echo "Done"
