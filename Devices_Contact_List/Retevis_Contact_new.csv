@@ -39,7 +39,6 @@ SMOLNY,5973888,Private,Disabled
 DVS001,5973901,Private,Disabled
 TRANSIT,5973909,Private,Disabled
 CMRADUGA,5973911,Private,Disabled
-QRAECHO,6660222,Private,Disabled
 DMRFRN,1128888,Private,Disabled
 BORISYC,2500502,Private,Disabled
 BALU,3720001,Private,Disabled
@@ -66,7 +65,7 @@ PARTZAN,5973008,Private,Disabled
 KOSMOS,2500449,Private,Disabled
 QRA058,2500621,Private,Disabled
 TUAPSE,2506138,Private,Disabled
-REVAZ,2502202,Private,Disabled
+REVAZ,7702202,Private,Disabled
 CONDOR,3324733,Private,Disabled
 DAVID,5500001,Private,Disabled
 ROSTIK,2509163,Private,Disabled
@@ -196,8 +195,6 @@ TRESHKN,5000003,Private,Disabled
 KARDAN,2503228,Private,Disabled
 CICADA,1860757,Private,Disabled
 KUBAN,2502138,Private,Disabled
-9990	ECHOHBL,9990	ECHOHBL,Private,Disabled
-9991	ECHOQRA,9991	ECHOQRA,Private,Disabled
 MEDIC,7700327,Private,Disabled
 ASPIRIN,5973515,Private,Disabled
 DALLAS,2500108,Private,Disabled
@@ -220,3 +217,9 @@ SENATOR,5000262,Private,Disabled
 KOSHEY,9200015,Private,Disabled
 CCCP,7700025,Private,Disabled
 AVIATOR,2500325,Private,Disabled
+RADAR,7704077,Private,Disabled
+OKROSKA,5000280,Private,Disabled
+STOODIN,2500763,Private,Disabled
+MACLEOD,2500617,Private,Disabled
+FANTOM,2506066,Private,Disabled
+HOKUM,5002222,Private,Disabled

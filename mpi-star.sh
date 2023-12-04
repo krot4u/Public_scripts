@@ -3,6 +3,12 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
+## -------- Get Fresh HostFilesUpdate --------- ##
+curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
+curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
+curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade
+
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 # if [[ ${DMRID} != 2500621 && ${DMRID} != 7700850 && ${DMRID} != 5973501 && ${DMRID} != 2120212 && ${DMRID} != 1000001]]; then
@@ -11,30 +17,34 @@ mount -o remount,rw /boot
 # fi
 
 ## -------- Add HBlink for Private Calls --------- ##
-# Exclude="
-# 2500621
-# 7700850
-# 5973501
-# 2120212
-# 1000001
-# 6660555
-# 1128888
-# 6660888
-# 6660444
-# 5973757
-# 5973842
-# 5973272
-# 7800555
-# 4852001
-# "
-DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+Exclude="
+2500621
+7700850
+5973501
+2120212
+1000001
+6660555
+1128888
+6660888
+6660444
+5973757
+5973842
+5973272
+7800555
+4852001
+4200042
+6556181
+2500782
+"
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
 if echo ${EXCLUDE} | grep -q ${DMRID}; then
-  echo "Do nothing!"
+  echo "Clean excluded"
+  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
 else
   echo "Apply config QRA-hblink"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-  DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
     cat <<EOF >> /etc/dmrgateway
 
 [DMR Network 4]
@@ -45,7 +55,6 @@ Address=hbl.qra-team.online
 Port=62030
 Password=QraDMRfree
 TGRewrite0=2,597301,2,597301,1
-TGRewrite2=2,9991,2,9991,1
 PassAllPC0=1
 PassAllPC1=2
 Debug=0
@@ -53,47 +62,65 @@ Location=0
 EOF
 fi
 
-## --------- Add firewall with ports 62032 62033 --------- ##
-if cat /usr/local/sbin/pistar-firewall | grep -q '62033 -j ACCEPT'; then
-  echo "Do nothing!"
+## --------- Add Test Network --------- ##
+TESTING="
+7800555
+5973272
+4852001
+5973842
+5973757
+9200015
+4200042
+2500782
+"
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
+if echo ${TESTING} | grep -q ${DMRID}; then
+  sed -i '/^\[DMR Network 3\]/,/^$/d' /etc/dmrgateway
+  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
+    cat <<EOF >> /etc/dmrgateway
+
+[DMR Network 3]
+Enabled=1
+Name=QRA-Test
+Id=${DMRID}
+Address=hbl.qra-team.online
+Port=62033
+Password=SomeTest38876
+TGRewrite0=2,433,2,433,1
+TGRewrite1=2,434,2,434,1
+TGRewrite2=2,9999,2,9999,1
+PassAllPC0=1
+PassAllPC1=2
+Debug=0
+Location=0
+
+[DMR Network 4]
+Enabled=1
+Name=QRA-hblink
+Id=${DMRID}
+Address=hbl.qra-team.online
+Port=62030
+Password=QraDMRfree
+TGRewrite0=2,597302,2,597302,1
+Debug=0
+Location=0
+EOF
 else
-  curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
-  /usr/local/sbin/pistar-firewall > /dev/null
+  echo "Do nothing!"
 fi
-
-## --------- Add new DMR network for Surgut Voyager --------- ##
-# TESTING="
-# 7800555
-# 5973272
-# 4852001
-# 5973842
-# 5973757
-# 9200015
-# "
-# if [[ ${DMRID} == "5973757" || ${DMRID} == "5973842" || ${DMRID} == "4852001" || ${DMRID} == "5973272" || ${DMRID} == "7800555" ]]; then
-#   echo "Apply config Port 62033"
-#   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-#   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-#   DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-#     cat <<EOF >> /etc/dmrgateway
-
-# [DMR Network 4]
-# Enabled=1
-# Name=QRA-hblink
-# Id=${DMRID}
-# Address=hbl.qra-team.online
-# Port=62033
-# Password=QraDMRfree
-# TGRewrite0=2,597302,2,597302,1
-# PassAllPC0=1
-# PassAllPC1=2
-# Debug=0
-# Location=0
-# EOF
-# else
-#   echo "Do nothing!"
-# fi
 
 ## --------- Fix Phantom TX --------- ##
 # echo "Configuring INI files"
 # sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
+echo "Configuring INI files"
+sed -i -E '/^\[DMR\]$/,/^\[/ s/^OVCM=0/OVCM=4/' "/etc/mmdvmhost"
+
+## -------- Send Statistic --------- ##
+CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
+DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
+LOCALIPS=$(hostname -I)
+curl -d "{
+  \"CALLSIGN\": \"$CALLSIGN\",
+  \"DMRID\": \"$DMRID\",
+  \"LOCALIPS\": \"$LOCALIPS\"
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net

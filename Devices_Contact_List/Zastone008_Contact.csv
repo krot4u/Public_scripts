@@ -28,6 +28,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500542,RAZRYAD,"","","","",QRA
 2500590,WISKI,"","","","",QRA
 2500610,ONTONIO,"","","","",QRA
+2500617,MACLEOD,"","","","",QRA
 2500621,QRA058,"","","","",QRA
 2500632,SHRAM,"","","","",QRA
 2500643,CARBINE,"","","","",QRA
@@ -39,6 +40,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500722,MALAMUT,"","","","",QRA
 2500728,KAMYSH,"","","","",QRA
 2500761,MIX622,"","","","",QRA
+2500763,STOODIN,"","","","",QRA
 2500782,MALINA,"","","","",QRA
 2500787,BOLHOY,"","","","",QRA
 2500789,RECHNIK,"","","","",QRA
@@ -59,7 +61,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502146,XLORID,"","","","",QRA
 2502153,ODMIN,"","","","",QRA
 2502188,DIOD,"","","","",QRA
-2502202,REVAZ,"","","","",QRA
 2502208,BELGROD,"","","","",QRA
 2502226,PETR59,"","","","",QRA
 2503228,KARDAN,"","","","",QRA
@@ -75,6 +76,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2504075,START,"","","","",QRA
 2506007,BUSTER,"","","","",QRA
 2506015,VDN,"","","","",QRA
+2506066,FANTOM,"","","","",QRA
 2506076,0888,"","","","",QRA
 2506138,TUAPSE,"","","","",QRA
 2506185,TAGAN,"","","","",QRA
@@ -109,10 +111,12 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000018,GIDRANT,"","","","",QRA
 5000097,DIMA97,"","","","",QRA
 5000262,SENATOR,"","","","",QRA
+5000280,OKROSKA,"","","","",QRA
 5000540,KASPER,"","","","",QRA
 5000772,GIHAR,"","","","",QRA
 5000941,KIRPICH,"","","","",QRA
 5002012,PENZA,"","","","",QRA
+5002222,HOKUM,"","","","",QRA
 5500001,DAVID,"","","","",QRA
 5500055,ROSTIK,"","","","",QRA
 5500099,QASHQAI,"","","","",QRA
@@ -173,7 +177,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 6201499,BOTANIK,"","","","",QRA
 6400555,DEN53,"","","","",QRA
 6600001,SHAMAN,"","","","",QRA
-6660222,QRAECHO,"","","","",QRA
 6660333,QRAP25,"","","","",QRA
 6660444,QRA909,"","","","",QRA
 6660555,QRAPOC,"","","","",QRA
@@ -200,8 +203,10 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700850,QRA7787,"","","","",QRA
 7700888,PYTHON,"","","","",QRA
 7700999,ORCA28,"","","","",QRA
+7702202,REVAZ,"","","","",QRA
 7702641,RUBIN,"","","","",QRA
 7703306,ALTAIR,"","","","",QRA
+7704077,RADAR,"","","","",QRA
 7705778,TUMAN,"","","","",QRA
 7770348,VITAMIN,"","","","",QRA
 7800056,AYVENGO,"","","","",QRA
@@ -216,5 +221,3 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 9200015,KOSHEY,"","","","",QRA
 9200787,SANSEY,"","","","",QRA
 9601990,LOST,"","","","",QRA
-9990	ECHOHBL,9990	ECHOHBL,"","","","",QRA
-9991	ECHOQRA,9991	ECHOQRA,"","","","",QRA

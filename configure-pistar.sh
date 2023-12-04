@@ -98,6 +98,10 @@ echo "Downloading modified pistar-update..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update > '/usr/local/sbin/pistar-update'
 echo "------------"
 
+echo "Downloading modified pistar-update..."
+curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade > '/usr/local/sbin/pistar-upgrade'
+echo "------------"
+
 echo "Downloading modified pistar-watchdog..."
 curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog > '/usr/local/sbin/pistar-watchdog'
 echo "------------"
@@ -156,12 +160,12 @@ sed -i "s/--CALLSIGN--/$CALLSIGN/" "${mmdvmhost}"
 sed -i "s/--DMRID--/$DMRID/" "${mmdvmhost}"
 sed -i "s/--Frequency--/$FREQUENCY/" "${mmdvmhost}"
 
-echo "------------"
-echo "RRDtool setup"
-curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
-echo "------------"
-
 rpirw
+
+# echo "------------"
+# echo "RRDtool setup"
+# curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/rrd/rrd_setup.sh | bash
+# echo "------------"
 
 echo "Update Web configuration..."
 curl -s -u "pi-star:raspberry" \
