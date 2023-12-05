@@ -1,7 +1,8 @@
 #!/bin/bash
 
 NEWVERSION=20102023
-CURRENTVERSION=$(cat /opt/version)
+CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
+
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
 
 if [ "$(expr length `hostname -I | cut -d' ' -f1`x)" == "1" ]; then
@@ -93,9 +94,10 @@ then
   curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
   curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
-cat <<EOF > /opt/version
-${NEWVERSION}
-EOF
+# cat <<EOF > /opt/version
+# ${NEWVERSION}
+# EOF
+sed -i "s/\$version = '.*';/\$version = '$NEWVERSION';/" /var/www/dashboard/config/version.php
 fi
 
 echo "------------"
