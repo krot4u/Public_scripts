@@ -234,14 +234,3 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 232,QRASKLV	,6660999,Private Call,On,None,None
 233,SELMASH	,6100555,Private Call,On,None,None
 234,KORSAR	,2509099,Private Call,On,None,None
-235,Радиостанции	hytera pd365	,Радиостанции	hytera pd365	,Private Call,On,None,None
-236,Ещё точка доступа мотороле gm340. Но пока не виду смысла её запускать	репы хватает	,Ещё точка доступа мотороле gm340. Но пока не виду смысла её запускать	репы хватает	,Private Call,On,None,None
-237,,Здравствуйте. Хочу подключится к сети QRA. Запустил ретранслятор на двух моторах и Малинки. Подключился к сети Brand Meister. Имеется id 2509099 (ub9ody). В данный момент мой позывной R9OER. 		,,Здравствуйте. Хочу подключится к сети QRA. Запустил ретранслятор на двух моторах и Малинки. Подключился к сети Brand Meister. Имеется id 2509099 (ub9ody). В данный момент мой позывной R9OER. 		,Private Call,On,None,None
-238,Вопрос!!!		,Вопрос!!!		,Private Call,On,None,None
-239,Как к вам подключится?		,Как к вам подключится?		,Private Call,On,None,None
-240,Надо ли менять старый id?		,Надо ли менять старый id?		,Private Call,On,None,None
-241,Имя Артем		,Имя Артем		,Private Call,On,None,None
-242,г. Новосибирск		,г. Новосибирск		,Private Call,On,None,None
-243,r9oer@mail.ru		,r9oer@mail.ru		,Private Call,On,None,None
-244,R9OER	бывший позывной UB9ODY 	,R9OER	бывший позывной UB9ODY 	,Private Call,On,None,None
-245,id 2509099"		,id 2509099"		,Private Call,On,None,None
