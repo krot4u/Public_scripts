@@ -29,6 +29,8 @@ else
   echo "XLX_496       0000    38.180.66.135     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 
+curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/QRA-BM/HostFilesUpdate.sh
+
 checkAlterPistar=$(grep -s SimplexLogic /etc/svxlink/svxlink.conf)
 if [[ "" == $(grep -s SimplexLogic /etc/svxlink/svxlink.conf) ]]; then
   echo "Running pistar-update"
