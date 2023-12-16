@@ -9,7 +9,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1128888,DMRFRN	,"","","","",QRA
 1500636,GRIZLY	,"","","","",QRA
 1506888,ICEMAN	,"","","","",QRA
-1600555,VOLT	,"","","","",QRA
 1610161,ENOT61	,"","","","",QRA
 1860757,CICADA	,"","","","",QRA
 1960001,VYMPEL	,"","","","",QRA
@@ -22,6 +21,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500252,BARS	,"","","","",QRA
 2500274,RU177	,"","","","",QRA
 2500312,TEXNIK	,"","","","",QRA
+2500318,VOLT	,"","","","",QRA
 2500325,AVIATOR	,"","","","",QRA
 2500334,STALKER	,"","","","",QRA
 2500411,VARLA	,"","","","",QRA
