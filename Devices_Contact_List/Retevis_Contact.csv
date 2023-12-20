@@ -237,4 +237,4 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 235,VOLT	,2500318,Private Call,On,None,None
 236,ILNUR	,2500620,Private Call,On,None,None
 237,PAVEL	,2500786,Private Call,On,None,None
-238,TUSHKAN	2470024	,TUSHKAN	2470024	,Private Call,On,None,None
+238,TUSHKAN	,2470024,Private Call,On,None,None
