@@ -35,7 +35,7 @@ else
 
 [DMR Network 3]
 Enabled=1
-Name=QRA-Test
+Name=QRA-Private
 Id=${DMRID}
 Address=hbl.qra-team.online
 Port=62033
