@@ -16,6 +16,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2150215,ARCTIC	,"","","","",QRA
 2200022,BALON	,"","","","",QRA
 2300341,SMERCH	,"","","","",QRA
+2470024,TUSHKAN	,"","","","",QRA
 2480045,XRADIO	,"","","","",QRA
 2500108,DALLAS	,"","","","",QRA
 2500252,BARS	,"","","","",QRA
@@ -235,4 +236,3 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 9200015,KOSHEY	,"","","","",QRA
 9200787,SANSEY	,"","","","",QRA
 9601990,LOST	,"","","","",QRA
-TUSHKAN	2470024	,TUSHKAN	2470024	,"","","","",QRA
