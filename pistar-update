@@ -89,8 +89,8 @@ service_handle() {
 	systemctl ${doWhat} pistar-remote.service > /dev/null
 	systemctl ${doWhat} dmrgateway.service > /dev/null
 	systemctl ${doWhat} dapnetgateway.service > /dev/null
-	systemctl stop ircddbgateway.service > /dev/null; systemctl disable ircddbgateway.service > /dev/null; systemctl stop ircddbgateway.timer > /dev/null; systemctl disable ircddbgateway.timer > /dev/null
-  systemctl stop timeserver.service > /dev/null; systemctl disable timeserver.service > /dev/null; systemctl stop timeserver.timer > /dev/null; systemctl disable timeserver.timer > /dev/null;
+	systemctl ${doWhat} ircddbgateway.service > /dev/null; systemctl eanble ircddbgateway.service > /dev/null; systemctl ${doWhat} ircddbgateway.timer > /dev/null; systemctl eanble ircddbgateway.timer > /dev/null
+  systemctl ${doWhat} timeserver.service > /dev/null; systemctl eanble timeserver.service > /dev/null; systemctl ${doWhat} timeserver.timer > /dev/null; systemctl eanble timeserver.timer > /dev/null;
 	systemctl ${doWhat} ysfgateway.service > /dev/null
 	systemctl ${doWhat} ysf2dmr.service > /dev/null
 	systemctl stop ysf2nxdn.service > /dev/null; systemctl disable ysf2nxdn.service > /dev/null; systemctl stop ysf2nxdn.timer > /dev/null; systemctl disable ysf2nxdn.timer > /dev/null
@@ -103,7 +103,7 @@ service_handle() {
 	systemctl stop nxdngateway.service > /dev/null; systemctl disable nxdngateway.service > /dev/null; systemctl stop nxdngateway.timer > /dev/null; systemctl disable nxdngateway.timer > /dev/null
 	systemctl stop nxdn2dmr.service > /dev/null; systemctl disable nxdn2dmr.service > /dev/null
 	systemctl stop nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null
-	systemctl stop dstarrepeater.service > /dev/null; systemctl disable dstarrepeater.service > /dev/null; systemctl disable dstarrepeater.service > /dev/null
+	systemctl ${doWhat} dstarrepeater.service > /dev/null; systemctl eanble dstarrepeater.service > /dev/null
 	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 2 > /dev/null
 }
 
