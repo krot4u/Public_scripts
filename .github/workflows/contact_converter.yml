@@ -128,7 +128,8 @@ jobs:
             }
 
             # ------ Kydera 880uv ------ #
-            $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
+            # $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
             $Kydera880uvCSVfile = "./Devices_Contact_List/Kydera880uv_Contact.csv"
             $Kydera880uvTemplate = '--DMRID--,--CALLSIGN--,"""","""","""",Russia Fed'
             Remove-Item $Kydera880uvCSVfile -Force -ErrorAction SilentlyContinue
