@@ -127,6 +127,19 @@ jobs:
               $Counter++
             }
 
+            # ------ Kydera 880uv ------ #
+            $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
+            $Kydera880uvCSVfile = "./Devices_Contact_List/Kydera880uv_Contact.csv"
+            $Kydera880uvTemplate = '--DMRID--,--CALLSIGN--,"""","""","""",Russia Fed'
+            Remove-Item $Kydera880uvCSVfile -Force -ErrorAction SilentlyContinue
+            Add-Content -Path $Kydera880uvCSVfile -Value "Radio ID,Callsign,Name,City,State,Country"
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $Kydera880uvTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $Kydera880uvCSVfile -Value $NewLine
+            }
+
             # ------ Motorola ------ #
             $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
