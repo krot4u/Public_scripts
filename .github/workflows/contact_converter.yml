@@ -19,7 +19,7 @@ jobs:
           script: |
             # ------ AnyTone ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts.csv"
             $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
@@ -38,7 +38,7 @@ jobs:
 
             # ------ Retevis OpenGD77 ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $RetevisCSVfile = "./Devices_Contact_List/Retevis_Contact.csv"
             $RetevisTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
@@ -56,7 +56,7 @@ jobs:
 
             # ------ Retevis OpenGD77 21.09.2023 ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $RetevisCSVfile = "./Devices_Contact_List/Retevis_Contact_new.csv"
             $RetevisTemplate = "--CALLSIGN--,--DMRID--,Private,Disabled"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
@@ -72,7 +72,7 @@ jobs:
 
             # ------ Retevis RT3s Original ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $RetevisOrigCSVfile = "./Devices_Contact_List/RetevisOrig_Contact.csv"
             $RetevisOrigTemplate = "--CALLSIGN--,2,--DMRID--,0"
             Remove-Item $RetevisOrigCSVfile -Force -ErrorAction SilentlyContinue
@@ -88,7 +88,7 @@ jobs:
 
             # ------ Zastone D900 ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $ZastoneD900CSVfile = "./Devices_Contact_List/ZastoneD900_Contact.csv"
             $ZastoneD900Template = '"--DMRID--","--CALLSIGN--","Private Call","No","","","","",""'
             Remove-Item $ZastoneD900CSVfile -Force -ErrorAction SilentlyContinue
@@ -117,7 +117,7 @@ jobs:
 
             # ------ AILUNCE HD-1 ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $AilunceCSVfile = "./Devices_Contact_List/Ailunce_Contacts.csv"
             $AilunceTemplate = "--LINEnumber--,--CALLSIGN--,--DMRID--,Private Call,On,None,None"
             $AilunceTemplate = "--LINEnumber--,Private Call,--CALLSIGN--,,,,--DMRID--,"
@@ -136,7 +136,7 @@ jobs:
 
             # ------ Kydera 880uv ------ #
             # $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $Kydera880uvCSVfile = "./Devices_Contact_List/Kydera880uv_Contact.csv"
             $Kydera880uvTemplate = '--DMRID--,--CALLSIGN--,"""","""","""",Russia Fed'
             Remove-Item $Kydera880uvCSVfile -Force -ErrorAction SilentlyContinue
@@ -150,7 +150,7 @@ jobs:
 
             # ------ Motorola ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
             $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
             Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
@@ -199,7 +199,7 @@ jobs:
 
             # ------ MotorolaRus Rus ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' }
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $MotorolaRusCSVfile = "./Devices_Contact_List/Motorola_Rus_Contact.csv"
             $MotorolaRusTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
             Remove-Item $MotorolaRusCSVfile -Force -ErrorAction SilentlyContinue
