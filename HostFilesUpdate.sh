@@ -11,6 +11,7 @@ fi
 
 DMRIDFILE=/usr/local/etc/DMRIds.dat
 DMRHOSTS=/usr/local/etc/DMR_Hosts.txt
+DCSHOSTS=/usr/local/etc/DCS_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
 YSFHOSTS=/usr/local/etc/YSF_Hosts.txt
@@ -58,6 +59,7 @@ echo ">> HostFilesUpdate: Download config files"
 # Generate Host Files
 curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMR_Hosts.txt
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat
+curl --fail -o ${DCSHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DCS_Hosts.txt
 curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
 curl --fail -o ${YSFHOSTS} -s https://kavkaz.qrz.ru/YSF_Hosts.txt
