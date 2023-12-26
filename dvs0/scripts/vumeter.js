@@ -8,13 +8,13 @@ function vumeter(elem, config){
   var boxGapFraction  = config.boxGapFraction || 0.2;
   var jitter          = config.jitter || 0.05;
 
-  // Colours
+  // Colours rgb(246,189,67)
   var redOn     = 'rgba(255,47,30,0.9)';
   var redOff    = 'rgba(64,12,8,0.9)';
-  var yellowOn  = 'rgba(255,215,5,0.9)';
+  var yellowOn  = 'rgba(246,189,67,0.9)';
   var yellowOff = 'rgba(64,53,0,0.9)';
-  var greenOn   = 'rgba(53,255,30,0.9)';
-  var greenOff  = 'rgba(13,64,8,0.9)';
+  var greenOn   = 'rgba(28,91,237,0.9)';
+  var greenOff  = 'rgba(24,42,105,0.9)';
 
   // Derived and starting values
   var width = elem.width;
@@ -58,7 +58,7 @@ function vumeter(elem, config){
       c.save();
       c.beginPath();
       c.rect(0, 0, width, height);
-      c.fillStyle = 'rgb(32,32,32)';
+      c.fillStyle = 'rgb(0,0,0)';
       c.fill();
       c.restore();
       drawBoxes(c, curVal);

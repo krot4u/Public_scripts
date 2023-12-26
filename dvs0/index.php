@@ -35,7 +35,18 @@ include_once 'include/browserdetect.php';
     </script>
     <link href="./css/featherlight.css" type="text/css" rel="stylesheet" />
     <script src="./scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./scripts/highcharts.js"></script>
+    <script src="./scripts/vumeter.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(() => vumeter(demo, {
+        "boxCount": 20,
+        "boxGapFraction": 0.4,
+        "max": 100,
+        "boxCountRed": 4,
+        "boxCountYellow": 5,
+        "jitter": 0.13,
+      }));
+  </script>
+</head>
 </head>
 <body style="background-color: #000926;font: 11pt arial, sans-serif;">
 <center>
@@ -47,6 +58,13 @@ include_once 'include/browserdetect.php';
 </center>
 </div>
 <div class="content"><center>
+<canvas id="demo" width="28px" height="250" data-val="0" style="
+    transform: rotate(90deg);
+    margin-bottom: -100px;
+    margin-top: -100px;
+    position: relative;
+    filter: drop-shadow(2px 2px 5px);
+">No canvas</canvas>
 <div style="margin-top:8px;">
 <?php
 if ( RXMONITOR == "YES" ) {

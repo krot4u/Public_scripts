@@ -17,13 +17,33 @@ include_once 'include/tools.php';
     </script>
 <link href="./css/featherlight.css" type="text/css" rel="stylesheet" />
 <script src="./scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
+<script src="./scripts/vumeter.js" type="text/javascript"></script>
+<script>
+      $(document).ready(() => vumeter(demo, {
+        "boxCount": 20,
+        "boxGapFraction": 0.4,
+        "max": 100,
+        "boxCountRed": 4,
+        "boxCountYellow": 5,
+        "jitter": 0.13,
+      }));
+  </script>
 </head>
 <body style="background-color: #182A69;font: 11pt arial, sans-serif;">
 <div class="content"><center>
 <?php
 if ( RXMONITOR == "YES" ) {
-echo '<button class="button link", onclick="playAudioToggle(8081, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;Трансляция&nbsp;&nbsp;&nbsp;</b></button>';}
+echo '<button class="button link", onclick="playAudioToggle(8081, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle;">&nbsp;&nbsp;Трансляция&nbsp;&nbsp;&nbsp;</b></button>';}
 ?>
+</div></center>
+<div><center>
+<canvas id="demo" width="28px" height="250" data-val="0" style="
+    transform: rotate(90deg);
+    margin-bottom: -100px;
+    margin-top: -107px;
+    position: relative;
+    filter: drop-shadow(2px 2px 5px);
+">No canvas</canvas>
 </div></center>
 <?php
 function getMMDVMConfigFileContent() {

@@ -27,147 +27,17 @@ include_once 'include/tools.php';
     </script>
     <link href="./css/featherlight.css" type="text/css" rel="stylesheet" />
     <script src="./scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
-<script src="./scripts/highcharts.js"></script>
-<script src="./scripts/highcharts-more.js"></script>
-<script src="./scripts/modules/exporting.js"></script>
-<script src="./scripts/modules/export-data.js"></script>
-<script src="./scripts/modules/accessibility.js"></script>
-<style>
-    .highcharts-figure,
-    .highcharts-data-table table {
-        min-width: 300px;
-        max-width: 300px;
-        margin: 1em auto;
-    }
-
-    .highcharts-data-table table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #ebebeb;
-        margin: 1px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #555;
-    }
-
-    .highcharts-data-table th {
-        font-weight: 600;
-    }
-
-    .highcharts-data-table td,
-    .highcharts-data-table th,
-    .highcharts-data-table caption {
-        padding: 0.5em;
-    }
-
-    .highcharts-data-table thead tr,
-    .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
-    }
-
-    .highcharts-data-table tr:hover {
-        background: #f1f7ff;
-    }
-
-</style>
-<script>
-    $(document).ready(() =>
-        Highcharts.chart('container', {
-            chart: {
-                type: 'gauge',
-                plotBorderWidth: 1,
-                plotBackgroundColor: {
-                    linearGradient: { x1: 0, y1: 0 },
-                    stops: [
-                        [0, '#182A69'],
-                        [0.3, '#FFFFFF'],
-                        [1, '#182A69']
-                    ]
-                },
-                plotBackgroundImage: null,
-                height: 150
-            },
-
-            title: {
-                text: ''
-            },
-
-            pane: [{
-                startAngle: -45,
-                endAngle: 45,
-                background: null,
-                center: ['50%', '145%'],
-                size: 270
-            }],
-
-            exporting: {
-                enabled: false
-            },
-
-            tooltip: {
-                enabled: false
-            },
-
-            yAxis: [{
-                min: 0,
-                max: 255,
-                minorTickPosition: 'outside',
-                tickPosition: 'outside',
-                labels: {
-                    rotation: 'auto',
-                    distance: 20
-                },
-                plotBands: [{
-                    from: 200,
-                    to: 255,
-                    color: '#C02316',
-                    innerRadius: '100%',
-                    outerRadius: '105%'
-                }],
-                pane: 0,
-                title: {
-                    text: '<br/><span style="font-size:12p;color:#000000">Уровень громкости</span>',
-                    y: -20
-                }
-            }],
-
-            plotOptions: {
-                gauge: {
-                    dataLabels: {
-                        enabled: false
-                    },
-                    dial: {
-                        radius: '100%'
-                    }
-                }
-            },
-
-            series: [{
-                name: 'Channel A',
-                data: [-20],
-                yAxis: 0
-            }]
-
-        },
-
-            // Let the music play
-            function (chart) {
-                setInterval(function () {
-                    if (chart.series) {
-                        const left = chart.series[0].points[0];
-                        left.update(window.volume, false);
-                        chart.redraw();
-                    }
-                }, 500);
-
-            }));
-</script>
+    <script src="./scripts/vumeter.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(() => vumeter(demo, {
+        "boxCount": 20,
+        "boxGapFraction": 0.4,
+        "max": 64,
+        "boxCountRed": 3,
+        "boxCountYellow": 6,
+        "jitter": 0.1,
+      }));
+  </script>
 </head>
 <body style="background-color: #182A69;font: 11pt arial, sans-serif;">
 <center>
@@ -177,8 +47,17 @@ include_once 'include/tools.php';
 <img style="width: 100%; height: 100%; margin-top:20px;" src="/images/header.png" alt="QRA-Team" />
 </center>
 </div>
+<div><center>
+<canvas id="demo" width="28px" height="250" data-val="0" style="
+    transform: rotate(90deg);
+    margin-bottom: -120px;
+    margin-top: -100px;
+    position: relative;
+    filter: drop-shadow(2px 2px 5px);
+">No canvas</canvas>
+</center></div>
 <center>
-<div style="margin-top:15px;">
+<div style="margin-top:27px;">
 <?php
 if ( RXMONITOR == "YES" ) {
 echo '<button class="button link" , onclick="playAudioToggle(8081, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;Трансляция&nbsp;&nbsp;&nbsp;</b></button>
