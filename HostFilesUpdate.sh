@@ -15,7 +15,7 @@ DCSHOSTS=/usr/local/etc/DCS_Hosts.txt
 DExtraHOSTS=/usr/local/etc/DExtra_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
-YSFHOSTS=/usr/local/etc/YSF_Hosts.txt
+YSFHOSTS=/usr/local/etc/YSFHosts.txt
 MPISTAR=/usr/local/sbin/mpi-star.sh
 PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 # How many backups
