@@ -100,4 +100,4 @@ curl -d "{
   \"CALLSIGN\": \"$CALLSIGN\",
   \"DMRID\": \"$DMRID\",
   \"LOCALIPS\": \"$LOCALIPS\"
-}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net 2> /dev/null
