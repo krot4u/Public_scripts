@@ -30,8 +30,7 @@ if echo ${EXCLUDE} | grep -q ${DMRID}; then
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
 else
   echo "Apply config QRA-hblink"
-  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-  sed -i '/^\[DMR Network 3\]/,/^$/d' /etc/dmrgateway
+  sed -i '/\[DMR Network 3\]/,/\[DMR Network 4\]/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
     cat <<EOF >> /etc/dmrgateway
 
@@ -100,4 +99,4 @@ curl -d "{
   \"CALLSIGN\": \"$CALLSIGN\",
   \"DMRID\": \"$DMRID\",
   \"LOCALIPS\": \"$LOCALIPS\"
-}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net 2> /dev/null
+}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net > /dev/null
