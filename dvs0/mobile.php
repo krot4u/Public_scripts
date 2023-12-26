@@ -35,7 +35,7 @@ include_once 'include/tools.php';
         "max": 64,
         "boxCountRed": 3,
         "boxCountYellow": 6,
-        "jitter": 0.1,
+        "jitter": 0.13,
       }));
   </script>
 </head>
