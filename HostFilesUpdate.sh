@@ -64,9 +64,10 @@ curl --fail -o ${DCSHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${DExtraHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DExtra_Hosts.txt
 curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
-curl --fail -o ${YSFHOSTS} -s https://kavkaz.qrz.ru/YSF_Hosts.txt
+curl --fail -o ${YSFHOSTS} -s http://kavkaz.qrz.ru/YSF_Hosts.txt
 curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
+curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 
 chmod +x ${MPISTAR}
 ${MPISTAR} 2> /dev/null
@@ -101,6 +102,12 @@ then
 # cat <<EOF > /opt/version
 # ${NEWVERSION}
 # EOF
+
+# Add custom YSF Hosts
+if [ -f "/root/YSFHosts.txt" ]; then
+	cat /root/YSFHosts.txt >> ${YSFHOSTS}
+fi
+
 sed -i "s/\$version = '.*';/\$version = '$NEWVERSION';/" /var/www/dashboard/config/version.php
 fi
 
