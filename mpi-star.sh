@@ -31,6 +31,7 @@ if echo ${EXCLUDE} | grep -q ${DMRID}; then
 else
   echo "Apply config QRA-hblink"
   sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
+  sed -i '/^\[DMR Network 3\]/,/^$/d' /etc/dmrgateway
   sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
     cat <<EOF >> /etc/dmrgateway
 
@@ -90,10 +91,6 @@ fi
 # fi
 
 ## --------- Fix Phantom TX --------- ##
-# echo "Configuring INI files"
-# sed -i -E '/^\[DMR Network\]$/,/^\[/ s/^Jitter=1000/Jitter=250/' "/etc/mmdvmhost"
-echo "Configuring INI files"
-sed -i -E '/^\[DMR\]$/,/^\[/ s/^OVCM=0/OVCM=4/' "/etc/mmdvmhost"
 
 ## -------- Send Statistic --------- ##
 CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
