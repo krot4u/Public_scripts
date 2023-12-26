@@ -16,6 +16,7 @@ DExtraHOSTS=/usr/local/etc/DExtra_Hosts.txt
 P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
 YSFHOSTS=/usr/local/etc/YSFHosts.txt
+FCSHOSTS=/usr/local/etc/FCSHosts.txt
 MPISTAR=/usr/local/sbin/mpi-star.sh
 PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 # How many backups
@@ -64,6 +65,7 @@ curl --fail -o ${DCSHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${DExtraHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DExtra_Hosts.txt
 curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/P25_Hosts.txt
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
+curl --fail -o ${FCSHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/FCSHosts.txt
 curl --fail -o ${YSFHOSTS} -s http://kavkaz.qrz.ru/YSF_Hosts.txt
 curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
