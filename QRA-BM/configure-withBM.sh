@@ -20,7 +20,7 @@ if echo /root/P25Hosts.txt | grep -q "38.180.66.135"; then
 else
   echo "------- Configure P25Hosts"
   echo "1	p25.qra-team.online	41000" >> /root/P25Hosts.txt
-  echo "2	qra-team.online	41000" >> /root/P25Hosts.txt
+  echo "4001	qra-team.online	41000" >> /root/P25Hosts.txt
 fi
 
 if echo /root/DMR_Hosts.txt | grep -q "38.180.66.135"; then
