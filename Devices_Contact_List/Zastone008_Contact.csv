@@ -16,7 +16,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2200022,BALON,"","","","",QRA
 2300341,SMERCH,"","","","",QRA
 2470024,TUSHKAN,"","","","",QRA
-2480045,XRADIO,"","","","",QRA
 2500108,DALLAS,"","","","",QRA
 2500225,CALVIN,"","","","",QRA
 2500252,BARS,"","","","",QRA
@@ -115,6 +114,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 3324733,CONDOR,"","","","",QRA
 3600971,FRESH,"","","","",QRA
 3720001,BALU,"","","","",QRA
+3720002,XRADIO,"","","","",QRA
 4000001,MOTO,"","","","",QRA
 4200042,LYAMKIN,"","","","",QRA
 4300001,SHAXTER,"","","","",QRA
