@@ -9,6 +9,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1500636,GRIZLY,"","","","",QRA
 1506888,ICEMAN,"","","","",QRA
 1610161,ENOT61,"","","","",QRA
+1630001,SARATOV,"","","","",QRA
 1632203,MOLCHUN,"","","","",QRA
 1860757,CICADA,"","","","",QRA
 1960001,VYMPEL,"","","","",QRA
@@ -205,7 +206,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 6660333,QRAP25,"","","","",QRA
 6660444,QRA909,"","","","",QRA
 6660555,QRAPOC,"","","","",QRA
-6660666,QRANEW,"","","","",QRA
 6660777,QRASAO,"","","","",QRA
 6660888,QRAZAO,"","","","",QRA
 6660999,QRASKLV,"","","","",QRA
