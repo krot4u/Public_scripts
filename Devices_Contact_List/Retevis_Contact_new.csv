@@ -12,7 +12,28 @@ GRIZLY	,1500636,Private,Disabled
 ICEMAN	,1506888,Private,Disabled
 ENOT61	,1610161,Private,Disabled
 SARATOV	,1630001,Private,Disabled
+HAKER	,1632101,Private,Disabled
+DOBRYNIA	,1632102,Private,Disabled
+LEV	,1632103,Private,Disabled
+DANTIST	,1632104,Private,Disabled
+D495	,1632105,Private,Disabled
+BOETC	,1632106,Private,Disabled
+SHAPRAN	,1632107,Private,Disabled
+PLUS	,1632108,Private,Disabled
+TUMAN1	,1632201,Private,Disabled
+TUMAN2	,1632202,Private,Disabled
 MOLCHUN	,1632203,Private,Disabled
+TUMAN3	,1632203,Private,Disabled
+STRANNIK	,1632204,Private,Disabled
+PREZIDENT	,1632205,Private,Disabled
+ISTOK	,1632206,Private,Disabled
+BOFFI	,1632207,Private,Disabled
+KUVALDA	,1632208,Private,Disabled
+OPIUM	,1632209,Private,Disabled
+SOLO	,1632210,Private,Disabled
+TONIK	,1632301,Private,Disabled
+KAMYSH	,1632302,Private,Disabled
+KAZAK,1632303,Private,Disabled
 QRA4009	,1634009,Private,Disabled
 CICADA	,1860757,Private,Disabled
 VYMPEL	,1960001,Private,Disabled
@@ -227,7 +248,7 @@ NEMO	,7700123,Private,Disabled
 ROO165	,7700165,Private,Disabled
 MEDIC	,7700327,Private,Disabled
 CHAJKA	,7700345,Private,Disabled
-BOBER,7700500,Private,Disabled
+BOBER	,7700500,Private,Disabled
 ANGARA	,7700524,Private,Disabled
 PRIMUS	,7700543,Private,Disabled
 ANDR545	,7700545,Private,Disabled

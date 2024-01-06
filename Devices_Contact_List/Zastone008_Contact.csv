@@ -10,7 +10,28 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1506888,ICEMAN	,"","","","",QRA
 1610161,ENOT61	,"","","","",QRA
 1630001,SARATOV	,"","","","",QRA
+1632101,HAKER	,"","","","",QRA
+1632102,DOBRYNIA	,"","","","",QRA
+1632103,LEV	,"","","","",QRA
+1632104,DANTIST	,"","","","",QRA
+1632105,D495	,"","","","",QRA
+1632106,BOETC	,"","","","",QRA
+1632107,SHAPRAN	,"","","","",QRA
+1632108,PLUS	,"","","","",QRA
+1632201,TUMAN1	,"","","","",QRA
+1632202,TUMAN2	,"","","","",QRA
 1632203,MOLCHUN	,"","","","",QRA
+1632203,TUMAN3	,"","","","",QRA
+1632204,STRANNIK	,"","","","",QRA
+1632205,PREZIDENT	,"","","","",QRA
+1632206,ISTOK	,"","","","",QRA
+1632207,BOFFI	,"","","","",QRA
+1632208,KUVALDA	,"","","","",QRA
+1632209,OPIUM	,"","","","",QRA
+1632210,SOLO	,"","","","",QRA
+1632301,TONIK	,"","","","",QRA
+1632302,KAMYSH	,"","","","",QRA
+1632303,KAZAK,"","","","",QRA
 1634009,QRA4009	,"","","","",QRA
 1860757,CICADA	,"","","","",QRA
 1960001,VYMPEL	,"","","","",QRA
@@ -225,7 +246,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700165,ROO165	,"","","","",QRA
 7700327,MEDIC	,"","","","",QRA
 7700345,CHAJKA	,"","","","",QRA
-7700500,BOBER,"","","","",QRA
+7700500,BOBER	,"","","","",QRA
 7700524,ANGARA	,"","","","",QRA
 7700543,PRIMUS	,"","","","",QRA
 7700545,ANDR545	,"","","","",QRA
