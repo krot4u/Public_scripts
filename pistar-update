@@ -105,6 +105,7 @@ service_handle() {
 	systemctl stop nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null
 	systemctl ${doWhat} dstarrepeater.service > /dev/null; systemctl eanble dstarrepeater.service > /dev/null
 	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 2 > /dev/null
+  systemctl daemon-reload
 }
 
 main_function() {
