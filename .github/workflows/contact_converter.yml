@@ -17,11 +17,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         with:
           script: |
-            # Donwload Samara DMR ID
-            invoke-webrequest -Uri "http://45.143.93.75/dmrid_svoi.dat" -OutFile ./dmrid_svoi.dat
-            python append_contact.py
-            Get-Content ./dmrid_svoi.dat | Add-Content ./DMRIds.dat
-            Get-Content ./DMRIds.dat
             # ------ AnyTone ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
