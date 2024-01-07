@@ -1425,7 +1425,7 @@ main_function() {
 	/bin/sync
 	/bin/sync
 	mount -o remount,ro /
-        mount -o remount,ro /boot
+  mount -o remount,ro /boot
 	echo "Finished"
 
 	}
