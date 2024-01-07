@@ -13,27 +13,48 @@ ICEMAN	,1506888,Private,Disabled
 ENOT61	,1610161,Private,Disabled
 QRAMSK	,1630001,Private,Disabled
 HAKER	,1632101,Private,Disabled
+1632101;HAKER;,1632101;HAKER;,Private,Disabled
 DOBRYNIA	,1632102,Private,Disabled
+1632102;DOBRYNIA;,1632102;DOBRYNIA;,Private,Disabled
 LEV	,1632103,Private,Disabled
+1632103;LEV;,1632103;LEV;,Private,Disabled
 DANTIST	,1632104,Private,Disabled
+1632104;DANTIST;,1632104;DANTIST;,Private,Disabled
 D495	,1632105,Private,Disabled
+1632105;D495;,1632105;D495;,Private,Disabled
 BOEC	,1632106,Private,Disabled
+1632106;BOEC;,1632106;BOEC;,Private,Disabled
 SHAPRAN	,1632107,Private,Disabled
+1632107;SHAPRAN;,1632107;SHAPRAN;,Private,Disabled
 PLUS	,1632108,Private,Disabled
+1632108;PLUS;,1632108;PLUS;,Private,Disabled
 TUMAN1	,1632201,Private,Disabled
+1632201;TUMAN1;,1632201;TUMAN1;,Private,Disabled
 TUMAN2	,1632202,Private,Disabled
+1632202;TUMAN2;,1632202;TUMAN2;,Private,Disabled
 MOLCHUN	,1632203,Private,Disabled
 MOLCHUN	,1632203,Private,Disabled
+1632203;MOLCHUN;,1632203;MOLCHUN;,Private,Disabled
 STRANNIK	,1632204,Private,Disabled
+1632204;STRANNIK;,1632204;STRANNIK;,Private,Disabled
 PREZIDENT	,1632205,Private,Disabled
+1632205;PREZIDENT;,1632205;PREZIDENT;,Private,Disabled
 ISTOK	,1632206,Private,Disabled
+1632206;ISTOK;,1632206;ISTOK;,Private,Disabled
 BOFFI	,1632207,Private,Disabled
+1632207;BOFFI;,1632207;BOFFI;,Private,Disabled
 KUVALDA	,1632208,Private,Disabled
+1632208;KUVALDA;,1632208;KUVALDA;,Private,Disabled
 OPIUM	,1632209,Private,Disabled
+1632209;OPIUM;,1632209;OPIUM;,Private,Disabled
 SOLO	,1632210,Private,Disabled
+1632210;SOLO;,1632210;SOLO;,Private,Disabled
 TONIK	,1632301,Private,Disabled
+1632301;TONIK;,1632301;TONIK;,Private,Disabled
 KAMYSH	,1632302,Private,Disabled
+1632302;KAMYSH;,1632302;KAMYSH;,Private,Disabled
 KAZAK,1632303,Private,Disabled
+1632303;KAZAK;,1632303;KAZAK;,Private,Disabled
 SAMARA	,1634001,Private,Disabled
 CICADA	,1860757,Private,Disabled
 VYMPEL	,1960001,Private,Disabled
@@ -51,8 +72,11 @@ VOLT	,2500318,Private,Disabled
 AVIATOR	,2500325,Private,Disabled
 STALKER	,2500334,Private,Disabled
 R4HEO	,2500351,Private,Disabled
+2500351;R4HEO;,2500351;R4HEO;,Private,Disabled
 R4HJE	,2500363,Private,Disabled
+2500363;R4HJE;,2500363;R4HJE;,Private,Disabled
 R4HFW	,2500405,Private,Disabled
+2500405;R4HFW;,2500405;R4HFW;,Private,Disabled
 VARLA	,2500411,Private,Disabled
 KOSMOS	,2500449,Private,Disabled
 KASSIR	,2500450,Private,Disabled
@@ -110,19 +134,27 @@ TRAK	,2503439,Private,Disabled
 URAL	,2504024,Private,Disabled
 R4HGC	,2504028,Private,Disabled
 SHAPRAN	,2504028,Private,Disabled
+2504028;R4HGC;,2504028;R4HGC;,Private,Disabled
 BOEC	,2504030,Private,Disabled
 ENGENR	,2504031,Private,Disabled
 UB4HQF	,2504037,Private,Disabled
+2504037;UB4HQF;,2504037;UB4HQF;,Private,Disabled
 R4HDS	,2504056,Private,Disabled
+2504056;R4HDS;,2504056;R4HDS;,Private,Disabled
 DOCENT	,2504058,Private,Disabled
 RA4HM	,2504059,Private,Disabled
+2504059;RA4HM;,2504059;RA4HM;,Private,Disabled
 R4HFJ	,2504066,Private,Disabled
+2504066;R4HFJ;,2504066;R4HFJ;,Private,Disabled
 R4HHV	,2504072,Private,Disabled
+2504072;R4HHV;,2504072;R4HHV;,Private,Disabled
 YANTAR	,2504074,Private,Disabled
 START	,2504075,Private,Disabled
 R4KK	,2504077,Private,Disabled
+2504077;R4KK;,2504077;R4KK;,Private,Disabled
 CAHEK	,2504092,Private,Disabled
 R4HIC	,2504092,Private,Disabled
+2504092;R4HIC;,2504092;R4HIC;,Private,Disabled
 BUSTER	,2506007,Private,Disabled
 VDN	,2506015,Private,Disabled
 FANTOM	,2506066,Private,Disabled
@@ -136,6 +168,7 @@ SEVAS	,2507060,Private,Disabled
 BALOMUT	,2507074,Private,Disabled
 STRANIK	,2508128,Private,Disabled
 UB8FCO	,2508128,Private,Disabled
+2508128;UB8FCO;,2508128;UB8FCO;,Private,Disabled
 KORSAR	,2509099,Private,Disabled
 DOMOVOY	,2509121,Private,Disabled
 ROSTIK	,2509163,Private,Disabled
