@@ -223,18 +223,8 @@ if ( ($configPistarRelease['Pi-Star']['Version'] < 4.1) && ($configPistarRelease
     </tr>
   </table>
 </div>
-<?php }
-if ( (file_exists('/etc/dstar-radio.mmdvmhost') && $configmmdvm['DMR']['Enable'] == 1 && $configmmdvm['DMR']['SelfOnly'] == 0 && strlen($configmmdvm['General']['Id']) >= 7 ) && (!isset($configmmdvm['DMR']['WhiteList'])) ) {
-?>
-<div>
-  <table align="center" width="760px" style="margin: 0px 0px 10px 0px; width: 100%;">
-    <tr>
-    <td align="center" valign="top" style="background-color: #ffff90; color: #906000;">Alert: You are running a hotspot in public mode without an access list for DMR, this setup *could* participate in network loops!</td>
-    </tr>
-  </table>
-</div>
 <?php } 
-if ( ($configPistarRelease['Pi-Star']['Version'] >= "4.1") && ($configPistarRelease['Pi-Star']['Version'] < "4.1.7") ) {
+if ( ($configPistarRelease['Pi-Star']['Version'] >= "4.1") && ($configPistarRelease['Pi-Star']['Version'] < "4.1.6") ) {
 ?>
 <div>
   <table align="center" width="760px" style="margin: 0px 0px 10px 0px; width: 100%;">
@@ -1244,11 +1234,6 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 			if (isset($configdmr2nxdn['DMR Network']['LocalAddress'])) {
 				$configdmr2nxdn['DMR Network']['LocalAddress'] = "127.0.0.3";
 			}
-		}
-
-		// TGIF
-		if (substr($dmrMasterHostArr[3], 0, 4) == "TGIF") {
-			unset ($configmmdvm['DMR Network']['Options']);
 		}
 
 		// Set the DMR+ / HBLink Options= line
