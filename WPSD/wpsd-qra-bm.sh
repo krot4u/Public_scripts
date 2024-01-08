@@ -29,13 +29,13 @@ chown -R root:root /root/wpsd-update.sh > /dev/null 2>&1
 cp -f /root/wpsd-update.sh /usr/local/sbin/ > /dev/null 2>&1
 
 
-if grep 'usr/local/sbin/wpsd-update.sh' /etc/cron.daily/pistar-daily  ; then
-    echo "Skip!"
-else
-    echo "------- Configure pistar.daily"
-    echo "pause 10" >> /etc/cron.daily/pistar-daily
-    echo "/usr/local/sbin/wpsd-update.sh" >> /etc/cron.daily/pistar-daily
-fi
+#if grep 'usr/local/sbin/wpsd-update.sh' /etc/cron.daily/pistar-daily  ; then
+#    echo "Skip!"
+#else
+#    echo "------- Configure pistar.daily"
+#    echo "pause 10" >> /etc/cron.daily/pistar-daily
+#    echo "/usr/local/sbin/wpsd-update.sh" >> /etc/cron.daily/pistar-daily
+#fi
 
 if grep 'usr/local/sbin/wpsd-update.sh' /etc/cron.hourly/pistar-hourly  ; then
     echo "Skip!"
