@@ -93,7 +93,7 @@ if grep '38.180.66.135' /root/YSFHosts.txt  ; then
   echo "Skip!"
 else
   echo "------- Configure YSFHosts"
-  echo "YSF_496       0000    38.180.66.135     passw0rd        62030" >> /root/YSFHosts.txt
+  echo "00496;XLX496;XLX-QRA;38.180.66.135;42000;004;https://qra-team.online;0" >> /root/YSFHosts.txt
 fi
 
 # Add custom XLX Hosts
