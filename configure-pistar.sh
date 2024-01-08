@@ -88,9 +88,14 @@ service_handle() {
 read_dmrid </dev/tty
 read_frequency </dev/tty
 
-echo "Run pi-star Upgrade..."
-/usr/local/sbin/pistar-upgrade
-echo "------------"
+if $(ps aux | grep -q "lock_is_held"); then
+  echo "Ошибка... Попробуйте через 5 минут!"
+  exit 1
+else
+  echo "Run pi-star Upgrade..."
+  /usr/local/sbin/pistar-upgrade
+  echo "------------"
+fi
 
 rpirw
 
