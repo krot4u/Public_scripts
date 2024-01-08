@@ -89,7 +89,7 @@ read_dmrid </dev/tty
 read_frequency </dev/tty
 
 if $(ps aux | grep -q "lock_is_held"); then
-  echo "Ошибка... Попробуйте через 5 минут!"
+  echo "Ошибка... Попробуйте через 10 минут!"
   exit 1
 else
   echo "Run pi-star Upgrade..."
