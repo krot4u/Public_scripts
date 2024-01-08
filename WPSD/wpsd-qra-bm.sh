@@ -22,7 +22,7 @@ pkill pistar-daily.cron > /dev/null 2>&1
 echo -e "  ${TICK} Done!\n"
 
 
-curl --fail -o /root/wpsd-update.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/QRA-BM/wpsd-update.sh
+curl --fail -o /root/wpsd-update.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/WPSD/wpsd-update.sh
 
 chmod 775 /root/wpsd-update.sh > /dev/null 2>&1
 chown -R root:root /root/wpsd-update.sh > /dev/null 2>&1

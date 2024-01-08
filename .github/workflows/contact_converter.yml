@@ -17,6 +17,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         with:
           script: |
+            # Get fresh DMRids.dat
+            curl --fail -s -o ./DMRIds.dat "https://qra-team.online/files/DMRIds.dat"
             # ------ AnyTone ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
