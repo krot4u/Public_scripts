@@ -23,11 +23,15 @@ jobs:
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts.csv"
-            $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
+            # Lyamkin (08-01-2024)   $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
+            $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Name","","","","","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
-            Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","Group Call","None"'
-            Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA-5973","Group Call","None"'
+            Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","","","","","Call Type","Call Alert"'
+            Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","","","","","Group Call","None"'
+            Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA-5973","","","","","Group Call","None"'
+            # Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
+            # Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","Group Call","None"'
+            # Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA-5973","Group Call","None"'
             $Counter = 3
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
