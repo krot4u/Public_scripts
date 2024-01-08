@@ -29,6 +29,13 @@ else
   echo "XLX_496       0000    38.180.66.135     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 
+if echo /root/YSFHosts.txt | grep -q "38.180.66.135"; then
+  echo "Skip!"
+else
+  echo "------- Configure YSFHosts"
+  echo "00496;XLX496;XLX-QRA;38.180.66.135;42000;004;https://qra-team.online;0" >> /root/YSFHosts.txt
+fi
+
 echo "Configuring INI files"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Startup=.*/Startup=496/' "${dmrgateway}"
 sed -i -E '/^\[XLX Network\]$/,/^\[/ s/^Enabled=.*/Enabled=1/' "${dmrgateway}"
