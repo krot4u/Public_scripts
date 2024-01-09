@@ -89,9 +89,15 @@ read_dmrid </dev/tty
 read_frequency </dev/tty
 
 if $(ps aux | grep -q "lock_is_held"); then
-  echo "Ошибка... Попробуйте через 10 минут!"
-  exit 1
-else
+  echo "Kill all apt..."
+  killall -9 apt-get
+  rm -f /var/lock/pistar-update.lock
+  rm -f /var/lib/dpkg/lock
+  rm -f /var/lib/dpkg/lock-frontend
+  rm -f /var/lib/apt/lists/lock
+  dpkg --configure -a
+  #exit 1
+#else
   echo "Run pi-star Upgrade..."
   /usr/local/sbin/pistar-upgrade
   echo "------------"
