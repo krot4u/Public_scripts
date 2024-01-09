@@ -96,8 +96,11 @@ if $(ps aux | grep -q "lock_is_held"); then
   rm -f /var/lib/dpkg/lock-frontend
   rm -f /var/lib/apt/lists/lock
   dpkg --configure -a
+  echo "Run pi-star Upgrade..."
+  /usr/local/sbin/pistar-upgrade
+  echo "------------"
   #exit 1
-#else
+else
   echo "Run pi-star Upgrade..."
   /usr/local/sbin/pistar-upgrade
   echo "------------"
