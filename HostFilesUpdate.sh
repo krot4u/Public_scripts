@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NEWVERSION=09012024
+NEWVERSION=10012024
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
