@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NEWVERSION=08012024
+NEWVERSION=09012024
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
@@ -98,6 +98,12 @@ then
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/calibration.php" > '/var/www/dashboard/admin/calibration.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php" > '/var/www/dashboard/admin/sysinfo.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/lh.php" > '/var/www/dashboard/admin/mmdvmhost/lh.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/localtx.php" > '/var/www/dashboard/admin/mmdvmhost/localtx.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/repeaterinfo.php" > '/var/www/dashboard/admin/mmdvmhost/repeaterinfo.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/lh.php" > '/var/www/dashboard/mmdvmhost/lh.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/localtx.php" > '/var/www/dashboard/mmdvmhost/localtx.php'
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/repeaterinfo.php" > '/var/www/dashboard/mmdvmhost/repeaterinfo.php'
   curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
 
