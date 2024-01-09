@@ -89,6 +89,7 @@ read_dmrid </dev/tty
 read_frequency </dev/tty
 
 if $(ps aux | grep -q "lock_is_held"); then
+  rpirw
   echo "Kill all apt..."
   killall -9 apt-get
   rm -f /var/lock/pistar-update.lock
