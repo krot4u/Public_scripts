@@ -70,6 +70,7 @@ curl --fail -o ${YSFHOSTS} -s http://kavkaz.qrz.ru/YSF_Hosts.txt
 curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
+curl --fail -o /usr/local/etc/dmrid.dat -s https://qra-team.online/files/dmrid.dat
 
 chmod +x ${MPISTAR}
 ${MPISTAR} 2> /dev/null

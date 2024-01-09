@@ -103,9 +103,9 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 </div>
 
 <div class="lastHerd">
-    
-<table border="1">
-<table frame='border'  cellpadding='5' cellspacing='5'>
+
+<table frame='border'  cellpadding='5' cellspacing='5' border="1">
+<tbody>
 <col align='left'</col>
 <col align='left'</col>
 <tr>
@@ -115,23 +115,18 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 
   <?php
     // $row = 1;
-    if (($handle = fopen("/usr/local/etc/DMRIds.dat", "r")) !== FALSE) {
-        while (($data = fgetcsv($handle, 1000, "\t")) !== FALSE) {
-            $num = count($data);
+    if (($handle = fopen("/usr/local/etc/dmrid.dat", "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+            // $num = count($data);
+            $num = 2;
             echo '<tr>';
             for ($c=0; $c < $num; $c++) {
-                if(empty($data[$c])) {
-                  $value = "&nbsp;";
-                }
-                else{
                   $value = $data[$c];
-                }
                 echo '<td>'.$value.'</td>';
             }
             echo '</tr>';
             $row++;
         }
-      
         echo '</tbody></table>';
         fclose($handle);
     }
