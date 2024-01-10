@@ -85,27 +85,26 @@ service_handle() {
 	# What do we want do to?
 	doWhat=${1}
 
-	systemctl ${doWhat} pistar-watchdog.service > /dev/null
-	systemctl ${doWhat} pistar-remote.service > /dev/null
-	systemctl ${doWhat} dmrgateway.service > /dev/null
-	systemctl ${doWhat} dapnetgateway.service > /dev/null
-	systemctl ${doWhat} ircddbgateway.service > /dev/null; systemctl eanble ircddbgateway.service > /dev/null; systemctl ${doWhat} ircddbgateway.timer > /dev/null; systemctl eanble ircddbgateway.timer > /dev/null
-  systemctl ${doWhat} timeserver.service > /dev/null; systemctl eanble timeserver.service > /dev/null; systemctl ${doWhat} timeserver.timer > /dev/null; systemctl eanble timeserver.timer > /dev/null;
-	systemctl ${doWhat} ysfgateway.service > /dev/null
-	systemctl ${doWhat} ysf2dmr.service > /dev/null
-	systemctl stop ysf2nxdn.service > /dev/null; systemctl disable ysf2nxdn.service > /dev/null; systemctl stop ysf2nxdn.timer > /dev/null; systemctl disable ysf2nxdn.timer > /dev/null
-	systemctl stop ysf2p25.service > /dev/null; systemctl disable ysf2p25.service > /dev/null; systemctl stop ysf2p25.timer > /dev/null; systemctl disable ysf2p25.timer > /dev/null
-	systemctl stop ysfparrot.service > /dev/null; systemctl disable ysfparrot.service > /dev/null; systemctl stop ysfparrot.timer > /dev/null; systemctl disable ysfparrot.timer > /dev/null
-	systemctl stop dmr2ysf.service > /dev/null; systemctl disable dmr2ysf.service > /dev/null; systemctl stop dmr2ysf.timer > /dev/null; systemctl disable dmr2ysf.timer > /dev/null
-	systemctl stop dmr2nxdn.service > /dev/null; systemctl disable dmr2nxdn.service > /dev/null; systemctl stop dmr2nxdn.timer > /dev/nul; systemctl disable dmr2nxdn.timer > /dev/null
-  systemctl ${doWhat} p25gateway.service > /dev/null
-  systemctl ${doWhat} p25parrot.service > /dev/null
-	systemctl stop nxdngateway.service > /dev/null; systemctl disable nxdngateway.service > /dev/null; systemctl stop nxdngateway.timer > /dev/null; systemctl disable nxdngateway.timer > /dev/null
-	systemctl stop nxdn2dmr.service > /dev/null; systemctl disable nxdn2dmr.service > /dev/null
-	systemctl stop nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null; systemctl disable nxdnparrot.service > /dev/null
-	systemctl ${doWhat} dstarrepeater.service > /dev/null; systemctl eanble dstarrepeater.service > /dev/null
-	systemctl ${doWhat} mmdvmhost.service 2> /dev/null && sleep 2 > /dev/null
-  systemctl daemon-reload
+	systemctl ${doWhat} pistar-watchdog.service > /dev/null 2>&1
+	systemctl ${doWhat} pistar-remote.service > /dev/null 2>&1
+	systemctl ${doWhat} dmrgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} dapnetgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ircddbgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} timeserver.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfgateway.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2dmr.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} ysf2p25.service > /dev/null 2>&1
+	systemctl ${doWhat} ysfparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2ysf.service > /dev/null 2>&1
+	systemctl ${doWhat} dmr2nxdn.service > /dev/null 2>&1
+	systemctl ${doWhat} p25gateway.service > /dev/null 2>&1
+	systemctl ${doWhat} p25parrot.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdngateway.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdn2dmr.service > /dev/null 2>&1
+	systemctl ${doWhat} nxdnparrot.service > /dev/null 2>&1
+	systemctl ${doWhat} dstarrepeater.service > /dev/null 2>&1
+	systemctl ${doWhat} mmdvmhost.service > /dev/null 2>&1 && sleep 2 > /dev/null 2>&1
 }
 
 main_function() {

@@ -1178,5 +1178,3 @@ HB_US_PINOY-LINK_Network	0000	144.202.111.55				passw0rd 	55550
 HB_US_KAPIHAN_Network		0000	45.32.129.89				passw0rd	55550
 HB_US_WNY-DIGITAL_Network	0000	hs.wny-digital.network			passw0rd	62031
 ######################################################################################################
-HBNET 0000  185.4.65.77 passw0rd 62033
-QRA				0000	38.180.66.135				passw0rd	62030
