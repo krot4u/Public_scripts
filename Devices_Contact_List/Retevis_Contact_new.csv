@@ -1,290 +1,290 @@
 Contact Name,ID,ID Type,TS Override
 QRA-Team,9,Group,2
 QRA-5973,5973,Group,2
-LIMON	,1000000,Private,Disabled
-REPSVR	,1000001,Private,Disabled
-PARKER	,1010001,Private,Disabled
-ZELENYI	,1100011,Private,Disabled
-DISTAR	,1100777,Private,Disabled
-DVS	,1122999,Private,Disabled
-DMRFRN	,1128888,Private,Disabled
-GRIZLY	,1500636,Private,Disabled
-ICEMAN	,1506888,Private,Disabled
-ENOT61	,1610161,Private,Disabled
-QRAMSK	,1630001,Private,Disabled
-HAKER	,1632101,Private,Disabled
-DOBRYNIA	,1632102,Private,Disabled
-LEV	,1632103,Private,Disabled
-DANTIST	,1632104,Private,Disabled
-D495	,1632105,Private,Disabled
-B0EC1	,1632106,Private,Disabled
-SHAPRAN	,1632107,Private,Disabled
-PLUS	,1632108,Private,Disabled
-TUMAN1	,1632201,Private,Disabled
-TUMAN2	,1632202,Private,Disabled
-MOLCHUN	,1632203,Private,Disabled
-STRANNIK	,1632204,Private,Disabled
-PREZIDENT	,1632205,Private,Disabled
-ISTOK	,1632206,Private,Disabled
-BOFFI	,1632207,Private,Disabled
-KUVALDA	,1632208,Private,Disabled
-OPIUM	,1632209,Private,Disabled
-SOLO	,1632210,Private,Disabled
-TONIK	,1632301,Private,Disabled
-KAMYSH	,1632302,Private,Disabled
+LIMON,1000000,Private,Disabled
+REPSVR,1000001,Private,Disabled
+PARKER,1010001,Private,Disabled
+ZELENYI,1100011,Private,Disabled
+DISTAR,1100777,Private,Disabled
+DVS,1122999,Private,Disabled
+DMRFRN,1128888,Private,Disabled
+GRIZLY,1500636,Private,Disabled
+ICEMAN,1506888,Private,Disabled
+ENOT61,1610161,Private,Disabled
+QRAMSK,1630001,Private,Disabled
+HAKER,1632101,Private,Disabled
+DOBRYNIA,1632102,Private,Disabled
+LEV,1632103,Private,Disabled
+DANTIST,1632104,Private,Disabled
+D495,1632105,Private,Disabled
+B0EC1,1632106,Private,Disabled
+SHAPRAN,1632107,Private,Disabled
+PLUS,1632108,Private,Disabled
+TUMAN1,1632201,Private,Disabled
+TUMAN2,1632202,Private,Disabled
+MOLCHUN,1632203,Private,Disabled
+STRANNIK,1632204,Private,Disabled
+PREZIDENT,1632205,Private,Disabled
+ISTOK,1632206,Private,Disabled
+BOFFI,1632207,Private,Disabled
+KUVALDA,1632208,Private,Disabled
+OPIUM,1632209,Private,Disabled
+SOLO,1632210,Private,Disabled
+TONIK,1632301,Private,Disabled
+KAMYSH,1632302,Private,Disabled
 KAZAK,1632303,Private,Disabled
-SAMARA	,1634001,Private,Disabled
-CICADA	,1860757,Private,Disabled
-VYMPEL	,1960001,Private,Disabled
-QRA212	,2120212,Private,Disabled
-ARCTIC	,2150215,Private,Disabled
-BALON	,2200022,Private,Disabled
-SMERCH	,2300341,Private,Disabled
-TUSHKAN	,2470024,Private,Disabled
-DALLAS	,2500108,Private,Disabled
-CALVIN	,2500225,Private,Disabled
-BARS	,2500252,Private,Disabled
-RU177	,2500274,Private,Disabled
-TEXNIK	,2500312,Private,Disabled
-VOLT	,2500318,Private,Disabled
-AVIATOR	,2500325,Private,Disabled
-STALKER	,2500334,Private,Disabled
-IST0K	,2500351,Private,Disabled
-LEV1	,2500363,Private,Disabled
-R4HFW	,2500405,Private,Disabled
-VARLA	,2500411,Private,Disabled
-KOSMOS	,2500449,Private,Disabled
-KASSIR	,2500450,Private,Disabled
-BORISYC	,2500502,Private,Disabled
-RAZRYAD	,2500542,Private,Disabled
-WISKI	,2500590,Private,Disabled
-ONTONIO	,2500610,Private,Disabled
-MACLEOD	,2500617,Private,Disabled
-ILNUR	,2500620,Private,Disabled
-QRA058	,2500621,Private,Disabled
-SHRAM	,2500632,Private,Disabled
-CARBINE	,2500643,Private,Disabled
-LAKE	,2500647,Private,Disabled
-MEDVED	,2500675,Private,Disabled
-INGODA	,2500685,Private,Disabled
-VISITOR	,2500690,Private,Disabled
-PRORAB	,2500707,Private,Disabled
-215	,2500718,Private,Disabled
-MALAMUT	,2500722,Private,Disabled
-KAMYSH	,2500728,Private,Disabled
-MIX622	,2500761,Private,Disabled
-STOODIN	,2500763,Private,Disabled
-MALINA	,2500782,Private,Disabled
-PAVEL	,2500786,Private,Disabled
-BOLHOY	,2500787,Private,Disabled
-RECHNIK	,2500789,Private,Disabled
-LANCER	,2500794,Private,Disabled
-AGAT	,2500795,Private,Disabled
-KOTYARA	,2500816,Private,Disabled
-RAPTER	,2500824,Private,Disabled
-WAVU	,2500857,Private,Disabled
-ZHIRAF	,2500863,Private,Disabled
-BUMER	,2500881,Private,Disabled
-SLON	,2500908,Private,Disabled
-UA1ZBE	,2501029,Private,Disabled
-BABILON	,2501086,Private,Disabled
-4UVASH	,2501108,Private,Disabled
-SP356	,2501122,Private,Disabled
-KOTLAS	,2502011,Private,Disabled
-VIRUS	,2502117,Private,Disabled
-KUBAN	,2502138,Private,Disabled
-TAIFUN	,2502143,Private,Disabled
-XLORID	,2502146,Private,Disabled
-ODMIN	,2502153,Private,Disabled
-DIOD	,2502188,Private,Disabled
-BELGROD	,2502208,Private,Disabled
-PETR59	,2502226,Private,Disabled
-KARDAN	,2503228,Private,Disabled
-INGENER	,2503281,Private,Disabled
-MIXGUIT	,2503316,Private,Disabled
-ADVOKAT	,2503420,Private,Disabled
-JIPSON	,2503424,Private,Disabled
-SOTKA67	,2503436,Private,Disabled
-TRAK	,2503439,Private,Disabled
-URAL	,2504024,Private,Disabled
-SHAPRAN	,2504028,Private,Disabled
-SHAPRAN1	,2504028,Private,Disabled
-BOEC	,2504030,Private,Disabled
-ENGENR	,2504031,Private,Disabled
-PLUS1	,2504037,Private,Disabled
-PREZIDENT1	,2504056,Private,Disabled
-DOCENT	,2504058,Private,Disabled
-Sovetskyi	,2504059,Private,Disabled
-DANTIST1	,2504066,Private,Disabled
-D0BRYNIA	,2504072,Private,Disabled
-YANTAR	,2504074,Private,Disabled
-START	,2504075,Private,Disabled
-B0EC	,2504077,Private,Disabled
-CAHEK	,2504092,Private,Disabled
-M0LCHUN	,2504092,Private,Disabled
-BUSTER	,2506007,Private,Disabled
-VDN	,2506015,Private,Disabled
-FANTOM	,2506066,Private,Disabled
-0888	,2506076,Private,Disabled
-TUAPSE	,2506138,Private,Disabled
-TAGAN	,2506185,Private,Disabled
-BALAMUT	,2507004,Private,Disabled
-BALAMYT	,2507027,Private,Disabled
-PSTAR	,2507053,Private,Disabled
-SEVAS	,2507060,Private,Disabled
-BALOMUT	,2507074,Private,Disabled
-STRANIK	,2508128,Private,Disabled
-STRANNIK1	,2508128,Private,Disabled
-KORSAR	,2509099,Private,Disabled
-DOMOVOY	,2509121,Private,Disabled
-ROSTIK	,2509163,Private,Disabled
-ASTRNOM	,2509178,Private,Disabled
-AIKOM	,2570053,Private,Disabled
-STOPOR	,2570093,Private,Disabled
-MASTER	,2570148,Private,Disabled
-IMPULS	,2570162,Private,Disabled
-JONY	,2600001,Private,Disabled
-RADIY	,2600002,Private,Disabled
-ODA10	,2900555,Private,Disabled
-HANTER	,3000987,Private,Disabled
-BELGR0D	,3100001,Private,Disabled
-TROYKA	,3100002,Private,Disabled
-FLORIDA	,3197441,Private,Disabled
-CONDOR	,3324733,Private,Disabled
-FRESH	,3600971,Private,Disabled
-BALU	,3720001,Private,Disabled
-XRADIO	,3720002,Private,Disabled
-MOTO	,4000001,Private,Disabled
-LYAMKIN	,4200042,Private,Disabled
-SHAXTER	,4300001,Private,Disabled
-PILOT	,4852001,Private,Disabled
-BOTSMAN	,5000002,Private,Disabled
-TRESHKN	,5000003,Private,Disabled
-GRAF	,5000004,Private,Disabled
-TURIST	,5000005,Private,Disabled
-RANGER	,5000007,Private,Disabled
-GIDRANT	,5000018,Private,Disabled
-DIMA97	,5000097,Private,Disabled
-MAGNETO	,5000230,Private,Disabled
-IKSHA	,5000261,Private,Disabled
-SENATOR	,5000262,Private,Disabled
-OKROSKA	,5000280,Private,Disabled
-KURDEN	,5000349,Private,Disabled
-KASPER	,5000540,Private,Disabled
-GIHAR	,5000772,Private,Disabled
-KIRPICH	,5000941,Private,Disabled
-PENZA	,5002012,Private,Disabled
-HOKUM	,5002222,Private,Disabled
-ZOLOTOY	,5005522,Private,Disabled
-DAVID	,5500001,Private,Disabled
-ROSTIK	,5500055,Private,Disabled
-QASHQAI	,5500099,Private,Disabled
-QRAOLD	,5550222,Private,Disabled
-TESTCA	,5566777,Private,Disabled
-VERESK	,5600076,Private,Disabled
-OREL808	,5700057,Private,Disabled
-OLIMP	,5800030,Private,Disabled
-SMOG158	,5800077,Private,Disabled
-TAYGA	,5900111,Private,Disabled
-CHERMOZ	,5900175,Private,Disabled
-FORWARD	,5902505,Private,Disabled
-DSPET4R	,5973005,Private,Disabled
-ORBIT	,5973007,Private,Disabled
-PARTZAN	,5973008,Private,Disabled
-DEVYATK	,5973009,Private,Disabled
-CMETAHA	,5973011,Private,Disabled
-BOROVIK	,5973013,Private,Disabled
-ALUPKA1	,5973015,Private,Disabled
-SEDOY	,5973031,Private,Disabled
-OBERON	,5973058,Private,Disabled
-TAIFUN	,5973062,Private,Disabled
-ZAPAD77	,5973077,Private,Disabled
-SQUID	,5973162,Private,Disabled
-MIX1888	,5973188,Private,Disabled
-ALEX203	,5973203,Private,Disabled
-TURBINA	,5973212,Private,Disabled
-ACROBAT	,5973213,Private,Disabled
-ARCTIC	,5973215,Private,Disabled
-ROMA220	,5973220,Private,Disabled
-SANICH	,5973232,Private,Disabled
-TASKENT	,5973272,Private,Disabled
-HOLODOK	,5973415,Private,Disabled
-QRA1731	,5973501,Private,Disabled
-ASPIRIN	,5973515,Private,Disabled
-KAMA	,5973717,Private,Disabled
-ORANGE	,5973723,Private,Disabled
-NIKON	,5973744,Private,Disabled
-GNOM	,5973750,Private,Disabled
-SURGUT	,5973757,Private,Disabled
-ON770	,5973770,Private,Disabled
-SOKOL	,5973777,Private,Disabled
-PAROVOZ	,5973781,Private,Disabled
-ONARKA	,5973795,Private,Disabled
-QENERGY	,5973801,Private,Disabled
-DIREKTOR	,5973817,Private,Disabled
-VOYAGER	,5973842,Private,Disabled
-SMOLNY	,5973888,Private,Disabled
-DVS001	,5973901,Private,Disabled
-TRANSIT	,5973909,Private,Disabled
-CMRADUGA	,5973911,Private,Disabled
-LESHIY	,6000001,Private,Disabled
-BORBIST	,6100061,Private,Disabled
-SELMASH	,6100555,Private,Disabled
-ROSTOV	,6100777,Private,Disabled
-BATAYSK	,6102504,Private,Disabled
-GSTAR	,6107007,Private,Disabled
-TAYNIK	,6107373,Private,Disabled
-MARCONI	,6201488,Private,Disabled
-BOTANIK	,6201499,Private,Disabled
-DEN53	,6400555,Private,Disabled
-SHAMAN	,6600001,Private,Disabled
-QRAP25	,6660333,Private,Disabled
-QRA909	,6660444,Private,Disabled
-QRAPOC	,6660555,Private,Disabled
-QRALINK	,6660666,Private,Disabled
-CAPYBAR	,6660667,Private,Disabled
-QRASAO	,6660777,Private,Disabled
-QRAZAO	,6660888,Private,Disabled
-QRASKLV	,6660999,Private,Disabled
-VIRAZH	,6700067,Private,Disabled
-SUMRAK	,7000001,Private,Disabled
-PRINTER	,7600001,Private,Disabled
-BARON	,7700023,Private,Disabled
-NAUM	,7700024,Private,Disabled
-CCCP	,7700025,Private,Disabled
-VETER	,7700030,Private,Disabled
-RADIO	,7700100,Private,Disabled
-MARIOTT	,7700101,Private,Disabled
-MORYAK	,7700111,Private,Disabled
-NEMO	,7700123,Private,Disabled
-ROO165	,7700165,Private,Disabled
-MEDIC	,7700327,Private,Disabled
-CHAJKA	,7700345,Private,Disabled
-BOBER	,7700500,Private,Disabled
-ANGARA	,7700524,Private,Disabled
-PRIMUS	,7700543,Private,Disabled
-ANDR545	,7700545,Private,Disabled
-BRODYGA	,7700666,Private,Disabled
-FIJI	,7700777,Private,Disabled
-QRA7787	,7700850,Private,Disabled
-PYTHON	,7700888,Private,Disabled
-ORCA28	,7700999,Private,Disabled
-REVAZ	,7702202,Private,Disabled
-RUBIN	,7702641,Private,Disabled
-CACTUS	,7702785,Private,Disabled
-ALTAIR	,7703306,Private,Disabled
-RADAR	,7704077,Private,Disabled
-TUMAN	,7705778,Private,Disabled
-VITAMIN	,7770348,Private,Disabled
-AYVENGO	,7800056,Private,Disabled
-VALKOD	,7800305,Private,Disabled
-BOLTIK	,7800555,Private,Disabled
-ULUDAG	,7801081,Private,Disabled
-OLEG	,7806534,Private,Disabled
-KOMYAGA	,7809113,Private,Disabled
-NEPTUNE	,8000001,Private,Disabled
-KVAK	,8200001,Private,Disabled
-LESNIK	,8600001,Private,Disabled
-KOSHEY	,9200015,Private,Disabled
-SANSEY	,9200787,Private,Disabled
-LOST	,9601990,Private,Disabled
+SAMARA,1634001,Private,Disabled
+CICADA,1860757,Private,Disabled
+VYMPEL,1960001,Private,Disabled
+QRA212,2120212,Private,Disabled
+ARCTIC,2150215,Private,Disabled
+BALON,2200022,Private,Disabled
+SMERCH,2300341,Private,Disabled
+TUSHKAN,2470024,Private,Disabled
+DALLAS,2500108,Private,Disabled
+CALVIN,2500225,Private,Disabled
+BARS,2500252,Private,Disabled
+RU177,2500274,Private,Disabled
+TEXNIK,2500312,Private,Disabled
+VOLT,2500318,Private,Disabled
+AVIATOR,2500325,Private,Disabled
+STALKER,2500334,Private,Disabled
+IST0K,2500351,Private,Disabled
+LEV1,2500363,Private,Disabled
+R4HFW,2500405,Private,Disabled
+VARLA,2500411,Private,Disabled
+KOSMOS,2500449,Private,Disabled
+KASSIR,2500450,Private,Disabled
+BORISYC,2500502,Private,Disabled
+RAZRYAD,2500542,Private,Disabled
+WISKI,2500590,Private,Disabled
+ONTONIO,2500610,Private,Disabled
+MACLEOD,2500617,Private,Disabled
+ILNUR,2500620,Private,Disabled
+QRA058,2500621,Private,Disabled
+SHRAM,2500632,Private,Disabled
+CARBINE,2500643,Private,Disabled
+LAKE,2500647,Private,Disabled
+MEDVED,2500675,Private,Disabled
+INGODA,2500685,Private,Disabled
+VISITOR,2500690,Private,Disabled
+PRORAB,2500707,Private,Disabled
+215,2500718,Private,Disabled
+MALAMUT,2500722,Private,Disabled
+KAMYSH,2500728,Private,Disabled
+MIX622,2500761,Private,Disabled
+STOODIN,2500763,Private,Disabled
+MALINA,2500782,Private,Disabled
+PAVEL,2500786,Private,Disabled
+BOLHOY,2500787,Private,Disabled
+RECHNIK,2500789,Private,Disabled
+LANCER,2500794,Private,Disabled
+AGAT,2500795,Private,Disabled
+KOTYARA,2500816,Private,Disabled
+RAPTER,2500824,Private,Disabled
+WAVU,2500857,Private,Disabled
+ZHIRAF,2500863,Private,Disabled
+BUMER,2500881,Private,Disabled
+SLON,2500908,Private,Disabled
+UA1ZBE,2501029,Private,Disabled
+BABILON,2501086,Private,Disabled
+4UVASH,2501108,Private,Disabled
+SP356,2501122,Private,Disabled
+KOTLAS,2502011,Private,Disabled
+VIRUS,2502117,Private,Disabled
+KUBAN,2502138,Private,Disabled
+TAIFUN,2502143,Private,Disabled
+XLORID,2502146,Private,Disabled
+ODMIN,2502153,Private,Disabled
+DIOD,2502188,Private,Disabled
+BELGROD,2502208,Private,Disabled
+PETR59,2502226,Private,Disabled
+KARDAN,2503228,Private,Disabled
+INGENER,2503281,Private,Disabled
+MIXGUIT,2503316,Private,Disabled
+ADVOKAT,2503420,Private,Disabled
+JIPSON,2503424,Private,Disabled
+SOTKA67,2503436,Private,Disabled
+TRAK,2503439,Private,Disabled
+URAL,2504024,Private,Disabled
+SHAPRAN,2504028,Private,Disabled
+SHAPRAN1,2504028,Private,Disabled
+BOEC,2504030,Private,Disabled
+ENGENR,2504031,Private,Disabled
+PLUS1,2504037,Private,Disabled
+PREZIDENT1,2504056,Private,Disabled
+DOCENT,2504058,Private,Disabled
+Sovetskyi,2504059,Private,Disabled
+DANTIST1,2504066,Private,Disabled
+D0BRYNIA,2504072,Private,Disabled
+YANTAR,2504074,Private,Disabled
+START,2504075,Private,Disabled
+B0EC,2504077,Private,Disabled
+CAHEK,2504092,Private,Disabled
+M0LCHUN,2504092,Private,Disabled
+BUSTER,2506007,Private,Disabled
+VDN,2506015,Private,Disabled
+FANTOM,2506066,Private,Disabled
+0888,2506076,Private,Disabled
+TUAPSE,2506138,Private,Disabled
+TAGAN,2506185,Private,Disabled
+BALAMUT,2507004,Private,Disabled
+BALAMYT,2507027,Private,Disabled
+PSTAR,2507053,Private,Disabled
+SEVAS,2507060,Private,Disabled
+BALOMUT,2507074,Private,Disabled
+STRANIK,2508128,Private,Disabled
+STRANNIK1,2508128,Private,Disabled
+KORSAR,2509099,Private,Disabled
+DOMOVOY,2509121,Private,Disabled
+ROSTIK,2509163,Private,Disabled
+ASTRNOM,2509178,Private,Disabled
+AIKOM,2570053,Private,Disabled
+STOPOR,2570093,Private,Disabled
+MASTER,2570148,Private,Disabled
+IMPULS,2570162,Private,Disabled
+JONY,2600001,Private,Disabled
+RADIY,2600002,Private,Disabled
+ODA10,2900555,Private,Disabled
+HANTER,3000987,Private,Disabled
+BELGR0D,3100001,Private,Disabled
+TROYKA,3100002,Private,Disabled
+FLORIDA,3197441,Private,Disabled
+CONDOR,3324733,Private,Disabled
+FRESH,3600971,Private,Disabled
+BALU,3720001,Private,Disabled
+XRADIO,3720002,Private,Disabled
+MOTO,4000001,Private,Disabled
+LYAMKIN,4200042,Private,Disabled
+SHAXTER,4300001,Private,Disabled
+PILOT,4852001,Private,Disabled
+BOTSMAN,5000002,Private,Disabled
+TRESHKN,5000003,Private,Disabled
+GRAF,5000004,Private,Disabled
+TURIST,5000005,Private,Disabled
+RANGER,5000007,Private,Disabled
+GIDRANT,5000018,Private,Disabled
+DIMA97,5000097,Private,Disabled
+MAGNETO,5000230,Private,Disabled
+IKSHA,5000261,Private,Disabled
+SENATOR,5000262,Private,Disabled
+OKROSKA,5000280,Private,Disabled
+KURDEN,5000349,Private,Disabled
+KASPER,5000540,Private,Disabled
+GIHAR,5000772,Private,Disabled
+KIRPICH,5000941,Private,Disabled
+PENZA,5002012,Private,Disabled
+HOKUM,5002222,Private,Disabled
+ZOLOTOY,5005522,Private,Disabled
+DAVID,5500001,Private,Disabled
+ROSTIK,5500055,Private,Disabled
+QASHQAI,5500099,Private,Disabled
+QRAOLD,5550222,Private,Disabled
+TESTCA,5566777,Private,Disabled
+VERESK,5600076,Private,Disabled
+OREL808,5700057,Private,Disabled
+OLIMP,5800030,Private,Disabled
+SMOG158,5800077,Private,Disabled
+TAYGA,5900111,Private,Disabled
+CHERMOZ,5900175,Private,Disabled
+FORWARD,5902505,Private,Disabled
+DSPET4R,5973005,Private,Disabled
+ORBIT,5973007,Private,Disabled
+PARTZAN,5973008,Private,Disabled
+DEVYATK,5973009,Private,Disabled
+CMETAHA,5973011,Private,Disabled
+BOROVIK,5973013,Private,Disabled
+ALUPKA1,5973015,Private,Disabled
+SEDOY,5973031,Private,Disabled
+OBERON,5973058,Private,Disabled
+TAIFUN,5973062,Private,Disabled
+ZAPAD77,5973077,Private,Disabled
+SQUID,5973162,Private,Disabled
+MIX1888,5973188,Private,Disabled
+ALEX203,5973203,Private,Disabled
+TURBINA,5973212,Private,Disabled
+ACROBAT,5973213,Private,Disabled
+ARCTIC,5973215,Private,Disabled
+ROMA220,5973220,Private,Disabled
+SANICH,5973232,Private,Disabled
+TASKENT,5973272,Private,Disabled
+HOLODOK,5973415,Private,Disabled
+QRA1731,5973501,Private,Disabled
+ASPIRIN,5973515,Private,Disabled
+KAMA,5973717,Private,Disabled
+ORANGE,5973723,Private,Disabled
+NIKON,5973744,Private,Disabled
+GNOM,5973750,Private,Disabled
+SURGUT,5973757,Private,Disabled
+ON770,5973770,Private,Disabled
+SOKOL,5973777,Private,Disabled
+PAROVOZ,5973781,Private,Disabled
+ONARKA,5973795,Private,Disabled
+QENERGY,5973801,Private,Disabled
+DIREKTOR,5973817,Private,Disabled
+VOYAGER,5973842,Private,Disabled
+SMOLNY,5973888,Private,Disabled
+DVS001,5973901,Private,Disabled
+TRANSIT,5973909,Private,Disabled
+CMRADUGA,5973911,Private,Disabled
+LESHIY,6000001,Private,Disabled
+BORBIST,6100061,Private,Disabled
+SELMASH,6100555,Private,Disabled
+ROSTOV,6100777,Private,Disabled
+BATAYSK,6102504,Private,Disabled
+GSTAR,6107007,Private,Disabled
+TAYNIK,6107373,Private,Disabled
+MARCONI,6201488,Private,Disabled
+BOTANIK,6201499,Private,Disabled
+DEN53,6400555,Private,Disabled
+SHAMAN,6600001,Private,Disabled
+QRAP25,6660333,Private,Disabled
+QRA909,6660444,Private,Disabled
+QRAPOC,6660555,Private,Disabled
+QRALINK,6660666,Private,Disabled
+CAPYBAR,6660667,Private,Disabled
+QRASAO,6660777,Private,Disabled
+QRAZAO,6660888,Private,Disabled
+QRASKLV,6660999,Private,Disabled
+VIRAZH,6700067,Private,Disabled
+SUMRAK,7000001,Private,Disabled
+PRINTER,7600001,Private,Disabled
+BARON,7700023,Private,Disabled
+NAUM,7700024,Private,Disabled
+CCCP,7700025,Private,Disabled
+VETER,7700030,Private,Disabled
+RADIO,7700100,Private,Disabled
+MARIOTT,7700101,Private,Disabled
+MORYAK,7700111,Private,Disabled
+NEMO,7700123,Private,Disabled
+ROO165,7700165,Private,Disabled
+MEDIC,7700327,Private,Disabled
+CHAJKA,7700345,Private,Disabled
+BOBER,7700500,Private,Disabled
+ANGARA,7700524,Private,Disabled
+PRIMUS,7700543,Private,Disabled
+ANDR545,7700545,Private,Disabled
+BRODYGA,7700666,Private,Disabled
+FIJI,7700777,Private,Disabled
+QRA7787,7700850,Private,Disabled
+PYTHON,7700888,Private,Disabled
+ORCA28,7700999,Private,Disabled
+REVAZ,7702202,Private,Disabled
+RUBIN,7702641,Private,Disabled
+CACTUS,7702785,Private,Disabled
+ALTAIR,7703306,Private,Disabled
+RADAR,7704077,Private,Disabled
+TUMAN,7705778,Private,Disabled
+VITAMIN,7770348,Private,Disabled
+AYVENGO,7800056,Private,Disabled
+VALKOD,7800305,Private,Disabled
+BOLTIK,7800555,Private,Disabled
+ULUDAG,7801081,Private,Disabled
+OLEG,7806534,Private,Disabled
+KOMYAGA,7809113,Private,Disabled
+NEPTUNE,8000001,Private,Disabled
+KVAK,8200001,Private,Disabled
+LESNIK,8600001,Private,Disabled
+KOSHEY,9200015,Private,Disabled
+SANSEY,9200787,Private,Disabled
+LOST,9601990,Private,Disabled
