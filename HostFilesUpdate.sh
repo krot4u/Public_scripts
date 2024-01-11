@@ -110,13 +110,31 @@ then
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
 
   curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
-# cat <<EOF > /opt/version
-# ${NEWVERSION}
-# EOF
 
-# Add custom YSF Hosts
+# Custom P25Hosts.txt
+if [ -f "/root/P25Hosts.txt" ]; then
+	cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
+fi
+
+# Custom DMR_Hosts.txt
+if [ -f "/root/DMR_Hosts.txt" ]; then
+	cat /root/DMR_Hosts.txt >> ${DMRHOSTS}
+fi
+
+# Custom XLXHosts.txt
+if [ -f "/root/XLXHosts.txt" ]; then
+  cat /root/XLXHosts.txt >> ${XLXHOSTS}
+fi
+
+# Custom YSFHosts.txt
 if [ -f "/root/YSFHosts.txt" ]; then
 	cat /root/YSFHosts.txt >> ${YSFHOSTS}
+fi
+
+# Yaesu FT-70D radios only do upper case
+if [ -f "/etc/hostfiles.ysfupper" ]; then
+	sed -i 's/\(.*\)/\U\1/' ${YSFHOSTS}
+	sed -i 's/\(.*\)/\U\1/' ${FCSHOSTS}
 fi
 
 sed -i "s/\$version = '.*';/\$version = '$NEWVERSION';/" /var/www/dashboard/config/version.php
