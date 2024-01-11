@@ -100,12 +100,6 @@ then
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/calibration.php" > '/var/www/dashboard/admin/calibration.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php" > '/var/www/dashboard/admin/sysinfo.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/lh.php" > '/var/www/dashboard/admin/mmdvmhost/lh.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/localtx.php" > '/var/www/dashboard/admin/mmdvmhost/localtx.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/mmdvmhost/repeaterinfo.php" > '/var/www/dashboard/admin/mmdvmhost/repeaterinfo.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/lh.php" > '/var/www/dashboard/mmdvmhost/lh.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/localtx.php" > '/var/www/dashboard/mmdvmhost/localtx.php'
-  # curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/mmdvmhost/repeaterinfo.php" > '/var/www/dashboard/mmdvmhost/repeaterinfo.php'
   curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
 
@@ -113,21 +107,25 @@ then
 
 # Custom P25Hosts.txt
 if [ -f "/root/P25Hosts.txt" ]; then
+  echo ">> Update wit custom P25Hosts"
 	cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
 fi
 
 # Custom DMR_Hosts.txt
 if [ -f "/root/DMR_Hosts.txt" ]; then
+  echo ">> Update wit custom DMR_Hosts"
 	cat /root/DMR_Hosts.txt >> ${DMRHOSTS}
 fi
 
 # Custom XLXHosts.txt
 if [ -f "/root/XLXHosts.txt" ]; then
+  echo ">> Update wit custom XLXHosts"
   cat /root/XLXHosts.txt >> ${XLXHOSTS}
 fi
 
 # Custom YSFHosts.txt
 if [ -f "/root/YSFHosts.txt" ]; then
+  echo ">> Update wit custom YSFHosts"
 	cat /root/YSFHosts.txt >> ${YSFHOSTS}
 fi
 
