@@ -23,7 +23,7 @@ PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 FILEBACKUP=1
 
 # Check we are root
-if [ "$(id -u)" != "0" ];then
+if [ "$(id -u)" != "0" ]; then
   echo "This script must be run as root" 1>&2
   exit 1
 fi
@@ -72,17 +72,16 @@ curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Publi
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid.dat
 
+echo ">> HostFilesUpdate: Run mpi-star.sh"
 chmod +x ${MPISTAR}
 ${MPISTAR} 2> /dev/null
 echo "------------"
 
-echo ">> HostFilesUpdate: Download dashboard files"
-mount -o remount,rw /
-mount -o remount,rw /boot
-
 # Pi-Star Dashboar modifications
-if [[ $NEWVERSION != $CURRENTVERSION ]]
-then
+if [[ $NEWVERSION != $CURRENTVERSION ]]; then
+  echo ">> HostFilesUpdate: Download dashboard files"
+  mount -o remount,rw /
+  mount -o remount,rw /boot
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/index.php" > '/var/www/dashboard/index.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/dmridlist.php" > '/var/www/dashboard/dmridlist.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/css/pistar-css.php" > '/var/www/dashboard/css/pistar-css.php'
@@ -102,43 +101,47 @@ then
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
   curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
-
   curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
+fi
 
 # Custom P25Hosts.txt
 if [ -f "/root/P25Hosts.txt" ]; then
   echo ">> Update wit custom P25Hosts"
-	cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
+  cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
+  echo "------------"
 fi
 
 # Custom DMR_Hosts.txt
 if [ -f "/root/DMR_Hosts.txt" ]; then
   echo ">> Update wit custom DMR_Hosts"
-	cat /root/DMR_Hosts.txt >> ${DMRHOSTS}
+  sed -i -e '$a\' ${DMRHOSTS}
+  cat /root/DMR_Hosts.txt >> ${DMRHOSTS}
+  echo "------------"
 fi
 
 # Custom XLXHosts.txt
 if [ -f "/root/XLXHosts.txt" ]; then
   echo ">> Update wit custom XLXHosts"
+  sed -i -e '$a\' ${XLXHOSTS}
   cat /root/XLXHosts.txt >> ${XLXHOSTS}
+  echo "------------"
 fi
 
 # Custom YSFHosts.txt
 if [ -f "/root/YSFHosts.txt" ]; then
   echo ">> Update wit custom YSFHosts"
-	cat /root/YSFHosts.txt >> ${YSFHOSTS}
+  sed -i -e '$a\' ${YSFHOSTS}
+  cat /root/YSFHosts.txt >> ${YSFHOSTS}
+  echo "------------"
 fi
 
 # Yaesu FT-70D radios only do upper case
 if [ -f "/etc/hostfiles.ysfupper" ]; then
-	sed -i 's/\(.*\)/\U\1/' ${YSFHOSTS}
-	sed -i 's/\(.*\)/\U\1/' ${FCSHOSTS}
+  sed -i 's/\(.*\)/\U\1/' ${YSFHOSTS}
+  sed -i 's/\(.*\)/\U\1/' ${FCSHOSTS}
 fi
 
-sed -i "s/\$version = '.*';/\$version = '$NEWVERSION';/" /var/www/dashboard/config/version.php
-fi
-
-echo "------------"
-echo ">> HostFilesUpdate: Done... Exiting..."
+sed -i "s/\$version = '.*';/\$version = '$NEWVERSION';/" "/var/www/dashboard/config/version.php"
+echo ">> HostFilesUpdate: Done! Exiting..."
 
 exit 0
