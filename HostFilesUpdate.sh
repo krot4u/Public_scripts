@@ -106,14 +106,14 @@ fi
 
 # Custom P25Hosts.txt
 if [ -f "/root/P25Hosts.txt" ]; then
-  echo ">> Update wit custom P25Hosts"
+  echo ">> Update with custom P25Hosts"
   cat /root/P25Hosts.txt > /usr/local/etc/P25HostsLocal.txt
   echo "------------"
 fi
 
 # Custom DMR_Hosts.txt
 if [ -f "/root/DMR_Hosts.txt" ]; then
-  echo ">> Update wit custom DMR_Hosts"
+  echo ">> Update with custom DMR_Hosts"
   sed -i -e '$a\' ${DMRHOSTS}
   cat /root/DMR_Hosts.txt >> ${DMRHOSTS}
   echo "------------"
@@ -121,7 +121,7 @@ fi
 
 # Custom XLXHosts.txt
 if [ -f "/root/XLXHosts.txt" ]; then
-  echo ">> Update wit custom XLXHosts"
+  echo ">> Update with custom XLXHosts"
   sed -i -e '$a\' ${XLXHOSTS}
   cat /root/XLXHosts.txt >> ${XLXHOSTS}
   echo "------------"
@@ -129,7 +129,7 @@ fi
 
 # Custom YSFHosts.txt
 if [ -f "/root/YSFHosts.txt" ]; then
-  echo ">> Update wit custom YSFHosts"
+  echo ">> Update with custom YSFHosts"
   sed -i -e '$a\' ${YSFHOSTS}
   cat /root/YSFHosts.txt >> ${YSFHOSTS}
   echo "------------"
