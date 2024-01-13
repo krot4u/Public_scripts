@@ -49,9 +49,9 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
   </div>
   <div class="contentwide">
   <form action="run_script.php" method="post">
-        <label for="inputField">Token:</label>
+        <label for="inputField" style="color: #ffffff;">Token:</label>
         <input type="password" name="inputField" id="inputField" required>
-        <button type="submit" style="color: #ffffff;">Send</button>
+        <button type="submit">Send</button>
     </form>
   </div>
   <div class="footer">
