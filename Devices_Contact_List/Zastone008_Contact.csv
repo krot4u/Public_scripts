@@ -29,6 +29,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1632209,OPIUM,"","","","",QRA
 1632210,SOLO,"","","","",QRA
 1632303,KAZAK,"","","","",QRA
+1632401,Chak,"","","","",QRA
 1634001,SAMARA,"","","","",QRA
 1860757,CICADA,"","","","",QRA
 1960001,VYMPEL,"","","","",QRA
@@ -82,6 +83,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500863,ZHIRAF,"","","","",QRA
 2500881,BUMER,"","","","",QRA
 2500908,SLON,"","","","",QRA
+2500929,Chak_,"","","","",QRA
 2501029,UA1ZBE,"","","","",QRA
 2501086,BABILON,"","","","",QRA
 2501108,4UVASH,"","","","",QRA
