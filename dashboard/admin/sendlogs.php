@@ -48,11 +48,29 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
   </p>
   </div>
   <div class="contentwide">
-  <form action="sendLogScript.php" method="post">
+  <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the input value from the form
+        $inputValue = $_POST["inputField"];
+
+        // Validate or sanitize the input if needed
+
+        // Run the Bash script with the input as an argument
+        $output = shell_exec("bash /usr/local/sbin/sendLogs.sh" . escapeshellarg($inputValue));
+
+        // Display the result or handle it as needed
+        echo "<p>Thank You!</p>";
+    } else {
+        // Display the form
+        ?>
+    <form action="sendLogScript.php" method="post">
         <label for="inputField" style="color: #ffffff;">Token:</label>
         <input type="password" name="inputField" id="inputField" required>
         <button type="submit">Send</button>
     </form>
+        <?php
+    }
+    ?>
   </div>
   <div class="footer">
   Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
