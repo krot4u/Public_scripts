@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C
 
-NEWVERSION=13012024
+NEWVERSION=14012024
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
