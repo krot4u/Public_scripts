@@ -152,6 +152,8 @@ else
   echo "Skip install Vim"
 fi
 
+rpirw
+
 echo "Backup /etc/dmrgateway and /etc/mmdvmhost"
 cp "${dmrgateway}" "${dmrgateway}.$(date +%Y%m%d)"
 cp "${mmdvmhost}" "${mmdvmhost}.$(date +%Y%m%d)"

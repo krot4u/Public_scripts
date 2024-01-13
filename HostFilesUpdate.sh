@@ -1,4 +1,5 @@
 #!/bin/bash
+export LC_ALL=C
 
 NEWVERSION=10012024
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
@@ -71,6 +72,7 @@ curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scr
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid.dat
+curl --fail -o /usr/local/sbin/sendLogs.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/sendLogs.sh
 
 echo ">> HostFilesUpdate: Run mpi-star.sh"
 chmod +x ${MPISTAR}
