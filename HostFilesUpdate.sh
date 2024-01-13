@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C
 
-NEWVERSION=10012024
+NEWVERSION=13012024
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
@@ -104,6 +104,7 @@ if [[ $NEWVERSION != $CURRENTVERSION ]]; then
   curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
   curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header.png"
   curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
+  curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sendlogs.php" > '/var/www/dashboard/admin/sendlogs.php'
 fi
 
 # Custom P25Hosts.txt

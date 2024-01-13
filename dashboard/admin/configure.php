@@ -265,7 +265,7 @@ if (file_exists($bmAPIkeyFile) && fopen($bmAPIkeyFile,'r')) {
   <a href="/admin/power.php" style="color: #ffffff;"><?php echo $lang['power'];?></a> |
   <a href="/admin/update.php" style="color: #ffffff;"><?php echo $lang['update'];?></a> |
   <a href="/admin/config_backup.php" style="color: #ffffff;"><?php echo $lang['backup_restore'];?></a> |
-  <a href="/admin/sendlogs.php" style="color: #ffffff;">Send Logs</a> |
+  <a href="/admin/sendlogs.php?run=true" style="color: #ffffff;">Send Logs</a> |
   <a href="javascript:factoryReset();" style="color: #ffffff;"><?php echo $lang['factory_reset'];?></a>
 </p>
 </div>
