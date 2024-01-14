@@ -10,6 +10,8 @@ Radio ID,Callsign,Name,City,State,Country
 1506888,ICEMAN,"""","""","""",Russia Fed
 1610161,ENOT61,"""","""","""",Russia Fed
 1630001,QRAMSK,"""","""","""",Russia Fed
+1632101,HAKER,"""","""","""",Russia Fed
+1632102,DOBRYNI,"""","""","""",Russia Fed
 1632203,MOLCHUN,"""","""","""",Russia Fed
 1634001,SAMARA,"""","""","""",Russia Fed
 1860757,CICADA,"""","""","""",Russia Fed
@@ -86,6 +88,7 @@ Radio ID,Callsign,Name,City,State,Country
 2504030,BOEC,"""","""","""",Russia Fed
 2504031,ENGENR,"""","""","""",Russia Fed
 2504058,DOCENT,"""","""","""",Russia Fed
+2504072,DOBRYN1,"""","""","""",Russia Fed
 2504074,YANTAR,"""","""","""",Russia Fed
 2504075,START,"""","""","""",Russia Fed
 2504092,CAHEK,"""","""","""",Russia Fed

@@ -10,6 +10,8 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1506888,ICEMAN,"","","","",QRA
 1610161,ENOT61,"","","","",QRA
 1630001,QRAMSK,"","","","",QRA
+1632101,HAKER,"","","","",QRA
+1632102,DOBRYNI,"","","","",QRA
 1632203,MOLCHUN,"","","","",QRA
 1634001,SAMARA,"","","","",QRA
 1860757,CICADA,"","","","",QRA
@@ -86,6 +88,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2504030,BOEC,"","","","",QRA
 2504031,ENGENR,"","","","",QRA
 2504058,DOCENT,"","","","",QRA
+2504072,DOBRYN1,"","","","",QRA
 2504074,YANTAR,"","","","",QRA
 2504075,START,"","","","",QRA
 2504092,CAHEK,"","","","",QRA
