@@ -238,14 +238,14 @@ jobs:
             Add-Content -Path $MotorolaRusCSVfile -Value "Вызов5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,,,,,,,,False,,,,,,,False,1,Без стиля"
             Add-Content -Path $MotorolaRusCSVfile -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,False,,,,,,,False,,"
             Add-Content -Path $MotorolaRusCSVfile -Value "QRA-5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 7,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 8,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,1,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94004,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94005,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94006,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 7,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94007,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 8,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94008,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
