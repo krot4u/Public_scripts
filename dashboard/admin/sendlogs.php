@@ -59,7 +59,9 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
         $output = shell_exec("bash /usr/local/sbin/sendLogs.sh" . escapeshellarg($inputValue));
 
         // Display the result or handle it as needed
-        echo "<p><strong>Thank You!</strong></p>";
+        echo "<p><strong>Логи отправленны Администраторам!</strong></p>";
+        echo "<p><strong>Спасибо!</strong></p>";
+        echo "<p><strong>Ваш QRA-Team!</strong></p>";
     } else {
         // Display the form
         ?>
