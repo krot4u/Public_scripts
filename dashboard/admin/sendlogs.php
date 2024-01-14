@@ -59,11 +59,11 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
         $output = shell_exec("bash /usr/local/sbin/sendLogs.sh" . escapeshellarg($inputValue));
 
         // Display the result or handle it as needed
-        echo "<p>Thank You!</p>";
+        echo "<p><strong>Thank You!</strong></p>";
     } else {
         // Display the form
         ?>
-    <form action="sendLogScript.php" method="post">
+    <form action="sendlogs.php" method="post">
         <label for="inputField" style="color: #ffffff;">Token:</label>
         <input type="password" name="inputField" id="inputField" required>
         <button type="submit">Send</button>
