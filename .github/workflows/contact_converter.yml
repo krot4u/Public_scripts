@@ -19,10 +19,10 @@ jobs:
           script: |
             # Get fresh DMRids.dat
             curl --fail -s -o ./DMRIds.dat "https://qra-team.online/files/DMRIds.dat"
-            # ------ AnyTone ------ #
+            # ------ AnyTone (Digital Contact List)------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
-            $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts.csv"
+            $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts_DCL.csv"
             # Lyamkin (08-01-2024)   $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
             $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","","","","","","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
@@ -41,6 +41,26 @@ jobs:
               $Counter++
             }
             (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -NoNewline -Force
+
+            # ------ AnyTone (Contact/Talk Group) ------ #
+            #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
+            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
+            $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts_ContactTalkGroup.csv"
+            $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
+            Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
+            Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
+            Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"1","9","QRA TG9","Group Call","None"'
+            Lyamkin (08-01-2024)   Add-Content -Path $AnyToneCSVfile -Value '"2","5973","QRA-5973","Group Call","None"'
+            $Counter = 3
+            foreach ($line in $DMRIdsContent) {
+              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $NewLine = $AnyToneTemplate -replace "--LINEnumber--","$($Counter)" -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              Add-Content -Path $AnyToneCSVfile -Value $NewLine
+              $Counter++
+            }
+            (Get-Content $AnyToneCSVfile -Raw).Replace("`n","`r`n") | Set-Content $AnyToneCSVfile -NoNewline -Force
+
 
             # ------ Retevis OpenGD77 ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
