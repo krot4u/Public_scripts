@@ -84,7 +84,7 @@ jobs:
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $RetevisCSVfile = "./Devices_Contact_List/Retevis_Contact_new.csv"
-            $RetevisTemplate = "--CALLSIGN--,--DMRID--,Private,Disabled"
+            $RetevisTemplate = "--CALLSIGN--,--DMRID--,Private,2"
             Remove-Item $RetevisCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $RetevisCSVfile -Value "Contact Name,ID,ID Type,TS Override"
             Add-Content -Path $RetevisCSVfile -Value "QRA-Team,9,Group,2"
