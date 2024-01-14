@@ -237,7 +237,7 @@ jobs:
             Add-Content -Path $MotorolaRusCSVfile -Value "Вызов4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,,,,,,,,False,1,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,,"
             Add-Content -Path $MotorolaRusCSVfile -Value "Вызов5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,,,,,,,,False,,,,,,,False,1,Без стиля"
             Add-Content -Path $MotorolaRusCSVfile -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaRusCSVfile -Value "QRA-5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,False,,,,,,,False,,"
+            Add-Content -Path $MotorolaRusCSVfile -Value "TG-5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Обычный,False,Без стиля,Повторяющийся,Групповой вызов,False,False,,,,,,,False,,"
             Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
             Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
             Add-Content -Path $MotorolaRusCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Обычный,True,Без стиля,Повторяющийся,Частный вызов,False,False,,,,,,,False,,"
