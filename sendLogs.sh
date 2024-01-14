@@ -8,5 +8,4 @@ tar -czvf $callsign-logs.tar.gz $logs 2> /dev/null
 
 curl \
   -F "file=@$callsign-logs.tar.gz" \
-  -F "token=$token" \
-  "http://monitor.qra-team.online:8080/upload"
+  "http://monitor.qra-team.online:8080"
