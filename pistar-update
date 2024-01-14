@@ -163,7 +163,7 @@ fi
 	mount -o remount,rw /boot
 	echo "Updating Hostfiles..."
   curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
-	/usr/local/sbin/HostFilesUpdate.sh > /dev/null 2>&1
+	/usr/local/sbin/HostFilesUpdate.sh
 	echo "Done"
 
 	# echo "Updating Dashboard..."
