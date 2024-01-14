@@ -51,12 +51,10 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
   <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the input value from the form
-        $inputValue = $_POST["inputField"];
-
+        //$inputValue = $_POST["inputField"];
         // Validate or sanitize the input if needed
-
         // Run the Bash script with the input as an argument
-        $output = shell_exec("bash /usr/local/sbin/sendLogs.sh" . escapeshellarg($inputValue));
+        $output = shell_exec("bash /usr/local/sbin/sendLogs.sh");//. escapeshellarg($inputValue));
 
         // Display the result or handle it as needed
         echo "<p><strong>Логи отправленны Администраторам!</strong></p>";
@@ -66,9 +64,9 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
         // Display the form
         ?>
     <form action="sendlogs.php" method="post">
-        <label for="inputField" style="color: #ffffff;">Token:</label>
-        <input type="password" name="inputField" id="inputField" required>
-        <button type="submit">Send</button>
+        <!-- <label for="inputField" style="color: #ffffff;">Token:</label>
+        <input type="password" name="inputField" id="inputField" required> -->
+        <button type="submit">Отправить логи</button>
     </form>
         <?php
     }
