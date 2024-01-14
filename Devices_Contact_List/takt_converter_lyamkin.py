@@ -53,6 +53,9 @@ sheet2.insert_rows(0)
 sheet2["B1"].value = "Курилка"
 sheet2["D1"].value = "94001"
 sheet2.insert_rows(0)
+sheet2["B1"].value = "TG-5973"
+sheet2["D1"].value = "5973"
+sheet2.insert_rows(0)
 sheet2["B1"].value = "QRA-Team"
 sheet2["D1"].value = "9"
 sheet2.insert_rows(0)
@@ -131,6 +134,9 @@ sheet2["D1"].value = "94002"
 sheet2.insert_rows(0)
 sheet2["B1"].value = "Курилка"
 sheet2["D1"].value = "94001"
+sheet2.insert_rows(0)
+sheet2["B1"].value = "TG-5973"
+sheet2["D1"].value = "5973"
 sheet2.insert_rows(0)
 sheet2["B1"].value = "QRA-Team"
 sheet2["D1"].value = "9"
