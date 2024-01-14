@@ -45,7 +45,7 @@ jobs:
             # ------ AnyTone (Contact/Talk Group) ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
-            $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts_ContactTalkGroup.csv"
+            $AnyToneCSVfile = "./Devices_Contact_List/AnyTone_Contacts_TG.csv"
             $AnyToneTemplate = '"--LINEnumber--","--DMRID--","--CALLSIGN--","Private Call","None"' -join "`r`n"
             Remove-Item $AnyToneCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $AnyToneCSVfile -Value '"No.","Radio ID","Name","Call Type","Call Alert"'
