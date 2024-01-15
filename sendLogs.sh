@@ -8,12 +8,6 @@ token=$1
 tar -czvf $tar $logs 2> /dev/null
 
 curl \
+  -H "Authorization: Bearer $token" \
   -F "file=@$tar" \
-  -F "token=$token" \
   "http://monitor.qra-team.online:8080/upload"
-
-
-
-
-
-
