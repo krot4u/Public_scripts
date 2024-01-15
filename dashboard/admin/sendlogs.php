@@ -57,7 +57,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
         #shell_exec("/usr/local/sbin/sendLogs.sh" . escapeshellarg($inputValue));
         $old_path = getcwd();
         chdir('/usr/local/sbin/');
-        shell_exec("./sendLogs.sh" . escapeshellarg($inputValue));
+        $output = shell_exec("./sendLogs.sh $inputValue");
         chdir($old_path);
         // Display the result or handle it as needed
         echo "<p><strong>Логи отправленны Администраторам!</strong></p>";
