@@ -13,7 +13,9 @@ Radio ID,Callsign,Name,City,State,Country
 1632101,HAKER,"""","""","""",Russia Fed
 1632102,DOBRYNI,"""","""","""",Russia Fed
 1632103,LEV,"""","""","""",Russia Fed
+1632106,B0EC,"""","""","""",Russia Fed
 1632107,SHAPRA1,"""","""","""",Russia Fed
+1632108,PLUS,"""","""","""",Russia Fed
 1632203,MOLCHUN,"""","""","""",Russia Fed
 1632205,PREZIDE,"""","""","""",Russia Fed
 1632303,KAZAK,"""","""","""",Russia Fed
@@ -95,6 +97,7 @@ Radio ID,Callsign,Name,City,State,Country
 2504028,SHAPRAN,"""","""","""",Russia Fed
 2504030,BOEC,"""","""","""",Russia Fed
 2504031,ENGENR,"""","""","""",Russia Fed
+2504037,PLUS1,"""","""","""",Russia Fed
 2504056,PREZID1,"""","""","""",Russia Fed
 2504058,DOCENT,"""","""","""",Russia Fed
 2504072,DOBRYN1,"""","""","""",Russia Fed

@@ -13,7 +13,9 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1632101,HAKER,"","","","",QRA
 1632102,DOBRYNI,"","","","",QRA
 1632103,LEV,"","","","",QRA
+1632106,B0EC,"","","","",QRA
 1632107,SHAPRA1,"","","","",QRA
+1632108,PLUS,"","","","",QRA
 1632203,MOLCHUN,"","","","",QRA
 1632205,PREZIDE,"","","","",QRA
 1632303,KAZAK,"","","","",QRA
@@ -95,6 +97,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2504028,SHAPRAN,"","","","",QRA
 2504030,BOEC,"","","","",QRA
 2504031,ENGENR,"","","","",QRA
+2504037,PLUS1,"","","","",QRA
 2504056,PREZID1,"","","","",QRA
 2504058,DOCENT,"","","","",QRA
 2504072,DOBRYN1,"","","","",QRA
