@@ -12,7 +12,11 @@ Radio ID,Callsign,Name,City,State,Country
 1630001,QRAMSK,"""","""","""",Russia Fed
 1632101,HAKER,"""","""","""",Russia Fed
 1632102,DOBRYNI,"""","""","""",Russia Fed
+1632103,LEV,"""","""","""",Russia Fed
+1632107,SHAPRA1,"""","""","""",Russia Fed
 1632203,MOLCHUN,"""","""","""",Russia Fed
+1632205,PREZIDE,"""","""","""",Russia Fed
+1632303,KAZAK,"""","""","""",Russia Fed
 1632401,CHAK,"""","""","""",Russia Fed
 1634001,SAMARA,"""","""","""",Russia Fed
 1860757,CICADA,"""","""","""",Russia Fed
@@ -30,6 +34,7 @@ Radio ID,Callsign,Name,City,State,Country
 2500318,VOLT,"""","""","""",Russia Fed
 2500325,AVIATOR,"""","""","""",Russia Fed
 2500334,STALKER,"""","""","""",Russia Fed
+2500363,LEV1,"""","""","""",Russia Fed
 2500411,VARLA,"""","""","""",Russia Fed
 2500449,KOSMOS,"""","""","""",Russia Fed
 2500450,KASSIR,"""","""","""",Russia Fed
@@ -64,6 +69,7 @@ Radio ID,Callsign,Name,City,State,Country
 2500863,ZHIRAF,"""","""","""",Russia Fed
 2500881,BUMER,"""","""","""",Russia Fed
 2500908,SLON,"""","""","""",Russia Fed
+2500920,KAZAK1,"""","""","""",Russia Fed
 2500929,CHAK1,"""","""","""",Russia Fed
 2501029,UA1ZBE,"""","""","""",Russia Fed
 2501086,BABILON,"""","""","""",Russia Fed
@@ -89,6 +95,7 @@ Radio ID,Callsign,Name,City,State,Country
 2504028,SHAPRAN,"""","""","""",Russia Fed
 2504030,BOEC,"""","""","""",Russia Fed
 2504031,ENGENR,"""","""","""",Russia Fed
+2504056,PREZID1,"""","""","""",Russia Fed
 2504058,DOCENT,"""","""","""",Russia Fed
 2504072,DOBRYN1,"""","""","""",Russia Fed
 2504074,YANTAR,"""","""","""",Russia Fed

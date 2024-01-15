@@ -12,7 +12,11 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1630001,QRAMSK,"","","","",QRA
 1632101,HAKER,"","","","",QRA
 1632102,DOBRYNI,"","","","",QRA
+1632103,LEV,"","","","",QRA
+1632107,SHAPRA1,"","","","",QRA
 1632203,MOLCHUN,"","","","",QRA
+1632205,PREZIDE,"","","","",QRA
+1632303,KAZAK,"","","","",QRA
 1632401,CHAK,"","","","",QRA
 1634001,SAMARA,"","","","",QRA
 1860757,CICADA,"","","","",QRA
@@ -30,6 +34,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500318,VOLT,"","","","",QRA
 2500325,AVIATOR,"","","","",QRA
 2500334,STALKER,"","","","",QRA
+2500363,LEV1,"","","","",QRA
 2500411,VARLA,"","","","",QRA
 2500449,KOSMOS,"","","","",QRA
 2500450,KASSIR,"","","","",QRA
@@ -64,6 +69,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500863,ZHIRAF,"","","","",QRA
 2500881,BUMER,"","","","",QRA
 2500908,SLON,"","","","",QRA
+2500920,KAZAK1,"","","","",QRA
 2500929,CHAK1,"","","","",QRA
 2501029,UA1ZBE,"","","","",QRA
 2501086,BABILON,"","","","",QRA
@@ -89,6 +95,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2504028,SHAPRAN,"","","","",QRA
 2504030,BOEC,"","","","",QRA
 2504031,ENGENR,"","","","",QRA
+2504056,PREZID1,"","","","",QRA
 2504058,DOCENT,"","","","",QRA
 2504072,DOBRYN1,"","","","",QRA
 2504074,YANTAR,"","","","",QRA
