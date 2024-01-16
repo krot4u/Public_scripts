@@ -3,6 +3,17 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
+
+# m h   dom     mon     dow     command
+
+DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+if [[ ${DMRID} == 5973757 ]]; then
+  echo "Set Reboot by Cron"
+  crontab -l > /tmp/crontab.tmp
+  echo "20 3 * * * root reboot" >> /tmp/crontab.tmp
+  crontab /tmp/crontab.tmp
+fi
+
 ## -------- Get Fresh HostFilesUpdate --------- ##
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
