@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C
 
-NEWVERSION="15012024-01"
+NEWVERSION="15012024-02"
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
@@ -75,6 +75,7 @@ curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid
 
 # SendLogs script
 curl --fail -o /usr/local/sbin/sendLogs.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/sendLogs.sh
+chown www-data:www-data /usr/local/sbin/sendLogs.sh
 chmod +x /usr/local/sbin/sendLogs.sh
 
 echo ">> HostFilesUpdate: Run mpi-star.sh"
