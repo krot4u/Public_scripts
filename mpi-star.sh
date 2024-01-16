@@ -10,7 +10,7 @@ DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' 
 if [[ ${DMRID} == 5973757 ]]; then
   echo "Set Reboot by Cron"
   crontab -l > /tmp/crontab.tmp
-  if cat /tmp/crontab.tmp | grep -qv reboot; then
+  if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
     echo "20 3 * * * root reboot" >> /tmp/crontab.tmp
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
