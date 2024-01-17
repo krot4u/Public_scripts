@@ -29,10 +29,6 @@ fi
 
 ## -------- Get Fresh HostFilesUpdate --------- ##
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
-curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
-curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
-curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade
-curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)

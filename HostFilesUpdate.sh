@@ -72,6 +72,11 @@ curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scr
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid.dat
+curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
+curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
+curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade
+curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
+curl --fail -o /usr/local/sbin/pistar-daily.cron -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-daily.cron
 
 # SendLogs script
 curl --fail -o /usr/local/sbin/sendLogs.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/sendLogs.sh
