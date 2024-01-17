@@ -7,7 +7,7 @@ sync; echo 2 > /proc/sys/vm/drop_caches
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ ${DMRID} == 5973757 || ${DMRID} 6102504 ]]; then
+if [[ ${DMRID} == 5973757 || ${DMRID} == 6102504 ]]; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
