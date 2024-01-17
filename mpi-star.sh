@@ -2,11 +2,12 @@
 
 mount -o remount,rw /
 mount -o remount,rw /boot
+sync; echo 2 > /proc/sys/vm/drop_caches
 
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ ${DMRID} == 5973757 || 6102504 ]]; then
+if [[ ${DMRID} == 5973757 || ${DMRID} 6102504 ]]; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
@@ -14,9 +15,15 @@ if [[ ${DMRID} == 5973757 || 6102504 ]]; then
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
   fi
+else
+  crontab -l > /tmp/crontab.tmp
+  if $(cat /tmp/crontab.tmp | grep -q "reboot"); then
+    sed -i '/reboot/d' /tmp/crontab.tmp
+    crontab /tmp/crontab.tmp
+    rm -f /tmp/crontab.tmp
+  fi
 fi
 
-DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
 if [[ ${DMRID} == 5973011 || ${DMRID} == 6660555 ]]; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
