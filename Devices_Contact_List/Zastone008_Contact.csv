@@ -194,6 +194,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5973415,HOLODOK,"","","","",QRA
 5973501,QRA1731,"","","","",QRA
 5973515,ASPIRIN,"","","","",QRA
+5973666,QRABOT,"","","","",QRA
 5973717,KAMA,"","","","",QRA
 5973723,ORANGE,"","","","",QRA
 5973744,NIKON,"","","","",QRA
@@ -228,7 +229,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 6660667,CAPYBAR,"","","","",QRA
 6660777,QRASAO,"","","","",QRA
 6660888,QRAZAO,"","","","",QRA
-6660999,QRABOT,"","","","",QRA
 6660999,QRASKLV,"","","","",QRA
 6700067,VIRAZH,"","","","",QRA
 7000001,SUMRAK,"","","","",QRA
