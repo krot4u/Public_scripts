@@ -2,7 +2,6 @@
 
 mount -o remount,rw /
 mount -o remount,rw /boot
-sync; echo 2 > /proc/sys/vm/drop_caches
 
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
