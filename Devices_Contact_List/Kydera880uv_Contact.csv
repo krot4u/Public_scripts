@@ -241,6 +241,7 @@ Radio ID,Callsign,Name,City,State,Country
 7700030,VETER,"""","""","""",Russia Fed
 7700100,RADIO,"""","""","""",Russia Fed
 7700101,MARIOTT,"""","""","""",Russia Fed
+7700110,BESS,"""","""","""",Russia Fed
 7700111,MORYAK,"""","""","""",Russia Fed
 7700123,NEMO,"""","""","""",Russia Fed
 7700165,ROO165,"""","""","""",Russia Fed
@@ -255,6 +256,7 @@ Radio ID,Callsign,Name,City,State,Country
 7700850,QRA7787,"""","""","""",Russia Fed
 7700888,PYTHON,"""","""","""",Russia Fed
 7700999,ORCA28,"""","""","""",Russia Fed
+7701015,SERAFIM,"""","""","""",Russia Fed
 7702202,REVAZ,"""","""","""",Russia Fed
 7702641,RUBIN,"""","""","""",Russia Fed
 7702785,CACTUS,"""","""","""",Russia Fed
