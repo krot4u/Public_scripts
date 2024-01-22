@@ -278,4 +278,5 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 276,LESNIK,8600001,Private Call,On,None,2
 277,KOSHEY,9200015,Private Call,On,None,2
 278,SANSEY,9200787,Private Call,On,None,2
-279,LOST,9601990,Private Call,On,None,2
+279,SEVERNY,9600002,Private Call,On,None,2
+280,LOST,9601990,Private Call,On,None,2
