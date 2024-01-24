@@ -157,6 +157,7 @@ Radio ID,Callsign,Name,City,State,Country
 5000540,KASPER,"""","""","""",Russia Fed
 5000772,GIHAR,"""","""","""",Russia Fed
 5000941,KIRPICH,"""","""","""",Russia Fed
+5001430,RADIST,"""","""","""",Russia Fed
 5002012,PENZA,"""","""","""",Russia Fed
 5002222,HOKUM,"""","""","""",Russia Fed
 5005522,ZOLOTOY,"""","""","""",Russia Fed
@@ -241,6 +242,7 @@ Radio ID,Callsign,Name,City,State,Country
 7700030,VETER,"""","""","""",Russia Fed
 7700100,RADIO,"""","""","""",Russia Fed
 7700101,MARIOTT,"""","""","""",Russia Fed
+7700102,TRUBA,"""","""","""",Russia Fed
 7700110,BESS,"""","""","""",Russia Fed
 7700111,MORYAK,"""","""","""",Russia Fed
 7700115,DRIM,"""","""","""",Russia Fed
@@ -258,6 +260,7 @@ Radio ID,Callsign,Name,City,State,Country
 7700888,PYTHON,"""","""","""",Russia Fed
 7700999,ORCA28,"""","""","""",Russia Fed
 7701015,SERAFIM,"""","""","""",Russia Fed
+7702158,VANDAM,"""","""","""",Russia Fed
 7702202,REVAZ,"""","""","""",Russia Fed
 7702641,RUBIN,"""","""","""",Russia Fed
 7702785,CACTUS,"""","""","""",Russia Fed

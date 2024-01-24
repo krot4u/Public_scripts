@@ -157,6 +157,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000540,KASPER,"","","","",QRA
 5000772,GIHAR,"","","","",QRA
 5000941,KIRPICH,"","","","",QRA
+5001430,RADIST,"","","","",QRA
 5002012,PENZA,"","","","",QRA
 5002222,HOKUM,"","","","",QRA
 5005522,ZOLOTOY,"","","","",QRA
@@ -241,6 +242,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700030,VETER,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
+7700102,TRUBA,"","","","",QRA
 7700110,BESS,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
 7700115,DRIM,"","","","",QRA
@@ -258,6 +260,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700888,PYTHON,"","","","",QRA
 7700999,ORCA28,"","","","",QRA
 7701015,SERAFIM,"","","","",QRA
+7702158,VANDAM,"","","","",QRA
 7702202,REVAZ,"","","","",QRA
 7702641,RUBIN,"","","","",QRA
 7702785,CACTUS,"","","","",QRA
