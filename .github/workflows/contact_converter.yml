@@ -181,7 +181,7 @@ jobs:
             $MotoXTL2500Template = '"Ind","--DMRID--","--CALLSIGN--"'
             Remove-Item $MotoXTL2500CSVfile -Force -ErrorAction SilentlyContinue
             $Initial = @"
-                        __File Format Version__,0x01
+            __File Format Version__,0x01
 
 
             __Feature__,"ASTRO Call List"
