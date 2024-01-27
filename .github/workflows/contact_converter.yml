@@ -177,7 +177,7 @@ jobs:
             # ------ Motorola XTL2500 Call ID List (P25) ------ #
             # $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
-            $MotoXTL2500CSVfile = "./Devices_Contact_List/ASTRO Call List.csv"
+            $MotoXTL2500CSVfile = "./Devices_Contact_List/ASTRO_Call_List.csv"
             $MotoXTL2500Template = '"Ind","--DMRID--","--CALLSIGN--"'
             Remove-Item $MotoXTL2500CSVfile -Force -ErrorAction SilentlyContinue
             $Initial = @"
