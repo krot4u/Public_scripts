@@ -58,11 +58,13 @@ if ($_SERVER["PHP_SELF"] == "/admin/sendlogs.php") {
         $old_path = getcwd();
         chdir('/usr/local/sbin/');
         $output = shell_exec("./sendLogs.sh $inputValue");
+        $output = preg_replace("/\x1b\[[0-9;]*m/", '', $output);
         chdir($old_path);
         // Display the result or handle it as needed
-        echo "<p><strong>Логи отправленны Администраторам!</strong></p>";
-        echo "<p><strong>Спасибо!</strong></p>";
-        echo "<p><strong>Ваш QRA-Team!</strong></p>";
+        echo '<span style="color: white;">' . htmlspecialchars($output) . '</span><br />';
+        echo '<span style="color: white;"><br /></span><br />';
+        echo '<span style="color: white;">-----------------------------------------------------------<br /></span><br />';
+        echo '<p><strong>Логи отправленны Администраторам!</strong></p><br />';
     } else {
         // Display the form
         ?>

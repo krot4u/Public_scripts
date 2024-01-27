@@ -133,6 +133,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 3100001,BELGR0D,"","","","",QRA
 3100002,TROYKA,"","","","",QRA
 3197441,FLORIDA,"","","","",QRA
+3208222,GARICH,"","","","",QRA
 3324733,CONDOR,"","","","",QRA
 3600971,FRESH,"","","","",QRA
 3720001,BALU,"","","","",QRA
@@ -157,6 +158,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000540,KASPER,"","","","",QRA
 5000772,GIHAR,"","","","",QRA
 5000941,KIRPICH,"","","","",QRA
+5001430,RADIST,"","","","",QRA
 5002012,PENZA,"","","","",QRA
 5002222,HOKUM,"","","","",QRA
 5005522,ZOLOTOY,"","","","",QRA
@@ -239,10 +241,13 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700024,NAUM,"","","","",QRA
 7700025,CCCP,"","","","",QRA
 7700030,VETER,"","","","",QRA
+7700077,WOROBEY,"","","","",QRA
 7700100,RADIO,"","","","",QRA
 7700101,MARIOTT,"","","","",QRA
+7700102,TRUBA,"","","","",QRA
 7700110,BESS,"","","","",QRA
 7700111,MORYAK,"","","","",QRA
+7700115,DRIM,"","","","",QRA
 7700123,NEMO,"","","","",QRA
 7700165,ROO165,"","","","",QRA
 7700327,MEDIC,"","","","",QRA
@@ -257,6 +262,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700888,PYTHON,"","","","",QRA
 7700999,ORCA28,"","","","",QRA
 7701015,SERAFIM,"","","","",QRA
+7702158,VANDAM,"","","","",QRA
 7702202,REVAZ,"","","","",QRA
 7702641,RUBIN,"","","","",QRA
 7702785,CACTUS,"","","","",QRA
@@ -267,6 +273,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7800056,AYVENGO,"","","","",QRA
 7800305,VALKOD,"","","","",QRA
 7800555,BOLTIK,"","","","",QRA
+7800996,RYJII,"","","","",QRA
 7801081,ULUDAG,"","","","",QRA
 7806534,OLEG,"","","","",QRA
 7809113,KOMYAGA,"","","","",QRA
@@ -275,4 +282,5 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 8600001,LESNIK,"","","","",QRA
 9200015,KOSHEY,"","","","",QRA
 9200787,SANSEY,"","","","",QRA
+9600002,SEVERNY,"","","","",QRA
 9601990,LOST,"","","","",QRA

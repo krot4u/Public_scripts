@@ -133,6 +133,7 @@ Radio ID,Callsign,Name,City,State,Country
 3100001,BELGR0D,"""","""","""",Russia Fed
 3100002,TROYKA,"""","""","""",Russia Fed
 3197441,FLORIDA,"""","""","""",Russia Fed
+3208222,GARICH,"""","""","""",Russia Fed
 3324733,CONDOR,"""","""","""",Russia Fed
 3600971,FRESH,"""","""","""",Russia Fed
 3720001,BALU,"""","""","""",Russia Fed
@@ -157,6 +158,7 @@ Radio ID,Callsign,Name,City,State,Country
 5000540,KASPER,"""","""","""",Russia Fed
 5000772,GIHAR,"""","""","""",Russia Fed
 5000941,KIRPICH,"""","""","""",Russia Fed
+5001430,RADIST,"""","""","""",Russia Fed
 5002012,PENZA,"""","""","""",Russia Fed
 5002222,HOKUM,"""","""","""",Russia Fed
 5005522,ZOLOTOY,"""","""","""",Russia Fed
@@ -239,10 +241,13 @@ Radio ID,Callsign,Name,City,State,Country
 7700024,NAUM,"""","""","""",Russia Fed
 7700025,CCCP,"""","""","""",Russia Fed
 7700030,VETER,"""","""","""",Russia Fed
+7700077,WOROBEY,"""","""","""",Russia Fed
 7700100,RADIO,"""","""","""",Russia Fed
 7700101,MARIOTT,"""","""","""",Russia Fed
+7700102,TRUBA,"""","""","""",Russia Fed
 7700110,BESS,"""","""","""",Russia Fed
 7700111,MORYAK,"""","""","""",Russia Fed
+7700115,DRIM,"""","""","""",Russia Fed
 7700123,NEMO,"""","""","""",Russia Fed
 7700165,ROO165,"""","""","""",Russia Fed
 7700327,MEDIC,"""","""","""",Russia Fed
@@ -257,6 +262,7 @@ Radio ID,Callsign,Name,City,State,Country
 7700888,PYTHON,"""","""","""",Russia Fed
 7700999,ORCA28,"""","""","""",Russia Fed
 7701015,SERAFIM,"""","""","""",Russia Fed
+7702158,VANDAM,"""","""","""",Russia Fed
 7702202,REVAZ,"""","""","""",Russia Fed
 7702641,RUBIN,"""","""","""",Russia Fed
 7702785,CACTUS,"""","""","""",Russia Fed
@@ -267,6 +273,7 @@ Radio ID,Callsign,Name,City,State,Country
 7800056,AYVENGO,"""","""","""",Russia Fed
 7800305,VALKOD,"""","""","""",Russia Fed
 7800555,BOLTIK,"""","""","""",Russia Fed
+7800996,RYJII,"""","""","""",Russia Fed
 7801081,ULUDAG,"""","""","""",Russia Fed
 7806534,OLEG,"""","""","""",Russia Fed
 7809113,KOMYAGA,"""","""","""",Russia Fed
@@ -275,4 +282,5 @@ Radio ID,Callsign,Name,City,State,Country
 8600001,LESNIK,"""","""","""",Russia Fed
 9200015,KOSHEY,"""","""","""",Russia Fed
 9200787,SANSEY,"""","""","""",Russia Fed
+9600002,SEVERNY,"""","""","""",Russia Fed
 9601990,LOST,"""","""","""",Russia Fed
