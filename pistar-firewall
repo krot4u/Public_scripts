@@ -82,7 +82,7 @@ iptables -t mangle -A POSTROUTING -p udp --dport 40000 -j DSCP --set-dscp 46
 # Allow Outbound DMR Ports
 #iptables -A OUTPUT -p udp --dport 55555 -j ACCEPT #			      DMR+ Networking
 iptables -A OUTPUT -p udp --dport 55550:55580 -j ACCEPT #			HB Link France Networking
-iptables -A OUTPUT -p udp --dport 62031:62035 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 62031:62035 -j ACCEPT #			DMR Networking
 #iptables -t mangle -A POSTROUTING -p udp --dport 55555 -j DSCP --set-dscp 46
 iptables -t mangle -A POSTROUTING -p udp --dport 55550:55580 -j DSCP --set-dscp 46
 iptables -t mangle -A POSTROUTING -p udp --dport 62031:62035 -j DSCP --set-dscp 46
@@ -114,8 +114,13 @@ iptables -t mangle -A POSTROUTING -p udp --dport 42400 -j DSCP --set-dscp 46
 iptables -A OUTPUT -p udp --dport 41500 -j ACCEPT #			NXDN Outbound Connections
 iptables -t mangle -A POSTROUTING -p udp --dport 41500 -j DSCP --set-dscp 46
 iptables -A OUTPUT -p udp --sport 14050 -j ACCEPT #			NXDN Outbound Connections
-iptables -t mangle -A POSTROUTING -p udp --sport 14050 -j DSCP --set-dscp 46
-
+iptables -t mangle -A POSTROUTING -p ud# Allow Outbound M17Gateway Ports
+iptables -A OUTPUT -p udp --dport 17000 -j ACCEPT #			M17 Outbound Connections
+iptables -t mangle -A POSTROUTING -p udp --dport 17000 -j DSCP --set-dscp 46
+iptables -A OUTPUT -p udp --dport 17724 -j ACCEPT #			M17 Outbound Connections
+iptables -t mangle -A POSTROUTING -p udp --dport 17724 -j DSCP --set-dscp 46
+iptables -A OUTPUT -p udp --dport 17777 -j ACCEPT #			M17 Outbound Connections
+iptables -t mangle -A POSTROUTING -p udp --dport 17777 -j DSCP --set-dscp 46
 # Allow Outbound DAPNet ports
 iptables -A OUTPUT -p tcp --dport 43434 -j ACCEPT #			DAPNet Outbound Connections
 

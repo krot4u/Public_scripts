@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+##############################################################################
+#                                                                            #
+#                          Pi-Star MMDVMCal Tool                             #
+#                                                                            #
+#     Version 1.1, Code, Design and Development by Andy Taylor (MW0MWZ).     #
+#                                                                            #
+#                 Make it simple to run MMDVMCal on Pi-Star.                 #
+#                      Orrigional suggestion by "mrickey"                    #
+#                                                                            #
+##############################################################################
+#
+if [ "$(id -u)" != "0" ]; then
+  echo -e "You need to be root to run this command...\n"
+  exit 1
+fi
+
+# Get the modem port from /etc/mmdvmhost
+mmdvmModem=$(grep -m 1 'UARTPort=' /etc/mmdvmhost | awk -F "=" '/Port/ {print $2}')
+modemSpeed=$(grep -m 1 'UARTSpeed=' /etc/mmdvmhost | awk -F "=" '/UARTSpeed/ {print $2}')
+
+# Output some feedback to the terminal
+echo "Stopping Pi-Star Services..."
+
+# Make the disk RW
+mount -o remount,rw /
+
+# Stop the services
+systemctl stop pistar-watchdog.timer
+systemctl stop pistar-watchdog.service
+systemctl stop mmdvmhost.timer
+systemctl stop mmdvmhost.service
+sleep 3
+
+# Force Kill any remaining MMDVMHost processes
+echo "Killing any remaining MMDVMHost processes..."
+killall MMDVMHost
+killall MMDVMHost_NoOLED
+killall MMDVMHost_Adafruit
+
+# Output some feedback to the terminal
+echo "Starting Calibration..."
+
+# Run MMDVMCal twice, killing the first one after 3 secs
+/usr/local/bin/MMDVMCal ${modemSpeed} ${mmdvmModem} >/dev/null 2>&1 &
+sleep 3
+killall MMDVMCal >/dev/null 2>&1
+/usr/local/bin/MMDVMCal ${modemSpeed} ${mmdvmModem}
+
+# Output some feedback to the terminal
+echo "Starting Pi-Star Services..."
+
+# Set the disk back to RO on MMDVMCal exit
+mount -o remount,ro /
+
+# Start the services
+systemctl start pistar-watchdog.timer
+systemctl start pistar-watchdog
+systemctl start mmdvmhost.timer
+systemctl start mmdvmhost
+
+# Complete
+echo "Finnished..."
