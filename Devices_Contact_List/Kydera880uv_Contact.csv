@@ -30,6 +30,7 @@ Radio ID,Callsign,Name,City,State,Country
 2470024,TUSHKAN,"""","""","""",Russia Fed
 2500108,DALLAS,"""","""","""",Russia Fed
 2500225,CALVIN,"""","""","""",Russia Fed
+2500247,SOKOL,"""","""","""",Russia Fed
 2500252,BARS,"""","""","""",Russia Fed
 2500274,RU177,"""","""","""",Russia Fed
 2500312,TEXNIK,"""","""","""",Russia Fed
@@ -204,7 +205,6 @@ Radio ID,Callsign,Name,City,State,Country
 5973750,GNOM,"""","""","""",Russia Fed
 5973757,SURGUT,"""","""","""",Russia Fed
 5973770,ON770,"""","""","""",Russia Fed
-5973777,SOKOL,"""","""","""",Russia Fed
 5973781,PAROVOZ,"""","""","""",Russia Fed
 5973795,ONARKA,"""","""","""",Russia Fed
 5973801,QENERGY,"""","""","""",Russia Fed

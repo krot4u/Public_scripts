@@ -30,6 +30,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2470024,TUSHKAN,"","","","",QRA
 2500108,DALLAS,"","","","",QRA
 2500225,CALVIN,"","","","",QRA
+2500247,SOKOL,"","","","",QRA
 2500252,BARS,"","","","",QRA
 2500274,RU177,"","","","",QRA
 2500312,TEXNIK,"","","","",QRA
@@ -204,7 +205,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5973750,GNOM,"","","","",QRA
 5973757,SURGUT,"","","","",QRA
 5973770,ON770,"","","","",QRA
-5973777,SOKOL,"","","","",QRA
 5973781,PAROVOZ,"","","","",QRA
 5973795,ONARKA,"","","","",QRA
 5973801,QENERGY,"","","","",QRA
