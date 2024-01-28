@@ -174,38 +174,38 @@ jobs:
               Add-Content -Path $Kydera880uvCSVfile -Value $NewLine
             }
 
-            # ------ Motorola XTL2500 Call ID List (P25) ------ #
-            # $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
-            $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
-            $MotoXTL2500CSVfile = "./Devices_Contact_List/ASTRO_Call_List.csv"
-            $MotoXTL2500Template = '"Ind","--DMRID--","--CALLSIGN--"'
-            Remove-Item $MotoXTL2500CSVfile -Force -ErrorAction SilentlyContinue
-            $Initial = @"
-            __File Format Version__,0x01
+            # # ------ Motorola XTL2500 Call ID List (P25) ------ #
+            # # $DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$' | Sort-Object
+            # $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
+            # $MotoXTL2500CSVfile = "./Devices_Contact_List/ASTRO_Call_List.csv"
+            # $MotoXTL2500Template = '"Ind","--DMRID--","--CALLSIGN--"'
+            # Remove-Item $MotoXTL2500CSVfile -Force -ErrorAction SilentlyContinue
+            # $Initial = @"
+            # __File Format Version__,0x01
 
 
-            __Feature__,"ASTRO Call List"
+            # __Feature__,"ASTRO Call List"
 
-            __Record__,1 of 1 ("ASTRO Call List")
+            # __Record__,1 of 1 ("ASTRO Call List")
 
-            __Section__,"General"
+            # __Section__,"General"
 
-            __Field Name__, __Field Value__
-            "List Alias","LIST 1"
+            # __Field Name__, __Field Value__
+            # "List Alias","LIST 1"
 
-            __Section__,"List"
+            # __Section__,"List"
 
-            __Field Names__
-            "Type","Call ID","ASTRO Call ID Text"
-            __Field Values__
-            "@
-            Add-Content -Path $MotoXTL2500CSVfile -Value "$Initial"
-            foreach ($line in $DMRIdsContent) {
-              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $NewLine = $MotoXTL2500Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-              Add-Content -Path $MotoXTL2500CSVfile -Value $NewLine
-            }
+            # __Field Names__
+            # "Type","Call ID","ASTRO Call ID Text"
+            # __Field Values__
+            # "@
+            # Add-Content -Path $MotoXTL2500CSVfile -Value "$Initial"
+            # foreach ($line in $DMRIdsContent) {
+            #   $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+            #   $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+            #   $NewLine = $MotoXTL2500Template -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+            #   Add-Content -Path $MotoXTL2500CSVfile -Value $NewLine
+            # }
 
             # ------ Motorola ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
