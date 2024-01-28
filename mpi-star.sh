@@ -43,41 +43,6 @@ curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubuserconte
 #   sed -i -E '/^\[DMR\]$/,/^\[/ s/^SelfOnly=0/SelfOnly=1/' "/etc/mmdvmhost"
 # fi
 
-## -------- Add HBlink for Private Calls --------- ##
-Exclude="
-6660555
-1128888
-6556181
-"
-DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
-if echo ${EXCLUDE} | grep -q ${DMRID}; then
-  echo "Clean excluded"
-  sed -i '/^\[DMR Network 4\]/,/^$/d' /etc/dmrgateway
-  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-else
-  echo "Apply config QRA-hblink"
-  sed -i '/\[DMR Network 3\]/,/\[DMR Network 4\]/d' /etc/dmrgateway
-  sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' /etc/dmrgateway # remove empty line in the end
-    cat <<EOF >> /etc/dmrgateway
-
-[DMR Network 3]
-Enabled=1
-Name=QRA-Private
-Id=${DMRID}
-Address=hbl.qra-team.online
-Port=62033
-Password=SomeTest38876
-TGRewrite0=2,597301,2,597301,1
-TGRewrite1=2,597302,2,597302,1
-TGRewrite2=2,597303,2,597303,1
-TGRewrite3=2,9999,2,9999,1
-PassAllPC0=1
-PassAllPC1=2
-Debug=0
-Location=0
-EOF
-fi
-
 ## --------- Add Test Network --------- ##
 # TESTING="
 # 7800555
