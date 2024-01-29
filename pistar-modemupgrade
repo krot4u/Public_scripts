@@ -55,7 +55,7 @@ if [ "$1" ]; then
       firmware_file="hs_hat_ambe.bin"
       ;;
     hs_hat_generic)
-      firmware_file="ha_hat_generic.bin"
+      firmware_file="hs_hat_generic.bin"
       ;;
     hs_hat_generic_duplex)
       firmware_file="hs_hat_generic_duplex.bin"
@@ -193,13 +193,6 @@ if [ "$(uname -m)" == "aarch64" ]; then
 else
     is_aarch64=false
 fi
-
-#
-# setup firmware tmp space
-#
-FW_TMP=/tmp/.pistar-modem-mgmt
-rm -rf $FW_TMP >/dev/null 2>&1
-mkdir $FW_TMP 2> /dev/null
 
 #
 # Output some useful information when no variables are passed
@@ -409,7 +402,8 @@ if [ "$1" ] ; then
   	    # re-nit!
   	    systemctl start mmdvmhost.service >/dev/null 2>&1
   	    systemctl start mmdvmhost.timer >/dev/null 2>&1
-  	    rm -rf $FW_TMP >/dev/null 2>&1
+  	    systemctl start pistar-watchdog.timer >/dev/null 2>&1
+	    systemctl start pistar-watchdog.service >/dev/null 2>&1
   	    echo -e -n "    ${TICK} ${COMPL} Modem firmware flash successful!\n        Modem reinitialized.\n"
   	    echo ""
 	else
@@ -418,7 +412,8 @@ if [ "$1" ] ; then
 	    echo -e "               or you can contact the supplier of your modem/hotspot for support.\n"
 	    systemctl start mmdvmhost.service >/dev/null 2>&1
 	    systemctl start mmdvmhost.timer >/dev/null 2>&1
-	    rm -rf $FW_TMP >/dev/null 2>&1
+	    systemctl start pistar-watchdog.timer >/dev/null 2>&1
+	    systemctl start pistar-watchdog.service >/dev/null 2>&1
 	    echo ""
 	fi
     else
@@ -432,7 +427,6 @@ if [ "$1" ] ; then
 	systemctl start mmdvmhost.timer >/dev/null 2>&1
 	systemctl start pistar-watchdog.timer >/dev/null 2>&1
 	systemctl start pistar-watchdog.service >/dev/null 2>&1
- 	rm -rf $FW_TMP >/dev/null 2>&1
     fi
     exit 0
   }
@@ -442,7 +436,7 @@ if [ "$1" ] ; then
       flash_modem "${1}" "${firmware_file}"
     else
       # if not run via terminal, log everything into a log file
-      flash_modem "${1}" "${firmware_file}" >> /var/log/pistar-modemflash.log 2>&1
+      flash_modem "${1}" "${firmware_file}" >> /var/log/pi-star/pi-star_modemflash.log 2>&1
     fi
 
 fi

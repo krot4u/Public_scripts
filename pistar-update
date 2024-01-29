@@ -28,7 +28,7 @@ git_checkUpdateRequired() {
 
 	# Git check / update function
 	gitStatusRemote=$(git ls-remote --heads ${gitRemoteURL} | grep master | cut -c 1-7)
-	gitStatusLocal=$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git log --pretty=format:"%h" -1)
+	gitStatusLocal=$(git --work-tree=${gitFolder} --git-dir=${gitFolder}/.git log --pretty=format:"%h" -1 | cut -c 1-7)
 
 	# Return the output
 	if [[ ${gitStatusRemote} != ${gitStatusLocal} ]]; then
@@ -120,17 +120,17 @@ main_function() {
 		apt-get clean
 		echo "Done"
 
-	mount -o remount,rw /
-	mount -o remount,rw /boot
-
 		echo "Checking nginx config"
-		if ! [ $(cat /lib/systemd/system/nginx.service | grep -o "mkdir") ]; then
-			sed -i '\/PIDFile=\/run\/nginx.pid/a ExecStartPre=\/bin\/mkdir -p \/var\/log\/nginx' /lib/systemd/system/nginx.service
-			systemctl daemon-reload
-			systemctl restart nginx.service
-			echo "nginx config has been repaired - re-running pistar-update"
-      exec "$0" "$@"
-			exit 1
+
+		if ! [ -f /etc/systemd/system/nginx.service.d/override.conf ]; then
+			if ! [ $(cat /lib/systemd/system/nginx.service | grep -o "mkdir") ]; then
+				sed -i '\/PIDFile=\/run\/nginx.pid/a ExecStartPre=\/bin\/mkdir -p \/var\/log\/nginx' /lib/systemd/system/nginx.service
+				systemctl daemon-reload
+				systemctl restart nginx.service
+				echo "nginx config has been repaired - re-running pistar-update"
+        exec "$0" "$@"
+				exit 1
+			fi
 		fi
 	fi
 
@@ -223,6 +223,15 @@ main_function() {
 		mkdir /usr/local/etc/P25_Audio
 		curl --fail -o /usr/local/etc/P25_Audio/en_US.imbe -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_US.imbe
 		curl --fail -o /usr/local/etc/P25_Audio/en_US.indx -s https://raw.githubusercontent.com/g4klx/P25Clients/master/P25Gateway/Audio/en_US.indx
+		echo "Done"
+	fi
+
+	# Download the correct M17 Audio Files
+	if [[ ! -d /usr/local/etc/M17_Audio ]]; then
+		echo "Downloading M17 Voice Files..."
+		mkdir /usr/local/etc/M17_Audio
+		curl --fail -o /usr/local/etc/M17_Audio/en_US.indx -s https://raw.githubusercontent.com/g4klx/M17Gateway/main/Audio/en_US.indx
+		curl --fail -o /usr/local/etc/M17_Audio/en_US.m17 -s hhttps://raw.githubusercontent.com/g4klx/M17Gateway/main/Audio/en_US.m17
 		echo "Done"
 	fi
 

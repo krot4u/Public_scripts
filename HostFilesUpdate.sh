@@ -78,6 +78,7 @@ curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.c
 curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
 curl --fail -o /usr/local/sbin/pistar-modemupgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-modemupgrade
 curl --fail -o /usr/local/sbin/pistar-mmdvmcal -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-mmdvmcal
+curl --fail -o /usr/local/sbin/pistar-clone -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-clone
 curl --fail -o /usr/local/sbin/pistar-daily.cron -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-daily.cron
 
 # SendLogs script
