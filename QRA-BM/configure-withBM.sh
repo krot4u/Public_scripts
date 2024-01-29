@@ -8,14 +8,14 @@ dmrgateway=/etc/dmrgateway
 echo "Set rpi-rw"
 mount -o remount,rw / ; mount -o remount,rw /boot
 
-if echo /root/XLXHosts.txt | grep -q "38.180.66.135"; then
+if cat /root/XLXHosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
   echo "------- Configure XLXHosts"
   echo "496;38.180.66.135;4001" >> /root/XLXHosts.txt
 fi
 
-if echo /root/P25Hosts.txt | grep -q "38.180.66.135"; then
+if cat /root/P25Hosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
   echo "------- Configure P25Hosts"
@@ -23,14 +23,14 @@ else
   echo "496	p25.qra-team.online	41000" >> /root/P25Hosts.txt
 fi
 
-if echo /root/DMR_Hosts.txt | grep -q "38.180.66.135"; then
+if cat /root/DMR_Hosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
   echo "------- Configure DMR_Hosts"
   echo "XLX_496       0000    38.180.66.135     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 
-if echo /root/YSFHosts.txt | grep -q "38.180.66.135"; then
+if cat /root/YSFHosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
   echo "------- Configure YSFHosts"
