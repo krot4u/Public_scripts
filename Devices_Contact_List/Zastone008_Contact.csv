@@ -20,6 +20,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1632205,PREZIDE,"","","","",QRA
 1632303,KAZAK,"","","","",QRA
 1632401,CHAK,"","","","",QRA
+1632402,DRON,"","","","",QRA
 1634001,SAMARA,"","","","",QRA
 1860757,CICADA,"","","","",QRA
 1960001,VYMPEL,"","","","",QRA
@@ -129,6 +130,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2570162,IMPULS,"","","","",QRA
 2600001,JONY,"","","","",QRA
 2600002,RADIY,"","","","",QRA
+2700027,MONOLIT,"","","","",QRA
 2900555,ODA10,"","","","",QRA
 3000987,HANTER,"","","","",QRA
 3100001,BELGR0D,"","","","",QRA

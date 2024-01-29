@@ -20,6 +20,7 @@ Radio ID,Callsign,Name,City,State,Country
 1632205,PREZIDE,"""","""","""",Russia Fed
 1632303,KAZAK,"""","""","""",Russia Fed
 1632401,CHAK,"""","""","""",Russia Fed
+1632402,DRON,"""","""","""",Russia Fed
 1634001,SAMARA,"""","""","""",Russia Fed
 1860757,CICADA,"""","""","""",Russia Fed
 1960001,VYMPEL,"""","""","""",Russia Fed
@@ -129,6 +130,7 @@ Radio ID,Callsign,Name,City,State,Country
 2570162,IMPULS,"""","""","""",Russia Fed
 2600001,JONY,"""","""","""",Russia Fed
 2600002,RADIY,"""","""","""",Russia Fed
+2700027,MONOLIT,"""","""","""",Russia Fed
 2900555,ODA10,"""","""","""",Russia Fed
 3000987,HANTER,"""","""","""",Russia Fed
 3100001,BELGR0D,"""","""","""",Russia Fed
