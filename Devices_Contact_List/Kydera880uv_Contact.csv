@@ -6,6 +6,7 @@ Radio ID,Callsign,Name,City,State,Country
 1100777,DISTAR,"""","""","""",Russia Fed
 1122999,DVS,"""","""","""",Russia Fed
 1128888,DMRFRN,"""","""","""",Russia Fed
+1230311,YUG311,"""","""","""",Russia Fed
 1500636,GRIZLY,"""","""","""",Russia Fed
 1506888,ICEMAN,"""","""","""",Russia Fed
 1610161,ENOT61,"""","""","""",Russia Fed
@@ -77,6 +78,7 @@ Radio ID,Callsign,Name,City,State,Country
 2500920,KAZAK1,"""","""","""",Russia Fed
 2500929,CHAK1,"""","""","""",Russia Fed
 2500940,PRMETEY,"""","""","""",Russia Fed
+2500945,DIMGRAD,"""","""","""",Russia Fed
 2501029,UA1ZBE,"""","""","""",Russia Fed
 2501086,BABILON,"""","""","""",Russia Fed
 2501108,4UVASH,"""","""","""",Russia Fed
@@ -247,7 +249,6 @@ Radio ID,Callsign,Name,City,State,Country
 7700077,WOROBEY,"""","""","""",Russia Fed
 7700100,RADIO,"""","""","""",Russia Fed
 7700101,MARIOTT,"""","""","""",Russia Fed
-7700102,TRUBA,"""","""","""",Russia Fed
 7700110,BESS,"""","""","""",Russia Fed
 7700111,MORYAK,"""","""","""",Russia Fed
 7700115,DRIM,"""","""","""",Russia Fed
