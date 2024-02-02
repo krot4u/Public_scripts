@@ -6,7 +6,7 @@ mount -o remount,rw /boot
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ ${DMRID} == 5973757 || ${DMRID} == 6102504 || ${DMRID} == 6660888 ]]; then
+if [[ ${DMRID} == 5973757 || ${DMRID} == 6102504 || ${DMRID} == 6660888 || ${DMRID} == 4200042]]; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
