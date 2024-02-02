@@ -18,7 +18,7 @@ ENABLECRON="
 6660555
 "
 
-DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
+DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway | tr -d '\r')
 if echo "${ENABLECRON}" | grep -q "${DMRID}"; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
@@ -27,6 +27,8 @@ if echo "${ENABLECRON}" | grep -q "${DMRID}"; then
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
   fi
+else
+  echo "Nothing to do. Skip Cron"
 fi
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
