@@ -3,10 +3,23 @@
 mount -o remount,rw /
 mount -o remount,rw /boot
 
+## -------- Get Fresh HostFilesUpdate --------- ##
+curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
+
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
+ENABLECRON="
+5973757
+6102504
+6660888
+4200042
+5973272
+5973011
+6660555
+"
+
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if [[ ${DMRID} == 5973757 || ${DMRID} == 6102504 || ${DMRID} == 6660888 || ${DMRID} == 4200042]]; then
+if echo ${ENABLECRON} | grep -q ${DMRID}; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
@@ -14,27 +27,7 @@ if [[ ${DMRID} == 5973757 || ${DMRID} == 6102504 || ${DMRID} == 6660888 || ${DMR
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
   fi
-else
-  crontab -l > /tmp/crontab.tmp
-  if $(cat /tmp/crontab.tmp | grep -q "reboot"); then
-    sed -i '/reboot/d' /tmp/crontab.tmp
-    crontab /tmp/crontab.tmp
-    rm -f /tmp/crontab.tmp
-  fi
 fi
-
-if [[ ${DMRID} == 5973011 || ${DMRID} == 6660555 ]]; then
-  echo "Set Reboot by Cron for ${DMRID}"
-  crontab -l > /tmp/crontab.tmp
-  if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
-    echo "00 5 * * * root reboot" >> /tmp/crontab.tmp
-    crontab /tmp/crontab.tmp
-    rm -f /tmp/crontab.tmp
-  fi
-fi
-
-## -------- Get Fresh HostFilesUpdate --------- ##
-curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
 
 ## -------- Fix DMR SelfOnly (Private HotSpot) --------- ##
 # DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
@@ -83,11 +76,11 @@ curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubuserconte
 ## --------- Fix Phantom TX --------- ##
 
 ## -------- Send Statistic --------- ##
-CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
-DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
-LOCALIPS=$(hostname -I)
-curl -d "{
-  \"CALLSIGN\": \"$CALLSIGN\",
-  \"DMRID\": \"$DMRID\",
-  \"LOCALIPS\": \"$LOCALIPS\"
-}" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net > /dev/null
+# CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
+# DMRID=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/mmdvmhost)
+# LOCALIPS=$(hostname -I)
+# curl -d "{
+#   \"CALLSIGN\": \"$CALLSIGN\",
+#   \"DMRID\": \"$DMRID\",
+#   \"LOCALIPS\": \"$LOCALIPS\"
+# }" -H "Content-Type: application/json" https://eo93ugfkclu0yv4.m.pipedream.net > /dev/null
