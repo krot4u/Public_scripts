@@ -19,7 +19,7 @@ ENABLECRON="
 "
 
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway)
-if echo ${ENABLECRON} | grep -q ${DMRID}; then
+if echo "${ENABLECRON}" | grep -q "${DMRID}"; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
