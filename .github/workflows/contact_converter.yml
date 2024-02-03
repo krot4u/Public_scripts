@@ -265,6 +265,9 @@ jobs:
                       while ($renamedValues.ContainsKey("$name$count")) {
                           $count++
                       }
+                      if ($name.Length -eq 4) {
+                        $name = $name.Substring(0,3)
+                      }
                       $newName = "$name$count"
                       $renamedValues[$newName] = $true
                       $item.ContactName = $newName
