@@ -25,7 +25,7 @@ if echo "${ENABLECRON}" | grep -q "${DMRID}"; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
   if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
-    echo "20 3 * * * sudo reboot" >> /tmp/crontab.tmp
+    echo "20 3 * * * root reboot >/dev/null 2>&1" >> /tmp/crontab.tmp
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
   fi
