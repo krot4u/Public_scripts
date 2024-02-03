@@ -230,7 +230,7 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $CALLSIGNsl = $($CALLSIGN.Substring(0, 4))
+              $CALLSIGNsl = $($CALLSIGN.Substring(0, [Math]::Min(4, $CALLSIGN.Length)))
               $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               $NewLineSL = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGNsl"
               Add-Content -Path $MotorolaCSVfile -Value $NewLine
@@ -284,6 +284,7 @@ jobs:
               # Export the modified CSV data to a new file
               $csvData | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
             #----------------------------------------------------------------
+
             # ------ MotorolaRus Rus ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
