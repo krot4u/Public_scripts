@@ -24,7 +24,7 @@ DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' 
 if echo "${ENABLECRON}" | grep -q "${DMRID}"; then
   echo "Set Reboot by Cron for ${DMRID}"
   crontab -l > /tmp/crontab.tmp
-  if ! $(cat /tmp/crontab.tmp | grep -q "reboot"); then
+  if ! $(cat /tmp/crontab.tmp | grep -q "shutdown"); then
     echo "0 3 * * * /sbin/shutdown -r +20" >> /tmp/crontab.tmp
     crontab /tmp/crontab.tmp
     rm -f /tmp/crontab.tmp
