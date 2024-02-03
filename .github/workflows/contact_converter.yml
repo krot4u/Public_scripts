@@ -211,6 +211,7 @@ jobs:
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
+            $MotorolaSLcsvFile = "./Devices_Contact_List/MotorolaSL1600_Contact.csv"
             $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
             Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
             Add-Content -Path $MotorolaCSVfile -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
@@ -229,8 +230,11 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+              $CALLSIGNsl = $($CALLSIGN.Substring(0, 4))
               $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+              $NewLineSL = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGNsl"
               Add-Content -Path $MotorolaCSVfile -Value $NewLine
+              Add-Content -Path $MotorolaSLcsvFile -Value $NewLine
             }
             # Replace 'yourdata.csv' with the actual path to your CSV file
             $csvData = Import-Csv -Path $MotorolaCSVfile
@@ -255,7 +259,31 @@ jobs:
             }
             # Export the modified CSV data to a new file
             $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
-
+            #----------------------------------------------------------------
+              # Replace 'yourdata.csv' with the actual path to your CSV file
+              $csvData = Import-Csv -Path $MotorolaSLcsvFile
+              # Create a dictionary to track renamed values
+              $renamedValues = @{}
+              # Iterate through the CSV data
+              foreach ($item in $csvData) {
+                  $name = $item.ContactName
+                  if ($renamedValues.ContainsKey($name)) {
+                      # If the name is a duplicate, generate a unique name
+                      $count = 2
+                      while ($renamedValues.ContainsKey("$name$count")) {
+                          $count++
+                      }
+                      $newName = "$name$count"
+                      $renamedValues[$newName] = $true
+                      $item.ContactName = $newName
+                  } else {
+                      # If not a duplicate, add it to the dictionary
+                      $renamedValues[$name] = $true
+                  }
+              }
+              # Export the modified CSV data to a new file
+              $csvData | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
+            #----------------------------------------------------------------
             # ------ MotorolaRus Rus ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
