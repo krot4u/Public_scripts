@@ -261,11 +261,11 @@ jobs:
             $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
             #----------------------------------------------------------------
               # Replace 'yourdata.csv' with the actual path to your CSV file
-              $csvData = Import-Csv -Path $MotorolaSLcsvFile
+              $csvDataSL = Import-Csv -Path $MotorolaSLcsvFile
               # Create a dictionary to track renamed values
               $renamedValues = @{}
               # Iterate through the CSV data
-              foreach ($item in $csvData) {
+              foreach ($item in $csvDataSL) {
                   $name = $item.ContactName
                   if ($renamedValues.ContainsKey($name)) {
                       # If the name is a duplicate, generate a unique name
@@ -282,7 +282,7 @@ jobs:
                   }
               }
               # Export the modified CSV data to a new file
-              $csvData | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
+              $csvDataSL | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
             #----------------------------------------------------------------
 
             # ------ MotorolaRus Rus ------ #
