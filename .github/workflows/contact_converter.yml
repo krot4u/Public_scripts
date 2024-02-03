@@ -258,23 +258,28 @@ jobs:
             # Export the modified CSV data to a new file
             $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
             #----------------------------------------------------------------
-              $csvDataSL = Import-Csv -Path $MotorolaSLcsvFile
-              $renamedValues = @{}
-              foreach ($item in $csvDataSL) {
-                  $name = $item.ContactName
-                  if ($renamedValues.ContainsKey($name)) {
-                      $count = 2
-                      while ($renamedValues.ContainsKey("$name$count")) {
-                          $count++
-                      }
-                      $newName = "$name$count"
-                      $renamedValues[$newName] = $true
-                      $item.ContactName = $newName
-                  } else {
-                      $renamedValues[$name] = $true
-                  }
-              }
-              $csvDataSL | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
+            $renamedValues.Clear()
+            $csvDataSL = Import-Csv -Path $MotorolaSLcsvFile
+            $renamedValues = @{}
+            foreach ($item in $csvDataSL) {
+                $name = $item.ContactName
+                if ($renamedValues.ContainsKey($name)) {
+                    $count = 2
+                    while ($renamedValues.ContainsKey("$name$count")) {
+                        $count++
+                    }
+                    $newName = "$name$count"
+                    $renamedValues[$newName] = $true
+                    $item.ContactName = $newName
+                } else {
+                    $renamedValues[$name] = $true
+                }
+            }
+            
+            # Clear $renamedValues hashtable before exporting to CSV
+            $renamedValues.Clear()
+            
+            $csvDataSL | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
             #----------------------------------------------------------------
 
             # ------ MotorolaRus Rus ------ #
