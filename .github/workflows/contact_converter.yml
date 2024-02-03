@@ -208,7 +208,6 @@ jobs:
             # }
 
             # ------ Motorola ------ #
-            #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
             $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
             $MotorolaSLcsvFile = "./Devices_Contact_List/MotorolaSL1600_Contact.csv"
@@ -234,9 +233,8 @@ jobs:
               $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               $NewLineSL = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGNsl"
               Add-Content -Path $MotorolaCSVfile -Value $NewLine
-              Add-Content -Path $MotorolaSLcsvFile -Value $NewLine
+              Add-Content -Path $MotorolaSLcsvFile -Value $NewLineSL
             }
-            # Replace 'yourdata.csv' with the actual path to your CSV file
             $csvData = Import-Csv -Path $MotorolaCSVfile
             # Create a dictionary to track renamed values
             $renamedValues = @{}
@@ -260,15 +258,11 @@ jobs:
             # Export the modified CSV data to a new file
             $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
             #----------------------------------------------------------------
-              # Replace 'yourdata.csv' with the actual path to your CSV file
               $csvDataSL = Import-Csv -Path $MotorolaSLcsvFile
-              # Create a dictionary to track renamed values
               $renamedValues = @{}
-              # Iterate through the CSV data
               foreach ($item in $csvDataSL) {
                   $name = $item.ContactName
                   if ($renamedValues.ContainsKey($name)) {
-                      # If the name is a duplicate, generate a unique name
                       $count = 2
                       while ($renamedValues.ContainsKey("$name$count")) {
                           $count++
@@ -277,11 +271,9 @@ jobs:
                       $renamedValues[$newName] = $true
                       $item.ContactName = $newName
                   } else {
-                      # If not a duplicate, add it to the dictionary
                       $renamedValues[$name] = $true
                   }
               }
-              # Export the modified CSV data to a new file
               $csvDataSL | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
             #----------------------------------------------------------------
 
