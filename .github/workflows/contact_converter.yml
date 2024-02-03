@@ -209,78 +209,59 @@ jobs:
 
             # ------ Motorola ------ #
             $DMRIdsContent = Get-Content ./DMRIds.dat | Where-Object { $_ -notmatch '^.*ECHO.*$' -and $_ -notmatch '^$' } | Sort-Object
-            $MotorolaCSVfile = "./Devices_Contact_List/Motorola_Contact.csv"
-            $MotorolaSLcsvFile = "./Devices_Contact_List/MotorolaSL1600_Contact.csv"
+            $MotorolaCSVfile = @("./Devices_Contact_List/Motorola_Contact.csv","./Devices_Contact_List/MotorolaSL1600_Contact.csv")
             $MotorolaTemplate = "--CALLSIGN--,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,--DMRID--,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Remove-Item $MotorolaCSVfile -Force -ErrorAction SilentlyContinue
-            Add-Content -Path $MotorolaCSVfile -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
-            Add-Content -Path $MotorolaCSVfile -Value "Contact Name,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,Five Tone Calls - Telegram,Five Tone Calls - Address,Delete_MDCCalls,MDC Calls - Call ID (Hex),MDC Calls - MDC System,MDC Calls - Revert Channel Zone,MDC Calls - Revert Channel,MDC Calls - Strip TPL/DPL,MDC Calls - Call Type,Delete_QuikCallIICalls,Quik CallII Calls - Quik-Call II System,Quik CallII Calls - Revert Channel Zone,Quik CallII Calls - Revert Channel,Quik CallII Calls - Call Format,Quik CallII Calls - Tone A Freq (Hz),Quik CallII Calls - Tone A Code,Quik CallII Calls - Tone B Freq (Hz),Quik CallII Calls - Tone B Code,Quik CallII Calls - Strip TPL/DPL,Delete_DigitalCalls,Digital Calls - Call ID,Digital Calls - Route Type,Digital Calls - Call Receive Tone,Digital Calls - Ring Style,Digital Calls - Text Message Alert Tone,Digital Calls - Call Type,Digital Calls - DU_OVCMCALL,Delete_CapacityPlusCalls,Capacity Plus Calls - Call ID,Capacity Plus Calls - Route Type,Capacity Plus Calls - Call Receive Tone,Capacity Plus Calls - Ring Style,Capacity Plus Calls - Text Message Alert Tone,Capacity Plus Calls - Call Type,Delete_PhoneCalls,Phone Calls - Number,Phone Calls - Ring Type"
-            Add-Content -Path $MotorolaCSVfile -Value "Call1,False,,,False,Tel1,1,False,0xE001,Sys1,None,Selected,False,Group Call,False,Sys1,None,Selected,Two Tone,288.5,138,288.5,138,False,False,1,Regular,False,No Style,Repetitive,Group Call,False,False,1,Regular,False,No Style,Repetitive,Group Call,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "QRA-5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94004,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94005,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94006,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 7,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94007,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            Add-Content -Path $MotorolaCSVfile -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94008,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
-            foreach ($line in $DMRIdsContent) {
-              $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
-              $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
-              $CALLSIGNsl = $($CALLSIGN.Substring(0, [Math]::Min(4, $CALLSIGN.Length)))
-              $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
-              $NewLineSL = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGNsl"
-              Add-Content -Path $MotorolaCSVfile -Value $NewLine
-              Add-Content -Path $MotorolaSLcsvFile -Value $NewLineSL
-            }
-            $csvData = Import-Csv -Path $MotorolaCSVfile
-            # Create a dictionary to track renamed values
-            $renamedValues = @{}
-            # Iterate through the CSV data
-            foreach ($item in $csvData) {
-                $name = $item.ContactName
-                if ($renamedValues.ContainsKey($name)) {
-                    # If the name is a duplicate, generate a unique name
-                    $count = 2
-                    while ($renamedValues.ContainsKey("$name$count")) {
-                        $count++
-                    }
-                    $newName = "$name$count"
-                    $renamedValues[$newName] = $true
-                    $item.ContactName = $newName
-                } else {
-                    # If not a duplicate, add it to the dictionary
-                    $renamedValues[$name] = $true
+            foreach ($file in $MotorolaCSVfile) {
+              Remove-Item $file -Force -ErrorAction SilentlyContinue
+              Add-Content -Path $file -Value "ContactName,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,FiveToneCalls-S5CLDLL_5TTELEGRAM,FiveToneCalls-S5CLDLL_5TCALLADD,Delete_MDCCalls,MDCCalls-AU_CALLLSTID,MDCCalls-AU_MDCSYS,MDCCalls-AU_RVRTPERS_Zone,MDCCalls-AU_RVRTPERS,MDCCalls-AU_SPTPLDPL,MDCCalls-AU_CALLTYPE,Delete_QuikCallIICalls,QuikCallIICalls-QU_QCIISYS,QuikCallIICalls-QU_RVRTPERS_Zone,QuikCallIICalls-QU_RVRTPERS,QuikCallIICalls-QU_CALLFORMAT,QuikCallIICalls-QU_TONEATXFRE,QuikCallIICalls-QU_CODEA,QuikCallIICalls-QU_TONEBTXFRE,QuikCallIICalls-QU_CODEB,QuikCallIICalls-QU_STRIPPLDPL,Delete_DigitalCalls,DigitalCalls-DU_CALLLSTID,DigitalCalls-DU_ROUTETYPE,DigitalCalls-DU_CALLPRCDTNEN,DigitalCalls-DU_RINGTYPE,DigitalCalls-DU_TXTMSGALTTNTP,DigitalCalls-DU_CALLTYPE,DigitalCalls-DU_OVCMCALL,Delete_CapacityPlusCalls,CapacityPlusCalls-CAPPLUSUCL_CALLLSTID,CapacityPlusCalls-CAPPLUSUCL_ROUTETYPE,CapacityPlusCalls-CAPPLUSUCL_CALLPRCDTNEN,CapacityPlusCalls-CAPPLUSUCL_RINGTYPE,CapacityPlusCalls-CAPPLUSUCL_TXTMSGALTTNTP,CapacityPlusCalls-CAPPLUSUCL_CALLTYPE,Delete_PhoneCalls,PhoneCalls-PHNUCLELL_CALLID,PhoneCalls-PHNUCLELL_RINGTYPE"
+              Add-Content -Path $file -Value "Contact Name,Delete_Contact,Rename_Contact,Comments,Delete_FiveToneCalls,Five Tone Calls - Telegram,Five Tone Calls - Address,Delete_MDCCalls,MDC Calls - Call ID (Hex),MDC Calls - MDC System,MDC Calls - Revert Channel Zone,MDC Calls - Revert Channel,MDC Calls - Strip TPL/DPL,MDC Calls - Call Type,Delete_QuikCallIICalls,Quik CallII Calls - Quik-Call II System,Quik CallII Calls - Revert Channel Zone,Quik CallII Calls - Revert Channel,Quik CallII Calls - Call Format,Quik CallII Calls - Tone A Freq (Hz),Quik CallII Calls - Tone A Code,Quik CallII Calls - Tone B Freq (Hz),Quik CallII Calls - Tone B Code,Quik CallII Calls - Strip TPL/DPL,Delete_DigitalCalls,Digital Calls - Call ID,Digital Calls - Route Type,Digital Calls - Call Receive Tone,Digital Calls - Ring Style,Digital Calls - Text Message Alert Tone,Digital Calls - Call Type,Digital Calls - DU_OVCMCALL,Delete_CapacityPlusCalls,Capacity Plus Calls - Call ID,Capacity Plus Calls - Route Type,Capacity Plus Calls - Call Receive Tone,Capacity Plus Calls - Ring Style,Capacity Plus Calls - Text Message Alert Tone,Capacity Plus Calls - Call Type,Delete_PhoneCalls,Phone Calls - Number,Phone Calls - Ring Type"
+              Add-Content -Path $file -Value "Call1,False,,,False,Tel1,1,False,0xE001,Sys1,None,Selected,False,Group Call,False,Sys1,None,Selected,Two Tone,288.5,138,288.5,138,False,False,1,Regular,False,No Style,Repetitive,Group Call,False,False,1,Regular,False,No Style,Repetitive,Group Call,False,,"
+              Add-Content -Path $file -Value "QRA-Team,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,9,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "QRA-5973,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,5973,Regular,False,No Style,Repetitive,Group Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 1,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94001,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 2,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94002,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 3,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94003,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 4,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94004,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 5,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94005,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94006,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 7,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94007,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              Add-Content -Path $file -Value "ROOM 6,False,,,False,,,False,,,,,,,False,,,,,,,,,,False,94008,Regular,True,No Style,Repetitive,Private Call,False,False,,,,,,,False,,"
+              foreach ($line in $DMRIdsContent) {
+                $DMRID = $line -replace '^([0-9]{7})\s(\w.*)$','$1'
+                $CALLSIGN = $line -replace '^([0-9]{7})\s(\w.*)$','$2'
+                if ($file -match "Motorola_Contact") {
+                  $NewLine = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
+                  Add-Content -Path $file -Value $NewLine
                 }
+                else {
+                  $CALLSIGNsl = $($CALLSIGN.Substring(0, [Math]::Min(4, $CALLSIGN.Length)))
+                  $NewLineSL = $MotorolaTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGNsl"
+                  Add-Content -Path $file -Value $NewLineSL
+                }
+              }
+              $csvData = Import-Csv -Path $file
+              # Create a dictionary to track renamed values
+              $renamedValues = @{}
+              # Iterate through the CSV data
+              foreach ($item in $csvData) {
+                  $name = $item.ContactName
+                  if ($renamedValues.ContainsKey($name)) {
+                      # If the name is a duplicate, generate a unique name
+                      $count = 2
+                      while ($renamedValues.ContainsKey("$name$count")) {
+                          $count++
+                      }
+                      $newName = "$name$count"
+                      $renamedValues[$newName] = $true
+                      $item.ContactName = $newName
+                  } else {
+                      # If not a duplicate, add it to the dictionary
+                      $renamedValues[$name] = $true
+                  }
+              }
+              # Export the modified CSV data to a new file
+              $csvData | Export-Csv -Path $file -NoTypeInformation
             }
-            # Export the modified CSV data to a new file
-            $csvData | Export-Csv -Path $MotorolaCSVfile -NoTypeInformation
-            #----------------------------------------------------------------
-            # $renamedValues.Clear()
-            # $csvDataSL = Import-Csv -Path $MotorolaSLcsvFile
-            # $renamedValues = @{}
-            # foreach ($item in $csvDataSL) {
-            #     $name = $item.ContactName
-            #     if ($renamedValues.ContainsKey($name)) {
-            #         $count = 2
-            #         while ($renamedValues.ContainsKey("$name$count")) {
-            #             $count++
-            #         }
-            #         $newName = "$name$count"
-            #         $renamedValues[$newName] = $true
-            #         $item.ContactName = $newName
-            #     } else {
-            #         $renamedValues[$name] = $true
-            #     }
-            # }
-            
-            # # Clear $renamedValues hashtable before exporting to CSV
-            # $renamedValues.Clear()
-            
-            # $csvDataSL | Export-Csv -Path $MotorolaSLcsvFile -NoTypeInformation
-            #----------------------------------------------------------------
 
             # ------ MotorolaRus Rus ------ #
             #$DMRIdsContent = (Get-Content ./DMRIds.dat) -notmatch '^.*ECHO.*$'
