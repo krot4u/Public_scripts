@@ -82,6 +82,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500929,CHAK1,"","","","",QRA
 2500940,PRMETEY,"","","","",QRA
 2500945,DIMGRAD,"","","","",QRA
+2500953,JACK,"","","","",QRA
 2501029,UA1ZBE,"","","","",QRA
 2501086,BABILON,"","","","",QRA
 2501108,4UVASH,"","","","",QRA
@@ -281,7 +282,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7800056,AYVENGO,"","","","",QRA
 7800305,VALKOD,"","","","",QRA
 7800555,BOLTIK,"","","","",QRA
-7800996,RYJII,"","","","",QRA
+7800996,RYZHYI,"","","","",QRA
 7801081,ULUDAG,"","","","",QRA
 7806534,OLEG,"","","","",QRA
 7809113,KOMYAGA,"","","","",QRA
