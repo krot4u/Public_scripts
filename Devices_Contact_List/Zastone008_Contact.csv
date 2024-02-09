@@ -124,7 +124,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2507004,BALAMUT,"","","","",QRA
 2507027,BALAMYT,"","","","",QRA
 2507053,PSTAR,"","","","",QRA
-2507060,SEVAS,"","","","",QRA
+250706	SEVAS,250706	SEVAS,"","","","",QRA
 2507074,BALOMUT,"","","","",QRA
 2508128,STRANIK,"","","","",QRA
 2509099,KORSAR,"","","","",QRA
@@ -259,6 +259,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700115,DRIM,"","","","",QRA
 7700123,NEMO,"","","","",QRA
 7700165,ROO165,"","","","",QRA
+7700292,KARAS,"","","","",QRA
 7700327,MEDIC,"","","","",QRA
 7700345,CHAJKA,"","","","",QRA
 7700500,BOBER,"","","","",QRA
