@@ -98,6 +98,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2502226,PETR59,"","","","",QRA
 2503228,KARDAN,"","","","",QRA
 2503281,INGENER,"","","","",QRA
+2503315,TEPLAK,"","","","",QRA
 2503316,MIXGUIT,"","","","",QRA
 2503420,ADVOKAT,"","","","",QRA
 2503424,JIPSON,"","","","",QRA
@@ -124,7 +125,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2507004,BALAMUT,"","","","",QRA
 2507027,BALAMYT,"","","","",QRA
 2507053,PSTAR,"","","","",QRA
-250706	SEVAS,250706	SEVAS,"","","","",QRA
+250706,SEVAS,"","","","",QRA
 2507074,BALOMUT,"","","","",QRA
 2508128,STRANIK,"","","","",QRA
 2509099,KORSAR,"","","","",QRA

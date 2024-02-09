@@ -98,6 +98,7 @@ Radio ID,Callsign,Name,City,State,Country
 2502226,PETR59,"""","""","""",Russia Fed
 2503228,KARDAN,"""","""","""",Russia Fed
 2503281,INGENER,"""","""","""",Russia Fed
+2503315,TEPLAK,"""","""","""",Russia Fed
 2503316,MIXGUIT,"""","""","""",Russia Fed
 2503420,ADVOKAT,"""","""","""",Russia Fed
 2503424,JIPSON,"""","""","""",Russia Fed
@@ -124,7 +125,7 @@ Radio ID,Callsign,Name,City,State,Country
 2507004,BALAMUT,"""","""","""",Russia Fed
 2507027,BALAMYT,"""","""","""",Russia Fed
 2507053,PSTAR,"""","""","""",Russia Fed
-250706	SEVAS,250706	SEVAS,"""","""","""",Russia Fed
+250706,SEVAS,"""","""","""",Russia Fed
 2507074,BALOMUT,"""","""","""",Russia Fed
 2508128,STRANIK,"""","""","""",Russia Fed
 2509099,KORSAR,"""","""","""",Russia Fed
