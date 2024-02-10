@@ -25,6 +25,7 @@ Radio ID,Callsign,Name,City,State,Country
 1634001,SAMARA,"""","""","""",Russia Fed
 1860757,CICADA,"""","""","""",Russia Fed
 1960001,VYMPEL,"""","""","""",Russia Fed
+1960066,SOBOL,"""","""","""",Russia Fed
 2043042,QRANUT,"""","""","""",Russia Fed
 2120212,QRA212,"""","""","""",Russia Fed
 2150215,ARCTIC,"""","""","""",Russia Fed
@@ -174,7 +175,6 @@ Radio ID,Callsign,Name,City,State,Country
 5002012,PENZA,"""","""","""",Russia Fed
 5002222,HOKUM,"""","""","""",Russia Fed
 5005522,ZOLOTOY,"""","""","""",Russia Fed
-5250066,SOBOL,"""","""","""",Russia Fed
 5500001,DAVID,"""","""","""",Russia Fed
 5500055,ROSTIK,"""","""","""",Russia Fed
 5500099,QASHQAI,"""","""","""",Russia Fed

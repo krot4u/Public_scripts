@@ -25,6 +25,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 1634001,SAMARA,"","","","",QRA
 1860757,CICADA,"","","","",QRA
 1960001,VYMPEL,"","","","",QRA
+1960066,SOBOL,"","","","",QRA
 2043042,QRANUT,"","","","",QRA
 2120212,QRA212,"","","","",QRA
 2150215,ARCTIC,"","","","",QRA
@@ -174,7 +175,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5002012,PENZA,"","","","",QRA
 5002222,HOKUM,"","","","",QRA
 5005522,ZOLOTOY,"","","","",QRA
-5250066,SOBOL,"","","","",QRA
 5500001,DAVID,"","","","",QRA
 5500055,ROSTIK,"","","","",QRA
 5500099,QASHQAI,"","","","",QRA
