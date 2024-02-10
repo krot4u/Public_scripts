@@ -4,11 +4,6 @@
 #
 
 mount -o remount,rw /
-if [ -d /boot/firmware ]; then
-  mount -o remount,ro /boot/firmware
-else
-  mount -o remount,ro /boot
-fi
 
 curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
 chmod +x /usr/local/sbin/mpi-star.sh
