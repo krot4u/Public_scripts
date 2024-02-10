@@ -139,6 +139,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2600001,JONY,"","","","",QRA
 2600002,RADIY,"","","","",QRA
 2700027,MONOLIT,"","","","",QRA
+2708042,KARAT,"","","","",QRA
 2900555,ODA10,"","","","",QRA
 3000987,HANTER,"","","","",QRA
 3100001,BELGR0D,"","","","",QRA
@@ -273,6 +274,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7700888,PYTHON,"","","","",QRA
 7700999,ORCA28,"","","","",QRA
 7701015,SERAFIM,"","","","",QRA
+7701988,INDEEC,"","","","",QRA
 7702158,VANDAM,"","","","",QRA
 7702202,REVAZ,"","","","",QRA
 7702641,RUBIN,"","","","",QRA
