@@ -303,5 +303,6 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 301,LESNIK,8600001,Private Call,On,None,2
 302,KOSHEY,9200015,Private Call,On,None,2
 303,SANSEY,9200787,Private Call,On,None,2
-304,SEVERNY,9600002,Private Call,On,None,2
-305,LOST,9601990,Private Call,On,None,2
+304,AYDAR,9406767,Private Call,On,None,2
+305,SEVERNY,9600002,Private Call,On,None,2
+306,LOST,9601990,Private Call,On,None,2
