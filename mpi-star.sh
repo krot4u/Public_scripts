@@ -1,7 +1,6 @@
 #!/bin/bash
 
 mount -o remount,rw /
-mount -o remount,rw /boot
 
 ## -------- Get Fresh HostFilesUpdate --------- ##
 curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh
