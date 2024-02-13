@@ -13,7 +13,7 @@ if cat /root/XLXHosts.txt | grep -q "38.180.66.135"; then
 else
   echo "------- Configure XLXHosts"
   echo "496;38.180.66.135;4001" >> /root/XLXHosts.txt
-  echo "911;46.138.248.163;4004" >> /root/XLXHosts.txt
+  echo "895;46.138.248.163;4004" >> /root/XLXHosts.txt
 fi
 
 if cat /root/P25Hosts.txt | grep -q "38.180.66.135"; then
@@ -28,7 +28,7 @@ if cat /root/DMR_Hosts.txt | grep -q "38.180.66.135"; then
 else
   echo "------- Configure DMR_Hosts"
   echo "XLX_496       0000    38.180.66.135     passw0rd        62030" >> /root/DMR_Hosts.txt
-  echo "XLX_911       0000    46.138.248.163     passw0rd        62030" >> /root/DMR_Hosts.txt
+  echo "XLX_895       0000    46.138.248.163     passw0rd        62030" >> /root/DMR_Hosts.txt
 fi
 
 if cat /root/YSFHosts.txt | grep -q "38.180.66.135"; then
