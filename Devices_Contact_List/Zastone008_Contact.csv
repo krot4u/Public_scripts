@@ -44,6 +44,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2500334,STALKER,"","","","",QRA
 2500363,LEV1,"","","","",QRA
 2500411,VARLA,"","","","",QRA
+2500417,POLEVIK,"","","","",QRA
 2500449,KOSMOS,"","","","",QRA
 2500450,KASSIR,"","","","",QRA
 2500502,BORISYC,"","","","",QRA
@@ -156,6 +157,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 4000001,MOTO,"","","","",QRA
 4200042,LYAMKIN,"","","","",QRA
 4300001,SHAXTER,"","","","",QRA
+4700830,FEDOR83,"","","","",QRA
 4852001,PILOT,"","","","",QRA
 5000002,BOTSMAN,"","","","",QRA
 5000003,TRESHKN,"","","","",QRA

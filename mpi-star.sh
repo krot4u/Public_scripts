@@ -20,6 +20,8 @@ ENABLECRON="
 2500620
 5000540
 4852001
+8600001
+6660777
 "
 
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway | tr -d '\r')

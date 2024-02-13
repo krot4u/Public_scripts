@@ -44,6 +44,7 @@ Radio ID,Callsign,Name,City,State,Country
 2500334,STALKER,"""","""","""",Russia Fed
 2500363,LEV1,"""","""","""",Russia Fed
 2500411,VARLA,"""","""","""",Russia Fed
+2500417,POLEVIK,"""","""","""",Russia Fed
 2500449,KOSMOS,"""","""","""",Russia Fed
 2500450,KASSIR,"""","""","""",Russia Fed
 2500502,BORISYC,"""","""","""",Russia Fed
@@ -156,6 +157,7 @@ Radio ID,Callsign,Name,City,State,Country
 4000001,MOTO,"""","""","""",Russia Fed
 4200042,LYAMKIN,"""","""","""",Russia Fed
 4300001,SHAXTER,"""","""","""",Russia Fed
+4700830,FEDOR83,"""","""","""",Russia Fed
 4852001,PILOT,"""","""","""",Russia Fed
 5000002,BOTSMAN,"""","""","""",Russia Fed
 5000003,TRESHKN,"""","""","""",Russia Fed
