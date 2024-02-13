@@ -20,8 +20,7 @@ if cat /root/P25Hosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
   echo "------- Configure P25Hosts"
-  echo "1	p25.qra-team.online	41000" >> /root/P25Hosts.txt
-  echo "496	p25.qra-team.online	41000" >> /root/P25Hosts.txt
+  echo "496	p25.qra-team.online	41001" >> /root/P25Hosts.txt
 fi
 
 if cat /root/DMR_Hosts.txt | grep -q "38.180.66.135"; then
