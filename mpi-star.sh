@@ -10,18 +10,19 @@ curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubuserconte
 ENABLECRON="
 5973757
 6102504
-6660888
 4200042
 5973272
 5973011
-6660555
 5002012
 6201488
 2500620
 5000540
 4852001
 8600001
+6660555
 6660777
+6660888
+6660999
 "
 
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway | tr -d '\r')
