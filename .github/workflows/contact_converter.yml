@@ -347,7 +347,7 @@ jobs:
             
             # ------ TAKT ------ #
             #pip install pandas
-            pip install openpyxl
+            #pip install openpyxl
             Copy-Item DMRIds.dat ./Devices_Contact_List/DMRIds.dat
             Set-Location Devices_Contact_List
             python takt_converter_lyamkin.py
