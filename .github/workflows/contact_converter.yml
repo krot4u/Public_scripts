@@ -170,6 +170,9 @@ jobs:
             foreach ($line in $DMRIdsContent) {
               $DMRID = $line -replace '^([0-9]+)\s(\w.*)$','$1'
               $CALLSIGN = $line -replace '^([0-9]+)\s(\w.*)$','$2'
+                if ($CALLSIGN -match "^[0-9]") {
+                  $CALLSIGN = "O"+$CALLSIGN
+                }
               $NewLine = $Kydera880uvTemplate -replace "--DMRID--","$DMRID" -replace "--CALLSIGN--","$CALLSIGN"
               Add-Content -Path $Kydera880uvCSVfile -Value $NewLine
             }
