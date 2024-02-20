@@ -8,6 +8,12 @@ dmrgateway=/etc/dmrgateway
 echo "Set rpi-rw"
 mount -o remount,rw / ; mount -o remount,rw /boot
 
+#Stop PiStar 4.3.0 Update SBIN directory
+sed -i 's|gitBranchSbin|#gitBranchSbin|' /usr/local/sbin/pistar-daily.cron
+sed -i 's|git --work-tree=/usr/local/sbin|#git --work-tree=/usr/local/sbin|' /usr/local/sbin/pistar-daily.cron
+sed -i 's|git_update /usr/local/sbin|#git_update /usr/local/sbin|' /usr/local/sbin/pistar-update
+
+
 if cat /root/XLXHosts.txt | grep -q "38.180.66.135"; then
   echo "Skip!"
 else
