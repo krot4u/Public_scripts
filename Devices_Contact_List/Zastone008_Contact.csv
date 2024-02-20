@@ -91,6 +91,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 2501086,BABILON,"","","","",QRA
 2501108,4UVASH,"","","","",QRA
 2501122,SP356,"","","","",QRA
+2501188,IKSHA,"","","","",QRA
 2502011,KOTLAS,"","","","",QRA
 2502117,VIRUS,"","","","",QRA
 2502138,KUBAN,"","","","",QRA
@@ -169,7 +170,6 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000030,STELS,"","","","",QRA
 5000097,DIMA97,"","","","",QRA
 5000230,MAGNETO,"","","","",QRA
-5000261,IKSHA,"","","","",QRA
 5000262,SENATOR,"","","","",QRA
 5000280,OKROSKA,"","","","",QRA
 5000349,KURDEN,"","","","",QRA
@@ -298,6 +298,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 7806534,OLEG,"","","","",QRA
 7809113,KOMYAGA,"","","","",QRA
 8000001,NEPTUNE,"","","","",QRA
+8000073,MUSEMAN,"","","","",QRA
 8200001,KVAK,"","","","",QRA
 8600001,LESNIK,"","","","",QRA
 9200015,KOSHEY,"","","","",QRA

@@ -91,6 +91,7 @@ Radio ID,Callsign,Name,City,State,Country
 2501086,BABILON,"""","""","""",Russia Fed
 2501108,O4UVASH,"""","""","""",Russia Fed
 2501122,SP356,"""","""","""",Russia Fed
+2501188,IKSHA,"""","""","""",Russia Fed
 2502011,KOTLAS,"""","""","""",Russia Fed
 2502117,VIRUS,"""","""","""",Russia Fed
 2502138,KUBAN,"""","""","""",Russia Fed
@@ -169,7 +170,6 @@ Radio ID,Callsign,Name,City,State,Country
 5000030,STELS,"""","""","""",Russia Fed
 5000097,DIMA97,"""","""","""",Russia Fed
 5000230,MAGNETO,"""","""","""",Russia Fed
-5000261,IKSHA,"""","""","""",Russia Fed
 5000262,SENATOR,"""","""","""",Russia Fed
 5000280,OKROSKA,"""","""","""",Russia Fed
 5000349,KURDEN,"""","""","""",Russia Fed
@@ -298,6 +298,7 @@ Radio ID,Callsign,Name,City,State,Country
 7806534,OLEG,"""","""","""",Russia Fed
 7809113,KOMYAGA,"""","""","""",Russia Fed
 8000001,NEPTUNE,"""","""","""",Russia Fed
+8000073,MUSEMAN,"""","""","""",Russia Fed
 8200001,KVAK,"""","""","""",Russia Fed
 8600001,LESNIK,"""","""","""",Russia Fed
 9200015,KOSHEY,"""","""","""",Russia Fed
