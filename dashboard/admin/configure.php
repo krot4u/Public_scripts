@@ -261,6 +261,7 @@ if (file_exists($bmAPIkeyFile) && fopen($bmAPIkeyFile,'r')) {
   <a href="/dmridlist.php" style="color: #ffffff;">DMRID-List</a> |
   <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
   <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
+  <a href="/admin/calibration.php" style="color: #ffffff;">Calibrate</a> |
   <a href="/admin/expert/" style="color: #ffffff;"><?php echo $lang['expert'];?></a> |
   <a href="/admin/power.php" style="color: #ffffff;"><?php echo $lang['power'];?></a> |
   <a href="/admin/update.php" style="color: #ffffff;"><?php echo $lang['update'];?></a> |
