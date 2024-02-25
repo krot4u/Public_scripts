@@ -1,7 +1,7 @@
 #!/bin/bash
 export LC_ALL=C
 
-NEWVERSION="22022024"
+NEWVERSION="25022024"
 CURRENTVERSION=$(grep -E '[0-8]+' /var/www/dashboard/config/version.php | awk -F"'" '{print $2}')
 
 echo "Current version HostFilesUpdate is ${CURRENTVERSION}"
@@ -113,11 +113,10 @@ if [[ $NEWVERSION != $CURRENTVERSION ]]; then
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/calibration.php" > '/var/www/dashboard/admin/calibration.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sysinfo.php" > '/var/www/dashboard/admin/sysinfo.php'
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/expert/index.php" > '/var/www/dashboard/admin/expert/index.php'
-  curl --fail -o '/var/www/dashboard/admin/images/header_f23.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header_f23.png"
-  curl --fail -o '/var/www/dashboard/images/header_f23.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/header_f23.png"
+  curl --fail -o '/var/www/dashboard/admin/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/images/header.png"
+  curl --fail -o '/var/www/dashboard/images/header.png' -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/images/heade.png"
   curl --fail -o /etc/pistar-css.ini -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-css.ini
   curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sendlogs.php" > '/var/www/dashboard/admin/sendlogs.php'
-  #curl --fail -s "https://raw.githubusercontent.com/krot4u/Public_scripts/master/dashboard/admin/sendLogScript.php" > '/var/www/dashboard/admin/sendLogScript.php'
 fi
 
 # Custom P25Hosts.txt
