@@ -8,24 +8,25 @@ curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://raw.githubuserconte
 ## -------- Set Crontab--------- ##
 # m h   dom     mon     dow     command
 ENABLECRON="
-5973757
-6102504
-4200042
-5973272
-5973011
-5002012
-6201488
 2500620
-5000540
+4200042
 4852001
-8600001
-7700850
+5000540
+5002012
+5973011
+5973272
+5973757
 6100777
+6102504
+6201488
 6660444
 6660555
 6660777
 6660888
 6660999
+7700292
+7700850
+8600001
 "
 
 DMRID=$(awk -F'=' '/\[XLX Network\]/{a=1; next} /\[/{a=0} a && /Id=/{print $2}' /etc/dmrgateway | tr -d '\r')
