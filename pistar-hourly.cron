@@ -5,9 +5,9 @@
 
 mount -o remount,rw /
 
-curl --fail -o '/usr/local/sbin/mpi-star.sh' -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
-chmod +x /usr/local/sbin/mpi-star.sh
-sudo /usr/local/sbin/mpi-star.sh
+curl --fail -o '/usr/local/sbin/mpi-star' -s https://s3.qra-team.online/PiStar/mpi-star
+chmod +x /usr/local/sbin/mpi-star
+sudo /usr/local/sbin/mpi-star
 # Shrink NginX error log to stop it getting out of hand
 echo "$(tail -500 /var/log/nginx/error.log)" > /var/log/nginx/error.log
 

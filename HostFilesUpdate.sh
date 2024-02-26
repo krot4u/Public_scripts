@@ -18,7 +18,7 @@ P25HOSTS=/usr/local/etc/P25Hosts.txt
 XLXHOSTS=/usr/local/etc/XLXHosts.txt
 YSFHOSTS=/usr/local/etc/YSFHosts.txt
 FCSHOSTS=/usr/local/etc/FCSHosts.txt
-MPISTAR=/usr/local/sbin/mpi-star.sh
+MPISTAR=/usr/local/sbin/mpi-star
 PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
 # How many backups
 FILEBACKUP=1
@@ -68,7 +68,7 @@ curl --fail -o ${P25HOSTS} -s https://raw.githubusercontent.com/krot4u/Public_sc
 curl --fail -o ${XLXHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/XLXHosts.txt
 curl --fail -o ${FCSHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/FCSHosts.txt
 curl --fail -o ${YSFHOSTS} -s http://kavkaz.qrz.ru/YSF_Hosts.txt
-curl --fail -o ${MPISTAR} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/mpi-star.sh
+curl --fail -o ${MPISTAR} -s https://s3.qra-team.online/PiStar/mpi-star
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid.dat
@@ -86,7 +86,7 @@ curl --fail -o /usr/local/sbin/sendLogs.sh -s https://raw.githubusercontent.com/
 chown www-data:www-data /usr/local/sbin/sendLogs.sh
 chmod +x /usr/local/sbin/sendLogs.sh
 
-echo ">> HostFilesUpdate: Run mpi-star.sh"
+echo ">> HostFilesUpdate: Run mpi-star"
 chmod +x ${MPISTAR}
 ${MPISTAR} 2> /dev/null
 echo "------------"
