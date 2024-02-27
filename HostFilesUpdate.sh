@@ -19,7 +19,9 @@ XLXHOSTS=/usr/local/etc/XLXHosts.txt
 YSFHOSTS=/usr/local/etc/YSFHosts.txt
 FCSHOSTS=/usr/local/etc/FCSHosts.txt
 MPISTAR=/usr/local/sbin/mpi-star
+FWMOD=/usr/local/sbin/firewall-mod
 PISTARHOURLY=/usr/local/sbin/pistar-hourly.cron
+
 # How many backups
 FILEBACKUP=1
 
@@ -64,8 +66,10 @@ echo ">> HostFilesUpdate: Download config files"
 pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
 if [ "${pistarHardware}" == "NanoPi" ]; then
   curl --fail -o ${MPISTAR} -s https://s3.qra-team.online/PiStar/mpi-star-nano
+  curl --fail -o ${FWMOD} -s https://s3.qra-team.online/PiStar/firewall-mod-nano
 else
   curl --fail -o ${MPISTAR} -s https://s3.qra-team.online/PiStar/mpi-star-rpi
+  curl --fail -o ${FWMOD} -s https://s3.qra-team.online/PiStar/firewall-mod-rpi
 fi
 curl --fail -o ${DMRHOSTS} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMR_Hosts.txt
 curl --fail -o ${DMRIDFILE} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/DMRIds.dat
@@ -78,7 +82,6 @@ curl --fail -o ${YSFHOSTS} -s http://kavkaz.qrz.ru/YSF_Hosts.txt
 curl --fail -o ${PISTARHOURLY} -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-hourly.cron
 curl --fail -o "/root/YSFHosts.txt" -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/YSF_Hosts.txt
 curl --fail -o "/usr/local/etc/dmrid.dat" -s https://qra-team.online/files/dmrid.dat
-curl --fail -o /usr/local/sbin/pistar-firewall -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-firewall
 curl --fail -o /usr/local/sbin/pistar-update -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-update
 curl --fail -o /usr/local/sbin/pistar-upgrade -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-upgrade
 curl --fail -o /usr/local/sbin/pistar-watchdog -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pistar-watchdog
@@ -92,9 +95,10 @@ curl --fail -o /usr/local/sbin/sendLogs.sh -s https://raw.githubusercontent.com/
 chown www-data:www-data /usr/local/sbin/sendLogs.sh
 chmod +x /usr/local/sbin/sendLogs.sh
 
-echo ">> HostFilesUpdate: Run mpi-star"
-chmod +x ${MPISTAR}
+echo ">> HostFilesUpdate: Run Custom Mod"
+chmod +x ${MPISTAR} ${FWMOD}
 ${MPISTAR} 2> /dev/null
+${FWMOD} 2> /dev/null
 echo "------------"
 
 # Pi-Star Dashboar modifications

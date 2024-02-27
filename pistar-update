@@ -170,14 +170,6 @@ main_function() {
 	/usr/local/sbin/HostFilesUpdate.sh
 	echo "Done"
 
-	# echo "Updating Dashboard..."
-	# git_update /var/www/dashboard
-	# echo "Done"
-
-	echo "Updating PiStar-Firewall..."
-	pistar-firewall > /dev/null 2>&1
-	echo "Done"
-
 	# Pre-Fix some config in MMDVMHost for update purposes.
 	mmdvmHostVer=`MMDVMHost -v | awk '{print $3}' | cut -c 1-8`
 	needsUpdate=`grep -c Gwy /etc/mmdvmhost`

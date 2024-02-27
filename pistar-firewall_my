@@ -13,6 +13,14 @@ printf "Setting IPv4 Rules...\n"
 # IPv4 Firewall Rules
 #
 
+# iptables -P INPUT ACCEPT
+# iptables -P FORWARD ACCEPT
+# iptables -P OUTPUT ACCEPT
+# iptables -t nat -F
+# iptables -t mangle -F
+# iptables -F
+# iptables -X
+
 # Flush all existing chains
 iptables -t nat -F
 iptables -t mangle -F
@@ -43,13 +51,13 @@ iptables -A OUTPUT -p tcp --dport 21 -j ACCEPT #    FTP (Updates)
 iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT #    SSH (Used by GIT)
 iptables -A OUTPUT -p udp --dport 53 -j ACCEPT #    DNS (DNS Domain Lookups)
 iptables -A OUTPUT -p tcp --dport 80 -j ACCEPT #    HTTP (Updates)
+iptables -A OUTPUT -p udp --dport 8443 -j ACCEPT #    HTTP Custom ports
+iptables -A INPUT -p udp --dport 52101 -j ACCEPT #    HTTP Custom ports
+iptables -A OUTPUT -p tcp --dport 8080 -j ACCEPT #    HTTP Custom ports
 iptables -A OUTPUT -p udp --dport 123 -j ACCEPT #   NTP (Network Time)
 iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT #   HTTPS (Updates)
 iptables -A OUTPUT -p tcp --dport 9418 -j ACCEPT #  GIT Port (Used by GIT)
 iptables -A OUTPUT -p tcp --dport 11371 -j ACCEPT # Used for APT to obtain Keys
-iptables -A OUTPUT -p udp --dport 8443 -j ACCEPT #    HTTP Custom ports
-iptables -A INPUT -p udp --dport 52101 -j ACCEPT #    HTTP Custom ports
-iptables -A OUTPUT -p tcp --dport 8080 -j ACCEPT #    HTTP Custom ports
 
 # Allow Outbound D-Star Control Ports
 iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT #                      DNS (DNS Zone Transfer - Used by xreflector.net)
@@ -341,14 +349,6 @@ ip6tables -t mangle -A POSTROUTING -p udp --dport 41400 -j DSCP --set-dscp 46
 ip6tables -A OUTPUT -p udp --sport 14050 -j ACCEPT #			NXDN Outbound Connections
 ip6tables -t mangle -A POSTROUTING -p udp --sport 14050 -j DSCP --set-dscp 46
 
-# Allow Outbound M17Gateway Ports
-ip6tables -A OUTPUT -p udp --dport 17000 -j ACCEPT #			M17 Outbound Connections
-ip6tables -t mangle -A POSTROUTING -p udp --dport 17000 -j DSCP --set-dscp 46
-ip6tables -A OUTPUT -p udp --dport 17724 -j ACCEPT #			M17 Outbound Connections
-ip6tables -t mangle -A POSTROUTING -p udp --dport 17724 -j DSCP --set-dscp 46
-ip6tables -A OUTPUT -p udp --dport 17777 -j ACCEPT #			M17 Outbound Connections
-ip6tables -t mangle -A POSTROUTING -p udp --dport 17777 -j DSCP --set-dscp 46
-
 # Allow Outbound DAPNet ports
 ip6tables -A OUTPUT -p tcp --dport 43434 -j ACCEPT #			DAPNet Outbound Connections
 
@@ -380,4 +380,3 @@ ip6tables --list
 
 # echo a blank line
 printf "\n"
-
