@@ -37,6 +37,7 @@ TGLISTBM=/usr/local/etc/TGList_BM.txt
 TGLISTP25=/usr/local/etc/TGList_P25.txt
 TGLISTNXDN=/usr/local/etc/TGList_NXDN.txt
 TGLISTYSF=/usr/local/etc/TGList_YSF.txt
+MPISTAR=/usr/local/sbin/mpi-star
 
 # How many backups
 FILEBACKUP=1
@@ -98,6 +99,14 @@ do
 	done
   fi
 done
+
+# Get the hardware type, this may be important later (RPi | NanoPi | OdroidXU4)
+pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
+if [ "${pistarHardware}" == "NanoPi" ]; then
+  curl --fail -o ${MPISTAR} -s https://s3.qra-team.online/PiStar/mpi-star-nano
+else
+  curl --fail -o ${MPISTAR} -s https://s3.qra-team.online/PiStar/mpi-star-rpi
+fi
 
 # Generate Host Files
 curl --fail -o ${APRSHOSTS} -s http://www.pistar.uk/downloads/APRS_Hosts.txt --user-agent "Pi-Star_${pistarCurVersion}"
@@ -206,6 +215,12 @@ if [ -d "/usr/local/etc/ircddbgateway" ]; then
 		ln -s /usr/local/etc/CCS_Hosts.txt /usr/local/etc/ircddbgateway/CCS_Hosts.txt
 	fi
 fi
+
+# QRA updates
+echo ">> HostFilesUpdate: Run mpi-star"
+chmod +x ${MPISTAR}
+${MPISTAR} 2> /dev/null
+echo "------------"
 
 ## -------- Send Statistic --------- ##
 CALLSIGN=$(awk -F'=' '/\[General\]/{a=1; next} /\[/{a=0} a && /Callsign=/{print $2}' /etc/mmdvmhost)
