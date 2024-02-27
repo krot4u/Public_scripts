@@ -122,7 +122,13 @@ curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/pi
 echo "------------"
 
 echo "Downloading modified HostFilesUpdate.sh..."
-curl --fail -s https://raw.githubusercontent.com/krot4u/Public_scripts/master/HostFilesUpdate.sh > '/usr/local/sbin/HostFilesUpdate.sh'
+# Get the hardware type, this may be important later (RPi | NanoPi | OdroidXU4)
+pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
+if [ "${pistarHardware}" == "NanoPi" ]; then
+  curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://s3.qra-team.online/PiStar/HostFilesUpdate-nano
+else
+  curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://s3.qra-team.online/PiStar/HostFilesUpdate-rpi
+fi
 echo "------------"
 
 echo "Stopping Services..."
