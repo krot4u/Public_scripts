@@ -273,7 +273,7 @@ Number,Name,Call ID,Type,Ring Style,Call Receive Tone,Repeater Slot override
 271,NEMO,7700123,Private Call,On,None,2
 272,EGER163,7700163,Private Call,On,None,2
 273,ROO165,7700165,Private Call,On,None,2
-274,PIZZA ,7700233,Private Call,On,None,2
+274,PIZZA,7700233,Private Call,On,None,2
 275,KARAS,7700292,Private Call,On,None,2
 276,MEDIC,7700327,Private Call,On,None,2
 277,CHAJKA,7700345,Private Call,On,None,2
