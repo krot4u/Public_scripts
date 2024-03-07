@@ -5,10 +5,13 @@ GRN="\033[0;32m"
 NC="\033[0m"
 
 function rpirw {
-  echo "rpirw..."
-  sudo mount -o remount,rw /
-  sudo mount -o remount,rw /boot
-  echo "------------"
+  echo ">> QRAconfig: rpirw..."
+    if [ -d /boot/firmware ]; then
+      (sudo mount -o remount,ro / 2>/dev/null)
+    else
+      mount -o remount,ro /
+    fi
+  echo ">> QRAconfig: ------------"
 }
 
 if [ "$(id -u)" != "0" ];then
