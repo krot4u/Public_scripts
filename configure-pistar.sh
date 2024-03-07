@@ -69,11 +69,13 @@ export DMRID=${DMRID}
 echo ">> QRAconfig: Download QRApistar.sh"
 pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
 if [ "${pistarHardware}" == "NanoPi" ]; then
+  rpirw
   curl --fail -o /usr/local/sbin/QRApistar.sh -s https://s3.qra-team.online/PiStar/QRApistar-nano
   echo ">> QRAconfig: Starting QRApistar.sh..."
   chmod +x /usr/local/sbin/QRApistar.sh
   /usr/local/sbin/QRApistar.sh
 else
+  rpirw
   curl --fail -o /usr/local/sbin/QRApistar.sh -s https://s3.qra-team.online/PiStar/QRApistar-rpi
   echo ">> QRAconfig: Starting QRApistar.sh..."
   chmod +x /usr/local/sbin/QRApistar.sh
