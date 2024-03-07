@@ -6,12 +6,8 @@ NC="\033[0m"
 
 function rpirw {
   echo ">> QRAconfig: rpirw..."
-    if [ -d /boot/firmware ]; then
-      (sudo mount -o remount,ro / 2>/dev/null)
-    else
-      mount -o remount,ro /
-    fi
-  echo ">> QRAconfig: ------------"
+    mount -o remount,rw /
+    mount -o remount,rw /boot
 }
 
 if [ "$(id -u)" != "0" ];then
