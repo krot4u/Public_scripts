@@ -61,6 +61,9 @@ read_frequency() {
   done
 }
 
+read_dmrid </dev/tty
+read_frequency </dev/tty
+
 export FREQUENCY=${FREQUENCY}
 export MFREQUENCY=${MFREQUENCY}
 export DMRID=${DMRID}
