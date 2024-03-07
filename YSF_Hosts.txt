@@ -1,2 +1,0 @@
-00496;XLX496;XLX-QRA;38.180.66.135;42000;004;https://qra-team.online;0
-00498;XLX498;XLX-QR2;92.255.79.129;42000;004;https://qra-team.online;0
