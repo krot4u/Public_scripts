@@ -61,12 +61,20 @@ read_frequency() {
   done
 }
 
+read_pass() {
+	while true; do
+		read -p "Введите Ваш Пароль : " XLXPASS
+	done
+}
+
 read_dmrid </dev/tty
+read_pass </dev/tty
 read_frequency </dev/tty
 
 export FREQUENCY=${FREQUENCY}
 export MFREQUENCY=${MFREQUENCY}
 export DMRID=${DMRID}
+export XLXPASS=${XLXPASS}
 
 echo ">> QRAconfig: Download QRApistar.sh"
 pistarHardware=$(awk -F "= " '/Hardware/ {print $2}' /etc/pistar-release)
