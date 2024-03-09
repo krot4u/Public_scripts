@@ -1,0 +1,28 @@
+name: Cleanup Deleted Workflow Logs
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+    - name: Install GitHub CLI
+      run: npm install -g @cli/cli
+    - name: Delete old workflow runs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Get a list of all workflow runs
+        runs=$(gh api --paginate "/repos/${GITHUB_REPOSITORY}/actions/runs")
+
+        # Delete runs associated with a deleted workflow
+        echo "$runs" | jq -c '.[] | select(.workflow_url == null) | .id' | while read run_id; do
+          echo "Deleting run $run_id"
+          gh api --method DELETE "/repos/${GITHUB_REPOSITORY}/actions/runs/$run_id"
+        done
