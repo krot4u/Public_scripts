@@ -171,6 +171,7 @@ Radio ID,Callsign,Name,City,State/Prov,Country,Remarks
 5000004,GRAF,"","","","",QRA
 5000005,TURIST,"","","","",QRA
 5000007,RANGER,"","","","",QRA
+5000008,ZHUK,"","","","",QRA
 5000018,GIDRANT,"","","","",QRA
 5000030,STELS,"","","","",QRA
 5000097,DIMA97,"","","","",QRA
