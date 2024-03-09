@@ -13,3 +13,4 @@ echo "------------"
 echo "------------ Run Configurator"
 chmod +x /tmp/configureQRABM.sh
 /tmp/configureQRABM.sh
+rm -rf /tmp/configureQRABM.sh
