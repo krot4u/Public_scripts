@@ -62,9 +62,7 @@ read_frequency() {
 }
 
 read_pass() {
-	while true; do
 		read -p "Введите Ваш Пароль : " XLXPASS
-	done
 }
 
 read_dmrid </dev/tty
