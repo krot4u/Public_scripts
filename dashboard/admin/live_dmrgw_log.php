@@ -58,7 +58,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/live_dmrgw_log.php") {
     <meta http-equiv="pragma" content="no-cache" />
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <meta http-equiv="Expires" content="0" />
-    <title>Pi-Star - <?php echo $lang['digital_voice']." ".$lang['dashboard']." - ".$lang['live_logs'];?></title>
+    <title>Pi-Star - <?php echo $lang['digital_voice']." ".$lang['dashboard']." - DMRGW Logs";?></title>
     <link rel="stylesheet" type="text/css" href="css/pistar-css.php" />
     <script type="text/javascript" src="/jquery.min.js"></script>
     <script type="text/javascript" src="/jquery-timing.min.js"></script>
@@ -81,7 +81,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/live_dmrgw_log.php") {
   <div class="container">
   <div class="header">
   <div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / <?php echo $lang['dashboard'].": ".$version; ?></div>
-  <h1>Pi-Star <?php echo $lang['digital_voice']." - ".$lang['live_logs'];?></h1>
+  <h1>Pi-Star <?php echo $lang['digital_voice']." - DMRGW Logs";?></h1>
   <p style="padding-right: 5px; text-align: right; color: #ffffff;">
     <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
     <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
@@ -92,7 +92,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/live_dmrgw_log.php") {
   </div>
   <div class="contentwide">
   <table width="100%">
-  <tr><th><?php echo $lang['live_logs'];?></th></tr>
+  <tr><th><?php echo "DMRGW Logs";?></th></tr>
   <tr><td align="left"><div id="tail">Starting logging, please wait...<br /></div></td></tr>
   <tr><th>Download the log: <a href="/admin/download_modem_log.php" style="color: #ffffff;">here</a></th></tr>
   </table>
