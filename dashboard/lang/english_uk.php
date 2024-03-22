@@ -17,7 +17,7 @@ $lang = array (
   "update"                      =>  "Update",
   "backup_restore"              =>  "Backup/Restore",
   "factory_reset"               =>  "Factory Reset",
-  "live_logs"                   =>  "Live Logs",
+  "live_logs"                   =>  "MMDVM Logs",
   // Config page section headdings
   "hardware_info"               =>  "Gateway Hardware Information",
   "control_software"            =>  "Control Software",

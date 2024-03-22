@@ -17,7 +17,7 @@ $lang = array (
   "update"                      =>  "Обновить",
   "backup_restore"              =>  "Сохранение\Восстановление",
   "factory_reset"               =>  "Сброс настроек",
-  "live_logs"                   =>  "Журнал",
+  "live_logs"                   =>  "MMDVM Лог",
   // Config page section headdings
   "hardware_info"               =>  "Информация об Устройстве",
   "control_software"            =>  "Программное Обеспечение",
