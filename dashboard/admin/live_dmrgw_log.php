@@ -94,7 +94,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/live_dmrgw_log.php") {
   <table width="100%">
   <tr><th><?php echo "DMRGW Logs";?></th></tr>
   <tr><td align="left"><div id="tail">Starting logging, please wait...<br /></div></td></tr>
-  <tr><th>Download the log: <a href="/admin/download_modem_log.php" style="color: #ffffff;">here</a></th></tr>
+  <tr><th>Download the log: <a href="/admin/download_drmgw_log.php" style="color: #ffffff;">here</a></th></tr>
   </table>
   </div>
   <div class="footer">
