@@ -98,7 +98,7 @@ main_function() {
 				sed -i 's/3.4.3/3.4.4/g' /etc/motd
 				echo $Message
 				exec "$0" "$@"
-                        	exit 1
+        exit 1
 			else
 				Message="In-place upgrades from 3.4.3 are not supported..."
 			fi
