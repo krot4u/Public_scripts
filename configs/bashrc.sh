@@ -3,7 +3,7 @@
 # apt install hstr
 # On Debain: hstr --show-configuration >> ~/.bashrc
 
-# apt install bat fzf zsh fd
+# apt install bat fzf zsh fd-find
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # theme agnoster
 
@@ -11,9 +11,11 @@
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
-alias ll = 'fzf --preview bat --style=numbers --color=always {}'
-# -- Use fd instead of fzf --
+alias ll='fzf --preview bat --style=numbers --color=always {}'
+ln -s /usr/bin/fdfind /usr/local/bin/fd
+ln -s /usr/bin/batcat /usr/local/bin/bat
 
+# -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
