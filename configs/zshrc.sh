@@ -79,7 +79,7 @@ alias ls="eza --color=always --long --git --icons=always --group-directories-fir
 alias kgc=kubectx
 alias kgn=kubens
 
-export KUBECONFIG=/mnt/c/Users/zabirov/.kube/config
+export KUBECONFIG=/home/.kube/config
 
 #source "/opt/kube-prompt.sh"
 #PROMPT=$PROMPT'$(__kube_ps1)'
