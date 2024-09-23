@@ -85,3 +85,7 @@ export KUBECONFIG=/mnt/c/Users/zabirov/.kube/config
 #PROMPT=$PROMPT'$(__kube_ps1)'
 source "/home/linuxbrew/.linuxbrew/opt/kube-ps1/share/kube-ps1.sh"
 RPS1='$(kube_ps1)'
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+alias cd="z"
