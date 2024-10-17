@@ -7,6 +7,10 @@
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # theme agnoster
 
+#-------------------- Custom Vim Config -------------------#
+#			git clone https://github.com/amix/vimrc.git ~/.vim_runtime
+#			sh ~/.vim_runtime/install_awesome_vimrc.sh
+
 plugins=(git kubectl docker eza kube-ps1)
 
 # Source fzf key bindings and fuzzy completion
