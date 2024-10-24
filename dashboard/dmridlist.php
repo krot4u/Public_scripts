@@ -85,7 +85,7 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 <div class="container">
 <div class="header">
 <div style="font-size: 8px; text-align: left; padding-left: 8px; float: left;">Hostname: <?php echo exec('cat /etc/hostname'); ?></div><div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / <?php echo $lang['dashboard'].": ".$version; ?></div>
-<h1>Pi-Star <?php echo $lang['digital_voice']." ".$lang['dashboard_for']." ".$MYCALL; ?></h1>
+<h1>QRA <?php echo $lang['digital_voice']." ".$lang['dashboard_for']." ".$MYCALL; ?></h1>
 <a href="http://pi-star/?"><div align="center"><img src="/images/header.png" alt="QRA-Team Pi-Star" /></a>
  <?php if (isset($piStarCssBannerExtTxt)) { echo "<p style=\"text-align: center; color: #ffffff;\">".$piStarCssBannerExtTxt."</p>\n"; }?>
   <p style="padding-right: 5px; text-align: right; color: #ffffff;">
@@ -135,9 +135,9 @@ if ( ($_SERVER["PHP_SELF"] == "/admin/index.php") && ($configPistarRelease['Pi-S
 </div>
 
 <div class="footer">
-<a style="color: #fcf811;" href="https://help.qra-team.online/" target="_new">&copy; QRA-Team Help</a><br />
-XLX Server <a style="color: #fcf811;" href="https://qra-team.online/" target="_new">Dashboard</a><br />
-<a style="color: #fcf811;" href="https://qra-team.ru" target="_new">QRA-Team.ru</a><br />
+<a style="color: #47D4D4;" href="https://help.qra-team.online/" target="_new">&copy; QRA-Team Help</a><br />
+XLX Server <a style="color: #47D4D4;" href="https://qra-team.online/" target="_new">Dashboard</a><br />
+<a style="color: #47D4D4;" href="https://qra-team.ru" target="_new">QRA-Team.ru</a><br />
 &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
 </div>
 

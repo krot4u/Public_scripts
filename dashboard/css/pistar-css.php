@@ -31,7 +31,7 @@ if (file_exists('/etc/pistar-css.ini')) {
     $bannerDropShaddows = "303030";     // Banner drop shaddow colour
     $tableHeadDropShaddow = "8b0000";   // Table Headder drop shaddows
     $textContent = "000000";            // Used for the section titles
-    $tableRowEvenBg = "f7f7f7";		// Table Row BG Colour (Even)
+    $tableRowEvenBg = "EBEDEF";		// Table Row BG Colour (Even)
     $tableRowOddBg = "d0d0d0";		// Table Row BG Colour (Odd)
 }
 ?>
@@ -216,7 +216,7 @@ a.tooltip:hover span {
     z-index: 100;
     color: #000000;
     border:1px solid #000000;
-    background: #f7f7f7;
+    background: #EBEDEF;
     font: 12px Verdana, sans-serif; 
     text-align: left;
     white-space: nowrap;
@@ -273,7 +273,7 @@ a.tooltip2:hover span {
     z-index: 100;
     color: #000000;
     border:1px solid #000000;
-    background: #f7f7f7;
+    background: #EBEDEF;
     font: 12px Verdana, sans-serif; 
     text-align: left;
     white-space: normal;
@@ -438,19 +438,19 @@ input.toggle-round-flat:checked + label:after {
 
 /* Heading */
 #config h2{
-    color:#fcf811;
+    color:#47D4D4;
     margin-bottom:4px;
 }
 
 /* Heading */
 .container h2{
-    color:#fcf811;
+    color:#47D4D4;
     margin-bottom:4px;
 }
 
 /* Paragraph */
 .container .header p{
-    color:#fd2929 !important;
+    color:#F6414B !important;
 }
 
 /* Contentwide */
@@ -464,7 +464,7 @@ input.toggle-round-flat:checked + label:after {
     border-top-right-radius:8px;
     border-bottom-left-radius:8px;
     border-bottom-right-radius:8px;
-    background-color:#1167fc;
+    background-color:#3C74BE;
     color:#ffffff;
     font-style:normal;
     letter-spacing:0.9px;
@@ -487,21 +487,21 @@ div > table tbody tr td{
 
 /* Bold Tag */
 #sysInfo b{
-  color:#fcf811;
+  color:#47D4D4;
 }
 
 /* Bold Tag */
 #bmConnects b{
-  color:#fcf811;
+  color:#47D4D4;
 }
 
 /* Bold Tag */
 #localTxs b{
-  color:#fcf811 !important;
+  color:#47D4D4 !important;
 }
 
 /* Bold Tag */
 #lastHerd b{
-  color:#fcf811 !important;
+  color:#47D4D4 !important;
 }
 

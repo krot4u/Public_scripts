@@ -29,7 +29,7 @@ if (file_exists('/etc/pistar-css.ini')) {
     $bannerDropShaddows = "303030";     // Banner drop shaddow colour
     $tableHeadDropShaddow = "8b0000";   // Table Headder drop shaddows
     $textContent = "000000";            // Used for the section titles
-    $tableRowEvenBg = "f7f7f7";		// Table Row BG Colour (Even)
+    $tableRowEvenBg = "EBEDEF";		// Table Row BG Colour (Even)
     $tableRowOddBg = "d0d0d0";		// Table Row BG Colour (Odd)
 }
 ?>
@@ -78,7 +78,7 @@ input[type=button],input[type=submit] {
   border-top-right-radius:8px;
   border-bottom-left-radius:8px;
   border-bottom-right-radius:8px;
-  background-color:#1167fc;
+  background-color:#3C74BE;
   color:#ffffff;
   font-style:normal;
   letter-spacing:0.9px;
@@ -89,7 +89,7 @@ input[type=button],input[type=submit] {
 	text-align:center;
 	margin-top:10px;
 	border-bottom: 1px solid;
-  color :#fcf811;
+  color :#47D4D4;
 }
 
 .infobox {

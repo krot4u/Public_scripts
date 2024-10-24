@@ -1,6 +1,6 @@
 body {
   background-color: #dd4b39;
-  color :#fcf811;
+  color :#47D4D4;
 }
 
 .red {
@@ -49,7 +49,7 @@ input[type=button],input[type=submit] {
   text-align:center;
   margin-top:10px;
   border-bottom: 1px solid;
-  color :#fcf811;
+  color :#47D4D4;
 }
 
 .infobox {

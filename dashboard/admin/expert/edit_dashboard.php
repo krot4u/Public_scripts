@@ -47,7 +47,7 @@ if (!file_exists('/etc/pistar-css.ini')) {
 	$outFile = fopen("/tmp/bW1kd4jg6b3N0DQo.tmp", "w") or die("Unable to open file!");
 	$fileContent = "[Background]\nPage=edf0f5\nContent=ffffff\nBanners=dd4b39\n\n";
 	$fileContent .= "[Text]\nBanners=ffffff\nBannersDrop=303030\n\n";
-	$fileContent .= "[Tables]\nHeadDrop=8b0000\nBgEven=f7f7f7\nBgOdd=d0d0d0\n\n";
+	$fileContent .= "[Tables]\nHeadDrop=8b0000\nBgEven=EBEDEF\nBgOdd=d0d0d0\n\n";
 	$fileContent .= "[Content]\nText=000000\n\n";
 	$fileContent .= "[BannerH1]\nEnabled=0\nText=\"Some Text\"\n\n";
 	$fileContent .= "[BannerExtText]\nEnabled=0\nText=\"Some long text entry\"\n\n";

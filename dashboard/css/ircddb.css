@@ -95,7 +95,7 @@ table th {
 }
 
 table tr:nth-child(even) {
-    background: #f7f7f7;
+    background: #EBEDEF;
 }
 
 table tr:nth-child(odd) {
@@ -156,7 +156,7 @@ a.tooltip:hover span {
     z-index: 100;
     color: #000000;
     border:1px solid #000000;
-    background: #f7f7f7;
+    background: #EBEDEF;
     font: 12px Verdana, sans-serif; 
     text-align: left;
 }
@@ -207,7 +207,7 @@ a.tooltip2:hover span {
     z-index: 100;
     color: #000000;
     border:1px solid #000000;
-    background: #f7f7f7;
+    background: #EBEDEF;
     font: 12px Verdana, sans-serif; 
     text-align: left;
 }

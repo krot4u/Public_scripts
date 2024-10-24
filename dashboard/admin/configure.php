@@ -3,8 +3,8 @@
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
 if ($cpuTempCRaw > 1000) { $cpuTempC = round($cpuTempCRaw / 1000, 1); } else { $cpuTempC = round($cpuTempCRaw, 1); }
 $cpuTempF = round(+$cpuTempC * 9 / 5 + 32, 1);
-if ($cpuTempC < 50) { $cpuTempHTML = "<td style=\"background: #1d1\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
-if ($cpuTempC >= 50) { $cpuTempHTML = "<td style=\"background: #fa0\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
+if ($cpuTempC < 50) { $cpuTempHTML = "<td style=\"background: #3BB273\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
+if ($cpuTempC >= 50) { $cpuTempHTML = "<td style=\"background: #F6A641\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
 if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
 
 // Pull in some config

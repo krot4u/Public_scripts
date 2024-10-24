@@ -133,9 +133,9 @@ echo "</form>";
 </div>
 
 <div class="footer">
-<a style="color: #fcf811;" href="https://help.qra-team.online/" target="_new">&copy; QRA-Team Help</a><br />
-XLX Server <a style="color: #fcf811;" href="https://qra-team.online/" target="_new">Dashboard</a>.<br />
-<a style="color: #fcf811;" href="https://qra-team.ru" target="_new">QRA-Team.Ru</a>.<br />
+<a style="color: #47D4D4;" href="https://help.qra-team.online/" target="_new">&copy; QRA-Team Help</a><br />
+XLX Server <a style="color: #47D4D4;" href="https://qra-team.online/" target="_new">Dashboard</a>.<br />
+<a style="color: #47D4D4;" href="https://qra-team.ru" target="_new">QRA-Team.Ru</a>.<br />
 &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
 </div>
 

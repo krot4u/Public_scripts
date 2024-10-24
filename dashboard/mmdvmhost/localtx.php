@@ -31,14 +31,14 @@ if ($callsignLookupSvc == "QRZ") { $callsignLookupUrl = "https://www.qrz.com/db/
 <b><?php echo $lang['local_tx_list'];?></b>
   <table>
     <tr>
-      <th><?php echo $lang['time'];?> (<?php echo date('T')?>)<span><b>Time in <?php echo date('T')?> time zone</b></span></th>
-      <th><?php echo $lang['mode'];?><span><b>Transmitted Mode</b></span></th>
-      <th><?php echo $lang['callsign'];?><span><b>Callsign</b></span></th>
-      <th><?php echo $lang['target'];?><span><b>Target, D-Star Reflector, DMR Talk Group etc</b></span></th>
-      <th><?php echo $lang['src'];?><span><b>Received from source</b></span></th>
-      <th><?php echo $lang['dur'];?>(s)<span><b>Duration in Seconds</b></span></th>
-      <th><?php echo $lang['ber'];?><span><b>Bit Error Rate</b></span></th>
-      <th>RSSI<span><b>Received Signal Strength Indication</b></span></th>
+      <th><a class="tooltip" href="#"><?php echo $lang['time'];?> (<?php echo date('T')?>)<span><b>Time in <?php echo date('T')?> time zone</b></span></th>
+      <th><a class="tooltip" href="#"><?php echo $lang['mode'];?><span><b>Transmitted Mode</b></span></th>
+      <th style="min-width:14ch"><a class="tooltip" href="#"><?php echo $lang['callsign'];?><span><b>Callsign</b></span></th>
+      <th><a class="tooltip" href="#"><?php echo $lang['target'];?><span><b>Target, D-Star Reflector, DMR Talk Group etc</b></span></th>
+      <th><a class="tooltip" href="#"><?php echo $lang['src'];?><span><b>Received from source</b></span></th>
+      <th><a class="tooltip" href="#"><?php echo $lang['dur'];?>(s)<span><b>Duration in Seconds</b></span></th>
+      <th style="min-width:5ch"><a class="tooltip" href="#"><?php echo $lang['ber'];?><span><b>Bit Error Rate</b></span></th>
+      <th style="min-width:8ch"><a class="tooltip" href="#">RSSI<span><b>Received Signal Strength Indication</b></span></th>
     </tr>
 <?php
 $counter = 0;
@@ -73,7 +73,7 @@ for ($i = 0; $i < $TXListLim; $i++) {
 			if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
 			echo"<td align=\"left\">".str_replace(" ","&nbsp;", $listElem[4])."</td>";
 			if ($listElem[5] == "RF"){
-				echo "<td style=\"background:#1d1;\">RF</td>";
+				echo "<td style=\"background:#3BB273;\">RF</td>";
 			} else {
 				echo "<td>$listElem[5]</td>";
 			}
@@ -85,17 +85,17 @@ for ($i = 0; $i < $TXListLim; $i++) {
 				$dt = new DateTime($utc_time, $utc_tz);
 				$duration = $now->getTimestamp() - $dt->getTimestamp();
 				$duration_string = $duration<999 ? round($duration) . "+" : "&infin;";
-				echo "<td colspan=\"3\" style=\"background:#f33;\">TX " . $duration_string . " sec</td>";
+				echo "<td colspan=\"3\" style=\"background:#F6414B;\">TX " . $duration_string . " sec</td>";
 			} else if ($listElem[6] == "DMR Data") {
-				echo "<td colspan=\"3\" style=\"background:#1d1;\">DMR Data</td>";
+				echo "<td colspan=\"3\" style=\"background:#3BB273;\">DMR Data</td>";
 			} else {
 				echo"<td>$listElem[6]</td>"; //duration
 				
 				// Colour the BER Field
 				if (floatval($listElem[8]) == 0) { echo "<td>$listElem[8]</td>"; }
-				elseif (floatval($listElem[8]) >= 0.0 && floatval($listElem[8]) <= 1.9) { echo "<td style=\"background:#1d1;\">$listElem[8]</td>"; }
-				elseif (floatval($listElem[8]) >= 2.0 && floatval($listElem[8]) <= 4.9) { echo "<td style=\"background:#fa0;\">$listElem[8]</td>"; }
-				else { echo "<td style=\"background:#f33;\">$listElem[8]</td>"; }
+				elseif (floatval($listElem[8]) >= 0.0 && floatval($listElem[8]) <= 1.9) { echo "<td style=\"background:#3BB273;\">$listElem[8]</td>"; }
+				elseif (floatval($listElem[8]) >= 2.0 && floatval($listElem[8]) <= 4.9) { echo "<td style=\"background:#F6A641;\">$listElem[8]</td>"; }
+				else { echo "<td style=\"background:#F6414B;\">$listElem[8]</td>"; }
 
 				echo"<td>$listElem[9]</td>"; //rssi
 			}
