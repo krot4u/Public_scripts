@@ -125,7 +125,7 @@ echo '<form action="" method="post">'."\n";
 			}
 		}
 		echo "</table>\n";
-		echo '<input type="button" value="'.$lang['apply'].'" />'."\n";
+		echo '<input type="submit" value="'.$lang['apply'].'" />'."\n";
 		echo "<br />\n";
 	}
 echo "</form>";
