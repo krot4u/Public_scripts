@@ -204,6 +204,7 @@ a.tooltip span {
     text-shadow: none;
     text-decoration: none;
     display: none;
+    color: #000000;
 }
 
 a.tooltip:hover span {
@@ -225,6 +226,7 @@ a.tooltip:hover span {
 th:last-child a.tooltip:hover span {
     left: auto;
     right: 0;
+    color: #000000;
 }
 
 a.tooltip span b {
@@ -260,6 +262,7 @@ a.tooltip2 span {
     text-shadow: none;
     text-decoration: none;
     display: none;
+    color: #000000;
 }
 
 a.tooltip2:hover span {
