@@ -44,7 +44,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/index.php") { // Stop this working outside o
 		echo '<script type="text/javascript">setTimeout(function() { window.location=window.location;},2000);</script>';
 	      }
 	      if (isset($remoteCommand)) {
-		echo "<b>P25 Link Manager</b>\n";
+		echo '<b style="color: #47D4D4;">P25 Link Manager</b>\n';
 		echo "<table>\n<tr><th>Command Output</th></tr>\n<tr><td>";
 		echo exec($remoteCommand);
 		echo "</td></tr>\n</table>\n<br />\n";
@@ -53,7 +53,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/index.php") { // Stop this working outside o
 	    } else {
 	      // Output HTML
 	      ?>
-	      <b>P25 Link Manager</b>
+	      <b style="color: #47D4D4;">P25 Link Manager</b>
 	      <form action="//<?php echo htmlentities($_SERVER['HTTP_HOST']).htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
 	      <table>
 		<tr>
