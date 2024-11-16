@@ -28,7 +28,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/index.php") { // Stop this working outside o
 	      } elseif ($_POST["Link"] == "UNLINK") {
 		$remoteCommand = "cd /var/log/pi-star && sudo /usr/local/bin/RemoteCommand ".$remotePort." TalkGroup9999";
 	      } else {
-		echo "<b>P25 Link Manager</b>\n";
+		echo '<b style="color: #47D4D4;">P25 Link Manager</b>\n';
 		echo "<table>\n<tr><th>Command Output</th></tr>\n<tr><td>";
 		echo "Somthing wrong with your input, (Neither Link nor Unlink Sent) - please try again";
 		echo "</td></tr>\n</table>\n<br />\n";
@@ -36,7 +36,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/index.php") { // Stop this working outside o
 		echo '<script type="text/javascript">setTimeout(function() { window.location=window.location;},2000);</script>';
 	      }
 	      if (empty($_POST['p25LinkHost'])) {
-		echo "<b>P25 Link Manager</b>\n";
+		echo '<b style="color: #47D4D4;">P25 Link Manager</b>\n';
 		echo "<table>\n<tr><th>Command Output</th></tr>\n<tr><td>";
 		echo "Somthing wrong with your input, (No target specified) -  please try again";
 		echo "</td></tr>\n</table>\n<br />\n";
