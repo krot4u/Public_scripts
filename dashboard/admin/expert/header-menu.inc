@@ -1,7 +1,7 @@
 <div class="header">
   <div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / Dashboard:<?php echo $version; ?></div>
   <h1>Pi-Star Digital Voice - Expert Editors</h1>
-  <a href="https://pi-star/?"><div align="center"><img src="/images/ded_moroz.png" alt="QRA-Team Pi-Star" /></a>
+  <a href="https://pi-star/?"><div align="center"><img src="/images/header_new.png" alt="QRA-Team Pi-Star" /></a>
   <p style="padding-right: 5px; text-align: right; color: #ffffff;">
     <a href="https://qra-team.online/" style="color: #ffffff;">XLX Server</a> |
     <a href="/dmridlist.php" style="color: #ffffff;">DMRID-List</a> |

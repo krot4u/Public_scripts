@@ -37,7 +37,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/power.php") {
   <div class="header">
   <div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / <?php echo $lang['dashboard'].": ".$version; ?></div>
   <h1>Pi-Star <?php echo $lang['digital_voice']." - ".$lang['power'];?></h1>
-  <a href="http://pi-star/?"><div align="center"><img src="/images/ded_moroz.png" alt="QRA-Team Pi-Star" /></a>
+  <a href="http://pi-star/?"><div align="center"><img src="/images/header_new.png" alt="QRA-Team Pi-Star" /></a>
   <p style="padding-right: 5px; text-align: right; color: #ffffff;">
     <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
     <a href="/admin/" style="color: #ffffff;"><?php echo $lang['admin'];?></a> |
