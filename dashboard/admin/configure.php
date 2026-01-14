@@ -257,6 +257,7 @@ if (file_exists($bmAPIkeyFile) && fopen($bmAPIkeyFile,'r')) {
 <h1>Pi-Star <?php echo $lang['digital_voice']." - ".$lang['configuration'];?></h1>
 <a href="http://pi-star/?"><div align="center"><img src="/images/header_new.png" alt="QRA-Team Pi-Star" /></a>
 <p style="padding-right: 5px; text-align: right; color: #ffffff;">
+  <a href="https://app.qra-team.online/" style="color: #ffffff;" target="_blank">App Qra-Team</a> |
   <a href="https://qra-team.online/" style="color: #ffffff;" target="_blank">XLX Server</a> |
   <a href="/dmridlist.php" style="color: #ffffff;">DMRID-List</a> |
   <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
