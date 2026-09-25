@@ -1,0 +1,18 @@
+{
+  "name": "Pi-Star Dashboard",
+  "user": "ubuntu",
+  "install": "./.cursor/install.sh",
+  "start": "./.cursor/start.sh",
+  "terminals": [
+    {
+      "name": "dashboard",
+      "command": "PHP_CLI_SERVER_WORKERS=4 php -d include_path=.:/workspace/dashboard:/usr/share/php -S 0.0.0.0:8080 -t /workspace/dashboard"
+    }
+  ],
+  "ports": [
+    {
+      "name": "dashboard",
+      "port": 8080
+    }
+  ]
+}
