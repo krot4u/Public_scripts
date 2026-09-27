@@ -1,0 +1,10 @@
+# Log directory used by DMRGateway (user mmdvm) and the dashboard update page.
+# Stock pistar-dashboard already allows these via PISTAR_DASH_LOGS. This alias
+# is separate so the file can be installed next to that one.
+Cmnd_Alias QRA_DASH_LOGS = \
+    /bin/mkdir -p /var/log/pi-star/, \
+    /bin/chown root\:mmdvm /var/log/pi-star/, \
+    /bin/chmod 775 /var/log/pi-star/, \
+    /usr/bin/truncate -s 0 /var/log/pi-star/*.log
+
+www-data ALL=(root) NOPASSWD: QRA_DASH_LOGS
