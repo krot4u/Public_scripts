@@ -103,6 +103,18 @@ git_update() {
 	fi
 }
 
+# git checkout applies the caller's umask: 077 makes the tree root:root mode 600/700
+# and php-fpm answers "Access denied."
+fix_www_perms() {
+	mount -o remount,rw / 2>/dev/null || true
+	if [ -d /var/www/dashboard ]; then
+		chmod -R a+rX /var/www/dashboard 2>/dev/null || true
+	fi
+	if [ -f /etc/pistar-css.ini ]; then
+		chmod a+r /etc/pistar-css.ini 2>/dev/null || true
+	fi
+}
+
 service_handle() {
 	# What do we want do to?
 	doWhat=${1}
@@ -149,6 +161,8 @@ screen_message() {
 }
 
 main_function() {
+	# Keep git checkout from creating a root-only dashboard (umask 077 → mode 600).
+	umask 022
 	# Make the disk writable
 	if mountpoint -q /boot/firmware; then
 		$(mount -o remount,rw / >/dev/null 2>&1 </dev/null ; mount -o remount,rw /boot/firmware >/dev/null 2>&1 </dev/null)
@@ -204,6 +218,7 @@ main_function() {
 	if [ "$(git --work-tree=/var/www/dashboard --git-dir=/var/www/dashboard/.git rev-parse HEAD 2>/dev/null)" != "${dashHead}" ]; then
 		rm -f /etc/qra-dashboard.version
 	fi
+	fix_www_perms
 	echo "[✓] Done"
 
 	echo "[INFO] Downloading modified HostFilesUpdate.sh..."
@@ -219,6 +234,7 @@ main_function() {
 	echo "[INFO] Updating Hostfiles..."
 	screen_message "Host Files" "updating.."
 	/usr/local/sbin/HostFilesUpdate.sh
+	fix_www_perms
 	echo "[✓] Done"
 
 	# Pre-Fix some config in MMDVMHost for update purposes.

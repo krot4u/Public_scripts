@@ -81,6 +81,18 @@ git_update() {
 	fi
 }
 
+# git checkout applies the caller's umask: 077 makes the tree root:root mode 600/700
+# and php-fpm answers "Access denied."
+fix_www_perms() {
+	mount -o remount,rw / 2>/dev/null || true
+	if [ -d /var/www/dashboard ]; then
+		chmod -R a+rX /var/www/dashboard 2>/dev/null || true
+	fi
+	if [ -f /etc/pistar-css.ini ]; then
+		chmod a+r /etc/pistar-css.ini 2>/dev/null || true
+	fi
+}
+
 service_handle() {
 	# What do we want do to?
 	doWhat=${1}
@@ -111,6 +123,8 @@ service_handle() {
 }
 
 main_function() {
+	# Keep later checkouts from creating a root-only dashboard (umask 077 → mode 600).
+	umask 022
 	# Make the disk writable
 	mount -o remount,rw /
   if [ -d /boot/firmware ]; then
@@ -167,7 +181,9 @@ main_function() {
     curl --fail -o /usr/local/sbin/HostFilesUpdate.sh -s https://s3.qra-team.online/PiStar/HostFilesUpdate-rpi
   fi
   echo "------------"
+	chmod +x /usr/local/sbin/HostFilesUpdate.sh
 	/usr/local/sbin/HostFilesUpdate.sh
+	fix_www_perms
 	echo "Done"
 
 	# Pre-Fix some config in MMDVMHost for update purposes.
