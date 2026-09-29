@@ -31,39 +31,28 @@ require_once('../config/version.php');
   <?php include './header-menu.inc'; ?>
   <div class="contentwide">
   <?php
-if(isset($_POST['data'])) {
-        // File Wrangling
-        exec('sudo cp /etc/dmrgateway /tmp/fmehg65694eg.tmp');
-        exec('sudo chown www-data:www-data /tmp/fmehg65694eg.tmp');
-        exec('sudo chmod 664 /tmp/fmehg65694eg.tmp');
+// A3-3 / L-5 — stage via tempnam + install (sudoers rejects /usr/bin/cp to /etc).
+$filepath = tempnam('/tmp', 'pistar-edit-');
+register_shutdown_function(function() use ($filepath) { @unlink($filepath); });
+exec('sudo cp /etc/dmrgateway ' . escapeshellarg($filepath));
+exec('sudo chown www-data:www-data ' . escapeshellarg($filepath));
 
-        // Open the file and write the data
-        $filepath = '/tmp/fmehg65694eg.tmp';
+if(isset($_POST['data'])) {
         $fh = fopen($filepath, 'w');
         fwrite($fh, $_POST['data']);
         fclose($fh);
         exec('sudo mount -o remount,rw /');
-        exec('sudo cp /tmp/fmehg65694eg.tmp /etc/dmrgateway');
-        exec('sudo chmod 644 /etc/dmrgateway');
-        exec('sudo chown root:root /etc/dmrgateway');
+        exec('sudo install -m 644 -o root -g root '
+             . escapeshellarg($filepath) . ' /etc/dmrgateway');
         exec('sudo mount -o remount,ro /');
-  
-        // Reload the affected daemon
-	exec('sudo systemctl restart mmdvmhost.service');		    // Reload MMDVMHost
-	exec('sudo systemctl restart dmrgateway.service');		    // Reload DMRGateway
 
-        // Re-open the file and read it
+	exec('sudo systemctl restart mmdvmhost.service');
+	exec('sudo systemctl restart dmrgateway.service');
+
         $fh = fopen($filepath, 'r');
         $theData = fread($fh, filesize($filepath));
 
 } else {
-        // File Wrangling
-        exec('sudo cp /etc/dmrgateway /tmp/fmehg65694eg.tmp');
-        exec('sudo chown www-data:www-data /tmp/fmehg65694eg.tmp');
-        exec('sudo chmod 664 /tmp/fmehg65694eg.tmp');
-
-        // Open the file and read it
-        $filepath = '/tmp/fmehg65694eg.tmp';
         $fh = fopen($filepath, 'r');
         $theData = fread($fh, filesize($filepath));
 }

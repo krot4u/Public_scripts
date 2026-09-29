@@ -5,9 +5,15 @@
 
 mount -o remount,rw /
 
-curl --fail -o '/usr/local/sbin/mpi-star' -s https://s3.qra-team.online/PiStar/mpi-star
-chmod +x /usr/local/sbin/mpi-star
-sudo /usr/local/sbin/mpi-star
+# Per-board kill switch: touch /etc/qra-disable-mpi-hourly to stop mpi-star
+# from rewriting live configs (e.g. /etc/dmrgateway) every hour.
+if [ -f /etc/qra-disable-mpi-hourly ]; then
+  echo ">> pistar-hourly: /etc/qra-disable-mpi-hourly present, skip mpi-star"
+else
+  curl --fail -o '/usr/local/sbin/mpi-star' -s https://s3.qra-team.online/PiStar/mpi-star
+  chmod +x /usr/local/sbin/mpi-star
+  sudo /usr/local/sbin/mpi-star
+fi
 # Shrink NginX error log to stop it getting out of hand
 echo "$(tail -500 /var/log/nginx/error.log)" > /var/log/nginx/error.log
 

@@ -59,9 +59,9 @@ require_once('../config/version.php');
 // A3-3 — see edit_ircddbgateway.php for the full TOCTOU rationale.
 $filepath = tempnam('/tmp', 'pistar-edit-');
 register_shutdown_function(function() use ($filepath) { @unlink($filepath); });
-exec('sudo cp /etc/dmrgateway ' . escapeshellarg($filepath));
-exec('sudo chown www-data:www-data ' . escapeshellarg($filepath));
-exec('sudo chmod 600 ' . escapeshellarg($filepath));
+exec('sudo /bin/cp /etc/dmrgateway ' . escapeshellarg($filepath));
+exec('sudo /bin/chown www-data:www-data ' . escapeshellarg($filepath));
+exec('sudo /bin/chmod 600 ' . escapeshellarg($filepath));
 
 if(isset($_POST['data'])) {
         // Write submitted data into the staging file.
@@ -72,7 +72,7 @@ if(isset($_POST['data'])) {
         // triplet (rejected by the tightened sudoers — see
         // edit_mmdvmhost.php for the full rationale).
         exec('sudo mount -o remount,rw /');
-        exec('sudo install -m 644 -o root -g root '
+        exec('sudo /usr/bin/install -m 644 -o root -g root '
              . escapeshellarg($filepath) . ' /etc/dmrgateway');
         exec('sudo mount -o remount,ro /');
 
