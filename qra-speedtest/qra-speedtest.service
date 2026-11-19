@@ -1,0 +1,19 @@
+[Unit]
+Description=QRA Pi-Star channel measurement agent
+After=network.target
+
+[Service]
+User=qra-speedtest
+Group=www-data
+RuntimeDirectory=qra-speedtest
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/python3 /opt/qra-speedtest/agent.py
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+RestrictAddressFamilies=AF_INET AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

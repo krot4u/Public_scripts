@@ -1,0 +1,18 @@
+[Unit]
+Description=QRA-XLX iperf3 measurement endpoint
+After=network.target
+
+[Service]
+DynamicUser=true
+EnvironmentFile=/etc/qra-speedtest-server.conf
+ExecStartPre=+/opt/qra-speedtest/open-server-port.sh ${PORT}
+ExecStart=/usr/bin/env ${IPERF_BIN} -4 -s -B ${BIND_ADDRESS} -p ${PORT} --server-bitrate-limit 25M --server-max-duration 15 --idle-timeout 20
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+RestrictAddressFamilies=AF_INET AF_UNIX AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target

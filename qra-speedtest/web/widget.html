@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проверка связи с QRA-XLX</title>
+<link rel="stylesheet" href="widget.css?v=2">
+</head>
+<body>
+<div class="widget-container">
+  <div id="verdict" class="verdict" data-tone="unknown">
+    <div class="verdict-icon" aria-hidden="true"></div>
+    <p class="verdict-title" id="status-text" role="status" aria-live="polite" aria-describedby="verdict-description">Подключение…</p>
+    <p class="verdict-description" id="verdict-description"></p>
+  </div>
+
+  <p class="info-notice">Запускайте в паузе голосовой связи</p>
+
+  <div class="controls-section">
+    <button type="button" class="btn-primary" id="start-btn" disabled>Подключение…</button>
+  </div>
+
+  <details class="diagnostics" id="diagnostics">
+    <summary>Подробности</summary>
+    <div class="error-section" id="error-section" hidden>
+      <p class="error-message" id="error-message"></p>
+    </div>
+
+    <div class="progress-container" id="progress-container" hidden>
+      <p class="progress-label">Этапы проверки:</p>
+      <ul class="progress-list" id="progress-list"></ul>
+    </div>
+
+    <div class="results-section" id="results-section" hidden>
+      <h2>Результаты измерений</h2>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Результаты измерений, таблица с горизонтальной прокруткой">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Профиль</th>
+            <th>Направление</th>
+            <th>Мбит/с</th>
+            <th>Jitter, мс</th>
+            <th>Потери, %</th>
+            <th>Пакеты</th>
+          </tr>
+        </thead>
+        <tbody id="results-tbody"></tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="info-details">
+      <h3>О тесте</h3>
+      <p>Pi-Star ↔ QRA-XLX. Передача и приём указаны со стороны Pi-Star. Нагрузка: TCP до 10 Мбит/с, UDP 1 Мбит/с. Тест не ищет предельную скорость канала.</p>
+      <p>Профиль DMR — синтетические UDP-пакеты 55 байт с интервалом ~60 мс. Это технический тест канала, а не проверка эфира, кодека или подлинного соединения с XLX.</p>
+      <p>Нагрузочные тесты могут повлиять на голосовую связь. Запускайте их только в паузе между сеансами.</p>
+      <p><strong>Пороги прототипа:</strong> ≥3% потерь или ≥50 мс джиттера — проблемы; ≥1% или ≥20 мс — нестабильно; ниже — хорошо. Учитывается худшее направление DMR и измеренная нулевая передача. Это практическая оценка, а не стандарт DMR.</p>
+      <p>Закрытие виджета не останавливает проверку.</p>
+    </div>
+  </details>
+</div>
+<script src="quality.js?v=2"></script>
+<script src="widget.js?v=2"></script>
+</body>
+</html>

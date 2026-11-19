@@ -149,6 +149,9 @@ if (file_exists('/etc/dstar-radio.mmdvmhost')) {
 	echo '<div id="repeaterInfo">'."\n";
 	include 'mmdvmhost/repeaterinfo.php';				// MMDVMDash Repeater Info
 	echo '</div>'."\n";
+    if (is_file($_SERVER['DOCUMENT_ROOT'] . '/qra-speedtest-button.php')) {
+        include $_SERVER['DOCUMENT_ROOT'] . '/qra-speedtest-button.php';
+    }
 	echo '</div>'."\n";
 
 	echo '<div class="content">'."\n";
