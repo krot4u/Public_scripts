@@ -5,7 +5,7 @@ set -euo pipefail
 source_dir="$(cd "$(dirname "$0")" && pwd)"
 test "$(id -u)" = 0 || { echo 'Запустите установщик от root.' >&2; exit 1; }
 test "$#" = 2 || { echo 'Использование: install-client.sh HOST PORT' >&2; exit 1; }
-python3 -c 'import sys; sys.exit(sys.version_info < (3, 9))'
+python3 -c 'import sys; sys.exit(sys.version_info < (3, 7))'
 command -v iperf3 >/dev/null
 test -d /var/www/dashboard/admin
 getent group www-data >/dev/null
